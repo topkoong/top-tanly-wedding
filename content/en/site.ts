@@ -1,0 +1,67 @@
+import type { SiteContent } from "@/content/schema";
+
+export const siteContentEn: SiteContent = {
+  locale: "en",
+  htmlLang: "en",
+  siteName: "Tan & Top Wedding",
+  coupleFriendlyName: "Tan & Top",
+  coupleFormalName: "Narueporn & Theerut",
+  weddingDate: "Sunday, 29 November 2026",
+  logoHref: "/en",
+  linePageHref: "/en/line",
+  navDesktop: [
+    { href: "/en/schedule", label: "Schedule" },
+    { href: "/en/venue", label: "Venue" },
+    { href: "/en/gallery", label: "Gallery" },
+    { href: "/en/faq", label: "FAQ" },
+  ],
+  navMobile: [
+    { href: "/en/schedule", label: "Schedule" },
+    { href: "/en/venue", label: "Venue" },
+    { href: "/en/gallery", label: "Gallery" },
+    { href: "/en/faq", label: "FAQ" },
+  ],
+  languageSwitchLabel: "TH",
+  mobileMenuOpenLabel: "Open menu",
+  mobileMenuCloseLabel: "Close menu",
+  homeShell: {
+    title: "",
+    formalNames: "Narueporn & Theerut",
+    dateLabel: "Sunday, 29 November 2026",
+    locationLabel: "Conrad Bangkok",
+    intro:
+      "Having you with us on this day means everything. We've put everything you need right here so you can arrive with ease and celebrate with us.",
+    primaryCtaLabel: "View Schedule",
+    primaryCtaHref: "/en/schedule",
+    secondaryCtaLabel: "View Map",
+    secondaryCtaHref: "/en/venue",
+    supportLineLabel: "Go to LINE Official Account",
+    quickLinks: [],
+    quickLinksLabel: "Quick Links",
+    glanceTitle: "Wedding Day at a Glance",
+    glanceCards: [
+      { label: "Date", value: "Sunday, 29 November 2026" },
+      { label: "Venue", value: "Conrad Bangkok" },
+      { label: "Programme", value: "Morning ceremony · Wedding reception" },
+    ],
+    welcomeTitle: "From us",
+    welcomeMessage:
+      "Having you here is the greatest gift. We hope this page makes it easy to find what you need — and that the day itself is one you'll remember warmly for a long time.",
+    heroImageAlt: "[Hero image placeholder]",
+    heroImageCaption: "[Hero image placeholder]",
+    heroImageCategory: "hero",
+  },
+  footer: {
+    thankYou: "Thank you for celebrating this chapter with us.",
+    lineLabel: "Official updates channel",
+    lineLinkText: "LINE OA",
+    venueLabel: "Conrad Bangkok",
+    footerLinks: [
+      { href: "/en/schedule", label: "Schedule" },
+      { href: "/en/venue", label: "Venue" },
+      { href: "/en/gallery", label: "Gallery" },
+      { href: "/en/faq", label: "FAQ" },
+      { href: "/en/line", label: "LINE Official Account" },
+    ],
+  },
+};

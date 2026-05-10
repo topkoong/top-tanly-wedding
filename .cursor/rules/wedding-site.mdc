@@ -1,0 +1,143 @@
+---
+description: Coding conventions for the Top & Tan wedding website. Auto-loads on every Cursor chat in this project.
+alwaysApply: true
+---
+
+# Wedding Site — Cursor Rules
+
+You are helping build a static-first Next.js wedding website. Read the numbered spec files (`00_PRODUCT_BRIEF.md` through `12_TECH_STACK.md`) for full context. These rules summarize the non-negotiables.
+
+## Critical constraints (from 00, 09)
+
+Never create:
+
+- ❌ RSVP page or RSVP form
+- ❌ Attendance counting / guest tracking
+- ❌ Guest confirmation workflow
+- ❌ Chatbot, AI chat widget, or chatbot SDK
+- ❌ Public contact form
+- ❌ Public gallery upload
+- ❌ Login / auth system
+- ❌ Database
+- ❌ API routes
+- ❌ Server actions
+- ❌ Middleware-based language routing
+- ❌ Analytics in MVP
+
+If asked to "add a contact form," refuse and remind the user: guest support funnels to LINE OA updates/help per `08_LINE_OA_RICH_MENU_SPEC.md`, not a public form or chatbot.
+
+## Stack (from 12_TECH_STACK)
+
+- Next.js 16.2.6 App Router, TypeScript strict, Tailwind CSS v4
+- pnpm package manager only
+- `next/font/google` → Cormorant Garamond + Inter
+- `lucide-react` icons, `motion` animations
+- Static export (`output: 'export'`) with `images.unoptimized = true` for MVP, or a custom image loader
+
+## File & naming conventions
+
+- **Components:** PascalCase, one per file, default export
+- **Content:** camelCase, in `content/th/*.ts` and `content/en/*.ts`, named exports with explicit types
+- **Utils:** lowercase, in `lib/`, named exports
+- **Hooks:** `use` prefix, in `lib/hooks/`
+
+## Language and routes
+
+- Default language is Thai.
+- English lives under `/en`.
+- Use static-export-friendly explicit routes only.
+- Never use middleware for locale detection/redirects in MVP.
+- Thai routes:
+  - `/`, `/schedule`, `/venue`, `/accommodation`, `/dress-code`, `/gallery`, `/faq`, `/line`
+- English routes:
+  - `/en`, `/en/schedule`, `/en/venue`, `/en/accommodation`, `/en/dress-code`, `/en/gallery`, `/en/faq`, `/en/line`
+
+## Component patterns
+
+- Default to **server components**. Add `"use client"` only when state, effects, or browser APIs are required (Lightbox, Countdown, MobileMenu).
+- Every component accepts a `className` prop merged via `cn()` (clsx + tailwind-merge).
+- Every interactive element has visible focus state: `focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2`.
+- Every image uses `<Image>` from `next/image` with `alt`, `width`, `height` (or `fill` + `sizes`).
+- Internal links use `<Link>` from `next/link`. External links use `<a target="_blank" rel="noopener noreferrer">`.
+
+## Styling rules (from 03_DESIGN_SYSTEM)
+
+- Tailwind utility classes only. No CSS-in-JS. For Tailwind CSS v4, use the `@theme` tokens defined in `app/globals.css`.
+- Use design system tokens (`cream`, `ivory`, `rose-deep`, `charcoal`, etc.). Don't introduce new colors.
+- Avoid arbitrary values like `text-[17px]` unless the design system explicitly calls for it.
+- Border radius: `rounded-2xl` (cards), `rounded-xl` (images), `rounded-full` (buttons & tags).
+- Shadows: use the warm-toned ones from `03_DESIGN_SYSTEM.md` section 5, not Tailwind's default `shadow-md`.
+
+## Content rules (from 04_CONTENT_MODEL)
+
+- **Never hardcode strings in JSX.** Components import from `content/th/*.ts` and `content/en/*.ts`.
+- Use placeholders for unconfirmed details. Never invent.
+- Tone: warm, elegant, calm, clear. Per `00_PRODUCT_BRIEF.md`.
+- Use the spelling `Venue`, not `Vanue`.
+
+## Responsive rules (from 06_RESPONSIVE_UX)
+
+- Mobile-first. Write base styles for 375px width, add `sm:` / `md:` / `lg:` breakpoints to enhance.
+- Touch targets minimum 44×44px (`py-3 px-4` minimum on tappable elements).
+- Body line length max ~65 characters (`max-w-prose` or `max-w-[65ch]`).
+- Test at 360px, 768px, 1280px (matches `10_ACCEPTANCE_CRITERIA_QA.md`).
+
+## Accessibility (non-negotiable, from 06, 10)
+
+- One `<h1>` per page. Subsequent headings step down without skipping levels.
+- All images have meaningful `alt` text (or `alt=""` for purely decorative).
+- Color contrast ≥ 4.5:1 for body, ≥ 3:1 for large text.
+- `prefers-reduced-motion` respected — disable non-essential animation when set.
+- Keyboard navigation works on every page.
+
+## Performance (from 12_TECH_STACK)
+
+- Lighthouse mobile: 95+ Performance, 100 Accessibility, 100 Best Practices, 100 SEO.
+- LCP < 2.0s, CLS < 0.1.
+- Don't import full libraries: `import { Calendar } from 'lucide-react'`, not `import * as Lucide`.
+- `priority` on `next/image` only for the hero image per page.
+- Lazy-load Google Maps iframe.
+
+## Navigation rules (from 01_INFORMATION_ARCHITECTURE)
+
+- Thai desktop: `กำหนดการ · สถานที่ · ที่พัก · การแต่งกาย · แกลเลอรี · คำถามที่พบบ่อย · EN`
+- Thai mobile: `กำหนดการ · สถานที่ · ที่พัก · แกลเลอรี · คำถาม · EN`
+- English desktop: `Schedule · Venue · Accommodation · Dress Code · Gallery · FAQ · TH`
+- English mobile: `Schedule · Venue · Accommodation · Gallery · FAQ · TH`
+- Logo links:
+  - Thai pages: `/`
+  - English pages: `/en`
+- **Never include Home as a menu item.**
+- **Never include LINE as a primary main menu item.**
+
+## Branding (from 02_BRANDING_LOGO_DOMAIN)
+
+- Public name: `Top & Tan` (or `Top & Tan Wedding`)
+- Formal name: `Theerut & Narueporn`
+- Logo: TN monogram (formal initials, intertwined or stacked)
+- Footer / formal materials: full names. Casual / hero: `Top & Tan` is fine.
+- Wedding date: `Sunday, 29 November 2026`
+- Venue: `Conrad Bangkok`
+
+## What NOT to do
+
+- ❌ Don't add any form, chatbot, or input field — even disabled / decorative
+- ❌ Don't hardcode strings in JSX — read from `content/th/*.ts` and `content/en/*.ts`
+- ❌ Don't invent final wedding details — use placeholders from `04_CONTENT_MODEL.md`
+- ❌ Don't use cookies, localStorage, or session storage — site has no state to persist
+- ❌ Don't fetch external data at runtime — everything is static
+- ❌ Don't use placeholder image URLs from external services in production — use the `PlaceholderImage` component (per `07_GALLERY_PLACEHOLDER_SPEC.md`)
+- ❌ Don't add `"Contact"` page or menu item
+- ❌ Don't add Home as a menu item — logo links to home
+- ❌ Don't add LINE in the primary menu; treat LINE page as supporting-only
+
+## LINE page positioning
+
+- Keep dedicated LINE pages: `/line` and `/en/line`.
+- Surface LINE from footer, FAQ CTA, small home CTA, direct URL, or QR code.
+- LINE wording must emphasize official updates, reminders, announcements, venue/schedule notices, and manual contact channel if needed.
+- Never describe LINE as chatbot, AI assistant, or instant-answer system.
+
+## When in doubt
+
+The numbered spec files are the source of truth. If a request seems to conflict with a spec, ask the user before assuming. If a spec is missing detail, default to the most minimal, accessible, performant interpretation.

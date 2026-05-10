@@ -1,0 +1,67 @@
+import type { SiteContent } from "@/content/schema";
+
+export const siteContentTh: SiteContent = {
+  locale: "th",
+  htmlLang: "th",
+  siteName: "Tan & Top Wedding",
+  coupleFriendlyName: "Tan & Top",
+  coupleFormalName: "Narueporn & Theerut",
+  weddingDate: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
+  logoHref: "/",
+  linePageHref: "/line",
+  navDesktop: [
+    { href: "/schedule", label: "กำหนดการ" },
+    { href: "/venue", label: "สถานที่" },
+    { href: "/gallery", label: "แกลเลอรี" },
+    { href: "/faq", label: "คำถามที่พบบ่อย" },
+  ],
+  navMobile: [
+    { href: "/schedule", label: "กำหนดการ" },
+    { href: "/venue", label: "สถานที่" },
+    { href: "/gallery", label: "แกลเลอรี" },
+    { href: "/faq", label: "คำถาม" },
+  ],
+  languageSwitchLabel: "EN",
+  mobileMenuOpenLabel: "เปิดเมนู",
+  mobileMenuCloseLabel: "ปิดเมนู",
+  homeShell: {
+    title: "",
+    formalNames: "Narueporn & Theerut",
+    dateLabel: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
+    locationLabel: "Conrad Bangkok",
+    intro:
+      "การได้มีทุกท่านมาร่วมในวันนี้คือสิ่งที่มีความหมายมากที่สุด เราตั้งใจรวบรวมทุกรายละเอียดไว้ที่นี่ เพื่อให้ทุกท่านเดินทางมาได้อย่างสบายใจ",
+    primaryCtaLabel: "ดูกำหนดการ",
+    primaryCtaHref: "/schedule",
+    secondaryCtaLabel: "ดูแผนที่",
+    secondaryCtaHref: "/venue",
+    supportLineLabel: "ไปยังหน้า LINE Official Account",
+    quickLinks: [],
+    quickLinksLabel: "ลิงก์ด่วน",
+    glanceTitle: "ภาพรวมวันสำคัญ",
+    glanceCards: [
+      { label: "วันที่", value: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569" },
+      { label: "สถานที่", value: "Conrad Bangkok" },
+      { label: "ช่วงเวลา", value: "พิธีช่วงเช้า · งานเลี้ยงฉลองมงคลสมรส" },
+    ],
+    welcomeTitle: "จากใจของเรา",
+    welcomeMessage:
+      "การได้มีทุกท่านอยู่เคียงข้างในวันนี้คือของขวัญที่ล้ำค่าที่สุด เราหวังว่าเว็บไซต์นี้จะช่วยให้ทุกท่านเตรียมตัวได้อย่างสบายใจ และร่วมเฉลิมฉลองวันสำคัญนี้ไปกับเราได้อย่างเต็มที่",
+    heroImageAlt: "[ภาพหลัก placeholder]",
+    heroImageCaption: "[ภาพหลัก placeholder]",
+    heroImageCategory: "hero",
+  },
+  footer: {
+    thankYou: "ขอบคุณที่มาร่วมเฉลิมฉลองบทใหม่ของชีวิตกับเรา",
+    lineLabel: "ช่องทางอัปเดตอย่างเป็นทางการ",
+    lineLinkText: "LINE OA",
+    venueLabel: "Conrad Bangkok",
+    footerLinks: [
+      { href: "/schedule", label: "กำหนดการ" },
+      { href: "/venue", label: "สถานที่" },
+      { href: "/gallery", label: "แกลเลอรี" },
+      { href: "/faq", label: "คำถามที่พบบ่อย" },
+      { href: "/line", label: "LINE Official Account" },
+    ],
+  },
+};

@@ -1,0 +1,136 @@
+# LINE OA Rich Menu Specification
+
+## Goal
+
+Use LINE OA as a quick-access and announcement channel, not as a chatbot.
+On the website, the LINE page is a supporting page only.
+
+## Important rule
+
+Do not implement AI chatbot behaviour. Do not ask guests to RSVP. Do not count attendance.
+Do not describe LINE OA as "instant answers."
+
+## Website placement decision
+
+- LINE is not a main navigation item.
+- Dedicated pages still exist:
+  - Thai: `/line`
+  - English: `/en/line`
+- LINE page should be reachable from:
+  - footer
+  - FAQ CTA
+  - small CTA on home page
+  - direct URL / QR code
+  - optional small "Add LINE OA" button
+
+## Recommended rich menu layout
+
+Use a 2×3 grid:
+
+```text
+[ Schedule ] [ Venue ]
+[ Accommodation ] [ Gallery ]
+[ FAQ ] [ Help ]
+```
+
+## Button behaviours
+
+### Schedule
+
+Preferred behaviour:
+
+- Send a fixed LINE message or Flex-style schedule card.
+- Include a button/link to the full Schedule page.
+
+Purpose:
+
+Guests can quickly see the event flow without opening the website.
+
+### Venue
+
+Preferred behaviour:
+
+- Send location guidance.
+- Include Google Maps link.
+- Include a link to the full Venue page.
+
+Purpose:
+
+Guests can open maps quickly from their phone.
+
+### Accommodation
+
+Preferred behaviour:
+
+- Send a short summary of recommended accommodation options.
+- Include a link to the full Accommodation page.
+
+Purpose:
+
+Useful for out-of-town guests.
+
+### Gallery
+
+Preferred behaviour:
+
+- Open the Gallery page on the website.
+
+Purpose:
+
+Gallery is better viewed on the website.
+
+### FAQ
+
+Preferred behaviour:
+
+- Send a fixed FAQ menu or link to FAQ page.
+- Do not use AI-generated answers.
+
+Purpose:
+
+Reduce repeated questions.
+
+### Help
+
+Preferred behaviour:
+
+- Send a fixed message explaining where to get official updates and who to contact for urgent wedding-day issues.
+
+Purpose:
+
+Give guests support without making the couple responsible for every question.
+
+## Recommended Help message
+
+```text
+For official wedding updates, please follow this LINE account.
+For schedule, venue, accommodation, and gallery details, please use the menu below.
+For urgent wedding-day assistance, please contact [Coordinator name/contact placeholder].
+```
+
+## LINE OA usage
+
+Use LINE OA for:
+
+- Official updates
+- Reminders
+- Important announcements
+- Venue/schedule notices
+- Manual contact channel if needed
+
+Do not use LINE OA for:
+
+- AI chatbot answers
+- Public RSVP collection
+- Attendance counting
+- Payment collection
+- Sensitive family coordination
+
+## Future enhancements
+
+Only consider later:
+
+- Rich menu switching by period: before wedding / wedding day / after wedding
+- Separate Thai and English rich menus
+- Broadcast schedule reminders
+- Post-event gallery broadcast
