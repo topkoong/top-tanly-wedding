@@ -52,7 +52,7 @@ export const siteContentTh: SiteContent = {
     heroImageCategory: "hero",
   },
   footer: {
-    thankYou: "ขอบคุณที่มาร่วมเฉลิมฉลองบทใหม่ของชีวิตกับเรา",
+    thankYou: "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งของวันสำคัญของเรา",
     lineLabel: "ช่องทางอัปเดตอย่างเป็นทางการ",
     lineLinkText: "LINE OA",
     venueLabel: "Conrad Bangkok",

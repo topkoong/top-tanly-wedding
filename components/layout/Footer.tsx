@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 
 import TNMonogram from "@/components/icons/TNMonogram";
 import Container from "@/components/ui/Container";
@@ -20,36 +21,47 @@ export default function Footer({ className }: FooterProps) {
   const localeTextClass = locale === "th" ? "font-thai" : "font-body";
 
   return (
-    <footer className={cn("relative overflow-hidden bg-charcoal py-14", localeTextClass, className)}>
-      <div className="pointer-events-none absolute left-4 top-4 text-cream/20">
-        <TNMonogram className="h-20 w-20" title="" />
-      </div>
+    <footer
+      className={cn(
+        "border-t border-champagne bg-champagne pt-14 pb-10 md:pt-20 md:pb-12",
+        localeTextClass,
+        className,
+      )}
+    >
       <Container>
-        <div className="space-y-8 text-center">
+        <div className="mx-auto max-w-lg text-center">
           <div className="space-y-3">
-            <p className="font-display text-3xl font-normal text-cream">{siteContent.coupleFormalName}</p>
-            <p className="text-body text-cream/80">{siteContent.coupleFriendlyName}</p>
-            <div className="mx-auto h-px w-12 bg-gold/50" />
-            <p className="text-body-s text-cream/70">{siteContent.weddingDate}</p>
-            <p className="text-body-s text-cream/70">{siteContent.footer.venueLabel}</p>
-            <p className="text-body text-cream/80">{siteContent.footer.thankYou}</p>
+            <div className="flex justify-center text-charcoal/35">
+              <TNMonogram className="h-10 w-10" title="" />
+            </div>
+            <p className="font-display text-h2 leading-tight text-charcoal">{siteContent.coupleFormalName}</p>
+            <p className="text-body text-charcoal/60">{siteContent.coupleFriendlyName}</p>
+            <div className="mx-auto h-px w-12 bg-gold/70" />
+            <p className="text-body-s text-charcoal/70 md:whitespace-nowrap">
+              {siteContent.weddingDate} · {siteContent.footer.venueLabel}
+            </p>
+            <p className="text-body text-charcoal/65">{siteContent.footer.thankYou}</p>
           </div>
 
-          <nav aria-label="Footer" className="flex flex-wrap items-center justify-center gap-2 text-cream/60">
+          <nav aria-label="Footer" className="mt-10 flex flex-wrap items-center justify-center gap-x-2 gap-y-2">
             {siteContent.footer.footerLinks.map((item, index) => (
-              <span key={item.href} className="inline-flex items-center gap-2">
+              <Fragment key={item.href}>
+                {index > 0 ? (
+                  <span className="text-charcoal/30 select-none" aria-hidden>
+                    ·
+                  </span>
+                ) : null}
                 <Link
                   href={item.href}
-                  className="text-xs uppercase tracking-[0.18em] text-cream/60 transition-colors duration-200 hover:text-cream focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+                  className="text-body-s text-charcoal/60 uppercase tracking-[0.1em] transition-colors duration-200 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 focus-visible:ring-offset-champagne"
                 >
                   {item.label}
                 </Link>
-                {index < siteContent.footer.footerLinks.length - 1 ? <span aria-hidden>·</span> : null}
-              </span>
+              </Fragment>
             ))}
           </nav>
 
-          <p className="text-xs text-cream/40">Tan & Top Wedding 2026</p>
+          <p className="mt-4 text-xs tracking-[0.06em] text-charcoal/45">Tan & Top Wedding 2026</p>
         </div>
       </Container>
     </footer>

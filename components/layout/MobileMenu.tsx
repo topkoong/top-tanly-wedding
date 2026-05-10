@@ -42,7 +42,7 @@ export default function MobileMenu({
       <div
         id="mobile-menu-panel"
         className={cn(
-          "absolute left-0 right-0 top-full border-t border-charcoal/10 bg-cream/95 px-5 py-5 shadow-[0_12px_32px_-8px_rgba(45,38,32,0.18)] backdrop-blur-sm transition-all",
+          "absolute left-0 right-0 top-full border-t border-charcoal/10 bg-champagne/97 px-5 py-5 shadow-[0_12px_32px_-8px_rgba(45,38,32,0.18)] backdrop-blur-lg transition-all",
           isOpen ? "visible opacity-100" : "invisible opacity-0",
         )}
       >

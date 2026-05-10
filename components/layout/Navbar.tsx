@@ -38,8 +38,10 @@ export default function Navbar({ className }: NavbarProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b border-charcoal/8 transition-colors",
-        isScrolled ? "bg-cream/90 backdrop-blur-sm" : "bg-cream",
+        "sticky top-0 z-40 shadow-[0_1px_0_0_rgba(45,38,32,0.08)] transition-colors",
+        isScrolled
+          ? "bg-champagne/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(45,38,32,0.12),0_4px_20px_-4px_rgba(45,38,32,0.08)]"
+          : "bg-champagne/80 backdrop-blur-sm shadow-[0_1px_0_0_rgba(45,38,32,0.10)]",
         className,
       )}
     >
@@ -70,7 +72,7 @@ export default function Navbar({ className }: NavbarProps) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-4 py-3 text-body tracking-wide text-charcoal transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1",
+                  "rounded-full px-4 py-3 text-body-s font-medium tracking-[0.06em] text-charcoal transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1",
                   isActive(item.href) ? "font-medium text-rose-deep" : "",
                 )}
               >
