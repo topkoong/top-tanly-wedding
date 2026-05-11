@@ -1,165 +1,198 @@
-# Top & Tan Wedding Website — Final Cursor Spec Pack
+# Tan & Top Wedding Website
 
-This pack is designed for building a responsive, read-only wedding website with Cursor using Next.js 16.2.6, TypeScript, and Tailwind CSS v4.
+A static, read-only, bilingual wedding information website for **Tan & Top**.
 
-## Package manager
+The site is designed as a minimal, elegant, classy, warm, and premium wedding information hub for guests.
 
-This project uses `pnpm` only.
+## Live Site
 
-Use these commands:
+```text
+https://topkoong.github.io/top-tanly-wedding/
+```
+
+## Purpose
+
+This website helps guests access key wedding information:
+
+- Schedule
+- Venue and Google Maps
+- Gallery
+- FAQ
+- LINE Official Account support page
+
+It intentionally does **not** include:
+
+- RSVP page
+- RSVP form
+- attendance counting
+- guest tracking
+- chatbot or AI assistant
+- public forms
+- public guest uploads
+- API routes
+- server actions
+- database
+- authentication
+- analytics in MVP
+- middleware language routing
+
+## Wedding Details
+
+- Couple: Tan & Top
+- Formal names: Narueporn & Theerut
+- Date: Sunday, 29 November 2026
+- Venue: Conrad Bangkok
+- Engagement & Rubwai Ceremony: 07:00–11:00, Beverly Hills
+- Wedding Reception: 11:00–14:00, Conrad Ballroom
+- Parking: Conrad Bangkok and All Seasons Place
+
+## Language and Routing
+
+Default language: Thai.
+
+English routes live under `/en`.
+
+Thai routes:
+
+```text
+/
+/schedule
+/venue
+/gallery
+/faq
+/line
+```
+
+English routes:
+
+```text
+/en
+/en/schedule
+/en/venue
+/en/gallery
+/en/faq
+/en/line
+```
+
+## Product Rules
+
+- Bride-first visible naming:
+  - Tan & Top
+  - Narueporn & Theerut
+- LINE is not in the main navigation.
+- LINE exists only as a supporting page/channel.
+- Accommodation and Dress Code pages are intentionally removed.
+- Gallery uses intentional placeholders until real photos are available.
+- The website is the official source of truth for static wedding information.
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+- pnpm
+- Static export
+- GitHub Pages
+- Optional Playwright screenshot capture
+
+## Package Manager
+
+Use `pnpm` only.
 
 ```bash
 pnpm install
 pnpm dev
 pnpm build
-pnpm start
 pnpm lint
-pnpm setup
 ```
 
 Do not use `npm`, `yarn`, or `bun` unless explicitly requested.
 
-## Important product decisions
+## Local Development
 
-- No RSVP page.
-- No RSVP form.
-- No attendance counting or guest tracking.
-- No guest confirmation workflow.
-- No chatbot or AI assistant.
-- No public forms.
-- No public guest uploads.
-- No API routes, server actions, or middleware language routing for MVP.
-- Gallery should use placeholders first.
-- Website should be mobile-first and responsive.
-- LINE OA should be used for updates and notices as a supporting page/channel.
-- The website is the official source of truth for static wedding information.
-
-## Language and routing decisions
-
-- Default language: Thai.
-- English routes live under `/en`.
-- Main navigation does not include LINE.
-- Dedicated LINE pages still exist at `/line` and `/en/line`.
-- All visible copy must come from `content/th/*.ts` and `content/en/*.ts`.
-
-## Confirmed wedding details
-
-- Date: Sunday, 29 November 2026
-- Main venue: Conrad Bangkok
-- Engagement & Rubwai ceremony: 07:00–11:00, Beverly Hills room, Conrad Bangkok
-- Wedding Reception: 11:00–14:00, Ballroom, Conrad Bangkok
-- Parking: Conrad Bangkok parking and All Seasons Place parking
-
-## Read order
-
-Use these files in order:
-
-1. `00_PRODUCT_BRIEF.md`
-2. `01_INFORMATION_ARCHITECTURE.md`
-3. `02_BRANDING_LOGO_DOMAIN.md`
-4. `03_DESIGN_SYSTEM.md`
-5. `04_CONTENT_MODEL.md`
-6. `05_PAGE_BY_PAGE_REQUIREMENTS.md`
-7. `06_RESPONSIVE_UX_SPEC.md`
-8. `07_GALLERY_PLACEHOLDER_SPEC.md`
-9. `08_LINE_OA_RICH_MENU_SPEC.md`
-10. `09_CURSOR_AGENT_INSTRUCTIONS.md`
-11. `10_ACCEPTANCE_CRITERIA_QA.md`
-12. `11_DEPLOYMENT_SECURITY_NOTES.md`
-13. `12_TECH_STACK.md`
-14. `.cursor/rules/wedding-site.mdc`
-15. `CURSOR_RULES_COPY.md` — visible copy for verification only; Cursor uses the `.mdc` file
-
-> Note: `.cursor/` is a hidden folder on macOS/Linux. If you do not see it in Finder, use `Cmd + Shift + .` to show hidden files, or verify from Terminal with `ls -la .cursor/rules`.
-
-## Recommended implementation approach in Cursor
-
-Do not ask Cursor to build the entire site in one step. Use a staged approach.
-
-### Agent 1 — Foundation
-
-Ask Cursor to create the Next.js project foundation, Tailwind v4 design tokens, fonts, navbar, footer, mobile menu, reusable UI components, content folder structure, and page shells only.
-
-Suggested prompt:
-
-```text
-Read @README.md, @00_PRODUCT_BRIEF.md, @01_INFORMATION_ARCHITECTURE.md, @02_BRANDING_LOGO_DOMAIN.md, @03_DESIGN_SYSTEM.md, and @12_TECH_STACK.md. Build only the foundation and page shell for the Top & Tan wedding website. Do not implement RSVP, attendance counting, chatbot, forms, database, API routes, analytics, or guest uploads. Use placeholders for all unconfirmed content and gallery images. Make the site responsive and static-first.
+```bash
+pnpm install
+pnpm dev
 ```
 
-### Agent 2 — Pages
-
-Ask Cursor to implement the static pages one at a time using content files.
-
-Suggested prompt:
+Open:
 
 ```text
-Implement the static content sections for each page based on @05_PAGE_BY_PAGE_REQUIREMENTS.md and @04_CONTENT_MODEL.md. Keep all copy editable and placeholder-driven in content/th/*.ts and content/en/*.ts. Do not add any forms, RSVP flow, attendance counting, chatbot, backend, or tracking.
+http://localhost:3000
 ```
 
-### Agent 3 — Gallery and responsive polish
+## Build
 
-Ask Cursor to implement gallery placeholders and responsive polish.
+```bash
+pnpm build
+```
 
-Suggested prompt:
+The static export output is generated in:
 
 ```text
-Polish responsive behaviour based on @06_RESPONSIVE_UX_SPEC.md and implement the gallery placeholder behaviour from @07_GALLERY_PLACEHOLDER_SPEC.md. Apply the component patterns and animation rules from @03_DESIGN_SYSTEM.md. Focus on mobile-first layout, image stability, accessibility, and elegant visual design.
+out/
 ```
 
-### Agent 4 — Quality review and deployment readiness
+## Deployment
 
-Ask Cursor to review the implementation against constraints and deployment requirements.
-
-Suggested prompt:
+This project is deployed to GitHub Pages under:
 
 ```text
-Review the full website against @10_ACCEPTANCE_CRITERIA_QA.md, @11_DEPLOYMENT_SECURITY_NOTES.md, and @12_TECH_STACK.md. Fix only issues related to responsiveness, accessibility, navigation, visual consistency, placeholder handling, static export compatibility, and violation of no-form/no-chatbot/no-RSVP/no-attendance-counting constraints.
+https://topkoong.github.io/top-tanly-wedding/
 ```
 
-## Recommended site name
-
-Primary public name:
+Because it is hosted under the `/top-tanly-wedding` project path, GitHub Pages builds must enable the correct `basePath` and `assetPrefix` via:
 
 ```text
-Top & Tan Wedding
+GITHUB_PAGES=true
 ```
 
-Formal logo name:
+See:
 
 ```text
-Theerut & Narueporn
+docs/DEPLOYMENT.md
 ```
 
-Recommended monogram:
+## Visual QA
+
+See:
 
 ```text
-TN
+docs/VISUAL_QA.md
 ```
 
-Recommended domain to check first:
+If Playwright is installed:
+
+```bash
+pnpm screenshots
+```
+
+## Documentation
 
 ```text
-topandtanwedding.com
+docs/PROJECT_OVERVIEW.md
+docs/ARCHITECTURE.md
+docs/DEPLOYMENT.md
+docs/VISUAL_QA.md
 ```
 
-Backup options:
+## Cursor / AI Guardrails
+
+Cursor should follow:
 
 ```text
-topandtan.com
-topandtan2026.com
-theerutnarueporn.com
-tnwedding2026.com
+.cursor/rules/wedding-site.mdc
 ```
 
-## Notes for static export
+Important constraints:
 
-For MVP, this pack recommends static export. If `output: 'export'` is enabled, use `images.unoptimized = true` or a custom image loader. The simplest MVP path is:
-
-```text
-output: 'export'
-images.unoptimized = true
-local images in /public/images
-static OG image at /public/og-image.jpg
-```
-
-Do not add dynamic server features unless explicitly requested later.
+- No RSVP
+- No attendance counting
+- No chatbot
+- No public forms
+- No API routes
+- No database
+- No authentication
+- No analytics in MVP
+- Thai default, English under `/en`
+- Bride-first visible naming
