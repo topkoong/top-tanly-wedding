@@ -61,7 +61,7 @@ export const siteContentTh: SiteContent = {
       { href: "/venue", label: "สถานที่" },
       { href: "/gallery", label: "แกลเลอรี" },
       { href: "/faq", label: "คำถามที่พบบ่อย" },
-      { href: "/line", label: "LINE Official Account" },
+      { href: "/line", label: "LINE OA" },
     ],
   },
 };

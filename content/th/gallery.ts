@@ -24,23 +24,14 @@ const landscapeItems: GalleryItem[] = Array.from({ length: 3 }, (_, index) => ({
   category: "pre-wedding",
 }));
 
-const squareItems: GalleryItem[] = Array.from({ length: 3 }, (_, index) => ({
-  id: `th-square-${index + 1}`,
-  src: null,
-  alt: `ภาพบรรยากาศวันงาน ${index + 1}`,
-  caption: index % 2 === 0 ? "ภาพบรรยากาศวันงาน" : "เร็ว ๆ นี้",
-  categoryLabel: "วันงาน",
-  width: 900,
-  height: 900,
-  tone: index % 2 === 0 ? "ivory" : "rose",
-  category: "wedding-day",
-}));
-
 export const galleryContentTh: GalleryPageContent = {
   title: "แกลเลอรี",
   intro:
-    "พื้นที่รวบรวมภาพความทรงจำของเรา ทั้งภาพก่อนวันงาน ภาพพรีเวดดิ้ง และภาพบรรยากาศในวันสำคัญ โดยจะมีการอัปเดตรูปภาพเพิ่มเติมภายหลัง",
-  note: "ภาพจริงจะถูกเพิ่มเข้ามาเมื่อพร้อม",
-  categoryTabs: ["ทั้งหมด", "พิธีหมั้น", "พรีเวดดิ้ง", "วันงาน"],
-  items: [...portraitItems, ...landscapeItems, ...squareItems],
+    "พื้นที่รวบรวมภาพความทรงจำของเรา ทั้งภาพก่อนวันงานและภาพพรีเวดดิ้ง โดยภาพบรรยากาศจากวันงานจริงจะถูกอัปเดตเพิ่มเติมหลังวันงาน",
+  note: "ภาพจากวันงานจะถูกเพิ่มเข้ามาหลังจากวันสำคัญของเรา",
+  categoryTabs: ["ทั้งหมด", "พิธีหมั้น", "พรีเวดดิ้ง"],
+  items: portraitItems.flatMap((portrait, i) => [
+    portrait,
+    landscapeItems[i],
+  ]).filter(Boolean),
 };

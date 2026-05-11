@@ -61,7 +61,7 @@ export const siteContentEn: SiteContent = {
       { href: "/en/venue", label: "Venue" },
       { href: "/en/gallery", label: "Gallery" },
       { href: "/en/faq", label: "FAQ" },
-      { href: "/en/line", label: "LINE Official Account" },
+      { href: "/en/line", label: "LINE OA" },
     ],
   },
 };

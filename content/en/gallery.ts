@@ -24,23 +24,14 @@ const landscapeItems: GalleryItem[] = Array.from({ length: 3 }, (_, index) => ({
   category: "pre-wedding",
 }));
 
-const squareItems: GalleryItem[] = Array.from({ length: 3 }, (_, index) => ({
-  id: `en-square-${index + 1}`,
-  src: null,
-  alt: `Square placeholder in wedding-day category ${index + 1}`,
-  caption: index % 2 === 0 ? "Wedding-day highlight" : "Coming soon",
-  categoryLabel: "Wedding Day",
-  width: 900,
-  height: 900,
-  tone: index % 2 === 0 ? "ivory" : "rose",
-  category: "wedding-day",
-}));
-
 export const galleryContentEn: GalleryPageContent = {
   title: "Gallery",
   intro:
-    "A collection of our memories, including moments before the wedding, pre-wedding photos, and wedding-day highlights. More photos will be added later.",
-  note: "Real photos will be added when available.",
-  categoryTabs: ["All", "Engagement", "Pre-wedding", "Wedding Day"],
-  items: [...portraitItems, ...landscapeItems, ...squareItems],
+    "A collection of our memories — moments from before the wedding and our pre-wedding photoshoot. We'll add highlights from the wedding day itself after the celebration.",
+  note: "More photos will be added after the wedding.",
+  categoryTabs: ["All", "Engagement", "Pre-wedding"],
+  items: portraitItems.flatMap((portrait, i) => [
+    portrait,
+    landscapeItems[i],
+  ]).filter(Boolean),
 };
