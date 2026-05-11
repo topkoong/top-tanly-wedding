@@ -21,10 +21,58 @@ const routes = [
 ];
 
 const viewports = [
-  { name: "mobile", width: 390, height: 1200 },
-  { name: "tablet", width: 768, height: 1200 },
-  { name: "desktop", width: 1440, height: 1200 },
+  {
+    name: "mobile-390",
+    width: 390,
+    height: 1200,
+    isMobile: true,
+  },
+  {
+    name: "tablet-768",
+    width: 768,
+    height: 1200,
+    isMobile: false,
+  },
+  {
+    name: "desktop-1440",
+    width: 1440,
+    height: 1200,
+    isMobile: false,
+  },
 ];
+
+async function waitForPageToSettle(page) {
+  // Wait for fonts.
+  await page.evaluate(async () => {
+    if (document.fonts) {
+      await document.fonts.ready;
+    }
+  });
+
+  // Scroll through the whole page to trigger lazy loading / fade-in sections.
+  await page.evaluate(async () => {
+    await new Promise((resolve) => {
+      let totalHeight = 0;
+      const distance = 500;
+      const timer = setInterval(() => {
+        const scrollHeight = document.body.scrollHeight;
+        window.scrollBy(0, distance);
+        totalHeight += distance;
+
+        if (totalHeight >= scrollHeight) {
+          clearInterval(timer);
+          resolve();
+        }
+      }, 80);
+    });
+  });
+
+  // Return to top before screenshot.
+  await page.evaluate(() => window.scrollTo(0, 0));
+
+  // Let layout settle after scroll.
+  await page.waitForTimeout(800);
+}
 
 for (const viewport of viewports) {
   fs.mkdirSync(`docs/screenshots/${viewport.name}`, { recursive: true });
@@ -33,12 +81,30 @@ for (const viewport of viewports) {
 const browser = await chromium.launch();
 
 for (const viewport of viewports) {
-  const page = await browser.newPage({
+  const context = await browser.newContext({
     viewport: {
       width: viewport.width,
       height: viewport.height,
     },
     deviceScaleFactor: 1,
+    isMobile: viewport.isMobile,
+  });
+
+  const page = await context.newPage();
+
+  // Disable animations/transitions to avoid half-rendered screenshots.
+  await page.addStyleTag({
+    content: `
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+        scroll-behavior: auto !important;
+      }
+    `,
   });
 
   for (const route of routes) {
@@ -52,15 +118,17 @@ for (const viewport of viewports) {
       timeout: 60000,
     });
 
+    await waitForPageToSettle(page);
+
     await page.screenshot({
       path: outputPath,
       fullPage: true,
     });
   }
 
-  await page.close();
+  await context.close();
 }
 
 await browser.close();
 
-console.log("Done. Screenshots saved under docs/screenshots/");
+console.log("Done. Full-page screenshots saved under docs/screenshots/");

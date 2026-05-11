@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import FadeIn from "@/components/ui/FadeIn";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
@@ -23,28 +21,28 @@ export default function HomeShell({ content }: HomeShellProps) {
         className="bg-gradient-to-b from-cream via-ivory/45 to-cream py-20 md:py-32"
       >
         <Container>
-          <FadeIn className="grid items-center gap-12 md:grid-cols-2">
-            <div className="space-y-7">
+          <FadeIn className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <div className="space-y-6">
               <div className="inline-flex items-center gap-3 text-stone">
                 <span className="h-px w-10 bg-charcoal/25" />
                 <p className="text-body-s uppercase tracking-[0.15em]">{content.siteName}</p>
               </div>
-              <p className="text-[12px] uppercase tracking-[0.2em] text-stone">{content.homeShell.title}</p>
               <Heading
                 as="h1"
                 headingClassName={
                   isThai
-                    ? "font-display text-display-xl leading-[1]"
-                    : "font-display text-display-xl leading-[1]"
+                    ? "font-display text-display-xl leading-[0.95]"
+                    : "font-display text-display-xl leading-[0.95]"
                 }
               >
-                {content.homeShell.formalNames}
+                {content.coupleFriendlyName}
               </Heading>
-              <DecorativeDivider className="mx-0" />
-              <div className="flex flex-wrap items-center gap-2 text-body-s text-stone">
-                <p>{content.homeShell.dateLabel}</p>
-                <span aria-hidden>•</span>
-                <p>{content.homeShell.locationLabel}</p>
+              <p className="text-body-s uppercase tracking-[0.12em] text-stone">
+                {content.homeShell.formalNames}
+              </p>
+              <div className="space-y-1">
+                <p className="text-body text-charcoal">{content.homeShell.dateLabel}</p>
+                <p className="text-body text-stone">{content.homeShell.locationLabel}</p>
               </div>
               <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
                 {content.homeShell.intro}
@@ -54,17 +52,6 @@ export default function HomeShell({ content }: HomeShellProps) {
                 <Button href={content.homeShell.secondaryCtaHref} variant="secondary">
                   {content.homeShell.secondaryCtaLabel}
                 </Button>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                {content.homeShell.quickLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-charcoal underline underline-offset-4 decoration-charcoal/30 transition-colors duration-200 hover:text-charcoal hover:decoration-charcoal"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
               </div>
             </div>
             <div className="relative">
@@ -86,7 +73,7 @@ export default function HomeShell({ content }: HomeShellProps) {
 
       <Section background="transparent" className="pt-0">
         <Container>
-          <div className="space-y-8 rounded-2xl border border-charcoal/10 bg-ivory/80 p-6 md:p-8">
+          <div className="space-y-8">
             <Heading
               as="h2"
               eyebrow={content.homeShell.quickLinksLabel}
@@ -97,8 +84,11 @@ export default function HomeShell({ content }: HomeShellProps) {
             <DecorativeDivider />
             <div className="grid gap-4 md:grid-cols-3">
               {content.homeShell.glanceCards.map((card) => (
-                <article key={card.label} className="rounded-2xl border border-charcoal/10 bg-cream p-5">
-                  <p className="text-body-s uppercase tracking-[0.12em] text-stone">{card.label}</p>
+                <article
+                  key={card.label}
+                  className="rounded-2xl border border-charcoal/10 bg-gradient-to-br from-ivory to-champagne/35 p-5 md:p-6"
+                >
+                  <p className="text-body-s uppercase tracking-[0.08em] text-stone">{card.label}</p>
                   <p className={isThai ? "mt-2 text-body text-charcoal leading-[1.7]" : "mt-2 text-body text-charcoal"}>
                     {card.value}
                   </p>
@@ -112,7 +102,7 @@ export default function HomeShell({ content }: HomeShellProps) {
 
       <Section background="transparent" className="pt-0">
         <Container size="narrow">
-          <div className="space-y-4 rounded-2xl border border-charcoal/10 bg-cream p-6 md:p-8">
+          <div className="space-y-4 rounded-2xl border border-charcoal/10 bg-ivory/65 p-6 md:p-8">
             <Heading
               as="h3"
               headingClassName={isThai ? "font-thai text-h3 leading-[1.4]" : "font-display text-h3"}

@@ -42,17 +42,17 @@ export default function MobileMenu({
       <div
         id="mobile-menu-panel"
         className={cn(
-          "absolute left-0 right-0 top-full border-t border-charcoal/10 bg-champagne/97 px-5 py-5 shadow-[0_12px_32px_-8px_rgba(45,38,32,0.18)] backdrop-blur-lg transition-all",
+          "absolute left-0 right-0 top-full border-t border-charcoal/10 bg-cream/98 px-5 py-6 shadow-[0_14px_32px_-14px_rgba(45,38,32,0.24)] backdrop-blur-lg transition-all",
           isOpen ? "visible opacity-100" : "invisible opacity-0",
         )}
       >
-        <nav aria-label="Mobile" className="flex flex-col gap-2">
+        <nav aria-label="Mobile" className="flex flex-col gap-3">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="min-h-11 rounded-full px-4 py-3 text-body text-charcoal transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
+              className="min-h-11 rounded-full px-4 py-3 text-body text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
             >
               {item.label}
             </Link>

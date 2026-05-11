@@ -3,9 +3,9 @@ import type { SchedulePageContent } from "@/content/schema";
 export const scheduleContentTh: SchedulePageContent = {
   title: "กำหนดการ",
   intro:
-    "วันงานแบ่งออกเป็นสองช่วง — พิธีช่วงเช้าตามประเพณีไทย และงานเลี้ยงฉลองมงคลสมรสช่วงเที่ยง",
+    "กำหนดการหลักของวันงาน แบ่งออกเป็นพิธีช่วงเช้าและงานเลี้ยงฉลองมงคลสมรส",
   arrivalNote:
-    "แนะนำให้เดินทางมาถึงก่อนช่วงที่ต้องการเข้าร่วมประมาณ 15–20 นาที เพื่อลงทะเบียนและเตรียมพร้อมอย่างสบายใจ",
+    "แนะนำให้มาถึงก่อนเวลาเริ่มงานประมาณ 20–30 นาที เพื่อเผื่อเวลาสำหรับการเดินทาง จอดรถ และลงทะเบียน",
   updateNote:
     "รายละเอียดบางส่วนอาจมีการอัปเดตเพิ่มเติมเมื่อใกล้ถึงวันงาน กรุณาตรวจสอบข้อมูลล่าสุดจากเว็บไซต์หรือ LINE Official Account",
   venueButtonLabel: "ดูรายละเอียดสถานที่ →",
@@ -19,13 +19,10 @@ export const scheduleContentTh: SchedulePageContent = {
       date: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
       time: "07:00–11:00",
       room: "Beverly Hills",
-      floor: "ชั้น 2 (อาคาร Annex) · Conrad Bangkok",
-      navigationNote:
-        "ขึ้นลิฟต์ไปชั้น 2 อาคาร Annex ตาม Follow ป้ายบอกทางไปยังห้อง Beverly Hills",
-      venue: "Beverly Hills, Conrad Bangkok",
+      venue: "Conrad Bangkok",
       venuePageHref: "/venue",
       description:
-        "พิธีหมั้นและพิธีรับไหว้ตามประเพณีไทย ร่วมกับครอบครัวและผู้ใกล้ชิด เป็นช่วงเวลาอันมีความหมายที่เปิดฉากวันสำคัญของเราอย่างอบอุ่น",
+        "ช่วงเช้าสำหรับพิธีหมั้นและพิธีรับไหว้แบบอบอุ่น ร่วมกับครอบครัวและแขกคนสำคัญ",
       chips: [
         "ต้อนรับแขก",
         "ลงทะเบียน",
@@ -43,13 +40,10 @@ export const scheduleContentTh: SchedulePageContent = {
       date: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
       time: "11:00–14:00",
       room: "Conrad Ballroom",
-      floor: "ชั้น 4 (อาคารหลัก) · Conrad Bangkok",
-      navigationNote:
-        "ขึ้นลิฟต์ไปชั้น 4 อาคารหลัก Conrad Ballroom อยู่บริเวณ Pre-function Area ติดกับลิฟต์",
-      venue: "Conrad Ballroom, Conrad Bangkok",
+      venue: "Conrad Bangkok",
       venuePageHref: "/venue",
       description:
-        "งานเลี้ยงฉลองมงคลสมรสใน Conrad Ballroom ห้องบอลรูมไร้เสาที่มีเพดานสูง 9 เมตร และจอ LED ที่ใหญ่ที่สุดแห่งหนึ่งในประเทศไทย",
+        "งานเลี้ยงฉลองมงคลสมรสในบรรยากาศอบอุ่น เรียบง่าย และเป็นกันเอง",
       chips: [
         "ต้อนรับแขก",
         "งานเลี้ยงฉลอง",

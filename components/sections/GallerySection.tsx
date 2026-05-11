@@ -49,9 +49,9 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
             ))}
           </div>
 
-          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {content.items.map((item) => (
-              <div key={item.id} className="mb-4 break-inside-avoid">
+              <div key={item.id}>
                 {item.src ? (
                   <div
                     className="relative overflow-hidden rounded-xl bg-ivory"
@@ -61,15 +61,15 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
                   </div>
                 ) : (
                   <PlaceholderImage
-                    className="bg-ivory transition-transform duration-300 hover:scale-[1.01]"
+                    className="bg-ivory transition-transform duration-300 hover:-translate-y-0.5"
                     alt={item.alt}
                     caption={item.caption}
                     category={item.categoryLabel}
                     tone={item.tone}
-                    showBorder={false}
+                    showBorder
                     watermarkOpacityClass="text-charcoal/8"
-                    categoryClassName="right-4 top-4 text-xs uppercase tracking-wider text-stone/60"
-                    captionClassName="bottom-4 left-4 text-xs text-stone/70"
+                    categoryClassName="right-4 top-4 text-xs tracking-wide text-stone/70"
+                    captionClassName="bottom-4 left-4 text-xs text-stone/75"
                     aspectRatio={
                       item.width === item.height ? "1/1" : item.width > item.height ? "3/2" : "4/5"
                     }

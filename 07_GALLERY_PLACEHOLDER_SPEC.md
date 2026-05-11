@@ -1,90 +1,74 @@
-# Gallery Placeholder Specification
+# 07 — Gallery Placeholder Specification
 
 ## Goal
 
-Create a gallery page that looks complete even before real photos are available.
+The gallery must feel like a curated photo wall, not a repeated block grid.
 
-## Important rule
+## Core rules
 
-Use placeholders only. Do not implement public guest uploads.
+- Use placeholders only until real photos are ready.
+- Do not add public uploads.
+- Avoid broken-image states entirely.
 
-## Gallery categories
+## Required categories
 
-```text
-Engagement
-Pre-wedding
-Wedding-day
-```
+Thai labels:
 
-## Placeholder strategy
+- `ทั้งหมด`
+- `พิธีหมั้น`
+- `พรีเวดดิ้ง`
+- `วันงาน`
 
-Use elegant placeholder cards with warm brand-color blocks (ivory/rose/champagne), optional captions, and TN monogram watermark styling. The layout should make it easy to replace placeholders with real images later.
+English labels:
 
-## Required Phase 1 placeholder items
+- `All`
+- `Engagement`
+- `Pre-wedding`
+- `Wedding Day`
 
-Create at least 18 placeholder items:
+## Required quantity
 
-- 6 portrait placeholders with aspect ratio 4:5
-- 6 landscape placeholders with aspect ratio 3:2
-- 6 square placeholders with aspect ratio 1:1
+At least 18 placeholders total:
 
-Distribute across categories:
+- 6 portrait (4:5)
+- 6 landscape (3:2)
+- 6 square (1:1)
 
-- engagement
-- pre-wedding
-- wedding-day
+## Placeholder style
 
-## Data shape requirement
+Each placeholder should include:
 
-Each gallery item should include:
+- Warm ivory/champagne/rose tone variation
+- Subtle TN monogram watermark
+- Localized category pill
+- Localized caption
+- Rounded corners (`rounded-xl` or `rounded-2xl`)
+- Subtle border and refined hover lift
+
+## Content/data shape
+
+Each item includes:
 
 - `id`
-- `src: null` (in Phase 1)
+- `src: null` (until real image exists)
 - `alt`
 - `width`
 - `height`
 - `category`
+- localized `categoryLabel` and `caption`
 
-Alt text must exist in both language content files (`content/th/*.ts`, `content/en/*.ts`).
+## Layout
 
-## Rendering rule
+- Mobile: 1 column
+- Tablet: 2 columns
+- Desktop: 3 columns
+- Maintain stable dimensions to prevent layout shift.
 
-- If `src` is `null`, render `PlaceholderImage`.
-- If `src` exists later, render real image.
-- No broken image state should ever appear.
+## Notes and copy
 
-## Empty-state copy
+Include elegant localized copy that photos will be added when available:
 
-Use copy like:
+- Thai: real photos will be added later
+- English: real photos will be added later
 
-```text
-Wedding day photos will be added here after the celebration.
-```
-
-or:
-
-```text
-Our gallery is coming soon. Please check back after the wedding for selected moments from the day.
-```
-
-## Gallery behaviour
-
-- Mobile: 1 column.
-- Tablet: 2 columns.
-- Desktop: 3 columns.
-- Cards should maintain consistent aspect ratio.
-- Layout should not shift when images load.
-- Each image/card must have alt text.
-- Placeholders must look intentional and premium, not loading/fallback errors.
-
-## Future enhancement, not MVP
-
-Possible future gallery features:
-
-- Lightbox preview
-- Category filter
-- Download selected photos
-- Password-protected album
-- Integration with professional photographer album
-
-Do not implement these in MVP unless explicitly requested.
+Keep wording warm and guest-friendly, not technical.

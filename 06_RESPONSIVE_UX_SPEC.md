@@ -1,114 +1,75 @@
-# Responsive UX Specification
+# 06 — Responsive UX Specification
 
-## Responsive principle
+## Mobile-first principle
 
-Design mobile-first. Most guests will open the website from LINE or a QR code on their phone.
-Default language is Thai, with English pages under `/en`.
+Most guests will open the site from LINE or a mobile browser. Mobile design is the primary experience. Desktop polish is important, but mobile usability and elegance come first.
 
-## Breakpoint behaviour
+Every page must be reviewed at:
 
-### Mobile
+- 375px
+- 390px
+- 430px
+- 768px
 
-- One-column layout.
-- Large tap targets.
-- Short sections.
-- Sticky or easy-access navigation.
-- Thai primary menu: กำหนดการ, สถานที่, ที่พัก, แกลเลอรี, คำถาม, EN.
-- English primary menu: Schedule, Venue, Accommodation, Gallery, FAQ, TH.
-- Hero should not take the entire screen before showing useful actions.
+Also validate desktop at 1280px and 1440px.
 
-### Tablet
+## Navigation behavior
 
-- Two-column cards where useful.
-- Timeline can remain vertical.
-- Gallery can use 2–3 columns.
+Desktop and mobile main nav should include only:
 
-### Desktop
+- Thai: `กำหนดการ`, `สถานที่`, `แกลเลอรี`, `คำถามที่พบบ่อย`, `EN`
+- English: `Schedule`, `Venue`, `Gallery`, `FAQ`, `TH`
 
-- Spacious layout.
-- Thai full navigation: กำหนดการ, สถานที่, ที่พัก, การแต่งกาย, แกลเลอรี, คำถามที่พบบ่อย, EN.
-- English full navigation: Schedule, Venue, Accommodation, Dress Code, Gallery, FAQ, TH.
-- Gallery should use 3 columns.
-- Content max-width should prevent overly long lines.
+Do not include Home, LINE, Accommodation, Dress Code, RSVP, Contact in main nav.
 
-## Navigation requirements
+## Mobile quality requirements
 
-### Desktop header
+- No horizontal scrolling at target widths.
+- No clipped buttons, cut-off Thai text, or overlap.
+- Tap targets minimum 44px.
+- Comfortable side padding and section spacing.
+- Thai body text should remain readable (about 16px minimum).
+- Thai line-height around 1.7.
+- Avoid excessive Thai letter-spacing.
 
-- Left: logo or couple names.
-- Right: desktop menu.
-- Logo links to language-specific homepage (`/` for Thai, `/en` for English).
-- Do not include Home menu item.
-- Do not include LINE in main menu.
+## Home on mobile
 
-### Mobile header
+- `Tan & Top` remains strongest visual anchor.
+- Date and Conrad Bangkok visible early.
+- Two primary CTAs should stack/wrap gracefully.
+- Hero image should feel premium but not dominate first screen.
 
-- Left: logo or couple names.
-- Right: menu button.
-- Menu should be easy to close.
-- Menu should not feel crowded.
-- Do not include LINE in main mobile menu.
+## Schedule on mobile
 
-## Touch target rules
+- Priority page for scanability.
+- Event cards stacked with strong separation.
+- Time ranges visually prominent.
+- Event number decorative but unobtrusive.
+- Activity chips wrap cleanly and stay legible.
 
-- Buttons must be easy to tap.
-- Avoid tiny text links for critical actions.
-- Use large buttons for map and schedule actions.
-- LINE CTA can be smaller supporting CTA (home/FAQ/footer), not primary nav.
+## Venue on mobile
 
-## Content readability
+- Google Maps CTA visible near top.
+- Map embed height controlled for small screens.
+- Room and parking cards stack clearly.
+- No cramped side-by-side content.
 
-- Avoid long paragraphs.
-- Use cards, timelines, and short blocks.
-- Important details should be visible without excessive scrolling.
-- Use high contrast for text.
+## Gallery on mobile
 
-## Performance expectations
+- One-column intentional photo wall.
+- Category tabs fit or scroll gracefully.
+- Thai tab labels must not clip.
+- Captions stay readable.
 
-- Images should be optimized.
-- Gallery placeholders should not cause layout shift.
-- Avoid heavy animation.
-- Avoid autoplay video.
-- Use lazy loading for gallery images when implementation supports it.
+## FAQ on mobile
 
-## Accessibility expectations
+- Categories easy to scan.
+- Question/answer spacing comfortable.
+- Answers remain complete and readable.
+- LINE CTA subtle and secondary.
 
-- All images need alt text.
-- Colour contrast must be readable.
-- The site must be usable with keyboard navigation.
-- Do not communicate important meaning using colour alone.
-- Page titles must be clear.
-- Link text should be descriptive.
+## Motion and performance
 
-## Mobile priority order
-
-Top mobile guest priorities:
-
-1. Schedule
-2. Venue / map
-3. Accommodation
-4. Gallery
-5. FAQ
-6. Supporting LINE CTA
-
-## Homepage mobile order
-
-```text
-Hero with names/date
-Quick actions
-Schedule preview
-Venue preview
-Small LINE CTA
-Gallery teaser
-Footer
-```
-
-## Avoid
-
-- Full-screen intro animation.
-- Music autoplay.
-- Forced loading screen.
-- Hidden map link.
-- Public forms.
-- Popups asking for information.
-- Middleware-based language routing (not static-export-friendly).
+- Respect `prefers-reduced-motion`.
+- Keep animation subtle and non-essential.
+- Avoid effects that can degrade in in-app browsers.

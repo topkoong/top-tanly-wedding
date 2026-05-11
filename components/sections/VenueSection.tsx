@@ -1,5 +1,3 @@
-import { Bus, MapPin, TrainFront } from "lucide-react";
-
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
@@ -19,7 +17,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
     <Section background="cream">
       <Container className={isThai ? "font-thai" : "font-body"}>
         <div className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-6">
+          <div className="order-2 space-y-6 lg:order-1">
             <Heading
               as="h1"
               eyebrow={content.mainVenue}
@@ -31,9 +29,11 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
             <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
               {content.summary}
             </p>
-            <p className={isThai ? "text-body-s text-stone leading-[1.7]" : "text-body-s text-stone"}>
-              {content.address}
-            </p>
+            {content.address ? (
+              <p className={isThai ? "text-body-s text-stone leading-[1.7]" : "text-body-s text-stone"}>
+                {content.address}
+              </p>
+            ) : null}
 
             <div className="space-y-3">
               {content.eventSpaces.map((space) => (
@@ -53,63 +53,24 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
               ))}
             </div>
 
-            <section className="space-y-3">
-              <p className="text-xs uppercase tracking-widest text-stone">
-                {isThai ? "ที่จอดรถ" : "Parking"}
+            <section className="rounded-2xl border border-charcoal/10 bg-ivory p-5">
+              <p className="text-xs uppercase tracking-[0.12em] text-stone">{isThai ? "ที่จอดรถ" : "Parking"}</p>
+              <p className={isThai ? "mt-2 text-body text-charcoal leading-[1.7]" : "mt-2 text-body text-charcoal"}>
+                {content.parkingNote}
               </p>
-              <ul className={isThai ? "list-disc space-y-1 pl-5 text-sm text-charcoal leading-[1.7]" : "list-disc space-y-1 pl-5 text-sm text-charcoal"}>
+              <ul className={isThai ? "mt-3 list-disc space-y-1 pl-5 text-body-s text-stone leading-[1.7]" : "mt-3 list-disc space-y-1 pl-5 text-body-s text-stone"}>
                 {content.parking.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <p className={isThai ? "text-sm italic text-stone leading-[1.7]" : "text-sm italic text-stone"}>
-                {content.parkingNote}
-              </p>
-            </section>
-
-            <section className="space-y-3">
-              <p className="text-xs uppercase tracking-widest text-stone">
-                {isThai ? "ตัวเลือกการเดินทางอื่น ๆ" : "Getting Here — Other Options"}
-              </p>
-              {content.transport && content.transport.length > 0 ? (
-                <div className="space-y-3">
-                  {content.transport.map((item) => (
-                    <div key={item.label} className="flex items-start gap-3">
-                      {item.icon === "train" ? (
-                        <TrainFront size={16} />
-                      ) : item.icon === "car" ? (
-                        <MapPin size={16} />
-                      ) : (
-                        <Bus size={16} />
-                      )}
-                      <div>
-                        <p className="text-sm text-charcoal">{item.label}</p>
-                        <p className={isThai ? "text-sm text-stone leading-[1.7]" : "text-sm text-stone"}>
-                          {item.detail}
-                        </p>
-                        {item.steps && item.steps.length > 0 ? (
-                          <ul className="mt-1 list-disc space-y-1 pl-5">
-                            {item.steps.map((step, i) => (
-                              <li key={i} className="text-xs leading-relaxed text-stone">
-                                {step}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-                        {item.note ? <p className="mt-1 text-xs italic text-stone/60">{item.note}</p> : null}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : null}
             </section>
           </div>
 
-          <div className="space-y-3 lg:sticky lg:top-24 lg:self-start">
+          <div className="order-1 space-y-3 lg:order-2 lg:sticky lg:top-24 lg:self-start">
             <iframe
               src={content.mapEmbedUrl}
               title={content.mainVenue}
-              className="h-[420px] w-full rounded-2xl border border-charcoal/10 lg:h-[520px]"
+              className="h-[300px] w-full rounded-2xl border border-charcoal/10 sm:h-[360px] lg:h-[520px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -117,8 +78,8 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
               {content.mapButtonLabel}
             </Button>
             <p className={isThai ? "text-xs text-stone leading-[1.7]" : "text-xs text-stone"}>
-                {content.helperText}
-              </p>
+              {content.helperText}
+            </p>
           </div>
         </div>
       </Container>

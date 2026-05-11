@@ -14,11 +14,11 @@ type ButtonProps = {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-rose-deep text-cream hover:bg-charcoal hover:text-cream active:bg-charcoal active:text-cream focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 transition-colors duration-200 rounded-full px-6 py-3 font-medium tracking-wide inline-flex items-center justify-center",
+    "inline-flex min-h-11 items-center justify-center rounded-full bg-rose-deep px-6 py-3 text-body font-medium tracking-[0.02em] text-cream shadow-[0_10px_24px_-14px_rgba(45,38,32,0.35)] transition-colors duration-200 hover:bg-charcoal hover:text-cream active:bg-charcoal active:text-cream focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2",
   secondary:
-    "bg-transparent border border-charcoal text-charcoal hover:bg-charcoal hover:border-charcoal hover:text-cream active:bg-charcoal active:text-cream focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 transition-colors duration-200 rounded-full px-6 py-3 font-medium inline-flex items-center justify-center",
+    "inline-flex min-h-11 items-center justify-center rounded-full border border-charcoal/35 bg-cream px-6 py-3 text-body font-medium text-charcoal transition-colors duration-200 hover:border-charcoal hover:bg-charcoal/8 hover:text-charcoal active:border-charcoal active:bg-charcoal/12 active:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2",
   tertiary:
-    "text-rose-deep underline underline-offset-4 decoration-rose-deep/40 hover:text-charcoal hover:decoration-charcoal/60 transition-colors duration-200 inline-flex items-center gap-1",
+    "inline-flex min-h-11 items-center gap-1 text-body text-rose-deep underline decoration-rose-deep/40 underline-offset-4 transition-colors duration-200 hover:text-charcoal hover:decoration-charcoal/60 focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2",
 };
 
 export default function Button({

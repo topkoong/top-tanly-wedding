@@ -66,9 +66,15 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                       <button
                         type="button"
                         onClick={() => toggleItem(group.category, item.id)}
-                        className="flex w-full items-start justify-between gap-4 py-5 text-left focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2"
+                        className="flex w-full items-start justify-between gap-4 py-5 text-left transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2"
                       >
-                        <h2 className="font-display text-h3 leading-snug text-charcoal">
+                        <h2
+                          className={
+                            isThai
+                              ? "font-thai text-h3 leading-snug text-charcoal"
+                              : "font-display text-h3 leading-snug text-charcoal"
+                          }
+                        >
                           {item.question}
                         </h2>
                         <ChevronDown
@@ -109,9 +115,11 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
             ))}
           </div>
 
-          <Button href={lineHref} variant="secondary">
-            {content.lineCtaLabel}
-          </Button>
+          <div className="pt-2">
+            <Button href={lineHref} variant="secondary">
+              {content.lineCtaLabel}
+            </Button>
+          </div>
         </div>
       </Container>
     </Section>

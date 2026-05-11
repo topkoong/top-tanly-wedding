@@ -1,145 +1,120 @@
-# Acceptance Criteria and QA Checklist
+# 10 — Acceptance Criteria and QA Checklist
 
 ## Product constraints
 
-The website passes if all are true:
+All must be true:
 
-- No RSVP page exists.
-- No RSVP form exists.
-- No attendance counting exists.
-- No guest confirmation workflow exists.
-- No chatbot exists.
-- No AI chat UI exists.
-- No public contact form exists.
-- No public gallery upload exists.
-- No login/auth system exists.
-- No database dependency exists for MVP.
-- No API routes exist.
-- No server actions exist.
-- No middleware-based language routing exists.
+- No Accommodation page.
+- No Dress Code page.
+- No RSVP page or workflow.
+- No public forms/contact forms.
+- No chatbot or AI chat UI.
+- No API routes.
+- No server actions.
+- No database/auth/analytics.
+- No middleware-based language routing.
 
-## Navigation acceptance criteria
+## Route checks
 
-Thai desktop:
+Thai:
 
-- Header shows: กำหนดการ, สถานที่, ที่พัก, การแต่งกาย, แกลเลอรี, คำถามที่พบบ่อย, EN.
-- Home is not a visible menu item.
-- LINE is not a visible menu item.
-- Logo/couple names link to `/`.
+- `/`
+- `/schedule`
+- `/venue`
+- `/gallery`
+- `/faq`
+- `/line`
 
-Thai mobile:
+English:
 
-- Menu shows: กำหนดการ, สถานที่, ที่พัก, แกลเลอรี, คำถาม, EN.
-- Dress Code is accessible from the site but not required in mobile primary nav.
-- Menu is easy to open and close.
-- LINE is not in primary mobile menu.
+- `/en`
+- `/en/schedule`
+- `/en/venue`
+- `/en/gallery`
+- `/en/faq`
+- `/en/line`
 
-English desktop:
+## Naming checks
 
-- Header shows: Schedule, Venue, Accommodation, Dress Code, Gallery, FAQ, TH.
-- Logo/couple names link to `/en`.
-- LINE is not a visible menu item.
+Visible content must use bride-first:
 
-English mobile:
+- `Tan & Top`
+- `Narueporn & Theerut`
 
-- Menu shows: Schedule, Venue, Accommodation, Gallery, FAQ, TH.
-- Dress Code remains accessible.
-- LINE is not in primary mobile menu.
+Never show groom-first variants in UI copy.
 
-## Page acceptance criteria
+## Design quality checks
+
+- Site feels like a minimal luxury wedding invitation.
+- Home is the most beautiful page.
+- Navbar and footer feel refined and consistent with warm palette.
+- No dark heavy corporate section blocks.
+- Cards/placeholders look intentional and premium.
+
+## Page checks
 
 ### Home
 
-- Shows Top & Tan or Theerut & Narueporn clearly.
-- Shows wedding date: Sunday, 29 November 2026.
-- Shows Conrad Bangkok venue summary.
-- Provides quick links to Schedule, Venue, Accommodation, Gallery.
-- Provides supporting (small) LINE OA CTA.
+- Hero includes bride-first names, date, and Conrad Bangkok.
+- Exactly two primary hero CTAs (Schedule + Map, localized).
+- Includes at-a-glance section and short welcome section.
 
 ### Schedule
 
-- Shows recommended arrival time placeholder.
-- Shows a clear timeline.
-- Includes both confirmed events and time ranges.
-- Includes dress code reminder.
-- Links to Venue and LINE.
-- Shows note that details may be updated closer to the date.
-- Thai copy reads naturally in Thai; English copy is concise.
+- Uses two premium event cards (not plain timeline text).
+- Time ranges are prominent.
+- Activities shown as chips/cards, not inline plain text.
+- Includes understated venue link and update note.
 
 ### Venue
 
-- Shows Conrad Bangkok as main venue.
-- Shows Beverly Hills room and Ballroom references.
-- Shows Google Maps and Apple Maps placeholders.
-- Shows parking guidance for Conrad Bangkok and All Seasons Place.
-- Shows BTS/MRT, taxi/Grab, drop-off, and entrance/floor placeholders.
-
-### Accommodation
-
-- Shows accommodation categories.
-- Uses hotel cards or clear blocks.
-- Shows distance/travel-time placeholders.
-
-### Dress Code
-
-- Shows colour palette guidance.
-- Shows outfit guidance.
-- Uses short, visual-first content.
+- Conrad Bangkok shown clearly.
+- Room cards present for Beverly Hills and Conrad Ballroom.
+- Google Maps CTA prominent and localized.
+- Parking guidance present.
+- Unverified operational details marked or removed.
 
 ### Gallery
 
-- Shows placeholder gallery cards.
-- Uses stable image/card dimensions.
-- Does not allow uploads.
-- Includes coming-soon copy.
-- Contains at least 18 placeholders (6 portrait 4:5, 6 landscape 3:2, 6 square 1:1).
-- Uses categories: engagement, pre-wedding, wedding-day.
+- Contains all localized categories including Wedding Day.
+- At least 18 placeholders (6 portrait, 6 landscape, 6 square).
+- Placeholder styling includes watermark, caption, category pill, warm tone variation.
+- Looks curated, not repetitive blank blocks.
 
 ### FAQ
 
-- Uses static FAQ content.
-- Does not use AI answers.
-- Links to relevant pages where useful.
+- No question without an answer.
+- Required guest questions fully covered in Thai and English.
+- Bottom LINE OA support CTA present and refined.
 
-### LINE
+### Footer
 
-- Shows LINE OA QR/link placeholders.
-- Explains official update purpose.
-- Does not ask guests to RSVP.
-- Does not present LINE as chatbot or AI instant-answer channel.
-- Page is reachable from footer, FAQ CTA, home small CTA, and direct URL.
+- Light cream footer with thin top border.
+- Small centered monogram and centered text hierarchy.
+- No dark block and no giant monogram.
+- Footer links exclude LINE per latest footer direction.
 
-## Responsive acceptance criteria
+## Responsive checks
 
-- Mobile layout works at 360px width.
-- Tablet layout works around 768px width.
-- Desktop layout works at 1280px width and above.
-- No horizontal scrolling.
-- Header does not cover content.
-- Buttons are easy to tap.
-- Gallery grid is 1 column (mobile), 2 columns (tablet), 3 columns (desktop).
+Validate at:
 
-## Accessibility acceptance criteria
+- 375px
+- 390px
+- 430px
+- 768px
+- 1280px
+- 1440px
 
-- Each page has one clear H1.
-- Headings follow a logical order.
-- Images have meaningful alt text or decorative handling.
-- Links have descriptive labels.
-- Text contrast is readable.
-- Keyboard navigation works for menus and links.
+Pass criteria:
 
-## Performance acceptance criteria
+- No horizontal scroll.
+- No overlap/clipping.
+- Buttons are tappable (44px+).
+- Thai typography remains readable.
+- Mobile layouts feel intentionally designed.
 
-- No heavy autoplay video.
-- No full-screen loading gate.
-- Gallery placeholders do not shift layout.
-- Images are optimized or prepared for optimization.
-- Unused dependencies are avoided.
+## Build and platform checks
 
-## Content acceptance criteria
-
-- Placeholder content is obvious and easy to replace.
-- No invented final wedding details.
-- Tone is warm, elegant, and clear.
-- Copy is short and scannable.
-- No hardcoded visible copy in components; all copy comes from `content/th/*.ts` and `content/en/*.ts`.
+- `pnpm build` passes.
+- Static export output remains valid.
+- GitHub Pages `basePath` behavior remains working.

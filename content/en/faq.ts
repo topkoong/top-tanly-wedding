@@ -2,135 +2,131 @@ import type { FaqPageContent } from "@/content/schema";
 
 export const faqContentEn: FaqPageContent = {
   title: "FAQ",
-  intro: "Everything you might want to know before the day.",
+  intro: "Quick answers to the most common questions before the wedding day.",
   categories: [
     "General Information",
     "Travel & Parking",
     "During the Event",
     "Photos & Contact",
   ],
-  lineCtaLabel: "Follow updates on LINE OA",
+  lineCtaLabel:
+    "If you have any other questions, please follow updates through our LINE Official Account.",
   items: [
     {
       id: "faq-date",
       category: "General Information",
       question: "When is the wedding?",
-      answer:
-        "Sunday, 29 November 2026. We'd love for you to join us for as much of the day as you can.",
+      answer: "The wedding will take place on Sunday, 29 November 2026 at Conrad Bangkok.",
     },
     {
-      id: "faq-two-parts",
+      id: "faq-event-parts",
       category: "General Information",
-      question: "How is the day structured?",
+      question: "How many parts are there?",
       answer:
-        "The day has two parts: the morning Engagement & Rubwai Ceremony in the Beverly Hills room (Floor 2, Annex Building), followed by the Wedding Reception in the Conrad Ballroom (Floor 4).",
+        "There are two main parts: the Engagement & Rubwai Ceremony from 07:00–11:00 in the Beverly Hills room, followed by the Wedding Reception from 11:00–14:00 in Conrad Ballroom.",
     },
     {
-      id: "faq-arrival-time",
+      id: "faq-arrival",
       category: "General Information",
       question: "What time should I arrive?",
       answer:
-        "We recommend arriving 15–20 minutes before the part you plan to join — this gives you time to register, find your seat, and settle in without rushing.",
+        "We recommend arriving around 20–30 minutes before the event starts to allow time for travel, parking, and registration.",
+    },
+    {
+      id: "faq-dress",
+      category: "General Information",
+      question: "Is there a dress code?",
+      answer:
+        "There is no specific dress code. Please wear whatever makes you feel comfortable and happy. Smart casual or formal attire is welcome, but not required.",
     },
     {
       id: "faq-venue",
       category: "Travel & Parking",
       question: "Where is the venue?",
       answer:
-        "The wedding is at Conrad Bangkok. The morning ceremony is in the Beverly Hills room on Floor 2 (Annex Building), and the reception is in the Conrad Ballroom on Floor 4 (Main Building).",
+        "The wedding will take place at Conrad Bangkok. The Engagement & Rubwai Ceremony will be held in the Beverly Hills room, and the Wedding Reception will be held in Conrad Ballroom.",
+      relatedHref: "/en/venue",
+    },
+    {
+      id: "faq-map",
+      category: "Travel & Parking",
+      question: "How do I open the map?",
+      answer:
+        "Please use the “Open in Google Maps” button on the Venue page to open directions to Conrad Bangkok.",
+      relatedHref: "/en/venue",
     },
     {
       id: "faq-parking",
       category: "Travel & Parking",
       question: "Is parking available?",
       answer:
-        "Yes — free parking is available at both Conrad Bangkok (main building) and All Seasons Place, which connects directly to the hotel. Follow the venue signage on arrival.",
+        "Parking is available at Conrad Bangkok and All Seasons Place. Please follow the venue signage when you arrive.",
     },
     {
-      id: "faq-grab-taxi",
+      id: "faq-grab",
       category: "Travel & Parking",
-      question: "Can I come by Grab or taxi?",
+      question: "Can I use Grab or taxi?",
       answer:
-        "Absolutely. Search \"Conrad Bangkok\" in Grab or tell your driver Conrad Bangkok on Wireless Road. Drop-off is at the main hotel entrance.",
+        "Yes. You can set your destination as Conrad Bangkok in Google Maps or your preferred ride-hailing app.",
     },
     {
-      id: "faq-bts",
-      category: "Travel & Parking",
-      question: "Can I get there by BTS?",
-      answer:
-        "If coming by BTS, take BTS to Ploenchit Station. Use Exit 2 (Park Ventures side) for the free hotel shuttle bus, or Exit 4. The hotel is approx. 600–700m away — a free white shuttle bus runs continuously from Park Ventures building, or take a short taxi/motorbike taxi ride.",
-    },
-    {
-      id: "faq-mrt",
-      category: "Travel & Parking",
-      question: "I'm arriving at MRT Lumpini Station. How do I get to the venue?",
-      answer:
-        "From Lumpini Station, the easiest route is: walk to One Bangkok building, then take the free One Bangkok EV Shuttle (Ground floor, The Stories zone) to BTS Ploenchit. From there, board the hotel's free white shuttle bus at Park Ventures building to Conrad Bangkok. The One Bangkok shuttle is free and runs every 15 minutes (Mon–Fri 07:00–22:00, Sat–Sun & holidays 09:00–23:00). Alternatively, take a taxi or motorbike taxi directly from Lumpini Station to Wireless Road.",
-    },
-    {
-      id: "faq-google-maps",
-      category: "Travel & Parking",
-      question: "How do I open the map?",
-      answer:
-        "Head to the Venue page and tap the Open in Google Maps button — it will open directions directly from your current location.",
-      relatedHref: "/en/venue",
-    },
-    {
-      id: "faq-dress-note",
+      id: "faq-both",
       category: "During the Event",
-      question: "Is there a dress code?",
+      question: "Do I need to attend both events?",
       answer:
-        "No strict dress code — please wear whatever makes you feel comfortable and your best self. Smart casual to formal are all welcome.",
-    },
-    {
-      id: "faq-both-parts",
-      category: "During the Event",
-      question: "Can I attend both parts of the day?",
-      answer:
-        "Yes, you're very welcome to join both the morning ceremony and the reception. Come for whichever part works best for you.",
+        "You are welcome to attend the part that is most convenient for you or the part stated on your invitation. For questions, please contact us via LINE Official Account.",
     },
     {
       id: "faq-children",
       category: "During the Event",
       question: "Can I bring children?",
       answer:
-        "Families and little ones are welcome. We just ask that children are supervised throughout — we want everyone to have a wonderful time.",
-    },
-    {
-      id: "faq-what-to-bring",
-      category: "During the Event",
-      question: "What should I bring?",
-      answer:
-        "Just yourself and a camera or phone if you'd like to capture the day. We'll take care of everything else.",
-    },
-    {
-      id: "faq-contact-day",
-      category: "Photos & Contact",
-      question: "Who should I contact on the day?",
-      answer:
-        "For any questions or last-minute guidance on the day, please check our LINE Official Account for the latest updates and contact details.",
+        "If you have questions about bringing children, please contact us via LINE Official Account so we can help confirm the details.",
       relatedHref: "/en/line",
     },
     {
-      id: "faq-taking-photos",
+      id: "faq-bring",
+      category: "During the Event",
+      question: "Do I need to bring anything?",
+      answer:
+        "Nothing special is required. Please allow enough time for travel and come celebrate with us.",
+    },
+    {
+      id: "faq-contact-day",
+      category: "During the Event",
+      question: "Who should I contact on the wedding day?",
+      answer:
+        "Please use our LINE Official Account or check this website for the latest information.",
+      relatedHref: "/en/line",
+    },
+    {
+      id: "faq-photos",
+      category: "Photos & Contact",
+      question: "Where can I view photos?",
+      answer:
+        "Photos will be available on the Gallery page. At first, the gallery may show placeholders or pre-wedding photos, with more photos added later.",
+      relatedHref: "/en/gallery",
+    },
+    {
+      id: "faq-photo-policy",
       category: "Photos & Contact",
       question: "Can I take photos during the event?",
       answer:
-        "Please do — we love that you want to capture the day with us. Just be mindful of the moments, and enjoy the celebration.",
+        "Yes, photos are welcome where appropriate. We kindly ask guests not to block the official photographers during key moments.",
     },
     {
-      id: "faq-gallery-update",
+      id: "faq-updates",
       category: "Photos & Contact",
-      question: "When will the gallery be updated?",
+      question: "Will this website be updated?",
       answer:
-        "We'll add selected photos to the gallery after the celebration. Keep an eye on this page and our LINE account for updates.",
+        "Yes. Some details may be updated closer to the wedding date. Please check this website for the latest information.",
     },
     {
-      id: "faq-website-updates",
+      id: "faq-contact-channel",
       category: "Photos & Contact",
-      question: "Where can I find the latest updates?",
+      question: "How can I contact you?",
       answer:
-        "This website is kept up to date, and our LINE Official Account is where we'll post any last-minute announcements.",
+        "Please visit the LINE Official Account page for the latest updates and contact information.",
       relatedHref: "/en/line",
     },
   ],

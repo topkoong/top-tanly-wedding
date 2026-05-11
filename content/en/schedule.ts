@@ -3,11 +3,11 @@ import type { SchedulePageContent } from "@/content/schema";
 export const scheduleContentEn: SchedulePageContent = {
   title: "Schedule",
   intro:
-    "Our wedding day unfolds in two parts — a traditional morning ceremony, followed by a lunch reception.",
+    "The wedding day includes a morning ceremony followed by a wedding reception.",
   arrivalNote:
-    "We recommend arriving 15–20 minutes before the part you plan to join, to register and settle in comfortably.",
+    "We recommend arriving around 20–30 minutes before the event starts to allow time for travel, parking, and registration.",
   updateNote:
-    "Details may be updated closer to the date. Check this page or our LINE Official Account for the latest.",
+    "Some details may be updated closer to the wedding date. Please check this website or our LINE Official Account for the latest information.",
   venueButtonLabel: "View Venue Details →",
   events: [
     {
@@ -19,13 +19,10 @@ export const scheduleContentEn: SchedulePageContent = {
       date: "Sunday, 29 November 2026",
       time: "07:00–11:00",
       room: "Beverly Hills",
-      floor: "Floor 2 (Annex Building) · Conrad Bangkok",
-      navigationNote:
-        "Take the lift to Floor 2 in the Annex Building. Follow hotel signage to Beverly Hills room.",
-      venue: "Beverly Hills, Conrad Bangkok",
+      venue: "Conrad Bangkok",
       venuePageHref: "/en/venue",
       description:
-        "A traditional Thai ceremony shared with family and those closest to us. The Engagement and Rubwai rites mark the beginning of our journey together.",
+        "A warm morning ceremony for the engagement and Rubwai traditions with family and close guests.",
       chips: [
         "Guest arrival",
         "Registration",
@@ -43,13 +40,10 @@ export const scheduleContentEn: SchedulePageContent = {
       date: "Sunday, 29 November 2026",
       time: "11:00–14:00",
       room: "Conrad Ballroom",
-      floor: "Floor 4 (Main Building) · Conrad Bangkok",
-      navigationNote:
-        "Take the lift to Floor 4 in the Main Building. The Conrad Ballroom pre-function area is directly off the lift lobby.",
-      venue: "Conrad Ballroom, Conrad Bangkok",
+      venue: "Conrad Bangkok",
       venuePageHref: "/en/venue",
       description:
-        "A celebration lunch in the Conrad Ballroom — a pillar-free venue with 9-metre high ceilings and one of the largest LED screens in Thailand. We look forward to raising a glass with everyone we love.",
+        "A warm and elegant wedding reception to celebrate our special day with family and friends.",
       chips: [
         "Guest arrival",
         "Wedding reception",
