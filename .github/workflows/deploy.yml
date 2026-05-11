@@ -40,6 +40,8 @@ jobs:
 
       - name: Build Next.js static export
         run: pnpm build
+        env:
+          GITHUB_PAGES: "true"
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
