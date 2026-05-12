@@ -43,6 +43,29 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
               </p>
             ) : null}
 
+            <div className="space-y-4">
+              {content.eventSpacesTitle ? (
+                <p className="text-xs font-medium uppercase tracking-[0.12em] text-stone">{content.eventSpacesTitle}</p>
+              ) : null}
+              <div className="space-y-3">
+                {content.eventSpaces.map((space) => (
+                  <article key={space.room} className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-4 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
+                    <p className="text-body-s uppercase tracking-[0.12em] text-stone">
+                      {space.room}
+                      {space.floor && (
+                        <span className="ml-2 font-normal normal-case tracking-normal text-stone/60">
+                          · {space.floor}
+                        </span>
+                      )}
+                    </p>
+                    <p className={isThai ? "mt-1 max-w-full text-body leading-relaxed text-charcoal" : "mt-1 max-w-full text-body leading-relaxed text-charcoal"}>
+                      {space.eventName}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
             {content.transport && content.transport.length > 0 && content.gettingHereTitle ? (
               <section className="min-w-0 max-w-full space-y-5 rounded-2xl border border-charcoal/10 bg-ivory p-5 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
                 <p className="text-xs font-medium uppercase tracking-[0.12em] text-stone">{content.gettingHereTitle}</p>
@@ -72,24 +95,6 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
                 </ul>
               </section>
             ) : null}
-
-            <div className="space-y-3">
-              {content.eventSpaces.map((space) => (
-                <article key={space.room} className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-4">
-                  <p className="text-body-s uppercase tracking-[0.12em] text-stone">
-                    {space.room}
-                    {space.floor && (
-                      <span className="ml-2 font-normal normal-case tracking-normal text-stone/60">
-                        · {space.floor}
-                      </span>
-                    )}
-                  </p>
-                  <p className={isThai ? "mt-1 max-w-full text-body leading-relaxed text-charcoal" : "mt-1 max-w-full text-body leading-relaxed text-charcoal"}>
-                    {space.eventName}
-                  </p>
-                </article>
-              ))}
-            </div>
 
             <section className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-5">
               <p className="text-xs uppercase tracking-[0.12em] text-stone">{isThai ? "ที่จอดรถ" : "Parking"}</p>

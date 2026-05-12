@@ -95,6 +95,8 @@ export type VenueContent = {
   address?: string;
   /** Section heading; shown only when `transport` has at least one item. */
   gettingHereTitle?: string;
+  /** Label above ceremony / reception room cards. */
+  eventSpacesTitle?: string;
   eventSpaces: Array<{
     room: string;
     floor?: string;

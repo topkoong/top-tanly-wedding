@@ -3,10 +3,11 @@ import type { VenueContent } from "@/content/schema";
 export const venueContentEn: VenueContent = {
   title: "Venue",
   summary:
-    "Our wedding takes place at Conrad Bangkok — the morning ceremony in the Beverly Hills room (Floor 2, Annex Building), followed by the reception in the Conrad Ballroom (Floor 4).",
+    "Our wedding takes place at Conrad Bangkok — the morning ceremony in the Beverly Hills room (Floor 2, Annex Building), followed by the reception in the Conrad Ballroom (Floor 4, Main Building).",
   mainVenue: "Conrad Bangkok",
   address: "All Seasons Place, 87 Wireless Rd, Lumpini, Pathumwan, Bangkok 10330",
   gettingHereTitle: "Getting here",
+  eventSpacesTitle: "Ceremony & reception spaces",
   eventSpaces: [
     {
       room: "Beverly Hills",
