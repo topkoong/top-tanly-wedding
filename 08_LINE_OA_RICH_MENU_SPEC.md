@@ -17,21 +17,26 @@ Do not describe LINE OA as "instant answers."
   - Thai: `/line`
   - English: `/en/line`
 - LINE page should be reachable from:
-  - footer
   - FAQ CTA
   - small CTA on home page
   - direct URL / QR code
   - optional small "Add LINE OA" button
 
+> Footer link policy evolves in site content—the nav must never list LINE beside primary itinerary links.
+
 ## Recommended rich menu layout
 
-Use a 2×3 grid:
+Website IA no longer exposes `/accommodation`. Align shortcuts with shipped pages (`Schedule`, `Venue`, `Gallery`, `FAQ`, `LINE`/Help).
+
+Example 2×3 grid:
 
 ```text
 [ Schedule ] [ Venue ]
-[ Accommodation ] [ Gallery ]
-[ FAQ ] [ Help ]
+[ Gallery ]  [ FAQ ]
+[ Website ]  [ Help / LINE ]
 ```
+
+`Website` should deep-link guests to **`/`** or **`/en/`** depending on audience; **`Help`** can open a fixed message about contacting coordinators / official updates.
 
 ## Button behaviours
 
@@ -58,16 +63,15 @@ Purpose:
 
 Guests can open maps quickly from their phone.
 
-### Accommodation
+### Website shortcut
 
 Preferred behaviour:
 
-- Send a short summary of recommended accommodation options.
-- Include a link to the full Accommodation page.
+- Open the public wedding homepage for full context (`/` or localized `/en`).
 
 Purpose:
 
-Useful for out-of-town guests.
+Acts as fallback when richer Flex cards aren't ready.
 
 ### Gallery
 
@@ -104,7 +108,7 @@ Give guests support without making the couple responsible for every question.
 
 ```text
 For official wedding updates, please follow this LINE account.
-For schedule, venue, accommodation, and gallery details, please use the menu below.
+For schedule, venue, gallery, FAQ, and LINE details, please use the menu shortcuts or browse the wedding website directly.
 For urgent wedding-day assistance, please contact [Coordinator name/contact placeholder].
 ```
 

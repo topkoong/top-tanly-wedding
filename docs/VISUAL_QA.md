@@ -2,128 +2,134 @@
 
 ## Purpose
 
-This guide defines how to visually review the Tan & Top wedding website before publishing changes.
+How designers, developers, and QA should visually verify the Tan & Top wedding website before sharing changes or deploying.
 
-The site should feel minimal, elegant, classy, warm, premium, and mobile-first.
+Goals: minimal, elegant, warm, premium, **mobile-first**, readable Thai/English, no regressions against product constraints.
 
-## Viewports to Check
+## Viewports checklist
 
-Mobile-first review:
+Manual review (Developer Tools responsive mode or real devices):
 
-```text
-375px
-390px
-430px
-768px
+| Width | Typical use |
+|-------|--------------|
+| 375px | Small phone |
+| 390px | Many modern phones |
+| 430px | Large phone |
+| 768px | Tablet |
+| 1280px | Laptop |
+| 1440px | Desktop |
+
+Pages to open (production or local)—use **both** locales:
+
+**Thai**
+
+- `/`
+- `/schedule/`
+- `/venue/`
+- `/gallery/`
+- `/faq/`
+- `/line/`
+
+**English**
+
+- `/en/`
+- `/en/schedule/`
+- `/en/venue/`
+- `/en/gallery/`
+- `/en/faq/`
+- `/en/line/`
+
+---
+
+## Mobile-first acceptance criteria
+
+- No horizontal scrolling at audited widths (unless an intentional swipe area is added—currently none).
+- Tap targets roughly **≥ 44×44 px** on primary navigation and CTAs.
+- Thai body text readable (~16px, comfortable line-height).
+- Bride-first naming in visible content: **Tan & Top**, **Narueporn & Theerut**.
+- Primary nav excludes LINE, Accommodation, Dress Code, RSVP.
+- Footer is light—not a heavy dark slab; typography centered and calm.
+
+### Page-specific quick checks
+
+- **Home:** Invitational hierarchy; hero CTAs localized; LINE not the primary hero driver.
+- **Schedule:** Two main events understandable quickly; prominent times; chips not wall-of-text.
+- **Venue:** Strong Conrad Bangkok labeling; localized Google Maps CTA (`เปิด Google Maps` / `Open in Google Maps`); sensible map embed height on small screens.
+- **Gallery:** Premium placeholders; captions legible; category labels localized.
+- **FAQ:** Every question answered; accordion readable; LINE CTA is supporting secondary.
+- **LINE:** Describes official updates / manual channel—never “chatbot AI” framing.
+
+---
+
+## Animation and motion QA
+
+Review with **animations on** first, then with OS **Reduce motion** enabled.
+
+### Allowed (default)
+
+- Subtle fade-in and soft upward reveal (e.g. section enter).
+- Gentle hover lift on cards/images that are **decorative/non-critical**.
+- Refined button color/border transitions.
+- Gallery hover/focus affordances that do not hide captions permanently.
+- FAQ accordion expand/collapse that keeps content readable during motion.
+
+### Allowed only with caution
+
+- Decorative **flip-card** gestures on Home or Gallery only—must not hide essential copy; must degrade gracefully without motion bugs.
+
+### Forbidden
+
+- Flashy **3D** flips, parallax scroll, marquees, spinning loaders, exaggerated bounce/elastic motion.
+- Autoplay looping motion that distracts from reading.
+- Motion that hides **critical guest information** until animation completes—schedule times, venue, map access must remain discoverable immediately.
+- Motion that systematically produces bad screenshots (**inconsistent layouts**)—Playwright scripts may disable animations for capture; prod UX must stay calm.
+- Any motion that ignores **`prefers-reduced-motion: reduce`**—non-essential animation should be suppressed.
+
+### Reduced motion
+
+- Respect `prefers-reduced-motion`.
+- Fade/slide durations should shorten or skip; FAQs should still reveal content statically if motion is off.
+
+Implementation note: **`scripts-capture-screenshots.mjs`** injects CSS to zero-out transitions/animations for stable PNGs—that is a **QA tooling** choice, not a product mandate to strip motion from the live site.
+
+---
+
+## Playwright screenshot QA
+
+**Purpose:** full-page screenshots across Thai + English routes and three breakpoints for regression spotting (layout overflows, typography breaks, regressions).
+
+**Dependencies:** Playwright listed in **`devDependencies`**; script runs via **`pnpm screenshots`** → `node scripts-capture-screenshots.mjs`.
+
+### Install / repair
+
+```bash
+pnpm add -D playwright   # usually already installed
+pnpm exec playwright install chromium
 ```
 
-Desktop review:
-
-```text
-1280px
-1440px
-```
-
-## Pages to Check
-
-Thai:
-
-```text
-/
-/schedule
-/venue
-/gallery
-/faq
-/line
-```
-
-English:
-
-```text
-/en
-/en/schedule
-/en/venue
-/en/gallery
-/en/faq
-/en/line
-```
-
-## Key Checks
-
-### Global
-
-- No horizontal scroll.
-- No clipped Thai text.
-- No text overlap.
-- Buttons are at least 44px tall.
-- Thai typography is readable.
-- English typography is refined.
-- Bride-first naming is used everywhere:
-  - Tan & Top
-  - Narueporn & Theerut
-
-### Navbar
-
-- Main nav does not include LINE.
-- Main nav does not include Accommodation.
-- Main nav does not include Dress Code.
-- Main nav does not include RSVP.
-- Mobile menu is easy to tap.
-- Language switch works.
-
-### Home
-
-- Home feels like a premium digital invitation.
-- Tan & Top is the strongest visual element.
-- Date and Conrad Bangkok are clearly visible.
-- CTAs are limited and elegant.
-- Image placeholder feels intentional.
-
-### Schedule
-
-- Schedule uses strong event cards, not a plain timeline.
-- Time ranges are prominent.
-- Activity chips are visually separated.
-- User can understand the two main events within 5 seconds.
-
-### Venue
-
-- Google Maps button is prominent.
-- Thai button says `เปิด Google Maps`.
-- English button says `Open in Google Maps`.
-- Room and parking details are clear.
-- Unverified operational details are not presented as final facts.
-
-### Gallery
-
-- Gallery feels curated, not like repeated blank blocks.
-- There are at least 18 placeholders.
-- Categories are localized.
-- Placeholder cards include warm tones, subtle TN watermark, caption, and category label.
-
-### FAQ
-
-- No question appears without an answer.
-- Categories are easy to scan.
-- Answers are complete in Thai and English.
-- FAQ does not introduce RSVP/form/chatbot behaviour.
-
-### Footer
-
-- Footer is light and elegant.
-- No dark footer block.
-- No giant monogram.
-- Footer feels like the closing page of a wedding invitation.
-
-## Screenshot Capture
-
-If Playwright is installed:
+### Run
 
 ```bash
 pnpm screenshots
 ```
 
-Default output:
+Default `BASE_URL` is the deployed site (`https://topkoong.github.io/top-tanly-wedding`).
+
+**Local** (site must be running: `pnpm dev`):
+
+```bash
+BASE_URL=http://localhost:3000 pnpm screenshots
+```
+
+**Deployed:**
+
+```bash
+BASE_URL=https://topkoong.github.io/top-tanly-wedding pnpm screenshots
+```
+
+### Output folders
+
+Generated under:
 
 ```text
 docs/screenshots/mobile-390/
@@ -131,14 +137,10 @@ docs/screenshots/tablet-768/
 docs/screenshots/desktop-1440/
 ```
 
-For local capture:
+One PNG per route per viewport (`home.png`, `en-home.png`, `schedule.png`, …).
 
-```bash
-BASE_URL=http://localhost:3000 pnpm screenshots
-```
+### Commit policy
 
-For deployed GitHub Pages capture:
+Screenshots may be large binary artifacts. Track them in Git only when the team wants history; otherwise omit them or regenerate on demand before reviews.
 
-```bash
-BASE_URL=https://topkoong.github.io/top-tanly-wedding pnpm screenshots
-```
+See also **README → Playwright Screenshot QA** and [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md).

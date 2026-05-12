@@ -1,72 +1,67 @@
 # 12 — Technical Stack
 
+> **Pinned versions** — read `package.json` when updating this table. Snapshot at documentation pass: Next **16.2.6**, React **19.2.4**, TypeScript **^5**, Tailwind **^4**, Playwright dev **^1.59**.
+
 ## Core stack
 
-- Next.js App Router (static-export friendly)
-- TypeScript (strict)
-- Tailwind CSS v4
-- `pnpm`
-- `next/font/google` (Cormorant Garamond, Inter, IBM Plex Sans Thai)
-- `lucide-react`
-- `motion`
+- **Next.js** 16.2.x App Router (static-export friendly)
+- **React** 19.x
+- **TypeScript** (strict)
+- **Tailwind CSS** v4
+- **`pnpm`** (required package manager — see `"packageManager": "pnpm@…"`)
+- **`next/font/google`** — Cormorant Garamond, Inter, **IBM Plex Sans Thai**
+- **`lucide-react`**
+- **`motion`** (subtle animations; respect `prefers-reduced-motion`)
+- **`clsx`** + **`tailwind-merge`** (`cn()` helper)
+- **`playwright`** (**devDependency**) — optional deterministic screenshot QA via `pnpm screenshots`
 
 ## Export and routing
 
-- Use static export (`output: "export"`).
-- Keep `images.unoptimized = true` for MVP static deployment.
-- Thai is default routes; English is explicit under `/en`.
-- Do not use middleware for locale routing.
+- Use static export (**`output: "export"`**).
+- **`trailingSlash: true`** aligns with hosted URLs ending in `/`.
+- **`images.unoptimized: true`** for static hosting compatibility (`next/image` still usable for sizing/markup).
 
-## Route surface (fixed)
+Thai routes at root (`/schedule/`, `/venue/`, …); English under **`/en/...`**.
+**No middleware locale routing.**
 
-Thai:
+### GitHub Pages base path wiring
 
-- `/`
-- `/schedule`
-- `/venue`
-- `/gallery`
-- `/faq`
-- `/line`
+Production builds exporting to **`topkoong.github.io/top-tanly-wedding/`** set:
 
-English:
+```txt
+GITHUB_PAGES=true → basePath = "/top-tanly-wedding"
+                 → assetPrefix = "/top-tanly-wedding/"
+```
 
-- `/en`
-- `/en/schedule`
-- `/en/venue`
-- `/en/gallery`
-- `/en/faq`
-- `/en/line`
+Local **`pnpm dev`** omits extra base segments.
 
-## Non-goals / forbidden for MVP
+See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
 
-- Accommodation page
-- Dress Code page
-- RSVP
-- Contact form
-- Chatbot
-- API routes
-- Server actions
-- Database
-- Auth
-- Analytics
-- Middleware locale routing
+## Route surface
 
-## Implementation conventions
+Thai `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`, `/line/` mirrored under `/en/...`.
 
-- Default to server components; use client components only when needed.
-- Components in `components/` (PascalCase, one per file, default export).
-- Content in `content/th/*.ts` and `content/en/*.ts` (typed, named exports).
-- Avoid hardcoding visible strings in JSX.
-- Use warm token palette from `03_DESIGN_SYSTEM.md`.
+Excluded from scope: Accommodation, Dress Code, RSVP/contact surfaces, authenticated dashboards.
 
-## Performance baseline
+## Non-goals
 
-- Mobile-first, high readability in in-app browsers.
-- Keep JavaScript light and interactions subtle.
-- Lazy-load map iframe.
-- Avoid heavy animation and full-library imports.
+Accommodation routes, Dress Code routes, RSVP, contact forms/chatbots/uploads, databases, auth/session stores, middleware locale switching, MVP analytics instrumentation.
 
-## QA baseline
+(See **`10_ACCEPTANCE_CRITERIA_QA.md`** for QA enforcement.)
 
-- Run `pnpm build` after implementation polish.
-- Validate mobile at 375, 390, 430, 768 widths before desktop final review.
+## Tooling conventions
+
+- Components PascalCase modules default-exported (`components/**/*`).
+- Content modules camelCase with named exports typed via **`content/schema.ts`**.
+- Utilities live under **`lib/`** lowercase named exports only.
+- Scripts: Playwright screenshot driver `scripts-capture-screenshots.mjs` executed through **`pnpm screenshots`**.
+
+## Performance expectations
+
+Maintain mobile readability under ~150 KB critical JS guideline from earlier planning docs; Lighthouse targets aspirational—not blocking—during content freeze but chase regressions proactively.
+
+Lazy-load heavyweight embeds (Google Maps iframe) with `loading="lazy"`.
+
+Use icon tree-shaken imports (`import { MapPin } from 'lucide-react'` patterns).
+
+Run **`pnpm lint`** / **`pnpm build`** after materially touching UI or routing.

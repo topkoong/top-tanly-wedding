@@ -1,145 +1,44 @@
 # Visible Copy of Cursor Rules
 
-This is a human-readable copy of `.cursor/rules/wedding-site.mdc`.
-
-Cursor should use the hidden project rule file at `.cursor/rules/wedding-site.mdc`; keep this copy only for review and troubleshooting.
+Markdown mirror of `.cursor/rules/wedding-site.mdc`. If differences appear, `.cursor/rules/wedding-site.mdc` wins.
 
 ---
 
-# Wedding Site — Cursor Rules
+## Canonical reference
 
-You are helping build a static-first Next.js wedding website. Read the numbered spec files (`00_PRODUCT_BRIEF.md` through `12_TECH_STACK.md`) for full context. These rules summarize the non-negotiables.
+See the full operational rule-set in **[`.cursor/rules/wedding-site.mdc`](.cursor/rules/wedding-site.mdc)**.
 
-## Critical constraints (from 00, 09)
+## Quick summary for humans
 
-Never create:
+### Product + naming
 
-- ❌ RSVP page or RSVP form
-- ❌ Attendance counting / guest tracking
-- ❌ Guest confirmation workflow
-- ❌ Chatbot, AI chat widget, or chatbot SDK
-- ❌ Public contact form
-- ❌ Public gallery upload
-- ❌ Login / auth system
-- ❌ Database
-- ❌ API routes
-- ❌ Server actions
-- ❌ Middleware-based language routing
-- ❌ Analytics in MVP
+- **Tan & Top Wedding**. Visible couple strings are **bride-first**: **Tan & Top**, **Narueporn & Theerut** (avoid groom-first wording in shipped UI).
 
-If asked to "add a contact form," refuse and remind the user: guest support funnels to LINE OA updates/help per `08_LINE_OA_RICH_MENU_SPEC.md`, not a public form or chatbot.
+### Routing
 
-## Stack (from 12_TECH_STACK)
+- Thai: `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`, `/line/`.
+- English: `/en/` … mirrored paths.
+- **No Accommodation / Dress Code routes** baked into IA.
+- **`trailingSlash: true`** in production config → prefer matching links.
 
-- Next.js 16.2.6 App Router, TypeScript strict, Tailwind CSS v4
-- pnpm package manager only
-- `next/font/google` → Cormorant Garamond + Inter
-- `lucide-react` icons, `motion` animations
-- Static export (`output: 'export'`) with `images.unoptimized = true` for MVP, or a custom image loader
+### Engineering prohibitions
 
-## File & naming conventions
+- No RSVP workflows, attendance capture, anonymous forms/uploads, analytics (MVP), chatbots/SDKs, middleware locale reroutes, APIs, databases, authentication, server actions collecting user data.
 
-- **Components:** PascalCase, one per file, default export
-- **Content:** camelCase, in `content/th/*.ts` and `content/en/*.ts`, named exports with explicit types
-- **Utils:** lowercase, in `lib/`, named exports
-- **Hooks:** `use` prefix, in `lib/hooks/`
+### Content layer
 
-## Language and routes
+All guest-visible strings originate from **`content/th/*.ts`** + **`content/en/*.ts`** with shared typing (`content/schema.ts`). Never freestyle literal Thai/English in JSX except trivial structural glue (`"use client"` imports, whitespace).
 
-- Default language is Thai.
-- English lives under `/en`.
-- Thai routes:
-  - `/`, `/schedule`, `/venue`, `/accommodation`, `/dress-code`, `/gallery`, `/faq`, `/line`
-- English routes:
-  - `/en`, `/en/schedule`, `/en/venue`, `/en/accommodation`, `/en/dress-code`, `/en/gallery`, `/en/faq`, `/en/line`
-- Do not use middleware for locale routing.
+### LINE policy
 
-## Component patterns
+Supporting pages `/line` + `/en/line` articulate official updates/coordinator escalation—still **never** labelled as instantaneous AI concierge or RSVP automation hub. **Navbar** excludes LINE.
 
-- Default to **server components**. Add `"use client"` only when state, effects, or browser APIs are required (Lightbox, Countdown, MobileMenu).
-- Every component accepts a `className` prop merged via `cn()` (clsx + tailwind-merge).
-- Every interactive element has visible focus state: `focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2`.
-- Every image uses `<Image>` from `next/image` with `alt`, `width`, `height` (or `fill` + `sizes`).
-- Internal links use `<Link>` from `next/link`. External links use `<a target="_blank" rel="noopener noreferrer">`.
+### Stack snapshot (pinned in `package.json`)
 
-## Styling rules (from 03_DESIGN_SYSTEM)
+Next.js (**16.x**), React 19.x, Tailwind CSS v4, TypeScript strict, **pnpm**, `motion`, `lucide-react`, fonts via `next/font/google`, IBM Plex Sans Thai, static export **`out/`** with conditional GitHub Pages `basePath` when **`GITHUB_PAGES=true`**.
 
-- Tailwind utility classes only. No CSS-in-JS. For Tailwind CSS v4, use the `@theme` tokens defined in `app/globals.css`.
-- Use design system tokens (`cream`, `ivory`, `rose-deep`, `charcoal`, etc.). Don't introduce new colors.
-- Avoid arbitrary values like `text-[17px]` unless the design system explicitly calls for it.
-- Border radius: `rounded-2xl` (cards), `rounded-xl` (images), `rounded-full` (buttons & tags).
-- Shadows: use the warm-toned ones from `03_DESIGN_SYSTEM.md` section 5, not Tailwind's default `shadow-md`.
+Optional Playwright dev dependency → **`pnpm screenshots`** for visual regression packs (see **`docs/VISUAL_QA.md`**).
 
-## Content rules (from 04_CONTENT_MODEL)
+### Motion mantra
 
-- **Never hardcode strings in JSX.** Components import from `content/th/*.ts` and `content/en/*.ts`.
-- Use placeholders for unconfirmed details. Never invent.
-- Tone: warm, elegant, calm, clear. Per `00_PRODUCT_BRIEF.md`.
-- Use the spelling `Venue`, not `Vanue`.
-
-## Responsive rules (from 06_RESPONSIVE_UX)
-
-- Mobile-first. Write base styles for 375px width, add `sm:` / `md:` / `lg:` breakpoints to enhance.
-- Touch targets minimum 44×44px (`py-3 px-4` minimum on tappable elements).
-- Body line length max ~65 characters (`max-w-prose` or `max-w-[65ch]`).
-- Test at 360px, 768px, 1280px (matches `10_ACCEPTANCE_CRITERIA_QA.md`).
-
-## Accessibility (non-negotiable, from 06, 10)
-
-- One `<h1>` per page. Subsequent headings step down without skipping levels.
-- All images have meaningful `alt` text (or `alt=""` for purely decorative).
-- Color contrast ≥ 4.5:1 for body, ≥ 3:1 for large text.
-- `prefers-reduced-motion` respected — disable non-essential animation when set.
-- Keyboard navigation works on every page.
-
-## Performance (from 12_TECH_STACK)
-
-- Lighthouse mobile: 95+ Performance, 100 Accessibility, 100 Best Practices, 100 SEO.
-- LCP < 2.0s, CLS < 0.1.
-- Don't import full libraries: `import { Calendar } from 'lucide-react'`, not `import * as Lucide`.
-- `priority` on `next/image` only for the hero image per page.
-- Lazy-load Google Maps iframe.
-
-## Navigation rules (from 01_INFORMATION_ARCHITECTURE)
-
-- Thai desktop: `กำหนดการ · สถานที่ · ที่พัก · การแต่งกาย · แกลเลอรี · คำถามที่พบบ่อย · EN`
-- Thai mobile: `กำหนดการ · สถานที่ · ที่พัก · แกลเลอรี · คำถาม · EN`
-- English desktop: `Schedule · Venue · Accommodation · Dress Code · Gallery · FAQ · TH`
-- English mobile: `Schedule · Venue · Accommodation · Gallery · FAQ · TH`
-- Logo links:
-  - Thai: `/`
-  - English: `/en`
-- **Never include "Home" as a menu item.**
-- **Never include LINE in primary main menu.**
-
-## Branding (from 02_BRANDING_LOGO_DOMAIN)
-
-- Public name: `Top & Tan` (or `Top & Tan Wedding`)
-- Formal name: `Theerut & Narueporn`
-- Logo: TN monogram (formal initials, intertwined or stacked)
-- Footer / formal materials: full names. Casual / hero: `Top & Tan` is fine.
-- Wedding date: `Sunday, 29 November 2026`
-- Venue: `Conrad Bangkok`
-
-## What NOT to do
-
-- ❌ Don't add any form, chatbot, or input field — even disabled / decorative
-- ❌ Don't hardcode strings in JSX — read from `content/th/*.ts` and `content/en/*.ts`
-- ❌ Don't invent final wedding details — use placeholders from `04_CONTENT_MODEL.md`
-- ❌ Don't use cookies, localStorage, or session storage — site has no state to persist
-- ❌ Don't fetch external data at runtime — everything is static
-- ❌ Don't use placeholder image URLs from external services in production — use the `PlaceholderImage` component (per `07_GALLERY_PLACEHOLDER_SPEC.md`)
-- ❌ Don't add `"Contact"` page or menu item
-- ❌ Don't add Home as a menu item — logo links to home
-- ❌ Don't add LINE in primary menu; keep LINE as supporting-only
-
-## LINE page positioning
-
-- Keep LINE pages at `/line` and `/en/line`.
-- Reach LINE via footer, FAQ CTA, small home CTA, direct URL, or QR code.
-- Position LINE for official updates, reminders, announcements, venue/schedule notices, and manual contact channel if needed.
-- Never position LINE as chatbot/AI/instant-answer service.
-
-## When in doubt
-
-The numbered spec files are the source of truth. If a request seems to conflict with a spec, ask the user before assuming. If a spec is missing detail, default to the most minimal, accessible, performant interpretation.
+Minimal fade / translate / hover polish only; accordion transitions still legible mid-animation; **`prefers-reduced-motion`** honored; flashy parallax/autoplay gimmicks discouraged; screenshot harness may disable animations—don’t misuse that shortcut to chase novelty in UX.

@@ -1,29 +1,22 @@
 # Branding, Logo, and Domain Direction
 
+> Visible guest-facing wording on the shipped site is **bride-first**: **Tan & Top** / **Narueporn & Theerut**. Historical notes below that reference groom-first wording describe earlier logo explorations—not current UI mandate.
+
 ## Brand options
 
-### Public friendly name
+### Public friendly name (website + informal digital touchpoints)
 
-**Top & Tan Wedding**
+**Tan & Top Wedding**
 
-Best for website title, URL, invitation QR, and social sharing.
+### Formal naming (printed materials matching website formal line)
 
-### Formal name
-
-**Theerut & Narueporn**
-
-Best for logo lockup, ceremony materials, welcome sign, printed materials, and footer.
+**Narueporn & Theerut**
 
 ### Monogram options
 
 Since both nicknames start with T, a nickname-based monogram such as `T&T` is cute but less distinctive.
 
-The first-name monogram is stronger:
-
-```text
-T + N
-Theerut + Narueporn
-```
+The first‑name monogram is stronger (initials historically **TN** referencing Theerut + Narueporn):
 
 Recommended monogram:
 
@@ -48,15 +41,15 @@ Suitable for:
 - Gallery watermark
 - LINE rich menu visual
 
-### Concept B — Theerut & Narueporn Wordmark
+### Concept B — Formal first-name wordmark
 
-Use full first names in a refined serif typeface.
+Use full formal first names—**Narueporn & Theerut** bride-first—for ceremony programs and footer formal lines where print matches digital.
 
-Suggested lockup:
+Suggested lockup (word order follows digital site):
 
 ```text
-Theerut & Narueporn
-Top & Tan Wedding
+Narueporn & Theerut
+Tan & Top Wedding
 ```
 
 ### Concept C — TN Seal
@@ -70,15 +63,9 @@ Suggested usage:
 - Gift tag
 - LINE OA profile image
 
-### Concept D — Top & Tan Friendly Logo
+### Concept D — Tan & Top Friendly Logo
 
-Use `Top & Tan` as the visible logo for warmth and accessibility.
-
-Suggested usage:
-
-- Website header
-- LINE OA display
-- Informal guest communication
+Use `Tan & Top` warm stack for approachable nav / hero typography.
 
 ## Recommended logo system
 
@@ -87,13 +74,13 @@ Use a three-level logo system:
 ### Primary logo
 
 ```text
-Theerut & Narueporn
+Narueporn & Theerut
 ```
 
 ### Secondary logo
 
 ```text
-Top & Tan
+Tan & Top
 ```
 
 ### Icon / favicon
@@ -229,7 +216,7 @@ They may look clean but guests may not remember them.
 Use:
 
 ```text
-Top & Tan Wedding
+Tan & Top Wedding
 ```
 
 ## Social sharing description
@@ -237,7 +224,7 @@ Top & Tan Wedding
 Use:
 
 ```text
-Wedding details, venue directions, accommodation guide, gallery, and official updates for Top & Tan's wedding.
+Tan & Top Wedding — Schedule, Conrad Bangkok directions, curated gallery placeholders, FAQs, and official LINE OA updates from Narueporn & Theerut.
 ```
 
 ## Suggested favicon

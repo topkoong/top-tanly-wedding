@@ -1,38 +1,22 @@
 # Merge Notes
 
-This final pack combines the original ChatGPT wedding website spec with Claude's latest design-system, tech-stack, and Cursor rule updates.
+> **Historical planning note.** This file summarizes an early zipped “multi-agent spec bundle” merger. Shipping truth moved on—see **`README.md`**, **`docs/DOCUMENTATION_AUDIT.md`**, and **`docs/PROJECT_OVERVIEW.md`**.
 
-## Accepted from Claude's latest update
+## Snapshot of what aged out
 
-- Concrete design tokens, typography, spacing, radius, shadows, component patterns, and animation rules.
-- Pinned tech stack: Next.js 15 App Router, TypeScript strict mode, Tailwind CSS v4, `next/font/google`, `lucide-react`, `motion`, Vercel.
-- `.cursor/rules/wedding-site.mdc` as an always-loaded Cursor project rule file.
+- Mentioned Next.js **15** + **Vercel-first** framing; production now rides **GitHub Actions → GitHub Pages** with **`GITHUB_PAGES`** basePath overrides.
+- Mentioned Accommodation/Dress-code scope; MVP routes trimmed to simplified IA (see **`01_INFORMATION_ARCHITECTURE.md`** after its refresh).
 
-## Patches applied
+## Accepted ideas still relevant
 
-- Inserted `03_DESIGN_SYSTEM.md` and renumbered later docs.
-- Renamed the tech-stack file to `12_TECH_STACK.md`.
-- Updated all references to the new numbering.
-- Made Tailwind CSS v4 `@theme` the primary token strategy.
-- Added static export + `next/image` guidance: use `images.unoptimized = true` for MVP or configure a custom image loader.
-- Reworded LINE OA usage to avoid chatbot/AI/instant-answer implications.
-- Recommended a static `public/og-image.jpg` for MVP instead of dynamic OG generation.
+- Tailwind CSS v4 design tokens anchored in **`app/globals.css`**.
+- Always-on **`wedding-site.mdc`** Cursor guardrails (**`CURSOR_RULES_COPY.md`** now points to canonical `.mdc`).
+- Strict static-export + `images.unoptimized` guidance.
+- Persistent non-goals around RSVP/forms/chat/backend/analytics MVP.
 
-## Non-negotiables preserved
+## Patches historically recorded
 
-- No RSVP page or RSVP form.
-- No attendance counting.
-- No chatbot or AI assistant.
-- No public contact form.
-- No public gallery upload.
-- No login/auth system.
-- No database.
-- No API routes for MVP.
-- No analytics for MVP.
+- Creation/renumbering of design + stack specs (`03`, `12`, etc.).
+- LINE OA repositioned as deterministic updates—not AI concierge.
+- Encouragement to ship static Open Graph JPG instead of brittle dynamic OG when hosting rules matter.
 
-## v2 fixes applied
-
-- Confirmed `.cursor/rules/wedding-site.mdc` is included in the ZIP.
-- Added `CURSOR_RULES_COPY.md` as a visible review copy because `.cursor/` is a hidden folder.
-- Fixed `12_TECH_STACK.md` section 5 to use static `public/og-image.jpg` for MVP.
-- Corrected numbering references inside `.cursor/rules/wedding-site.mdc` after the final renumbering.

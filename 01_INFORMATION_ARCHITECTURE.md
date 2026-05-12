@@ -1,133 +1,88 @@
 # Information Architecture
 
-## Core navigation decisions
+**Current implementation baseline:** [`README.md`](README.md) · [`docs/PROJECT_OVERVIEW.md`](docs/PROJECT_OVERVIEW.md)
 
-- Do not include Home as a menu item.
-- Do not include LINE as a main menu item.
-- Logo/couple name links to language-specific home:
-  - Thai default: `/`
-  - English: `/en`
-- LINE remains a dedicated supporting page (`/line`, `/en/line`) reachable from CTA surfaces only.
+## Routing principles
 
-## Thai navigation
+- **No middleware**-driven locale swaps—URL alone determines Thai vs English.
+- **Trailing slashes** intentionally enabled for static-export + GitHub Pages harmony.
+- **LINE** stays out of primary navigation (`Navbar`/`MobileMenu`).
+- Dedicated supporting URLs: **`/line/`**, **`/en/line/`**.
 
-### Desktop
+## Primary navigation labels
+
+Desktop + mobile intentionally match (only language switch abbreviation differs visually):
+
+### Thai navigation
 
 ```text
-กำหนดการ · สถานที่ · ที่พัก · การแต่งกาย · แกลเลอรี · คำถามที่พบบ่อย · EN
+กำหนดการ · สถานที่ · แกลเลอรี · คำถามที่พบบ่อย · EN
 ```
 
-### Mobile
+Logo / couple marker links **`/`**.
+
+### English navigation
 
 ```text
-กำหนดการ · สถานที่ · ที่พัก · แกลเลอรี · คำถาม · EN
+Schedule · Venue · Gallery · FAQ · TH
 ```
 
-## English navigation
+Logo / couple marker links **`/en`**.
 
-### Desktop
+Notes:
+
+- **Never** expose `Home` as a menu bullet—the lockup transports guests home.
+- **Never** expose `LINE` next to FAQ as a sibling nav shortcut (LINE remains ancillary).
+
+## Implemented site tree
+
+### Thai routes
 
 ```text
-Schedule · Venue · Accommodation · Dress Code · Gallery · FAQ · TH
+/                Home
+/schedule        Schedule
+/venue           Venue + map
+/gallery         Gallery placeholders
+/faq             FAQ
+/line            LINE OA supporting explainer (not main nav)
 ```
 
-### Mobile
+### English routes
 
 ```text
-Schedule · Venue · Accommodation · Gallery · FAQ · TH
-```
-
-Dress Code remains accessible in English and Thai, but can be omitted from mobile primary menu.
-
-## Site map
-
-```text
-/
-├── Schedule
-├── Venue
-├── Accommodation
-├── Dress Code
-├── Gallery
-├── FAQ
-└── LINE (supporting page only)
-
 /en
-├── /en/schedule
-├── /en/venue
-├── /en/accommodation
-├── /en/dress-code
-├── /en/gallery
-├── /en/faq
-└── /en/line
+/en/schedule
+/en/venue
+/en/gallery
+/en/faq
+/en/line
 ```
 
-## Page purpose
+### Explicitly excluded from scope
 
-### Home
-A warm landing page with couple names, confirmed date, venue summary, hero placeholder, quick links, and a small LINE supporting CTA.
+`/accommodation`, `/dress-code`, RSVP pages, authenticated areas, dashboards.
 
-### Schedule
-A timeline-style page showing the event flow and recommended arrival time.
+## Footer expectations
 
-### Venue
-A practical location guide with map links, parking information, transport guidance, room guidance, and drop-off instructions.
+Footer emphasises graceful closure (names, gratitude, contextual links aligned with simplified IA). Exact link list evolves in `content/*/site.ts`—maintain consonance with spec constraints (no Accommodation/Dress pseudo routes surfaced).
 
-### Accommodation
-A curated guide for guests who may need to stay nearby.
+LINE may appear outside primary nav surfaces (FAQ CTA text, HOME secondary CTA) per product direction—not as a bulky corporate footer takeover.
 
-### Dress Code
-A visual guidance page for colour theme, outfit style, and what to avoid.
+## Page-level intent (mirror build)
 
-### Gallery
-A placeholder gallery initially. Later, replace placeholders with pre-wedding and wedding-day photos.
+| Page | Goal |
+|------|------|
+| Home | Emotional invitation framing + directional CTAs (Schedule/Venue) |
+| Schedule | Quickly communicate two marquee blocks with supporting chips |
+| Venue | Directions + Conrad clarity + localized Google Maps CTA |
+| Gallery | Editorial placeholder masonry-style grid awaiting real photos |
+| FAQ | deterministic copy w/ categorical grouping |
+| LINE | Official-update narrative (no RSVP / no chat promises) |
 
-### FAQ
-A static, deterministic FAQ page. No chatbot.
+## Header behaviour guidelines
 
-### LINE
-A supporting page explaining official LINE OA updates, reminders, announcements, and manual contact guidance if needed. It is not a chatbot page.
+Sticky, subtle navbar with transparent/cream interplay; respects mobile tap targets (~44 px).
 
-## Recommended homepage sections
+## Homepage structure (conceptual—not prescriptive JSX)
 
-```text
-Hero
-↓
-Wedding date / venue summary
-↓
-Quick action cards: Schedule, Venue, Accommodation, Gallery
-↓
-Short welcome message
-↓
-Small LINE OA supporting call-to-action
-↓
-Footer
-```
-
-## Header behaviour
-
-- Logo/couple names on the left.
-- Desktop menu on the right.
-- Mobile hamburger or bottom-friendly menu.
-- Sticky header is acceptable if subtle and not too tall.
-- Header should not cover page anchors.
-- No LINE item in primary header menu.
-
-## Footer content
-
-Footer should include:
-
-- Top & Tan Wedding
-- Formal names: Theerut & Narueporn
-- Wedding date: Sunday, 29 November 2026
-- LINE OA link placeholder
-- Optional short thank-you message
-
-## Naming guidance
-
-Use `LINE`, not `Contact` or `RSVP`.
-
-Reason:
-
-- `Contact` implies a form.
-- `RSVP` implies attendance confirmation and counting.
-- `LINE` clearly tells guests where to receive official updates and notices.
+Hero → ceremonial date & venue cues → succinct supporting copy → two primary CTAs → optional tertiary LINE mention → Footer.

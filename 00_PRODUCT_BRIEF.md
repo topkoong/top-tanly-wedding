@@ -1,90 +1,62 @@
-# Product Brief — Top & Tan Wedding Website
+# Product Brief — Tan & Top Wedding Website
 
-## Project summary
+## Summary
 
-Create a premium, elegant, responsive wedding website for Top and Tan. The website acts as a centralized digital hub for guests to access key wedding information anytime without contacting the couple directly.
+A **premium, responsive, static** wedding microsite so guests can reach schedule, venue, gallery, FAQ, and official LINE OA context **without RSVP flows or backends**.
 
-The website is read-only and does not collect guest information.
+Implementation lives in [`README.md`](README.md); this brief states product intent aligned with shipped routes.
 
-## Couple information
+## Couple identifiers (facts vs. visible copy)
 
-- Groom nickname: Top
-- Groom first name: Theerut
-- Bride nickname: Tan
-- Bride first name: Narueporn
-- Display name for friendly pages: Top & Tan
-- Display name for formal branding: Theerut & Narueporn
+Individuals:
 
-## Core goal
+- Groom nickname: Top · first name: Theerut  
+- Bride nickname: Tan · first name: Narueporn  
 
-Help guests quickly answer these questions:
+**All visible UI copy uses bride-first order:**
 
-1. When should I arrive?
-2. Where is the venue?
-3. How do I get there?
-4. Where can I stay nearby?
-5. What should I wear?
-6. Where can I view photos?
-7. Where do I get official updates?
+- Friendly: **Tan & Top**
+- Formal: **Narueporn & Theerut**
 
-## Non-goals
+Do **not** use groom-first wording such as Top & Tan or Theerut & Narueporn in guest-facing interfaces.
 
-The website must not include:
+*(The TN monogram may derive from initials; do not reorder names in typography on the live site.)*
 
-- RSVP form
-- Attendance counting
-- Chatbot
-- AI chat widget
-- Public contact form
-- Public comment box
-- Public gallery upload
-- Guest account/login system
-- Payment/gift collection flow
-- Any backend database unless explicitly added later
+## Core goals (guest-facing)
 
-## Recommended product positioning
+Guests should resolve quickly:
 
-A read-only wedding information hub with elegant branding and clear guest guidance. LINE OA is used as the official update and quick-access channel.
+1. When events take place / recommended arrival mindset  
+2. Where Conrad Bangkok sits and how to open Google Maps  
+3. What programme moments exist  
+4. How to browse gallery placeholders today and later memories  
+5. Where official updates/support live (supporting LINE page + FAQ)—**not** RSVP or chatbots  
 
-## Primary users
+**No standalone Accommodation page** or **Dress Code page** exists on site; FAQs may optionally cover attire or travel wording without implying new routes.
 
-### General wedding guests
-Need quick access to schedule, venue, parking, dress code, and gallery.
+## Non-goals (non‑negotiable)
 
-### Out-of-town guests
-Need accommodation, transport, and venue guidance.
+- RSVP surfaces, attendance counting, guest confirmations  
+- Public forms, uploads, surveys  
+- Chatbot / AI assistants on-site  
+- API routes, server actions, database, auth  
+- Middleware locale redirection  
+- Analytics in MVP (can be reconsidered deliberately later)  
 
-### Family and senior guests
-Need simple, large, clear information and easy map access.
+## Users
 
-### Wedding team/coordinator
-Need guests to self-serve information so they do not repeatedly ask the couple.
+- Guests on mobile opening links from LINE or QR codes  
+- English‑reading relatives using `/en` routes  
+- Couple needing a credible, calm information hub—not a ticketing system  
 
-## Tone of voice
+## Tone
 
-- Warm
-- Elegant
-- Calm
-- Clear
-- Polite
-- Not overly playful
-- Suitable for both Thai and international guests
+Warm, elegant, calm, polite. Suitable mixed Thai/international guests.
 
-## Language strategy
+## Languages
 
-Required from day one: bilingual Thai and English.
+Thai **default**. English mirrored under **`/en/*`**. Strings live exclusively in **`content/th/*.ts`** and **`content/en/*.ts`**.
 
-- Default language: Thai
-- English route group: `/en/*`
-- Content source: `content/th/*.ts` and `content/en/*.ts`
+## Success
 
-## Website success criteria
-
-The site is successful if:
-
-- Guests can understand the key wedding details within 30 seconds.
-- Guests can find schedule and venue directions within one tap on mobile.
-- Guests do not need to contact the couple for basic questions.
-- The website feels premium and wedding-appropriate.
-- The website works well on mobile, tablet, and desktop.
-- There are no public input forms or bot-prone surfaces.
+The site succeeds when guests skim key facts in under half a minute, trust the map/scheduling snippets, perceive premium hospitality styling, encounter **zero** RSVP friction, and use LINE only as communicated (updates / manual outreach).

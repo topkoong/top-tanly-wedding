@@ -72,3 +72,11 @@ Include elegant localized copy that photos will be added when available:
 - English: real photos will be added later
 
 Keep wording warm and guest-friendly, not technical.
+
+## Animation / interaction
+
+Interactive polish should remain subtle:
+
+- Fade / gentle hover lift on placeholders is desirable.
+- No motion that hides category labels permanently or blocks reading on mobile data.
+- Honor **`prefers-reduced-motion`** (reduce or skip non-essential motion).

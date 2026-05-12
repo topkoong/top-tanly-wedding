@@ -2,183 +2,95 @@
 
 ## Overview
 
-This project is a static Next.js App Router website.
+Tan & Top Wedding ships as a **Next.js App Router** app configured for **`output: "export"`** (static HTML/JS/CSS in `out/`). There is **no server runtime**, **no API routes**, **no server actions**, **no database**, and **no auth** in-repo.
 
-It is intentionally simple:
+Pinned versions live in **`package.json`** (currently Next **16.2.6**, React **19.2.4**, Tailwind **v4**, TypeScript **5.x**, Playwright dev **1.x**).
 
-- no backend
-- no API routes
-- no database
-- no authentication
-- no middleware locale routing
-- no RSVP or form submission workflow
+## App structure (`app/`)
 
-The application is built as static files and deployed to GitHub Pages.
+- **`layout.tsx`** — Root shell: fonts (`next/font/google`: Cormorant Garamond, Inter, IBM Plex Sans Thai), metadata, Navbar, Footer, global styles.
+- **`page.tsx`** — Thai home (`/`).
+- **`schedule/page.tsx`**, **`venue/page.tsx`**, **`gallery/page.tsx`**, **`faq/page.tsx`**, **`line/page.tsx`** — Thai routes.
+- **`en/`** — Mirrors the above under `/en/...`.
 
-## Folder Structure
+**Not present:** dynamic API routes, `middleware.ts` locale redirects, RSVP or form endpoints.
 
-Expected high-level structure:
+## Route structure & i18n
 
-```text
-app/
-components/
-content/
-lib/
-public/
-docs/
-.github/workflows/
+- **Thai:** root paths (`/` … `/line/`).
+- **English:** prefixed with `/en/`.
+- **No middleware.** Locale follows the URL segment only.
+
+`next.config.ts` sets `trailingSlash: true` for static-export-friendly canonical URLs matching GitHub Pages.
+
+## Content structure (`content/`)
+
+- **`content/schema.ts`** — Shared TypeScript types for page content objects.
+- **`content/site.ts`** — `getSiteContent(locale)` router.
+- **`content/th/*.ts`** — Thai copy (single source per page).
+- **`content/en/*.ts`** — English copy.
+
+**Rule:** visible strings belong in content files—not inline in JSX—for parity and translation safety.
+
+Branding constants also exist under `content/th/couple.ts` and `content/en/couple.ts` where useful.
+
+## Component structure
+
+```
+components/layout/   Navbar, Footer, MobileMenu
+components/sections/ HomeShell, ScheduleSection, VenueSection, GallerySection,
+                     FaqSection, LineSection
+components/ui/       Button, Container, Section, Heading, PlaceholderImage, FadeIn, …
+components/icons/    TNMonogram (and similar)
 ```
 
-## Routing
-
-Thai is the default language and lives at the root routes.
-
-English lives under `/en`.
-
-Expected route structure:
-
-```text
-app/
-├── page.tsx
-├── schedule/page.tsx
-├── venue/page.tsx
-├── gallery/page.tsx
-├── faq/page.tsx
-├── line/page.tsx
-└── en/
-    ├── page.tsx
-    ├── schedule/page.tsx
-    ├── venue/page.tsx
-    ├── gallery/page.tsx
-    ├── faq/page.tsx
-    └── line/page.tsx
-```
-
-Do not reintroduce:
-
-```text
-app/accommodation/
-app/dress-code/
-```
-
-## Components
-
-Typical component responsibilities:
-
-```text
-components/layout/
-```
-
-Layout-level components such as Navbar, Footer, and MobileMenu.
-
-```text
-components/sections/
-```
-
-Page-specific or section-level components such as Hero, Schedule, Venue, Gallery, FAQ, and LINE sections.
-
-```text
-components/ui/
-```
-
-Reusable primitives such as Button, Container, Section, Heading, PlaceholderImage, and FadeIn.
-
-```text
-components/icons/
-```
-
-Brand-related icons such as the TN monogram.
-
-## Content Model
-
-Visible text should come from content files, not hardcoded JSX.
-
-Expected content structure:
-
-```text
-content/
-├── schema.ts
-├── site.ts
-├── th/
-└── en/
-```
-
-Rules:
-
-- Thai copy belongs in `content/th`.
-- English copy belongs in `content/en`.
-- Shared type definitions belong in `content/schema.ts`.
-- Shared constants may live in `content/site.ts`.
-- Bride-first naming must be used in visible content:
-  - Tan & Top
-  - Narueporn & Theerut
+- Prefer **React Server Components**; use **`"use client"`** where state/browser APIs are needed (Navbar scroll, MobileMenu, FAQ accordion, FadeIn wrappers using `motion`).
+- Compose with **`cn()`** (`clsx` + `tailwind-merge`).
 
 ## Styling
 
-Styling is based on Tailwind CSS v4 and CSS design tokens.
+Tailwind CSS **v4** with design tokens declared in **`app/globals.css`** (`@theme`). No CSS-in-JS.
 
-The design direction is:
+## Static export strategy
 
-- minimal
-- elegant
-- classy
-- warm
-- premium
-- modern Thai hotel wedding style
-
-Core colours:
-
-- cream
-- ivory
-- champagne
-- rose
-- rose-deep
-- sage
-- gold
-- charcoal
-- stone
-
-The site should avoid plain documentation-style layouts.
-
-## Static Export
-
-This project uses static export.
-
-Important Next.js configuration:
+From `next.config.ts` (conceptually):
 
 ```ts
 output: "export"
 trailingSlash: true
-images: {
-  unoptimized: true
-}
+images: { unoptimized: true }
 ```
 
-For GitHub Pages project deployment under:
+`next/image` remains valid for sizing and markup; optimisation is delegated to export-friendly config.
 
-```text
-https://topkoong.github.io/top-tanly-wedding/
+### GitHub Pages `basePath` / `assetPrefix`
+
+When **`GITHUB_PAGES=true`** at build time:
+
+- `basePath: "/top-tanly-wedding"`
+- `assetPrefix: "/top-tanly-wedding/"`
+
+Local **`pnpm dev`** / default **`pnpm build`** omit these so URLs stay at the site root (`/`).
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+## Visual QA tooling
+
+Optional **Playwright** full-page screenshots: **`pnpm screenshots`** (`scripts-capture-screenshots.mjs`). Output: **`docs/screenshots/{mobile-390,tablet-768,desktop-1440}/`**.
+
+Install browsers when needed:
+
+```bash
+pnpm exec playwright install chromium
 ```
 
-the app also needs conditional GitHub Pages path support:
+## Constraints summary
 
-```ts
-basePath: "/top-tanly-wedding"
-assetPrefix: "/top-tanly-wedding/"
-```
-
-Only enable these when building for GitHub Pages.
-
-## Visual QA
-
-Playwright screenshots may be used for visual review.
-
-Expected screenshot output:
-
-```text
-docs/screenshots/mobile-390/
-docs/screenshots/tablet-768/
-docs/screenshots/desktop-1440/
-```
-
-Generated screenshots are useful for review, but they may be excluded from Git if they become too large.
+| Area | Policy |
+|------|--------|
+| Backend / API | None |
+| Forms / RSVP | Not allowed |
+| Database / Auth | Not allowed |
+| Analytics (MVP) | Not configured |
+| Public uploads | Not allowed |
+| Locale routing | Explicit paths only |

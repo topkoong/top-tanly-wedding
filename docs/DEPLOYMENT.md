@@ -133,6 +133,16 @@ The workflow should:
 7. Upload `out/`.
 8. Deploy to GitHub Pages.
 
+## Workflow reference
+
+The authoritative workflow lives in repository:
+
+```text
+.github/workflows/deploy.yml
+```
+
+It installs with **`pnpm install --frozen-lockfile`**, builds with **`GITHUB_PAGES: "true"`**, writes **`out/.nojekyll`**, uploads `./out`, and deploys via `actions/deploy-pages@v4`.
+
 ## Post-deployment QA
 
 After every deployment, check:

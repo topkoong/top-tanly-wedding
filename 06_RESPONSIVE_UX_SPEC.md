@@ -70,6 +70,10 @@ Do not include Home, LINE, Accommodation, Dress Code, RSVP, Contact in main nav.
 
 ## Motion and performance
 
-- Respect `prefers-reduced-motion`.
-- Keep animation subtle and non-essential.
-- Avoid effects that can degrade in in-app browsers.
+- Respect `prefers-reduced-motion`—disable purely decorative fades/slides when users request reduced motion (keep content visible).
+- Keep animation subtle: fade / gentle translate only; durations short-to-medium (~200–450 ms typical).
+- Avoid parallax or scroll-jacking suites that jitter inside LINE/Kakao/Android WebView builds.
+- Do not hide critical RSVP-adjacent copy behind motion-only reveals (even though RSVP itself is forbidden, the analogy stands for schedule/map content).
+- Optional flip cards permitted only where explicitly decorative—not for programme facts.
+
+Detailed acceptance mirrors **§ Animation** in [`10_ACCEPTANCE_CRITERIA_QA.md`](10_ACCEPTANCE_CRITERIA_QA.md) and [`docs/VISUAL_QA.md`](docs/VISUAL_QA.md).

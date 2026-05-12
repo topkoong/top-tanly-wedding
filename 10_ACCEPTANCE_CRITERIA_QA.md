@@ -118,3 +118,26 @@ Pass criteria:
 - `pnpm build` passes.
 - Static export output remains valid.
 - GitHub Pages `basePath` behavior remains working.
+
+## Motion / animation acceptance
+
+Allowed:
+
+- Fade / soft upward reveal for sections entering the viewport.
+- Gentle hover lift on gallery placeholders or illustrative cards—not on sole schedule typography.
+- Button / link colour transitions complying with WCAG contrast.
+- FAQ accordion easing that never traps keyboard focus while animating.
+
+Use with caution:
+
+- Flip / rotate interactions limited to ornamental Home/Gallery flourishes supplied by motion components with reduced-motion safeguards.
+
+Forbidden:
+
+- Parallax backgrounds, marquee tickers, spinners unrelated to genuine loading necessity.
+- Bouncing/elastic overshoot exaggerated enough to feel gimmicky versus premium calm.
+- Autoplay looping animation that steals reading attention.
+- Any animation violating **prefers-reduced-motion**.
+- Blocking users from accessing schedule/map copy until kinetic choreography completes—always provide immediate readability.
+
+Screenshots (`pnpm screenshots`) forcibly neuter CSS animation for deterministic PNG QA; this does **not** relax live-site motion rules above—it only stabilizes baseline captures.

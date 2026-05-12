@@ -1,143 +1,129 @@
 ---
-description: Coding conventions for the Top & Tan wedding website. Auto-loads on every Cursor chat in this project.
+description: Coding conventions for the Tan & Top wedding website. Auto-loads on every Cursor chat in this project.
 alwaysApply: true
 ---
 
 # Wedding Site — Cursor Rules
 
-You are helping build a static-first Next.js wedding website. Read the numbered spec files (`00_PRODUCT_BRIEF.md` through `12_TECH_STACK.md`) for full context. These rules summarize the non-negotiables.
+You are helping build a **static, read-only** Next.js wedding site. Canonical product/engineering docs: **`README.md`**, **`docs/PROJECT_OVERVIEW.md`**, **`docs/ARCHITECTURE.md`**, **`docs/VISUAL_QA.md`**, and numbered specs **`00`**–**`12`** (some contain historical framing—defer to **`README.md`** when they conflict).
 
-## Critical constraints (from 00, 09)
+## Critical constraints
 
 Never create:
 
-- ❌ RSVP page or RSVP form
-- ❌ Attendance counting / guest tracking
-- ❌ Guest confirmation workflow
+- ❌ RSVP page or RSVP workflow
+- ❌ Attendance counting / guest tracking / confirmation flows
 - ❌ Chatbot, AI chat widget, or chatbot SDK
-- ❌ Public contact form
+- ❌ Public contact form or any `<form>` UX that collects guest data
 - ❌ Public gallery upload
 - ❌ Login / auth system
 - ❌ Database
 - ❌ API routes
 - ❌ Server actions
-- ❌ Middleware-based language routing
+- ❌ Middleware-based language routing / locale redirects
 - ❌ Analytics in MVP
 
-If asked to "add a contact form," refuse and remind the user: guest support funnels to LINE OA updates/help per `08_LINE_OA_RICH_MENU_SPEC.md`, not a public form or chatbot.
+Guest support stays informational: deterministic FAQ plus **supporting LINE pages** documented in **`08_LINE_OA_RICH_MENU_SPEC.md`**—still **never** marketed as realtime AI concierge.
 
-## Stack (from 12_TECH_STACK)
+## Product truth — naming & locales
 
-- Next.js 16.2.6 App Router, TypeScript strict, Tailwind CSS v4
-- pnpm package manager only
-- `next/font/google` → Cormorant Garamond + Inter
-- `lucide-react` icons, `motion` animations
-- Static export (`output: 'export'`) with `images.unoptimized = true` for MVP, or a custom image loader
+**Visible naming (bride-first):**
 
-## File & naming conventions
+- `Tan & Top`
+- `Narueporn & Theerut`
 
-- **Components:** PascalCase, one per file, default export
-- **Content:** camelCase, in `content/th/*.ts` and `content/en/*.ts`, named exports with explicit types
-- **Utils:** lowercase, in `lib/`, named exports
-- **Hooks:** `use` prefix, in `lib/hooks/`
+Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI strings.
 
-## Language and routes
+**Routing:**
 
-- Default language is Thai.
-- English lives under `/en`.
-- Use static-export-friendly explicit routes only.
-- Never use middleware for locale detection/redirects in MVP.
-- Thai routes:
-  - `/`, `/schedule`, `/venue`, `/accommodation`, `/dress-code`, `/gallery`, `/faq`, `/line`
-- English routes:
-  - `/en`, `/en/schedule`, `/en/venue`, `/en/accommodation`, `/en/dress-code`, `/en/gallery`, `/en/faq`, `/en/line`
+- Thai default: `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`, `/line/`
+- English: `/en`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`, `/en/line/`
+- **`trailingSlash: true`** in production config — prefer links that match exported URLs.
 
-## Component patterns
+**Do not restore** Accommodation or Dress-code routes/menus unless the product charter changes.
 
-- Default to **server components**. Add `"use client"` only when state, effects, or browser APIs are required (Lightbox, Countdown, MobileMenu).
-- Every component accepts a `className` prop merged via `cn()` (clsx + tailwind-merge).
-- Every interactive element has visible focus state: `focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2`.
-- Every image uses `<Image>` from `next/image` with `alt`, `width`, `height` (or `fill` + `sizes`).
-- Internal links use `<Link>` from `next/link`. External links use `<a target="_blank" rel="noopener noreferrer">`.
+## Stack (see `package.json` for pinned versions)
 
-## Styling rules (from 03_DESIGN_SYSTEM)
+- Next.js App Router (currently **16.2.x**), TypeScript strict, Tailwind CSS v4
+- **pnpm only** (`packageManager` field)
+- `next/font/google` → Cormorant Garamond + Inter + **IBM Plex Sans Thai**
+- `lucide-react`, `motion` (subtle, reduced-motion-safe)
+- Static export (**`output: 'export'`**), **`images.unoptimized: true`**
+- Playwright (**dev**) + `pnpm screenshots` for deterministic visual QA (see **`docs/VISUAL_QA.md`**)
 
-- Tailwind utility classes only. No CSS-in-JS. For Tailwind CSS v4, use the `@theme` tokens defined in `app/globals.css`.
-- Use design system tokens (`cream`, `ivory`, `rose-deep`, `charcoal`, etc.). Don't introduce new colors.
-- Avoid arbitrary values like `text-[17px]` unless the design system explicitly calls for it.
-- Border radius: `rounded-2xl` (cards), `rounded-xl` (images), `rounded-full` (buttons & tags).
-- Shadows: use the warm-toned ones from `03_DESIGN_SYSTEM.md` section 5, not Tailwind's default `shadow-md`.
+Conditional GitHub Pages hosting:
 
-## Content rules (from 04_CONTENT_MODEL)
+```txt
+GITHUB_PAGES=true → basePath "/top-tanly-wedding" + trailing assetPrefix (see next.config.ts)
+```
 
-- **Never hardcode strings in JSX.** Components import from `content/th/*.ts` and `content/en/*.ts`.
-- Use placeholders for unconfirmed details. Never invent.
-- Tone: warm, elegant, calm, clear. Per `00_PRODUCT_BRIEF.md`.
-- Use the spelling `Venue`, not `Vanue`.
+## Files & conventions
 
-## Responsive rules (from 06_RESPONSIVE_UX)
+- **Components:** PascalCase files, default export (`components/layout/*`, `components/sections/*`, `components/ui/*`).
+- **Content:** camelCase TS modules exporting typed objects (`content/th/*.ts`, `content/en/*.ts`, **`content/schema.ts`**).
+- **Utils / hooks:** `lib/*.ts`, `lib/hooks/use*.ts`.
 
-- Mobile-first. Write base styles for 375px width, add `sm:` / `md:` / `lg:` breakpoints to enhance.
-- Touch targets minimum 44×44px (`py-3 px-4` minimum on tappable elements).
-- Body line length max ~65 characters (`max-w-prose` or `max-w-[65ch]`).
-- Test at 360px, 768px, 1280px (matches `10_ACCEPTANCE_CRITERIA_QA.md`).
+## Rendering patterns
 
-## Accessibility (non-negotiable, from 06, 10)
+- Default **Server Components**. Add `"use client"` only for interactivity (`MobileMenu`, `Navbar` scroll tweaks, accordion/fade wrappers, motion).
+- Components accept **`className`** merged with **`cn()`**.
+- Buttons/links/interactive widgets need visible focus styling (`focus-visible:ring-*`).
+- Prefer `next/image` with explicit dimensions or `fill` + `sizes` for real assets; placeholders use **`PlaceholderImage`**.
 
-- One `<h1>` per page. Subsequent headings step down without skipping levels.
-- All images have meaningful `alt` text (or `alt=""` for purely decorative).
-- Color contrast ≥ 4.5:1 for body, ≥ 3:1 for large text.
-- `prefers-reduced-motion` respected — disable non-essential animation when set.
-- Keyboard navigation works on every page.
+## Styling (`03_DESIGN_SYSTEM.md`)
 
-## Performance (from 12_TECH_STACK)
+- Tailwind utilities + tokens from **`app/globals.css`** `@theme`.
+- Palette tokens only (`cream`, `ivory`, `champagne`, `rose-deep`, …) — avoid random hex unless extending tokens deliberately.
+- Border radii conventions: cards `rounded-2xl`, media `rounded-xl`, CTAs/tags `rounded-full`.
+- Shadows only where spec calls for warm soft elevation.
 
-- Lighthouse mobile: 95+ Performance, 100 Accessibility, 100 Best Practices, 100 SEO.
-- LCP < 2.0s, CLS < 0.1.
-- Don't import full libraries: `import { Calendar } from 'lucide-react'`, not `import * as Lucide`.
-- `priority` on `next/image` only for the hero image per page.
-- Lazy-load Google Maps iframe.
+### Animation posture
 
-## Navigation rules (from 01_INFORMATION_ARCHITECTURE)
+✅ Fade / soft upward reveal, gentle hover lift on decorative imagery, restrained button fades, accordion easing with readable content states.
 
-- Thai desktop: `กำหนดการ · สถานที่ · ที่พัก · การแต่งกาย · แกลเลอรี · คำถามที่พบบ่อย · EN`
-- Thai mobile: `กำหนดการ · สถานที่ · ที่พัก · แกลเลอรี · คำถาม · EN`
-- English desktop: `Schedule · Venue · Accommodation · Dress Code · Gallery · FAQ · TH`
-- English mobile: `Schedule · Venue · Accommodation · Gallery · FAQ · TH`
-- Logo links:
-  - Thai pages: `/`
-  - English pages: `/en`
-- **Never include Home as a menu item.**
-- **Never include LINE as a primary main menu item.**
+⚠️ Flip/gimmick transitions only on ornamental Home/Gallery motifs—never for schedule facts or urgent venue instructions.
 
-## Branding (from 02_BRANDING_LOGO_DOMAIN)
+❌ Parallax loops, flashy 3D flips, marquees, autoplay gag animations, bouncing overshoot gimmicks—anything disrespecting **`prefers-reduced-motion`**.
 
-- Public name: `Top & Tan` (or `Top & Tan Wedding`)
-- Formal name: `Theerut & Narueporn`
-- Logo: TN monogram (formal initials, intertwined or stacked)
-- Footer / formal materials: full names. Casual / hero: `Top & Tan` is fine.
-- Wedding date: `Sunday, 29 November 2026`
-- Venue: `Conrad Bangkok`
+Screenshots tooling may disable CSS animations for deterministic PNG QA—don't interpret that as license to spam motion in production UI.
 
-## What NOT to do
+## Content rules (`04_CONTENT_MODEL.md`)
 
-- ❌ Don't add any form, chatbot, or input field — even disabled / decorative
-- ❌ Don't hardcode strings in JSX — read from `content/th/*.ts` and `content/en/*.ts`
-- ❌ Don't invent final wedding details — use placeholders from `04_CONTENT_MODEL.md`
-- ❌ Don't use cookies, localStorage, or session storage — site has no state to persist
-- ❌ Don't fetch external data at runtime — everything is static
-- ❌ Don't use placeholder image URLs from external services in production — use the `PlaceholderImage` component (per `07_GALLERY_PLACEHOLDER_SPEC.md`)
-- ❌ Don't add `"Contact"` page or menu item
-- ❌ Don't add Home as a menu item — logo links to home
-- ❌ Don't add LINE in the primary menu; treat LINE page as supporting-only
+- **Never hardcode copy in JSX.** Import from **`content/th/*`** / **`content/en/*`** only.
+- Use placeholders responsibly—never fabricated confirmed operational claims.
+- Friendly tone: warm, elegant, concise.
+- Spelling **`Venue`**, never `Vanue`.
 
-## LINE page positioning
+## Navigation UX
 
-- Keep dedicated LINE pages: `/line` and `/en/line`.
-- Surface LINE from footer, FAQ CTA, small home CTA, direct URL, or QR code.
-- LINE wording must emphasize official updates, reminders, announcements, venue/schedule notices, and manual contact channel if needed.
-- Never describe LINE as chatbot, AI assistant, or instant-answer system.
+Never list **Home** as a bullet. Logo lockup anchors to **`/`** (Thai) or **`/en`** (English).
 
-## When in doubt
+Main nav mirrors product:
 
-The numbered spec files are the source of truth. If a request seems to conflict with a spec, ask the user before assuming. If a spec is missing detail, default to the most minimal, accessible, performant interpretation.
+- Thai: `กำหนดการ · สถานที่ · แกลเลอรี · คำถามที่พบบ่อย · EN`
+- English: `Schedule · Venue · Gallery · FAQ · TH`
+
+**LINE** stays ancillary (support pages + CTAs)—never co-equal with Schedule/Venue in **`Navbar.tsx`/`MobileMenu.tsx`**.
+
+## LINE positioning
+
+Maintain `/line` + `/en/line` informational pages about official updates/reminders/coordinator assistance. Copy must clarify manual/human pacing—**not** instantaneous AI concierge nor RSVP automation.
+
+## Accessibility & responsiveness
+
+Follow **`06_RESPONSIVE_UX_SPEC.md`** + **`10_ACCEPTANCE_CRITERIA_QA.md`:**
+
+- Tap targets ≥ 44×44 px equivalents.
+- One `<h1>` per route, logical heading ladders.
+- Contrast thresholds (WCAG-ish: ~4.5:1 body, ~3:1 large type).
+- Test 375 / 390 / 430 / 768 widths before desktop polishing.
+
+## What NOT to do (recap)
+
+- ❌ Accommodation / Dress-code resurrected casually
+- ❌ Hardcoded multilingual strings sprinkled in JSX
+- ❌ Runtime data fetching powering guest-critical info
+- ❌ Decorative motion that hides schedule/map clarity
+- ❌ Middleware locale experiments breaking static exports
+
+When instructions conflict across legacy markdown packs, escalate with the repo owner—or default to **`README.md` + `.cursor/rules/wedding-site.mdc`**.

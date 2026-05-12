@@ -83,3 +83,24 @@ Never show `Top & Tan` or `Theerut & Narueporn` in visible UI copy.
 - Tap targets at least 44x44.
 - Respect `prefers-reduced-motion`.
 - No essential info conveyed by colour alone.
+
+## Animation policy
+
+Animations should reinforce luxury calm, not divert attention.
+
+**Allowed**
+
+- Subtle fade-in and soft upward reveal on section entry.
+- Gentle hover lift / scale on decorative cards or gallery placeholders.
+- Refined pill button colour transitions (`transition-colors`).
+- FAQ accordion expansions where content stays readable mid-motion.
+
+**Allowed only with caution**
+
+- Decorative flip-style interactions strictly on optional Home/Gallery motifs—never for schedule timelines or urgent venue facts.
+
+**Forbidden**
+
+- Parallax scrolling, marquee text, flashy 3D flips, looping autoplay gimmicks.
+- Animations that delay access to schedules, venues, directions, or legal info.
+- Motion that fights screenshot QA stability when left enabled—or that ignores **`prefers-reduced-motion`**.

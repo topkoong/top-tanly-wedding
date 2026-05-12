@@ -1,113 +1,72 @@
-# Tan & Top Wedding Website — Project Overview
+# Tan & Top Wedding Website — Project overview
 
 ## Purpose
 
-This project is a static, read-only, bilingual wedding information website for Tan & Top.
+Provide a **static, read-only, bilingual** (Thai-first) wedding microsite guests can open from LINE or mobile browsers. Content covers schedule, venue/maps, curated gallery placeholders, FAQ, and a **supporting** LINE Official Account explainer—not guest management tools.
 
-The website helps guests quickly access trusted wedding information from mobile or desktop, especially when opened from LINE or a mobile browser.
+See also: [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md) for what obsolete docs said vs. shipping code.
 
-Primary guest information includes:
+## Key product decisions
 
-- Wedding schedule
-- Venue and Google Maps
-- Gallery placeholders
-- FAQ
-- LINE Official Account support page
+- **Default locale:** Thai at root URLs; **English** under `/en/*`.
+- **Visible naming (bride-first):** Tan & Top · Narueporn & Theerut (never groom-first ordering in UI copy).
+- **No RSVP**, attendance counting, forms, chatbot, API routes, server actions, database, auth, or analytics in MVP.
+- **No middleware** locale detection—explicit routes only.
+- **Navigation:** Schedule, Venue, Gallery, FAQ + language switch. **LINE** is **not** in primary nav; pages `/line` and `/en/line` exist for official updates/reminders/manual support wording only.
+- **Removed from website IA:** Accommodation page, Dress Code page (dress guidance may appear in FAQ only).
 
-The website intentionally does not include RSVP, attendance counting, forms, chatbot, authentication, backend APIs, database, analytics, middleware locale redirects, or public guest uploads.
+## Wedding details
 
-## Key Product Decisions
+- **English date:** Sunday, 29 November 2026  
+- **Thai date:** วันอาทิตย์ที่ 29 พฤศจิกายน 2569  
+- **Venue:** Conrad Bangkok  
+- **Engagement & Rubwai:** 07:00–11:00 · Beverly Hills  
+- **Reception:** 11:00–14:00 · Conrad Ballroom  
+- **Parking:** Conrad Bangkok · All Seasons Place  
 
-- Default language: Thai
-- English pages live under `/en`
-- Bride-first display order:
-  - Tan & Top
-  - Narueporn & Theerut
-- LINE is not part of the main navigation
-- LINE exists only as a supporting page/channel
-- Accommodation and Dress Code pages are intentionally removed
-- Gallery uses intentional placeholders until real photos are available
-- The website is the official source of truth for static wedding information
-
-## Wedding Details
-
-- Date: Sunday, 29 November 2026
-- Venue: Conrad Bangkok
-- Engagement & Rubwai Ceremony:
-  - Time: 07:00–11:00
-  - Room: Beverly Hills
-- Wedding Reception:
-  - Time: 11:00–14:00
-  - Room: Conrad Ballroom
-- Parking:
-  - Conrad Bangkok
-  - All Seasons Place
-
-Operational venue details beyond this baseline must be verified before final publication.
+Operational detail on venue/floors/transit must stay accurate or marked “to be confirmed” per content owners.
 
 ## Routes
 
-Thai default routes:
+### Active (implemented)
 
-- `/`
-- `/schedule`
-- `/venue`
-- `/gallery`
-- `/faq`
-- `/line`
+Thai:
 
-English routes:
+- `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`, `/line/`
 
-- `/en`
-- `/en/schedule`
-- `/en/venue`
-- `/en/gallery`
-- `/en/faq`
-- `/en/line`
+English:
 
-Removed / intentionally unused:
+- `/en/`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`, `/en/line/`
 
-- `/accommodation`
-- `/dress-code`
-- RSVP-related routes
-- Contact form routes
-- Chatbot routes
+### Not shipped (legacy spec only)
 
-## Tech Stack
+`/accommodation`, `/dress-code`, RSVP or contact flows, chatbot surfaces.
 
-- Next.js App Router
-- TypeScript
-- Tailwind CSS v4
-- pnpm
-- Static export
-- GitHub Pages deployment
-- Playwright for optional screenshot capture / visual QA
+## Tech & hosting
 
-## Design Direction
+See [ARCHITECTURE.md](./ARCHITECTURE.md) and [DEPLOYMENT.md](./DEPLOYMENT.md).
 
-The visual direction is minimal, elegant, classy, warm, premium, and modern Thai hotel wedding style.
+Published: **[https://topkoong.github.io/top-tanly-wedding/](https://topkoong.github.io/top-tanly-wedding/)**.
 
-The site should feel like:
+## Removed / non-goals
 
-- a modern digital wedding invitation
-- a luxury hotel wedding microsite
-- an editorial wedding brochure
+- Guest-submitted RSVP or headcount  
+- Public uploads  
+- Automated “instant answer” bots  
+- Backend persistence tied to browsing the site  
 
-Avoid:
+## Design direction
 
-- heavy floral graphics
-- overly dark sections
-- generic cards
-- corporate styling
-- RSVP or form-like UI
-- chatbot or AI assistant wording
-- plain documentation-style layouts
+Minimal, elegant, warm, premium, **mobile-first**, modern Thai hotel wedding aesthetic—digital invitation, not generic documentation UI.
 
-## Quality Priorities
+### Quality priorities
 
-1. Mobile-first readability and polish at 375px, 390px, 430px, and 768px.
-2. Strong hierarchy and refined typography.
-3. Practical guest clarity on Schedule and Venue pages.
-4. Curated, intentional placeholder styling in Gallery.
-5. Complete FAQ answers in both Thai and English.
-6. Bride-first naming everywhere in visible content.
+1. Mobile readability (375 / 390 / 430 / 768).  
+2. Clear hierarchy on Schedule & Venue.  
+3. FAQ answers complete in Thai and English.  
+4. Gallery placeholders feel intentional (not empty grid noise).  
+5. Subtle motion only; **`prefers-reduced-motion`** honored.  
+
+## Visual QA
+
+[docs/VISUAL_QA.md](./VISUAL_QA.md) · Playwright: `pnpm screenshots`

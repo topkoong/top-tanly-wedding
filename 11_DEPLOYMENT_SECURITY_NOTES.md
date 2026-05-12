@@ -2,12 +2,20 @@
 
 ## Recommended deployment direction
 
-Deploy as a static-first Next.js site. Vercel is a practical option for Next.js projects, especially when connected to a Git repository for preview deployments.
+**Primary shipped target:** GitHub Pages project pages at **`https://topkoong.github.io/top-tanly-wedding/`**.
+
+Build pipeline (see [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)):
+
+- `pnpm install --frozen-lockfile`
+- `GITHUB_PAGES=true pnpm build` (enables conditional `basePath` / `assetPrefix` matching `/top-tanly-wedding`)
+- Deploy `out/` with `.nojekyll`
+
+Alternate hosts (Cloudflare Pages, Netlify bucket upload, AWS S3) remain possible—the static export artefact (`out/`) is host-agnostic. **Feature parity must keep static-export constraints.**
 
 Language routing must remain static-export-friendly:
 
-- Thai default routes at root (`/`, `/schedule`, etc.)
-- English under `/en` (`/en`, `/en/schedule`, etc.)
+- Thai default routes at root (`/`, `/schedule/`, etc.)
+- English under `/en/` (`/en/`, `/en/schedule/`, etc.)
 - No middleware-based locale routing in MVP
 
 ## MVP security posture
@@ -91,21 +99,21 @@ topandtanwedding.com
 Set social sharing title to:
 
 ```text
-Top & Tan Wedding
+Tan & Top Wedding
 ```
 
 Set social description to:
 
 ```text
-Wedding details, venue directions, accommodation guide, gallery, and official updates for Top & Tan's wedding.
+Tan & Top Wedding — schedule, Conrad Bangkok directions, gallery highlights, FAQs, and official LINE OA updates from Narueporn & Theerut.
 ```
 
-Use a soft, elegant Open Graph image with:
+Use a soft, elegant Open Graph image with bride-first typography:
 
 ```text
-Top & Tan
-Theerut & Narueporn
-[Wedding date placeholder]
+Tan & Top
+Narueporn & Theerut
+Sunday, 29 November 2026
 ```
 
 ## Launch checklist
@@ -117,13 +125,12 @@ Before sharing the QR code:
   - Sunday, 29 November 2026
   - Conrad Bangkok
   - Engagement & Rubwai ceremony (07:00–11:00, Beverly Hills room)
-  - Wedding Reception (11:00–14:00, Ballroom)
+  - Wedding Reception (11:00–14:00, Conrad Ballroom)
   - Parking: Conrad Bangkok / All Seasons Place
-- Test website on iPhone and Android.
-- Test LINE OA links.
-- Test Google Maps link.
-- Test Apple Maps link.
-- Test gallery placeholders.
+- Test website on iPhone and Android (including LINE in-app browser snapshots).
+- Test LINE OA deep links referenced from FAQ/home supporting CTAs only.
+- Test Google Maps CTA flows on Venue page (Thai + English labels).
+- Test gallery placeholders and reduced-motion behaviours.
 - Confirm no RSVP/form/chatbot exists.
 - Confirm no attendance workflow exists.
 - Confirm no API routes, server actions, or middleware locale routing exists.
