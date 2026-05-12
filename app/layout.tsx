@@ -46,10 +46,10 @@ export default function RootLayout({
       lang="th"
       className={`light h-full ${cormorant.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
     >
-      <body className="min-h-full bg-cream text-charcoal font-body">
-        <div className="flex min-h-screen flex-col">
+      <body className="min-h-full min-w-0 bg-cream text-charcoal font-body">
+        <div className="flex min-h-screen min-w-0 flex-col">
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="min-w-0 flex-1 overflow-x-clip">{children}</main>
           <Footer />
         </div>
       </body>

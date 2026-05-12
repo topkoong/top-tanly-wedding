@@ -16,7 +16,7 @@ export default function LineSection({ site, content }: LineSectionProps) {
   return (
     <Section background="cream">
       <Container size="narrow" className={isThai ? "font-thai" : "font-body"}>
-        <div className="space-y-8">
+        <div className="min-w-0 space-y-8">
           <Heading
             as="h1"
             eyebrow={site.footer.lineLabel}
@@ -25,35 +25,37 @@ export default function LineSection({ site, content }: LineSectionProps) {
             {content.title}
           </Heading>
           <DecorativeDivider />
-          <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
+          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
             {content.intro}
           </p>
-          <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
+          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
             {content.purpose}
           </p>
 
-          <div className="rounded-2xl border border-charcoal/10 bg-ivory p-6">
+          <div className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-6 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
             <h2 className={isThai ? "text-h3 font-thai text-charcoal" : "font-display text-h3 text-charcoal"}>
               {site.footer.lineLabel}
             </h2>
-            <ul className={isThai ? "mt-3 space-y-2 text-body text-stone leading-[1.7]" : "mt-3 space-y-2 text-body text-stone"}>
+            <ul className={isThai ? "mt-3 space-y-2 text-body leading-relaxed text-stone" : "mt-3 space-y-2 text-body leading-relaxed text-stone"}>
               {content.updates.map((update) => (
                 <li key={update}>- {update}</li>
               ))}
             </ul>
-            <ul className={isThai ? "mt-4 space-y-2 text-body text-stone leading-[1.7]" : "mt-4 space-y-2 text-body text-stone"}>
+            <ul className={isThai ? "mt-4 space-y-2 text-body leading-relaxed text-stone" : "mt-4 space-y-2 text-body leading-relaxed text-stone"}>
               {content.notUsedFor.map((item) => (
                 <li key={item}>- {item}</li>
               ))}
             </ul>
           </div>
 
-          <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
+          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
             {content.urgentHelp}
           </p>
 
-          <Button href={content.lineOaUrl}>{content.ctaLabel}</Button>
-          <p className={isThai ? "text-body-s text-stone leading-[1.7]" : "text-body-s text-stone"}>
+          <Button href={content.lineOaUrl} className="w-full shrink-0 sm:w-auto">
+            {content.ctaLabel}
+          </Button>
+          <p className={isThai ? "max-w-full text-body-s leading-relaxed text-stone" : "max-w-full text-body-s leading-relaxed text-stone"}>
             {content.helperText}
           </p>
         </div>

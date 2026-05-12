@@ -41,7 +41,7 @@ export default function PlaceholderImage({
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-gradient-to-br",
+        "relative min-h-0 min-w-0 w-full max-w-full overflow-hidden bg-gradient-to-br",
         rounded === "2xl" ? "rounded-2xl" : "rounded-xl",
         showBorder ? "border border-charcoal/10" : "",
         toneClass,

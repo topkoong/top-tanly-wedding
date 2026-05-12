@@ -22,7 +22,7 @@ export default function Section({
   background = "transparent",
 }: SectionProps) {
   return (
-    <section className={cn("py-16 md:py-24", backgroundClasses[background], className)}>
+    <section className={cn("min-w-0 py-16 md:py-24", backgroundClasses[background], className)}>
       {children}
     </section>
   );

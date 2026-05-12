@@ -25,7 +25,8 @@
   --font-body: var(--font-inter);
   --font-thai: var(--font-ibm-plex-thai);
 
-  --text-display-xl: clamp(3rem, 6vw, 6rem);
+  /* Smaller floor on phones avoids display headings forcing horizontal overflow */
+  --text-display-xl: clamp(2.25rem, 10vw + 0.35rem, 6rem);
   --text-display-l: clamp(2.25rem, 5vw, 4rem);
   --text-h1: clamp(2rem, 3.5vw, 3rem);
   --text-h2: clamp(1.5rem, 3vw, 2rem);
@@ -48,6 +49,11 @@ body {
   color: var(--color-text);
   font-family: var(--font-body), sans-serif;
   line-height: 1.7;
+  overflow-x: clip;
+}
+
+html {
+  overflow-x: clip;
 }
 
 @layer base {
@@ -57,8 +63,9 @@ body {
   }
 }
 
+/* Scoped prose width — avoid forcing grid/flex children wider than viewport */
 p {
-  max-width: 65ch;
+  max-width: min(65ch, 100%);
 }
 
 :lang(th) {

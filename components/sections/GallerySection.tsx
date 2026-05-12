@@ -18,7 +18,7 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
   return (
     <Section background="cream">
       <Container className={isThai ? "font-thai" : "font-body"}>
-        <div className="space-y-8">
+        <div className="min-w-0 space-y-8">
           <Heading
             as="h1"
             headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
@@ -26,35 +26,43 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
             {content.title}
           </Heading>
           <DecorativeDivider />
-          <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
+          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
             {content.intro}
           </p>
-          <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
+          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
             {content.note}
           </p>
 
-          <div className="flex flex-wrap gap-2">
-            {content.categoryTabs.map((tab, index) => (
-              <button
-                key={tab}
-                type="button"
-                className={
-                  index === 0
-                    ? "rounded-full border border-charcoal bg-charcoal px-4 py-2 text-body-s text-cream transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-                    : "rounded-full border border-charcoal/30 bg-transparent px-4 py-2 text-body-s text-charcoal transition-colors duration-200 hover:border-charcoal/50 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
-                }
-              >
-                {tab}
-              </button>
-            ))}
+          <div className="-mx-1 min-w-0 px-1">
+            <div
+              className="flex flex-nowrap gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              role="tablist"
+              aria-label={content.title}
+            >
+              {content.categoryTabs.map((tab, index) => (
+                <button
+                  key={`${tab}-${index}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === 0}
+                  className={`shrink-0 rounded-full px-4 py-2 text-body-s transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-cream ${
+                    index === 0
+                      ? "border border-charcoal bg-charcoal text-cream"
+                      : "border border-charcoal/30 bg-transparent text-charcoal hover:border-charcoal/50 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {content.items.map((item) => (
-              <div key={item.id}>
+              <div key={item.id} className="min-w-0 max-w-full">
                 {item.src ? (
                   <div
-                    className="relative overflow-hidden rounded-xl bg-ivory"
+                    className="relative min-w-0 max-w-full overflow-hidden rounded-xl bg-ivory"
                     style={{ aspectRatio: `${item.width}/${item.height}` }}
                   >
                     <Image src={item.src} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 33vw" />

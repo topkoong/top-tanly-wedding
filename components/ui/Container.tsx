@@ -22,7 +22,7 @@ export default function Container({
   size = "default",
 }: ContainerProps) {
   return (
-    <div className={cn("mx-auto w-full px-5 md:px-8", sizeClasses[size], className)}>
+    <div className={cn("mx-auto min-w-0 max-w-full px-4 sm:px-5 md:px-8", sizeClasses[size], className)}>
       {children}
     </div>
   );

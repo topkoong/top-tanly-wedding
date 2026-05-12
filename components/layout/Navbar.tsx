@@ -48,19 +48,21 @@ export default function Navbar({ className }: NavbarProps) {
       <Container>
         <div
           className={cn(
-            "relative flex h-20 items-center justify-between gap-4",
+            "relative flex min-h-[4rem] min-w-0 items-center justify-between gap-2 sm:gap-4",
             localeTextClass,
           )}
         >
           <Link
             href={getLocalizedHomeHref(locale)}
-            className="inline-flex items-center gap-3 rounded-full px-2 py-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
+            className="flex min-w-0 max-w-[calc(100%-3.75rem)] flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2"
             aria-label={siteContent.siteName}
           >
-            <TNMonogram className="h-7 w-7" />
-            <div className="flex flex-col leading-tight">
-              <span className="font-display text-xl">{siteContent.coupleFriendlyName}</span>
-              <span className="text-[11px] uppercase tracking-[0.16em] text-stone">
+            <TNMonogram className="h-7 w-7 shrink-0" />
+            <div className="min-w-0 leading-tight">
+              <span className="block text-pretty break-words font-display text-[clamp(1.125rem,4.5vw,1.375rem)] leading-tight tracking-tight sm:text-xl">
+                {siteContent.coupleFriendlyName}
+              </span>
+              <span className="hidden text-[11px] uppercase tracking-[0.12em] text-stone sm:block">
                 Wedding
               </span>
             </div>
@@ -90,6 +92,7 @@ export default function Navbar({ className }: NavbarProps) {
           </nav>
 
           <MobileMenu
+            className="shrink-0"
             items={siteContent.navMobile}
             languageSwitchHref={languageSwitchHref}
             languageSwitchLabel={siteContent.languageSwitchLabel}

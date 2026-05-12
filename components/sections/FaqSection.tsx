@@ -40,8 +40,8 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
 
   return (
     <Section background="cream">
-      <Container size="narrow" className={isThai ? "mx-auto max-w-3xl font-thai" : "mx-auto max-w-3xl font-body"}>
-        <div className="space-y-8">
+      <Container size="narrow" className={isThai ? "font-thai" : "font-body"}>
+        <div className="min-w-0 space-y-8">
           <Heading
             as="h1"
             headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
@@ -49,30 +49,30 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
             {content.title}
           </Heading>
           <DecorativeDivider />
-          <p className={isThai ? "text-body text-stone leading-[1.7]" : "text-body text-stone"}>
+          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
             {content.intro}
           </p>
 
           <div>
             {groupedItems.map((group) => (
-              <section key={group.category} className="mt-10 first:mt-0">
-                <div className="mb-4 mt-10 first:mt-0 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-rose-deep">
-                  <span className="h-px w-6 bg-rose-deep/50" />
-                  <span>{group.category}</span>
+              <section key={group.category} className="mt-10 min-w-0 first:mt-0">
+                <div className="mb-4 mt-10 flex min-w-0 flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-rose-deep first:mt-0 sm:tracking-[0.18em]">
+                  <span className="h-px w-6 shrink-0 bg-rose-deep/50" />
+                  <span className="min-w-0 max-w-full break-words">{group.category}</span>
                 </div>
                 <div>
                   {group.items.map((item) => (
-                    <article key={item.id} className="border-b border-charcoal/8">
+                    <article key={item.id} className="min-w-0 border-b border-charcoal/8">
                       <button
                         type="button"
                         onClick={() => toggleItem(group.category, item.id)}
-                        className="flex w-full items-start justify-between gap-4 py-5 text-left transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2"
+                        className="flex w-full min-w-0 items-start justify-between gap-3 py-5 text-left transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
                       >
                         <h2
                           className={
                             isThai
-                              ? "font-thai text-h3 leading-snug text-charcoal"
-                              : "font-display text-h3 leading-snug text-charcoal"
+                              ? "min-w-0 flex-1 break-words font-thai text-h3 leading-snug text-charcoal"
+                              : "min-w-0 flex-1 break-words font-display text-h3 leading-snug text-charcoal"
                           }
                         >
                           {item.question}
@@ -94,7 +94,7 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                             transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="overflow-hidden"
                           >
-                            <p className={isThai ? "max-w-prose pb-5 text-body text-stone leading-[1.75]" : "max-w-prose pb-5 text-body text-stone leading-[1.75]"}>
+                            <p className={isThai ? "max-w-full pb-5 text-body leading-relaxed text-stone" : "max-w-full pb-5 text-body leading-relaxed text-stone"}>
                               {item.answer}
                             </p>
                             {item.relatedHref ? (
@@ -115,8 +115,8 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
             ))}
           </div>
 
-          <div className="pt-2">
-            <Button href={lineHref} variant="secondary">
+          <div className="flex min-w-0 flex-col pt-2 sm:flex-row">
+            <Button href={lineHref} variant="secondary" className="w-full shrink-0 sm:w-auto">
               {content.lineCtaLabel}
             </Button>
           </div>

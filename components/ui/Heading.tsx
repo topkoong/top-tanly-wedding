@@ -29,13 +29,19 @@ export default function Heading({
   const Tag = as as ElementType;
 
   return (
-    <div className={cn("space-y-3", className)}>
+    <div className={cn("min-w-0 space-y-3", className)}>
       {eyebrow ? (
-        <p className="font-sans text-eyebrow uppercase tracking-[0.15em] text-stone">
+        <p className="max-w-full font-sans text-eyebrow uppercase tracking-[0.12em] text-stone sm:tracking-[0.15em]">
           {eyebrow}
         </p>
       ) : null}
-      <Tag className={cn("text-charcoal", headingStyles[as], headingClassName)}>
+      <Tag
+        className={cn(
+          "max-w-full text-pretty break-words text-charcoal",
+          headingStyles[as],
+          headingClassName,
+        )}
+      >
         {children}
       </Tag>
     </div>

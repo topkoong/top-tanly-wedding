@@ -14,12 +14,12 @@ export default function FadeIn({ className, children }: FadeInProps) {
   const shouldReduceMotion = useReducedMotion();
 
   if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>;
+    return <div className={cn("min-w-0 max-w-full", className)}>{children}</div>;
   }
 
   return (
     <motion.div
-      className={cn(className)}
+      className={cn("min-w-0 max-w-full", className)}
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}

@@ -34,10 +34,12 @@ export default function Footer({ className }: FooterProps) {
             <div className="flex justify-center text-charcoal/20">
               <TNMonogram className="h-10 w-10" title="" />
             </div>
-            <p className="font-display text-h2 leading-tight text-charcoal">{siteContent.coupleFormalName}</p>
-            <p className="text-body text-stone">{siteContent.coupleFriendlyName}</p>
+            <p className="mx-auto max-w-full text-pretty font-display text-h2 leading-tight text-charcoal">
+              {siteContent.coupleFormalName}
+            </p>
+            <p className="max-w-full text-body text-stone">{siteContent.coupleFriendlyName}</p>
             <div className="mx-auto h-px w-12 bg-gold/50" />
-            <p className="text-body-s text-stone md:whitespace-nowrap">
+            <p className="max-w-full text-pretty text-body-s leading-relaxed text-stone">
               {siteContent.weddingDate} · {siteContent.footer.venueLabel}
             </p>
             <p className="mx-auto max-w-sm text-body leading-relaxed text-stone/80">
@@ -55,7 +57,7 @@ export default function Footer({ className }: FooterProps) {
                 ) : null}
                 <Link
                   href={item.href}
-                  className="text-body-s text-stone transition-colors duration-200 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                  className="max-w-full text-pretty text-body-s leading-snug text-stone transition-colors duration-200 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
                 >
                   {item.label}
                 </Link>
