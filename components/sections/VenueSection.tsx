@@ -1,9 +1,17 @@
+import { BusFront, Car, TrainFront, type LucideIcon } from "lucide-react";
+
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
-import type { SiteContent, VenueContent } from "@/content/schema";
+import type { SiteContent, TransportOption, VenueContent } from "@/content/schema";
+
+const transportIcons: Record<TransportOption["icon"], LucideIcon> = {
+  train: TrainFront,
+  car: Car,
+  shuttle: BusFront,
+};
 
 type VenueSectionProps = {
   site: SiteContent;
@@ -33,6 +41,36 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
               <p className={isThai ? "max-w-full text-body-s leading-relaxed text-stone" : "max-w-full text-body-s leading-relaxed text-stone"}>
                 {content.address}
               </p>
+            ) : null}
+
+            {content.transport && content.transport.length > 0 && content.gettingHereTitle ? (
+              <section className="min-w-0 max-w-full space-y-5 rounded-2xl border border-charcoal/10 bg-ivory p-5 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
+                <p className="text-xs font-medium uppercase tracking-[0.12em] text-stone">{content.gettingHereTitle}</p>
+                <ul className="space-y-5">
+                  {content.transport.map((item, index) => {
+                    const Icon = transportIcons[item.icon];
+                    return (
+                      <li key={`${item.label}-${index}`} className="flex min-w-0 gap-3">
+                        <Icon className="mt-0.5 h-5 w-5 shrink-0 text-rose-deep" aria-hidden />
+                        <div className="min-w-0 space-y-2">
+                          <p className="text-body font-medium text-charcoal">{item.label}</p>
+                          <p className="max-w-full text-body leading-relaxed text-stone">{item.detail}</p>
+                          {item.steps && item.steps.length > 0 ? (
+                            <ol className="mt-2 list-decimal space-y-1 pl-5 text-body-s leading-relaxed text-stone">
+                              {item.steps.map((step, stepIndex) => (
+                                <li key={stepIndex}>{step}</li>
+                              ))}
+                            </ol>
+                          ) : null}
+                          {item.note ? (
+                            <p className="max-w-full text-body-s leading-relaxed text-stone/90">{item.note}</p>
+                          ) : null}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
             ) : null}
 
             <div className="space-y-3">

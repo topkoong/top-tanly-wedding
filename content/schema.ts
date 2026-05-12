@@ -93,6 +93,8 @@ export type VenueContent = {
   summary: string;
   mainVenue: string;
   address?: string;
+  /** Section heading; shown only when `transport` has at least one item. */
+  gettingHereTitle?: string;
   eventSpaces: Array<{
     room: string;
     floor?: string;
