@@ -31,7 +31,7 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
   }, [content.items, tabIndex]);
 
   return (
-    <Section background="cream">
+    <Section background="cream" botanical>
       <Container className={isThai ? "font-thai" : "font-body"}>
         <div className="min-w-0 space-y-8">
           <Heading
@@ -62,7 +62,7 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
                   aria-selected={tabIndex === index}
                   onClick={() => setTabIndex(index)}
                   className={cn(
-                    "shrink-0 rounded-full px-4 py-2.5 text-body-s transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+                    "shrink-0 rounded-full px-4 py-2.5 text-body-s transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
                     tabIndex === index
                       ? "border border-olive bg-olive text-cream shadow-[0_6px_16px_-10px_rgba(86,94,63,0.45)]"
                       : "border border-charcoal/25 bg-ivory/80 text-charcoal hover:border-olive/40 hover:bg-olive-soft/50",

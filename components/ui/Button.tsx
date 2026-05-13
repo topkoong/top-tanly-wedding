@@ -10,11 +10,13 @@ type ButtonProps = {
   children: ReactNode;
   href: string;
   variant?: ButtonVariant;
+  /** Optional icon after label (e.g. chevron for invitation CTAs). */
+  endIcon?: ReactNode;
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "inline-flex min-h-11 max-w-full items-center justify-center whitespace-normal rounded-full bg-olive px-6 py-3 text-center text-body font-medium tracking-[0.02em] text-cream shadow-[0_10px_26px_-14px_rgba(86,94,63,0.42)] transition-colors duration-200 hover:bg-olive-deep active:bg-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+    "inline-flex min-h-11 max-w-full items-center justify-center gap-2 whitespace-normal rounded-full bg-olive px-6 py-3 text-center text-body font-medium tracking-[0.02em] text-cream shadow-[0_10px_26px_-14px_rgba(86,94,63,0.42)] transition-colors duration-200 hover:bg-olive-deep active:bg-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
   secondary:
     "inline-flex min-h-11 max-w-full items-center justify-center whitespace-normal rounded-full border border-olive/35 bg-ivory px-6 py-3 text-center text-body font-medium text-charcoal transition-colors duration-200 hover:border-olive/55 hover:bg-olive-soft/60 active:bg-olive-soft focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
   tertiary:
@@ -26,6 +28,7 @@ export default function Button({
   children,
   href,
   variant = "primary",
+  endIcon,
 }: ButtonProps) {
   const isExternal = href.startsWith("http");
 
@@ -38,6 +41,7 @@ export default function Button({
         className={cn("text-body", variantClasses[variant], className)}
       >
         {children}
+        {endIcon}
       </a>
     );
   }
@@ -48,6 +52,7 @@ export default function Button({
       className={cn("text-body", variantClasses[variant], className)}
     >
       {children}
+      {endIcon}
     </Link>
   );
 }

@@ -33,7 +33,9 @@ export const siteContentEn: SiteContent = {
   mobileMenuCloseLabel: "Close menu",
   homeShell: {
     invitationCardEyebrow: "Save the date",
+    invitationLeadIn: "Together with their families",
     formalNames: "Narueporn & Theerut",
+    invitationInviteLine: "We invite you to celebrate our wedding",
     dateLabel: "Sunday, 29 November 2026",
     locationLabel: "Conrad Bangkok",
     invitationProgrammeSummary: "Morning ceremony and wedding reception",

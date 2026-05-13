@@ -26,9 +26,9 @@ export default function MobileBottomNav() {
   return (
     <nav
       aria-label={locale === "th" ? "เมนูล่าง" : "Bottom navigation"}
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-charcoal/10 bg-cream/97 pb-[max(0.35rem,env(safe-area-inset-bottom))] pt-1.5 shadow-[0_-8px_28px_-16px_rgba(45,38,32,0.1)] backdrop-blur-md lg:hidden"
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-olive pb-[max(0.35rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-10px_32px_-12px_rgba(45,38,32,0.28)] lg:hidden"
     >
-      <div className="mx-auto flex min-h-[3.25rem] max-w-lg min-w-0 items-stretch justify-between gap-0.5 px-2">
+      <div className="mx-auto flex min-h-[3.35rem] max-w-lg min-w-0 items-stretch justify-between gap-0.5 px-1.5">
         {site.bottomNav.map((item) => {
           const Icon = iconMap[item.icon];
           const active = isRouteActive(pathname, item.href);
@@ -37,11 +37,18 @@ export default function MobileBottomNav() {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1 py-1.5 text-[0.65rem] font-medium leading-tight transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:text-xs",
-                active ? "text-olive-deep" : "text-stone hover:text-charcoal",
+                "flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-0.5 py-1.5 text-[0.62rem] font-medium leading-tight text-cream/80 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/80 focus-visible:ring-offset-2 focus-visible:ring-offset-olive sm:text-[0.7rem]",
+                active && "bg-white/10 text-cream",
               )}
             >
-              <Icon className="h-[1.125rem] w-[1.125rem] shrink-0 sm:h-5 sm:w-5" strokeWidth={active ? 2 : 1.5} aria-hidden />
+              <Icon
+                className={cn(
+                  "h-[1.125rem] w-[1.125rem] shrink-0 sm:h-5 sm:w-5",
+                  active ? "text-cream" : "text-cream/85",
+                )}
+                strokeWidth={active ? 2.25 : 1.75}
+                aria-hidden
+              />
               <span className="max-w-full truncate text-center">{item.label}</span>
             </Link>
           );

@@ -6,12 +6,18 @@ Most guests will open the site from LINE or a mobile browser. Mobile design is t
 
 Every page must be reviewed at:
 
+- 360px
 - 375px
 - 390px
+- 393px
+- 414px
 - 430px
 - 768px
+- 1024px
 
 Also validate desktop at 1280px and 1440px.
+
+Decorative botanical layers (`BotanicalBackdrop`, `FooterBotanical`, `SoftPageBotanical`) must remain clipped inside `overflow-hidden` ancestors so they **never widen the canvas** beyond these checkpoints.
 
 ## Navigation behavior
 
@@ -38,7 +44,7 @@ Do not include Home, LINE, Accommodation, Dress Code, RSVP, Contact in **desktop
 
 ## Home on mobile
 
-- **Invitation-first** layout: centered **Tan & Top**, formal names, ceremonial **date card** (date + programme summary + Conrad Bangkok) and **View Details** scroll/anchor to quick links.
+- **Invitation-first** layout: centered **Tan & Top** (display serif, olive-deep), subdued formal names, ceremonial **date card** (ivory plane + botanical rule) housing date, programme summary, Conrad Bangkok label, then **View Details** scroll/anchor.
 - **Quick-action cards** (Schedule, Venue, Gallery, FAQ) are large tappable rows with icon, title, and subtitle—**no** RSVP or Gift cards.
 - Optional soft botanical corners (CSS/SVG only); avoid overflow.
 - LINE remains a **supporting** link in the welcome block—not a primary hero CTA.
@@ -67,8 +73,8 @@ Do not include Home, LINE, Accommodation, Dress Code, RSVP, Contact in **desktop
 
 ## FAQ on mobile
 
-- Categories easy to scan.
-- Question/answer spacing comfortable.
+- Categories easy to scan with gold/olive hairline markers (tight Thai tracking defaults).
+- Each question renders as its own ivory card; expanded answers breathe on whisper cream washes.
 - Answers remain complete and readable.
 - LINE CTA subtle and secondary.
 

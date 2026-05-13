@@ -57,15 +57,15 @@ Published: **[https://topkoong.github.io/top-tanly-wedding/](https://topkoong.gi
 
 ## Design direction
 
-**Mobile invitation** aesthetic: soft cream/ivory surfaces, **olive** botanical accent for primary actions and bottom navigation, **gold** for thin ceremonial dividers only, warm Thai wedding mood, rounded invitation cards, subtle botanical hints (CSS/SVG—no heavy asset dependency). Desktop stays editorial and calm. **No** RSVP, Gift, or Accommodation/Dress-code routes.
+**Mobile invitation** aesthetic (2026 refinement): whisper **cream** canvas with layered olive/sage gradients, strongest **corner botanical SVG framing** on Home, quieter `SoftPageBotanical` corners on Schedule/Venue/Gallery/FAQ/LINE sections, ivory invite cards (`FCFAF6`-toned shadows), serif display typography in **Cormorant (400–700)** with headings leaning **olive-deep**, IBM Plex Sans Thai for body practicality, muted **gold-only** ceremonial dividers, and a **closing footer gradient** blending ivory→cream with subtle botanical echoes (never a slab footer). LINE remains ancillary in copy only.
 
 ### Quality priorities
 
-1. Mobile readability (375 / 390 / 430 / 768).  
-2. Clear hierarchy on Schedule & Venue.  
-3. FAQ answers complete in Thai and English.  
-4. Gallery placeholders feel intentional (not empty grid noise).  
-5. Subtle motion only; **`prefers-reduced-motion`** honored.  
+1. Mobile readability across **360 / 375 / 390 / 393 / 414 / 430 / 768 / 1024 / 1280 / 1440** widths — decor must never widen the viewport.  
+2. Typography hierarchy unmistakable (invite hero vs pragmatic body).  
+3. Schedule & Venue cards feel premium without hiding operational facts.  
+4. FAQ answers remain complete/localized while matching the softened card accordion pattern.  
+5. Gallery placeholders + motion cues stay restrained; **`prefers-reduced-motion`** honored globally.
 
 ## Visual QA
 

@@ -6,6 +6,7 @@ import { Fragment } from "react";
 
 import TNMonogram from "@/components/icons/TNMonogram";
 import Container from "@/components/ui/Container";
+import FooterBotanical from "@/components/ui/FooterBotanical";
 import { getSiteContent } from "@/content/site";
 import { getLocaleFromPathname } from "@/lib/locale";
 import { cn } from "@/lib/utils";
@@ -23,22 +24,23 @@ export default function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        "border-t border-charcoal/10 bg-cream pt-12 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-12 lg:pb-10",
+        "relative overflow-hidden border-t border-olive/10 bg-gradient-to-b from-ivory via-cream to-olive-soft/35 pt-12 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-12 lg:pb-10",
         localeTextClass,
         className,
       )}
     >
-      <Container>
+      <FooterBotanical />
+      <Container className="relative z-10">
         <div className="mx-auto max-w-6xl text-center">
           <div className="mx-auto max-w-lg space-y-3">
-            <div className="flex justify-center text-olive/25">
+            <div className="flex justify-center text-olive/35">
               <TNMonogram className="h-9 w-9" title="" />
             </div>
-            <p className="mx-auto max-w-full text-pretty font-display text-h2 leading-tight text-charcoal">
+            <p className="mx-auto max-w-full text-pretty font-display text-h2 font-semibold leading-tight text-olive-deep">
               {siteContent.coupleFormalName}
             </p>
-            <p className="max-w-full text-body text-stone">{siteContent.coupleFriendlyName}</p>
-            <div className="mx-auto h-px w-12 bg-gold/50" />
+            <p className="max-w-full text-body leading-relaxed text-charcoal">{siteContent.coupleFriendlyName}</p>
+            <div className="mx-auto h-px max-w-[3rem] bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
             <p className="max-w-full text-pretty text-body-s leading-relaxed text-stone">
               {siteContent.weddingDate} · {siteContent.footer.venueLabel}
             </p>
@@ -57,7 +59,7 @@ export default function Footer({ className }: FooterProps) {
                 ) : null}
                 <Link
                   href={item.href}
-                  className="max-w-full text-pretty text-body-s leading-snug text-stone transition-colors duration-200 hover:text-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                  className="max-w-full text-pretty text-body-s leading-snug text-charcoal transition-colors duration-200 hover:text-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
                 >
                   {item.label}
                 </Link>
@@ -65,7 +67,7 @@ export default function Footer({ className }: FooterProps) {
             ))}
           </nav>
 
-          <p className="mt-4 text-xs tracking-[0.06em] text-stone/50">Tan & Top Wedding 2026</p>
+          <p className="mt-4 text-xs tracking-[0.06em] text-stone/55">Tan & Top Wedding 2026</p>
         </div>
       </Container>
     </footer>

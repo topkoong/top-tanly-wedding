@@ -15,7 +15,7 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
   const isThai = site.locale === "th";
 
   return (
-    <Section background="cream">
+    <Section background="cream" botanical>
       <Container className={isThai ? "font-thai" : "font-body"}>
         <div className="min-w-0 space-y-8">
           <Heading
@@ -54,8 +54,8 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
                   <h2
                     className={
                       isThai
-                        ? "max-w-full text-pretty break-words text-h3 font-thai leading-snug text-charcoal"
-                        : "max-w-full text-pretty break-words font-display text-h3 leading-snug text-charcoal"
+                        ? "max-w-full text-pretty break-words text-h3 font-thai font-medium leading-snug text-olive-deep"
+                        : "max-w-full text-pretty break-words font-display text-h3 font-medium leading-snug text-olive-deep"
                     }
                   >
                     {isThai ? event.thaiName : event.englishName}
@@ -75,7 +75,7 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
                     {event.chips.map((chip) => (
                       <span
                         key={chip}
-                        className="max-w-full rounded-full border border-charcoal/15 bg-cream/80 px-3 py-1.5 text-xs leading-snug text-charcoal"
+                        className="max-w-full rounded-full border border-charcoal/[0.08] bg-ivory/90 px-3 py-1.5 text-xs leading-snug text-charcoal"
                       >
                         {chip}
                       </span>
@@ -84,7 +84,7 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
 
                   <Link
                     href={event.venuePageHref}
-                    className="inline-flex max-w-full rounded-full px-2 py-2 text-body-s leading-snug text-olive underline underline-offset-4 decoration-olive/40 transition-colors duration-200 hover:text-olive-deep hover:decoration-olive-deep/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:rounded-sm"
+                    className="inline-flex max-w-full rounded-full px-2 py-2 text-body-s leading-snug text-olive underline underline-offset-[5px] decoration-olive/35 decoration-2 transition-colors duration-200 hover:bg-olive-soft/35 hover:no-underline hover:text-olive-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:rounded-md focus-visible:ring-offset-ivory"
                   >
                     {content.venueButtonLabel}
                   </Link>

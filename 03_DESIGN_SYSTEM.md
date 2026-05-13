@@ -12,24 +12,40 @@ The site must feel like a minimal luxury wedding invitation. Every page must hav
 
 ## Colour palette (fixed)
 
-Core tokens in `app/globals.css` `@theme`:
+Core tokens in `app/globals.css` `@theme` (hex references for handoff parity):
 
-- **Surfaces:** `cream`, `ivory`, `champagne`, `olive-soft`
-- **Botanical / primary accent:** `olive`, `olive-deep` — primary buttons, mobile nav active state, key icon circles, subtle borders
-- **Supporting green:** `sage`
-- **Warm accent (not dominant):** `rose`, `rose-deep` — tertiary links, rare warmth; do **not** default every CTA to rose
-- **Ceremony:** `gold` — thin dividers, hairlines, tiny decorative marks only
-- **Text:** `charcoal`, `stone`
+| Token | Typical hex | Usage |
+|-------|----------------|-------|
+| `cream` | #F8F5EF | Page canvas |
+| `ivory` | #FCFAF6 | Invite cards / raised surfaces |
+| `olive` | #6F7654 | Primary actions, botanical silhouettes |
+| `olive-deep` | #565E3F | Page titles (`h1`–`h3`), richer emphasis |
+| `sage` / `sage-soft` | #A5AC8A / tinted wash | Whisper botanicals |
+| `gold` | #CDBD8B | Divider hairlines only |
+| `charcoal` | #3B382F | Default body hierarchy |
+| `stone` | #7A766E | Secondary / meta copy |
 
-Use warm light backgrounds by default. Use `charcoal`/`stone` for hierarchy. Avoid harsh full-width dark blocks.
+Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.
+
+Ceremony typography colour pattern:
+
+- **Primary headings (`h1`–`h3`):** olive-deep invitations tone.
+- **Body copy:** charcoal or stone depending on prominence.
+- **Eyebrows / ceremonial labels:** olive-deep in display type; **do not** apply heavy tracking to Thai glyphs.
 
 ## Typography rules
 
-- Display names: Cormorant Garamond (`Tan & Top`, `Narueporn & Theerut`)
-- Thai body: IBM Plex Sans Thai
-- English body: Inter
-- Thai body should remain readable (about 16px with generous line-height around 1.7).
-- Avoid excessive letter spacing in Thai labels.
+- **Display titles & English ceremony labels:** Cormorant Garamond (weights 400–700) — invitation hero (“Tan & Top”), marquee headings (`h1`–`h3` default to olive-deep).
+- Thai body / practical copy: IBM Plex Sans Thai (`font-thai`).
+- English body/micro-copy: Inter.
+- Maintain ~16 px Thai body sizing with relaxed line-height (≈1.65–1.7).
+- Eyebrows: display font for Latin ceremony lines; tighter tracking defaults (`0.07–0.11em`) versus older wide settings—**never exaggerate spacing on Thai source strings.**
+
+## Invitation botanical layering
+
+1. **`BotanicalBackdrop` (hero only)** — four-corner clipped SVG washes; strongest presence; must stay `pointer-events-none` + inside `overflow-hidden` parents so **no horizontal bleed** occurs on 360 px canvases.
+2. **`SoftPageBotanical`** — quieter corner silhouettes reused by `Section`’s optional `botanical` flag (`Schedule`, `Venue`, `Gallery`, `FAQ`, `LINE` pages).
+3. **`InvitationBotanicalRule` / `DecorativeDivider`** — micro gold + olive motifs for in-card separators.
 
 ## Naming rule (non-negotiable)
 
@@ -72,8 +88,12 @@ Never show `Top & Tan` or `Theerut & Narueporn` in visible UI copy.
 
 ### Footer
 
-- Light footer only (cream background), thin top border, centered composition; extra bottom padding on small screens so content clears the **fixed bottom nav**.
-- Must feel like the closing page of a luxury wedding brochure.
+- **Light “closing pane”**: gradient (`ivory → cream`) with faint olive-soft wash plus `FooterBotanical` SVG echoes—still **readable on cream** and padded for the mobile nav safe area.
+- Centered typography stack; avoid dark slabs or oversized monograms.
+
+## Forbidden / safeguards
+
+- **No RSVP**, Gift flows, Accommodation/Dress-code routes, or LINE in primary menus (see product docs).
 
 ## Page-level quality requirements
 
