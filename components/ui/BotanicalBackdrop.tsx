@@ -1,8 +1,13 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
+/** Matches quiet-luxury home reference; clipped corners only (asset is a tall frame). */
+const FLORAL_QUIET_LUXURY = "/images/home-floral-quiet-luxury.png";
+
 /**
- * Corner floral framing for the home hero — SVG only, clipped, no overflow.
- * Intensity scales up slightly from mobile → desktop without widening layout.
+ * Corner floral framing for the home hero — photoreal whisper (muted) plus soft SVG echoes.
+ * Clips the reference PNG to corners only so central content stays editorial (Tan & Top).
  */
 export default function BotanicalBackdrop({ className }: { className?: string }) {
   return (
@@ -10,6 +15,47 @@ export default function BotanicalBackdrop({ className }: { className?: string })
       className={cn("pointer-events-none absolute inset-0 z-0 overflow-hidden", className)}
       aria-hidden
     >
+      {/* Photoreal lilac whisper — corner crops from authored reference */}
+      <div className="absolute -left-8 -top-6 h-[min(46vw,300px)] w-[min(64vw,320px)] overflow-hidden sm:left-0 sm:h-[min(42vw,360px)] sm:w-[min(52vw,400px)]">
+        <Image
+          src={FLORAL_QUIET_LUXURY}
+          alt=""
+          fill
+          className="object-cover object-[4%_2%] opacity-[0.14] saturate-[0.92] brightness-[1.03] contrast-[0.97] md:opacity-[0.17]"
+          sizes="(max-width: 768px) 64vw, 420px"
+        />
+      </div>
+      <div className="absolute -right-8 -top-4 h-[min(46vw,300px)] w-[min(64vw,320px)] overflow-hidden sm:right-0 sm:h-[min(42vw,360px)] sm:w-[min(52vw,400px)]">
+        <Image
+          src={FLORAL_QUIET_LUXURY}
+          alt=""
+          fill
+          className="object-cover object-[96%_4%] opacity-[0.14] saturate-[0.92] brightness-[1.03] contrast-[0.97] md:opacity-[0.17]"
+          sizes="(max-width: 768px) 64vw, 420px"
+        />
+      </div>
+      <div className="absolute -bottom-4 -left-10 h-[min(48vw,320px)] w-[min(66vw,340px)] overflow-hidden sm:bottom-0 sm:left-0 sm:h-[min(44vw,380px)] sm:w-[min(54vw,420px)]">
+        <Image
+          src={FLORAL_QUIET_LUXURY}
+          alt=""
+          fill
+          className="object-cover object-[8%_100%] opacity-[0.12] saturate-[0.92] brightness-[1.03] contrast-[0.97] md:opacity-[0.15]"
+          sizes="(max-width: 768px) 66vw, 440px"
+        />
+      </div>
+      <div className="absolute -bottom-10 -right-10 h-[min(52vw,340px)] w-[min(70vw,360px)] overflow-hidden sm:-bottom-4 sm:right-0 sm:h-[min(46vw,400px)] sm:w-[min(56vw,440px)]">
+        <Image
+          src={FLORAL_QUIET_LUXURY}
+          alt=""
+          fill
+          className="object-cover object-[92%_98%] opacity-[0.12] saturate-[0.92] brightness-[1.03] contrast-[0.97] md:opacity-[0.15]"
+          sizes="(max-width: 768px) 70vw, 460px"
+        />
+      </div>
+
+      {/* Centre veil keeps hero typography calm */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_min(92%,96%)_at_50%_38%,rgb(248_245_239/0.88)_42%,transparent_72%)]" />
+
       {/* Top-left: layered leaves + rose-like bloom */}
       <div className="absolute -left-8 top-0 h-44 w-44 text-olive/[0.2] sm:left-0 sm:h-56 sm:w-56 md:h-60 md:w-60 md:text-olive/[0.24]">
         <svg viewBox="0 0 140 140" className="h-full w-full" fill="none">
