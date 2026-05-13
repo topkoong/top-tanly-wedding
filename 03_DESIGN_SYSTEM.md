@@ -12,10 +12,16 @@ The site must feel like a minimal luxury wedding invitation. Every page must hav
 
 ## Colour palette (fixed)
 
-- `cream`, `ivory`, `champagne`, `rose`, `rose-deep`, `sage`, `gold`, `charcoal`, `stone`
-- Use warm light backgrounds by default.
-- Use `charcoal`/`stone` for text hierarchy.
-- Use `gold` for subtle accents only (divider, small decorative marks).
+Core tokens in `app/globals.css` `@theme`:
+
+- **Surfaces:** `cream`, `ivory`, `champagne`, `olive-soft`
+- **Botanical / primary accent:** `olive`, `olive-deep` — primary buttons, mobile nav active state, key icon circles, subtle borders
+- **Supporting green:** `sage`
+- **Warm accent (not dominant):** `rose`, `rose-deep` — tertiary links, rare warmth; do **not** default every CTA to rose
+- **Ceremony:** `gold` — thin dividers, hairlines, tiny decorative marks only
+- **Text:** `charcoal`, `stone`
+
+Use warm light backgrounds by default. Use `charcoal`/`stone` for hierarchy. Avoid harsh full-width dark blocks.
 
 ## Typography rules
 
@@ -47,31 +53,31 @@ Never show `Top & Tan` or `Theerut & Narueporn` in visible UI copy.
 
 - Pill shape (`rounded-full`) for primary and secondary.
 - Smooth colour transitions (`transition-colors duration-200`).
-- Primary: rose-deep or charcoal background with cream/ivory text.
-- Secondary: transparent/cream with thin border and soft fill hover.
-- Tertiary: understated link-like action (subtle underline or arrow).
+- **Primary:** `olive` / `olive-deep` background, cream text, soft botanical shadow.
+- **Secondary:** ivory/cream with `olive`/`charcoal` border, charcoal text, soft hover fill (`olive-soft`).
+- **Tertiary:** understated link with `olive` underline (not loud rose).
 - Maintain WCAG AA contrast in every hover/active state.
 
 ### Navbar
 
-- Refined lockup: TN monogram + `Tan & Top`.
-- Warm cream/champagne translucent background.
-- Subtle active route indication.
-- Soft divider/hairline, elegant hover states, intentional language switch.
+- Refined lockup: TN monogram + `Tan & Top`; optional “Wedding” subline on larger breakpoints.
+- Warm cream translucent background; optional olive-tinted hamburger on mobile.
+- **Desktop:** subtle **olive** active state for current route.
+- **Mobile:** hamburger panel stays light; primary wayfinding also via **bottom navigation** (see `06_RESPONSIVE_UX_SPEC.md`).
 
 ### Cards
 
-- `rounded-2xl`, warm backgrounds, soft border, very restrained shadow.
+- `rounded-2xl` / `rounded-3xl` for invitation-style surfaces; warm backgrounds (`ivory`, `cream`, light `olive-soft`), soft border, very restrained shadow.
 - No generic blocky dashboard look.
 
 ### Footer
 
-- Light footer only (cream background), thin top border, centered composition.
+- Light footer only (cream background), thin top border, centered composition; extra bottom padding on small screens so content clears the **fixed bottom nav**.
 - Must feel like the closing page of a luxury wedding brochure.
 
 ## Page-level quality requirements
 
-- Home must be the most beautiful page and strongest visual anchor.
+- Home must read as a **mobile wedding invitation** (ceremonial card, quick actions, botanical hints)—strongest visual anchor.
 - Schedule must use premium event cards (not plain text timeline).
 - Gallery must feel curated (not repetitive blank blocks).
 - FAQ must be complete, clear, and fully answered.

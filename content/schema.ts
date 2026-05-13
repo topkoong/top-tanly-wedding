@@ -5,6 +5,10 @@ export type NavigationItem = {
   label: string;
 };
 
+export type QuickActionIconKey = "calendar" | "mapPin" | "images" | "circleHelp";
+
+export type BottomNavIconKey = "home" | "calendar" | "mapPin" | "images" | "circleHelp";
+
 export type SiteContent = {
   locale: Locale;
   htmlLang: "th" | "en";
@@ -16,32 +20,35 @@ export type SiteContent = {
   linePageHref: string;
   navDesktop: NavigationItem[];
   navMobile: NavigationItem[];
+  /** Fixed bottom navigation (mobile / small tablet only); 5 items, no LINE. */
+  bottomNav: Array<{
+    href: string;
+    label: string;
+    icon: BottomNavIconKey;
+  }>;
   languageSwitchLabel: string;
   mobileMenuOpenLabel: string;
   mobileMenuCloseLabel: string;
   homeShell: {
-    title: string;
+    /** Short label above the date inside the invitation card. */
+    invitationCardEyebrow: string;
     formalNames: string;
     dateLabel: string;
     locationLabel: string;
-    intro: string;
-    primaryCtaLabel: string;
-    primaryCtaHref: string;
-    secondaryCtaLabel: string;
-    secondaryCtaHref: string;
+    /** One line under the date inside the invitation card (main day summary). */
+    invitationProgrammeSummary: string;
+    invitationCtaLabel: string;
+    /** Hash link to on-page section, e.g. /#quick-actions */
+    invitationCtaHref: string;
     supportLineLabel: string;
-    quickLinks: NavigationItem[];
-    quickLinksLabel: string;
-    glanceTitle: string;
-    glanceCards: Array<{
-      label: string;
-      value: string;
+    quickActionCards: Array<{
+      href: string;
+      title: string;
+      subtitle: string;
+      icon: QuickActionIconKey;
     }>;
     welcomeTitle: string;
     welcomeMessage: string;
-    heroImageAlt: string;
-    heroImageCaption: string;
-    heroImageCategory: string;
   };
   footer: {
     thankYou: string;

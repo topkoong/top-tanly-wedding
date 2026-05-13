@@ -65,7 +65,7 @@ GITHUB_PAGES=true → basePath "/top-tanly-wedding" + trailing assetPrefix (see 
 
 ## Rendering patterns
 
-- Default **Server Components**. Add `"use client"` only for interactivity (`MobileMenu`, `Navbar` scroll tweaks, accordion/fade wrappers, motion).
+- Default **Server Components**. Add `"use client"` only for interactivity (`MobileMenu`, `MobileBottomNav`, `Navbar` client needs, accordions/fade wrappers, motion).
 - Components accept **`className`** merged with **`cn()`**.
 - Buttons/links/interactive widgets need visible focus styling (`focus-visible:ring-*`).
 - Prefer `next/image` with explicit dimensions or `fill` + `sizes` for real assets; placeholders use **`PlaceholderImage`**.
@@ -73,9 +73,10 @@ GITHUB_PAGES=true → basePath "/top-tanly-wedding" + trailing assetPrefix (see 
 ## Styling (`03_DESIGN_SYSTEM.md`)
 
 - Tailwind utilities + tokens from **`app/globals.css`** `@theme`.
-- Palette tokens only (`cream`, `ivory`, `champagne`, `rose-deep`, …) — avoid random hex unless extending tokens deliberately.
-- Border radii conventions: cards `rounded-2xl`, media `rounded-xl`, CTAs/tags `rounded-full`.
-- Shadows only where spec calls for warm soft elevation.
+- Palette tokens: **`cream`**, **`ivory`**, **`champagne`**, **`olive`**, **`olive-deep`**, **`olive-soft`**, **`sage`**, **`gold`**, **`rose` / `rose-deep`** (warm accent only—not dominant for primary CTAs), **`charcoal`**, **`stone`**. No arbitrary hex unless deliberately extending `@theme`.
+- **Primary buttons / key nav states:** **`olive` / `olive-deep`**. Reserve **`gold`** for small dividers and ceremonial lines.
+- Border radii: invitation-style cards `rounded-2xl` / `rounded-3xl`, media `rounded-xl`, CTAs `rounded-full`.
+- Shadows: soft warm elevation only; never generic heavy “dashboard” chrome.
 
 ### Animation posture
 
@@ -98,7 +99,9 @@ Screenshots tooling may disable CSS animations for deterministic PNG QA—don't 
 
 Never list **Home** as a bullet. Logo lockup anchors to **`/`** (Thai) or **`/en`** (English).
 
-Main nav mirrors product:
+**Mobile (`lg` and below):** a **fixed bottom navigation** (`MobileBottomNav`) surfaces **Home · Schedule · Venue · Gallery · FAQ** with icons + labels, **`env(safe-area-inset-bottom)`** padding, and **olive** active styling. Do **not** add RSVP, Gift, LINE, Accommodation, or Dress-code entries.
+
+Main **desktop** top nav mirrors product:
 
 - Thai: `กำหนดการ · สถานที่ · แกลเลอรี · คำถามที่พบบ่อย · EN`
 - English: `Schedule · Venue · Gallery · FAQ · TH`

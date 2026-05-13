@@ -15,12 +15,16 @@ Also validate desktop at 1280px and 1440px.
 
 ## Navigation behavior
 
-Desktop and mobile main nav should include only:
+**Desktop** top nav should include only:
 
 - Thai: `กำหนดการ`, `สถานที่`, `แกลเลอรี`, `คำถามที่พบบ่อย`, `EN`
 - English: `Schedule`, `Venue`, `Gallery`, `FAQ`, `TH`
 
-Do not include Home, LINE, Accommodation, Dress Code, RSVP, Contact in main nav.
+**Mobile / small tablet (`lg` and below):** in addition to the top bar (logo + hamburger + language), show a **fixed bottom navigation** with **five** destinations: **Home · Schedule · Venue · Gallery · FAQ** (icons + labels). Use **olive** for the active route. Do **not** include LINE, Accommodation, Dress Code, RSVP, Gift, or Contact.
+
+Reserve `padding-bottom` on `main` / footer so page content is not hidden behind the bottom bar; honour **`env(safe-area-inset-bottom)`** on notched devices.
+
+Do not include Home, LINE, Accommodation, Dress Code, RSVP, Contact in **desktop** inline nav (Home is only via logo and bottom nav on mobile).
 
 ## Mobile quality requirements
 
@@ -34,10 +38,10 @@ Do not include Home, LINE, Accommodation, Dress Code, RSVP, Contact in main nav.
 
 ## Home on mobile
 
-- `Tan & Top` remains strongest visual anchor.
-- Date and Conrad Bangkok visible early.
-- Two primary CTAs should stack/wrap gracefully.
-- Hero image should feel premium but not dominate first screen.
+- **Invitation-first** layout: centered **Tan & Top**, formal names, ceremonial **date card** (date + programme summary + Conrad Bangkok) and **View Details** scroll/anchor to quick links.
+- **Quick-action cards** (Schedule, Venue, Gallery, FAQ) are large tappable rows with icon, title, and subtitle—**no** RSVP or Gift cards.
+- Optional soft botanical corners (CSS/SVG only); avoid overflow.
+- LINE remains a **supporting** link in the welcome block—not a primary hero CTA.
 
 ## Schedule on mobile
 

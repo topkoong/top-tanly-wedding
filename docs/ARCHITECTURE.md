@@ -8,7 +8,7 @@ Pinned versions live in **`package.json`** (currently Next **16.2.6**, React **1
 
 ## App structure (`app/`)
 
-- **`layout.tsx`** — Root shell: fonts (`next/font/google`: Cormorant Garamond, Inter, IBM Plex Sans Thai), metadata, Navbar, Footer, global styles.
+- **`layout.tsx`** — Root shell: fonts (`next/font/google`: Cormorant Garamond, Inter, IBM Plex Sans Thai), metadata, Navbar, Footer, `MobileBottomNav` (fixed, `lg:hidden`), global styles; main has bottom padding on small screens for the nav + safe area.
 - **`page.tsx`** — Thai home (`/`).
 - **`schedule/page.tsx`**, **`venue/page.tsx`**, **`gallery/page.tsx`**, **`faq/page.tsx`**, **`line/page.tsx`** — Thai routes.
 - **`en/`** — Mirrors the above under `/en/...`.
@@ -37,14 +37,14 @@ Branding constants also exist under `content/th/couple.ts` and `content/en/coupl
 ## Component structure
 
 ```
-components/layout/   Navbar, Footer, MobileMenu
+components/layout/   Navbar, Footer, MobileMenu, MobileBottomNav
 components/sections/ HomeShell, ScheduleSection, VenueSection, GallerySection,
                      FaqSection, LineSection
 components/ui/       Button, Container, Section, Heading, PlaceholderImage, FadeIn, …
 components/icons/    TNMonogram (and similar)
 ```
 
-- Prefer **React Server Components**; use **`"use client"`** where state/browser APIs are needed (Navbar scroll, MobileMenu, FAQ accordion, FadeIn wrappers using `motion`).
+- Prefer **React Server Components**; use **`"use client"`** where state/browser APIs are needed (Navbar scroll, MobileMenu, **MobileBottomNav**, FAQ accordion, client-heavy sections like interactive Gallery filters, FadeIn wrappers using `motion`).
 - Compose with **`cn()`** (`clsx` + `tailwind-merge`).
 
 ## Styling

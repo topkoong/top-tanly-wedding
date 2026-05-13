@@ -74,7 +74,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
                     const Icon = transportIcons[item.icon];
                     return (
                       <li key={`${item.label}-${index}`} className="flex min-w-0 gap-3">
-                        <Icon className="mt-0.5 h-5 w-5 shrink-0 text-rose-deep" aria-hidden />
+                        <Icon className="mt-0.5 h-5 w-5 shrink-0 text-olive-deep" aria-hidden />
                         <div className="min-w-0 space-y-2">
                           <p className="text-body font-medium text-charcoal">{item.label}</p>
                           <p className="max-w-full text-body leading-relaxed text-stone">{item.detail}</p>

@@ -3,7 +3,7 @@ import type { VenueContent } from "@/content/schema";
 export const venueContentTh: VenueContent = {
   title: "สถานที่",
   summary:
-    "งานแต่งงานของเราจัดขึ้น ณ โรงแรม Conrad Bangkok พิธีช่วงเช้าในห้อง Beverly Hills (ชั้น 2 อาคาร Annex) และงานเลี้ยงฉลองใน Conrad Ballroom (ชั้น 4 อาคารหลัก)",
+    "งานแต่งงานของเราจัดขึ้นที่โรงแรม Conrad Bangkok พิธีช่วงเช้าในห้อง Beverly Hills และงานเลี้ยงฉลองในห้อง Conrad Ballroom รายละเอียดชั้นและทางเข้าจะยืนยันอีกครั้งใกล้วันงาน",
   mainVenue: "Conrad Bangkok",
   address: "All Seasons Place, 87 ถนนวิทยุ แขวงลุมพินี เขตปทุมวัน กรุงเทพฯ 10330",
   gettingHereTitle: "การเดินทาง",
@@ -11,12 +11,12 @@ export const venueContentTh: VenueContent = {
   eventSpaces: [
     {
       room: "Beverly Hills",
-      floor: "ชั้น 2 · อาคาร Annex",
+      floor: "ชั้นและจุดเข้า — ยืนยันใกล้วันงาน",
       eventName: "พิธีหมั้นและพิธีรับไหว้",
     },
     {
       room: "Conrad Ballroom",
-      floor: "ชั้น 4 · อาคารหลัก",
+      floor: "ชั้นและจุดเข้า — ยืนยันใกล้วันงาน",
       eventName: "งานเลี้ยงฉลองมงคลสมรส",
     },
   ],

@@ -12,7 +12,7 @@ See also: [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md) for what obsolete d
 - **Visible naming (bride-first):** Tan & Top · Narueporn & Theerut (never groom-first ordering in UI copy).
 - **No RSVP**, attendance counting, forms, chatbot, API routes, server actions, database, auth, or analytics in MVP.
 - **No middleware** locale detection—explicit routes only.
-- **Navigation:** Schedule, Venue, Gallery, FAQ + language switch. **LINE** is **not** in primary nav; pages `/line` and `/en/line` exist for official updates/reminders/manual support wording only.
+- **Navigation:** Schedule, Venue, Gallery, FAQ + language switch. **Mobile:** fixed bottom bar (Home, Schedule, Venue, Gallery, FAQ) below `lg`. **LINE** is **not** in primary nav; pages `/line` and `/en/line` exist for official updates/reminders/manual support wording only.
 - **Removed from website IA:** Accommodation page, Dress Code page (dress guidance may appear in FAQ only).
 
 ## Wedding details
@@ -57,7 +57,7 @@ Published: **[https://topkoong.github.io/top-tanly-wedding/](https://topkoong.gi
 
 ## Design direction
 
-Minimal, elegant, warm, premium, **mobile-first**, modern Thai hotel wedding aesthetic—digital invitation, not generic documentation UI.
+**Mobile invitation** aesthetic: soft cream/ivory surfaces, **olive** botanical accent for primary actions and bottom navigation, **gold** for thin ceremonial dividers only, warm Thai wedding mood, rounded invitation cards, subtle botanical hints (CSS/SVG—no heavy asset dependency). Desktop stays editorial and calm. **No** RSVP, Gift, or Accommodation/Dress-code routes.
 
 ### Quality priorities
 

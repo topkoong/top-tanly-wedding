@@ -8,6 +8,7 @@ type SectionProps = {
   className?: string;
   children: ReactNode;
   background?: SectionBackground;
+  id?: string;
 };
 
 const backgroundClasses: Record<SectionBackground, string> = {
@@ -20,9 +21,10 @@ export default function Section({
   className,
   children,
   background = "transparent",
+  id,
 }: SectionProps) {
   return (
-    <section className={cn("min-w-0 py-16 md:py-24", backgroundClasses[background], className)}>
+    <section id={id} className={cn("min-w-0 py-16 md:py-24", backgroundClasses[background], className)}>
       {children}
     </section>
   );

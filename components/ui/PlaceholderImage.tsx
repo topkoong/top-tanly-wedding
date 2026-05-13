@@ -33,10 +33,10 @@ export default function PlaceholderImage({
   const style = { aspectRatio } as CSSProperties;
   const toneClass =
     tone === "rose"
-      ? "from-rose/35 via-champagne/25 to-ivory"
+      ? "from-olive-soft via-champagne/30 to-ivory"
       : tone === "champagne"
-        ? "from-champagne/50 via-ivory to-rose/10"
-        : "from-ivory via-champagne/35 to-rose/15";
+        ? "from-champagne/50 via-ivory to-olive/10"
+        : "from-ivory via-champagne/35 to-olive-soft/80";
 
   return (
     <div

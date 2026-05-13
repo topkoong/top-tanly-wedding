@@ -23,7 +23,7 @@ export default function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        "border-t border-charcoal/10 bg-cream pt-12 pb-8 md:pt-16 md:pb-10",
+        "border-t border-charcoal/10 bg-cream pt-12 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-12 lg:pb-10",
         localeTextClass,
         className,
       )}
@@ -31,8 +31,8 @@ export default function Footer({ className }: FooterProps) {
       <Container>
         <div className="mx-auto max-w-6xl text-center">
           <div className="mx-auto max-w-lg space-y-3">
-            <div className="flex justify-center text-charcoal/20">
-              <TNMonogram className="h-10 w-10" title="" />
+            <div className="flex justify-center text-olive/25">
+              <TNMonogram className="h-9 w-9" title="" />
             </div>
             <p className="mx-auto max-w-full text-pretty font-display text-h2 leading-tight text-charcoal">
               {siteContent.coupleFormalName}
@@ -57,7 +57,7 @@ export default function Footer({ className }: FooterProps) {
                 ) : null}
                 <Link
                   href={item.href}
-                  className="max-w-full text-pretty text-body-s leading-snug text-stone transition-colors duration-200 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                  className="max-w-full text-pretty text-body-s leading-snug text-stone transition-colors duration-200 hover:text-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
                 >
                   {item.label}
                 </Link>
