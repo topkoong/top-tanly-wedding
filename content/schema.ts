@@ -81,10 +81,8 @@ export type ScheduleItem = {
   title: string;
   date: string;
   time: string;
-  room: string;
-  floor?: string;
-  navigationNote?: string;
-  venue: string;
+  /** Concise room / floor / access line (locale-specific); no travel or map copy. */
+  roomAccessLabel: string;
   venuePageHref: string;
   description: string;
   chips: string[];
@@ -92,6 +90,8 @@ export type ScheduleItem = {
 
 export type SchedulePageContent = {
   title: string;
+  /** One line under the page hero, e.g. overall venue name (no duplicate per-card). */
+  pageVenueSummary: string;
   intro: string;
   arrivalNote: string;
   updateNote: string;

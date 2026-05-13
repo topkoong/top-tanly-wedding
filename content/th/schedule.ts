@@ -2,13 +2,14 @@ import type { SchedulePageContent } from "@/content/schema";
 
 export const scheduleContentTh: SchedulePageContent = {
   title: "กำหนดการ",
+  pageVenueSummary: "สถานที่จัดงาน: Conrad Bangkok",
   intro:
     "กำหนดการหลักของวันงาน แบ่งออกเป็นพิธีช่วงเช้าและงานเลี้ยงฉลองมงคลสมรส",
   arrivalNote:
     "แนะนำให้มาถึงก่อนเวลาเริ่มงานประมาณ 20–30 นาที เพื่อเผื่อเวลาสำหรับการเดินทาง จอดรถ และลงทะเบียน",
   updateNote:
     "รายละเอียดบางส่วนอาจมีการอัปเดตเพิ่มเติมเมื่อใกล้ถึงวันงาน กรุณาตรวจสอบข้อมูลล่าสุดจากเว็บไซต์หรือ LINE Official Account",
-  venueButtonLabel: "ดูรายละเอียดสถานที่ →",
+  venueButtonLabel: "ดูแผนที่และวิธีเดินทาง",
   events: [
     {
       id: "engagement-rubwai",
@@ -18,8 +19,7 @@ export const scheduleContentTh: SchedulePageContent = {
       title: "พิธีหมั้นและพิธีรับไหว้",
       date: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
       time: "07:00–11:00",
-      room: "Beverly Hills",
-      venue: "Conrad Bangkok",
+      roomAccessLabel: "ห้อง Beverly Hills · ชั้น 2 · อาคาร Annex",
       venuePageHref: "/venue",
       description:
         "ช่วงเช้าสำหรับพิธีหมั้นและพิธีรับไหว้แบบอบอุ่น ร่วมกับครอบครัวและแขกคนสำคัญ",
@@ -39,8 +39,7 @@ export const scheduleContentTh: SchedulePageContent = {
       title: "งานเลี้ยงฉลองมงคลสมรส",
       date: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
       time: "11:00–14:00",
-      room: "Conrad Ballroom",
-      venue: "Conrad Bangkok",
+      roomAccessLabel: "ห้อง Conrad Ballroom · ชั้น 4 · อาคารหลัก",
       venuePageHref: "/venue",
       description:
         "งานเลี้ยงฉลองมงคลสมรสในบรรยากาศอบอุ่น เรียบง่าย และเป็นกันเอง",

@@ -1,10 +1,10 @@
-import Link from "next/link";
-
+import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import type { SchedulePageContent, SiteContent } from "@/content/schema";
+import { cn } from "@/lib/utils";
 
 type ScheduleSectionProps = {
   site: SiteContent;
@@ -26,6 +26,7 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
             {site.weddingDate}
           </Heading>
           <DecorativeDivider />
+          <p className="max-w-full text-body-s font-medium leading-relaxed text-charcoal/90">{content.pageVenueSummary}</p>
           <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
             {content.intro}
           </p>
@@ -61,33 +62,34 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
                     {isThai ? event.thaiName : event.englishName}
                   </h2>
                   <div className="h-px w-full min-w-0 bg-charcoal/10" />
-                  <div className="flex min-w-0 flex-wrap items-center gap-2">
-                    <span className="inline-flex max-w-full rounded-full border border-olive/25 bg-olive-soft/50 px-3 py-2 text-body-s leading-snug text-olive-deep sm:px-4">
-                      {event.room}
-                    </span>
-                    <span className="max-w-full text-body-s leading-snug text-stone">{event.venue}</span>
-                  </div>
+                  <p
+                    className={cn(
+                      "max-w-full text-pretty rounded-xl border border-olive/20 bg-olive-soft/45 px-4 py-3 text-body-s leading-snug text-charcoal",
+                      isThai && "font-thai",
+                    )}
+                  >
+                    {event.roomAccessLabel}
+                  </p>
                   <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
                     {event.description}
                   </p>
 
-                  <div className="flex min-w-0 flex-wrap gap-2">
+                  <div className="flex min-w-0 flex-wrap content-start gap-x-2 gap-y-2.5">
                     {event.chips.map((chip) => (
                       <span
                         key={chip}
-                        className="max-w-full rounded-full border border-charcoal/[0.08] bg-ivory/90 px-3 py-1.5 text-xs leading-snug text-charcoal"
+                        className="min-w-0 max-w-full rounded-full border border-charcoal/[0.08] bg-ivory/90 px-3 py-1.5 text-xs leading-snug text-charcoal break-words"
                       >
                         {chip}
                       </span>
                     ))}
                   </div>
 
-                  <Link
-                    href={event.venuePageHref}
-                    className="inline-flex max-w-full rounded-full px-2 py-2 text-body-s leading-snug text-olive underline underline-offset-[5px] decoration-olive/35 decoration-2 transition-colors duration-200 hover:bg-olive-soft/35 hover:no-underline hover:text-olive-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:rounded-md focus-visible:ring-offset-ivory"
-                  >
-                    {content.venueButtonLabel}
-                  </Link>
+                  <div className="min-w-0 pt-1">
+                    <Button href={event.venuePageHref} variant="secondary" className="w-full min-w-0 sm:w-auto sm:max-w-full">
+                      {content.venueButtonLabel}
+                    </Button>
+                  </div>
                 </div>
               </li>
             ))}
