@@ -47,13 +47,14 @@ Pages to open (production or local)—use **both** locales:
 - Tap targets roughly **≥ 44×44 px** on primary navigation and CTAs.
 - Thai body text readable (~16px, comfortable line-height).
 - Bride-first naming in visible content: **Tan & Top**, **Narueporn & Theerut**.
-- Primary nav excludes LINE, Accommodation, Dress Code, RSVP.
+- Primary nav excludes LINE, Accommodation, Dress Code, RSVP, Gift.
+- On **`lg` and below**, a fixed **bottom navigation** (Home · Schedule · Venue · Gallery · FAQ) uses icons + labels, olive active state, and safe-area padding—verify it never causes horizontal overflow and that scrollable content clears the bar.
 - Footer is light—not a heavy dark slab; typography centered and calm.
 
 ### Page-specific quick checks
 
-- **Home:** Invitational hierarchy; hero CTAs localized; LINE not the primary hero driver.
-- **Schedule:** Two main events understandable quickly; prominent times; chips not wall-of-text.
+- **Home:** Mobile **invitation** layout — centered names, ceremonial date card, quick-action destination cards, botanical hints; LINE remains supporting. **No** RSVP/Gift.
+- **Schedule:** Two main events understandable quickly; olive accent for times; chips tidy.
 - **Venue:** Strong Conrad Bangkok labeling; localized Google Maps CTA (`เปิด Google Maps` / `Open in Google Maps`); sensible map embed height on small screens.
 - **Gallery:** Premium placeholders; captions legible; category labels localized.
 - **FAQ:** Every question answered; accordion readable; LINE CTA is supporting secondary.

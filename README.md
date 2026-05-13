@@ -18,6 +18,10 @@ Static, read-only, bilingual wedding information website for **Tan & Top**.
 - **No middleware** for locale routing (explicit Thai + `/en` routes only).
 - **LINE:** supporting pages `/line` and `/en/line` only—not in primary navigation. LINE is for official updates, reminders, and manual support—**not** for describing instant answers or automated RSVP.
 
+## Visual direction (summary)
+
+Cream/ivory invitation surfaces, **olive** as the primary interactive accent (buttons, mobile bottom nav, icon wells), **gold** for thin dividers only, subtle SVG botanical hints on the home hero. Mobile-first: fixed **bottom navigation** (Home · Schedule · Venue · Gallery · FAQ) below the `lg` breakpoint with safe-area padding.
+
 ## Wedding details
 
 | | |

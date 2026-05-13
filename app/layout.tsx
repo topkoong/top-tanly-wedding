@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, IBM_Plex_Sans_Thai, Inter } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
+import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import Navbar from "@/components/layout/Navbar";
 import "./globals.css";
 
@@ -49,8 +50,11 @@ export default function RootLayout({
       <body className="min-h-full min-w-0 bg-cream text-charcoal font-body">
         <div className="flex min-h-screen min-w-0 flex-col">
           <Navbar />
-          <main className="min-w-0 flex-1 overflow-x-clip">{children}</main>
+          <main className="min-w-0 flex-1 overflow-x-clip pb-[calc(4.75rem+env(safe-area-inset-bottom))] lg:pb-0">
+            {children}
+          </main>
           <Footer />
+          <MobileBottomNav />
         </div>
       </body>
     </html>

@@ -45,9 +45,11 @@ Never show groom-first variants in UI copy.
 
 ## Design quality checks
 
-- Site feels like a minimal luxury wedding invitation.
-- Home is the most beautiful page.
-- Navbar and footer feel refined and consistent with warm palette.
+- Site feels like a minimal luxury **mobile wedding invitation** (cream/ivory, olive accent, soft gold dividers).
+- Home is the most visually striking page.
+- **Primary CTAs and mobile bottom-nav active states** use **olive** (`olive` / `olive-deep`); rose remains a secondary warm accent only.
+- On viewports below **`lg`**, fixed **bottom navigation** (5 items) is present with safe-area padding; **no** horizontal overflow caused by nav or page content.
+- Navbar and footer feel refined; footer stays light with extra bottom padding on small screens so content clears the bottom nav.
 - No dark heavy corporate section blocks.
 - Cards/placeholders look intentional and premium.
 
@@ -55,9 +57,9 @@ Never show groom-first variants in UI copy.
 
 ### Home
 
-- Hero includes bride-first names, date, and Conrad Bangkok.
-- Exactly two primary hero CTAs (Schedule + Map, localized).
-- Includes at-a-glance section and short welcome section.
+- Invitation-style hero: bride-first names, formal names, ceremonial date card (date + programme line + venue) and localized **View Details** control scrolling to on-page quick links (not a modal).
+- Quick-action cards for Schedule, Venue, Gallery, FAQ (large rows, icons, subtitles). **No** at-a-glance three-column grid requirement; **no** RSVP/Gift.
+- Welcome / thank-you copy block with **supporting** LINE tertiary link.
 
 ### Schedule
 

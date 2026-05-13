@@ -31,7 +31,7 @@ export default function MobileMenu({
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-charcoal/20 px-3 py-3 text-charcoal transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-olive/35 bg-olive-soft/80 px-3 py-3 text-olive-deep transition-colors duration-200 hover:border-olive/55 hover:bg-olive-soft focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
         aria-expanded={isOpen}
         aria-controls="mobile-menu-panel"
         aria-label={isOpen ? closeLabel : openLabel}
@@ -42,7 +42,7 @@ export default function MobileMenu({
       <div
         id="mobile-menu-panel"
         className={cn(
-          "absolute left-0 right-0 top-full border-t border-charcoal/10 bg-cream/98 px-5 py-6 shadow-[0_14px_32px_-14px_rgba(45,38,32,0.24)] backdrop-blur-lg transition-all",
+          "absolute left-0 right-0 top-full border-t border-charcoal/10 bg-cream/98 px-5 py-6 shadow-[0_14px_32px_-14px_rgba(86,94,63,0.12)] backdrop-blur-lg transition-all",
           isOpen ? "visible opacity-100" : "invisible opacity-0",
         )}
       >
@@ -52,7 +52,7 @@ export default function MobileMenu({
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="min-h-11 rounded-full px-4 py-3 text-body text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
+              className="min-h-11 rounded-full px-4 py-3 text-body text-charcoal transition-colors duration-200 hover:bg-olive-soft/60 hover:text-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
             >
               {item.label}
             </Link>
@@ -60,7 +60,7 @@ export default function MobileMenu({
           <Link
             href={languageSwitchHref}
             onClick={() => setIsOpen(false)}
-            className="min-h-11 rounded-full border border-charcoal/30 px-4 py-3 text-body font-medium tracking-wide text-charcoal transition-colors duration-200 hover:border-charcoal/50 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
+            className="min-h-11 rounded-full border border-olive/30 px-4 py-3 text-body font-medium tracking-wide text-charcoal transition-colors duration-200 hover:border-olive/50 hover:bg-olive-soft/50 focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
           >
             {languageSwitchLabel}
           </Link>

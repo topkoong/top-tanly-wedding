@@ -11,15 +11,20 @@
 }
 
 @theme {
-  --color-cream: #FAF7F0;
-  --color-ivory: #F2EBDD;
-  --color-champagne: #E8DCC4;
-  --color-rose: #C99B8B;
-  --color-rose-deep: #A87468;
-  --color-sage: #9CAA7E;
-  --color-gold: #C9A961;
-  --color-charcoal: #2D2620;
-  --color-stone: #6B6058;
+  --color-cream: #faf7f0;
+  --color-ivory: #f7f3ea;
+  --color-champagne: #e8dcc4;
+  --color-rose: #c99b8b;
+  /* Accent: used sparingly (links, subtle warmth) */
+  --color-rose-deep: #a87468;
+  /* Invitation / botanical accent — primary interactive color */
+  --color-olive: #6f7654;
+  --color-olive-deep: #565e3f;
+  --color-olive-soft: #e9e8df;
+  --color-sage: #8a9578;
+  --color-gold: #c9a961;
+  --color-charcoal: #2d2620;
+  --color-stone: #6b6058;
 
   --font-display: var(--font-cormorant);
   --font-body: var(--font-inter);

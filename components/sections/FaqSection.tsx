@@ -56,8 +56,8 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
           <div>
             {groupedItems.map((group) => (
               <section key={group.category} className="mt-10 min-w-0 first:mt-0">
-                <div className="mb-4 mt-10 flex min-w-0 flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-rose-deep first:mt-0 sm:tracking-[0.18em]">
-                  <span className="h-px w-6 shrink-0 bg-rose-deep/50" />
+                <div className="mb-4 mt-10 flex min-w-0 flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-olive-deep first:mt-0 sm:tracking-[0.18em]">
+                  <span className="h-px w-6 shrink-0 bg-olive/40" />
                   <span className="min-w-0 max-w-full break-words">{group.category}</span>
                 </div>
                 <div>
@@ -66,7 +66,7 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                       <button
                         type="button"
                         onClick={() => toggleItem(group.category, item.id)}
-                        className="flex w-full min-w-0 items-start justify-between gap-3 py-5 text-left transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-rose-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                        className="flex w-full min-w-0 items-start justify-between gap-3 py-5 text-left transition-colors duration-200 hover:text-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
                       >
                         <h2
                           className={
@@ -100,7 +100,7 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                             {item.relatedHref ? (
                               <Link
                                 href={item.relatedHref}
-                                className="mt-2 inline-flex items-center gap-1 text-body-s text-rose-deep underline decoration-rose-deep/40 underline-offset-4 transition-colors duration-200 hover:text-charcoal"
+                                className="mt-2 inline-flex items-center gap-1 text-body-s text-olive underline decoration-olive/35 underline-offset-4 transition-colors duration-200 hover:text-olive-deep"
                               >
                                 {locale === "th" ? "ดูรายละเอียดเพิ่มเติม →" : "View details →"}
                               </Link>

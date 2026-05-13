@@ -74,9 +74,9 @@ export default function Navbar({ className }: NavbarProps) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-4 py-3 text-body-s font-medium tracking-[0.04em] text-charcoal transition-colors duration-200 hover:text-rose-deep focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1",
+                  "rounded-full px-4 py-3 text-body-s font-medium tracking-[0.04em] text-charcoal transition-colors duration-200 hover:text-olive-deep focus-visible:ring-2 focus-visible:ring-olive/50 focus-visible:ring-offset-1",
                   isActive(item.href)
-                    ? "font-medium text-rose-deep underline decoration-rose-deep/40 underline-offset-4"
+                    ? "font-medium text-olive-deep underline decoration-olive/45 underline-offset-4"
                     : "",
                 )}
               >
@@ -85,7 +85,7 @@ export default function Navbar({ className }: NavbarProps) {
             ))}
             <Link
               href={languageSwitchHref}
-              className="rounded-full border border-charcoal/30 px-3 py-1.5 text-xs font-medium tracking-wide text-charcoal transition-colors duration-200 hover:border-charcoal/50 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1"
+              className="rounded-full border border-olive/35 bg-cream px-3 py-1.5 text-xs font-medium tracking-wide text-charcoal transition-colors duration-200 hover:border-olive/55 hover:bg-olive-soft/60 focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
             >
               {siteContent.languageSwitchLabel}
             </Link>
