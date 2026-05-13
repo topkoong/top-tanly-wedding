@@ -31,12 +31,12 @@ export default function MobileMenu({
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-olive/35 bg-olive-soft/80 px-3 py-3 text-olive-deep transition-colors duration-200 hover:border-olive/55 hover:bg-olive-soft focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-olive px-3 py-3 text-cream shadow-[0_8px_22px_-10px_rgba(45,38,32,0.35)] transition-colors duration-200 hover:bg-olive-deep focus-visible:ring-2 focus-visible:ring-cream/70 focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
         aria-expanded={isOpen}
         aria-controls="mobile-menu-panel"
         aria-label={isOpen ? closeLabel : openLabel}
       >
-        {isOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
+        {isOpen ? <X size={20} strokeWidth={2} className="text-cream" /> : <Menu size={20} strokeWidth={2} className="text-cream" />}
       </button>
 
       <div

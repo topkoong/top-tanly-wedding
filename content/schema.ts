@@ -32,7 +32,11 @@ export type SiteContent = {
   homeShell: {
     /** Short label above the date inside the invitation card. */
     invitationCardEyebrow: string;
+    /** Ceremonial line above couple names (e.g. together with our families). */
+    invitationLeadIn: string;
     formalNames: string;
+    /** Short sentence before the save-the-date card (e.g. we invite you…). */
+    invitationInviteLine: string;
     dateLabel: string;
     locationLabel: string;
     /** One line under the date inside the invitation card (main day summary). */

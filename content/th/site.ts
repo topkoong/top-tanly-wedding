@@ -33,7 +33,9 @@ export const siteContentTh: SiteContent = {
   mobileMenuCloseLabel: "ปิดเมนู",
   homeShell: {
     invitationCardEyebrow: "วันสำคัญของเรา",
+    invitationLeadIn: "ร่วมกับครอบครัวของเรา",
     formalNames: "Narueporn & Theerut",
+    invitationInviteLine: "ขอเรียนเชิญท่านร่วมงานมงคลสมรส",
     dateLabel: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
     locationLabel: "Conrad Bangkok",
     invitationProgrammeSummary: "พิธีช่วงเช้าและงานเลี้ยงฉลองมงคลสมรส",
