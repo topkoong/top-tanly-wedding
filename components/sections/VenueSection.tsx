@@ -22,7 +22,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
   const isThai = site.locale === "th";
 
   return (
-    <Section background="cream">
+    <Section background="cream" botanical>
       <Container className={isThai ? "font-thai" : "font-body"}>
         <div className="grid min-w-0 gap-8 lg:grid-cols-2">
           <div className="order-2 min-w-0 space-y-6 lg:order-1">
@@ -45,12 +45,26 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
 
             <div className="space-y-4">
               {content.eventSpacesTitle ? (
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-stone">{content.eventSpacesTitle}</p>
+                <p
+                  className={
+                    isThai
+                      ? "text-xs font-thai font-medium tracking-normal text-olive-deep"
+                      : "text-[0.6875rem] font-display uppercase tracking-[0.07em] text-olive-deep sm:text-xs sm:tracking-[0.09em]"
+                  }
+                >
+                  {content.eventSpacesTitle}
+                </p>
               ) : null}
               <div className="space-y-3">
                 {content.eventSpaces.map((space) => (
                   <article key={space.room} className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-4 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
-                    <p className="text-body-s uppercase tracking-[0.12em] text-stone">
+                    <p
+                      className={
+                        isThai
+                          ? "text-body-s font-thai font-medium tracking-normal text-olive-deep"
+                          : "font-display text-body-s uppercase tracking-[0.09em] text-olive-deep"
+                      }
+                    >
                       {space.room}
                       {space.floor && (
                         <span className="ml-2 font-normal normal-case tracking-normal text-stone/60">
@@ -58,7 +72,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
                         </span>
                       )}
                     </p>
-                    <p className={isThai ? "mt-1 max-w-full text-body leading-relaxed text-charcoal" : "mt-1 max-w-full text-body leading-relaxed text-charcoal"}>
+                    <p className={isThai ? "mt-1 max-w-full text-body leading-relaxed text-charcoal/92" : "mt-1 max-w-full text-body leading-relaxed text-charcoal"}>
                       {space.eventName}
                     </p>
                   </article>
@@ -68,7 +82,15 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
 
             {content.transport && content.transport.length > 0 && content.gettingHereTitle ? (
               <section className="min-w-0 max-w-full space-y-5 rounded-2xl border border-charcoal/10 bg-ivory p-5 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-stone">{content.gettingHereTitle}</p>
+                <p
+                  className={
+                    isThai
+                      ? "text-xs font-thai font-medium tracking-normal text-olive-deep"
+                      : "text-[0.6875rem] font-display uppercase tracking-[0.07em] text-olive-deep sm:text-xs sm:tracking-[0.09em]"
+                  }
+                >
+                  {content.gettingHereTitle}
+                </p>
                 <ul className="space-y-5">
                   {content.transport.map((item, index) => {
                     const Icon = transportIcons[item.icon];
@@ -97,7 +119,15 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
             ) : null}
 
             <section className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-5">
-              <p className="text-xs uppercase tracking-[0.12em] text-stone">{isThai ? "ที่จอดรถ" : "Parking"}</p>
+              <p
+                className={
+                  isThai
+                    ? "text-xs font-thai font-medium tracking-normal text-olive-deep"
+                    : "text-[0.6875rem] font-display uppercase tracking-[0.07em] text-olive-deep sm:text-xs sm:tracking-[0.09em]"
+                }
+              >
+                {isThai ? "ที่จอดรถ" : "Parking"}
+              </p>
               <p className={isThai ? "mt-2 text-body text-charcoal leading-[1.7]" : "mt-2 text-body text-charcoal"}>
                 {content.parkingNote}
               </p>
@@ -110,7 +140,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
           </div>
 
           <div className="order-1 min-w-0 max-w-full space-y-3 lg:order-2 lg:sticky lg:top-24 lg:self-start">
-            <div className="overflow-hidden rounded-2xl border border-charcoal/10 bg-cream shadow-[0_8px_28px_-18px_rgba(45,38,32,0.08)]">
+            <div className="overflow-hidden rounded-2xl border border-charcoal/[0.08] bg-ivory shadow-[0_8px_28px_-18px_rgba(86,94,63,0.12)]">
               <iframe
                 src={content.mapEmbedUrl}
                 title={content.mainVenue}
@@ -119,7 +149,11 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-            <Button href={content.mapButtonUrl} className="w-full">
+            <Button
+              href={content.mapButtonUrl}
+              variant="secondary"
+              className="w-full shadow-[0_6px_20px_-12px_rgba(86,94,63,0.22)] hover:shadow-[0_8px_24px_-12px_rgba(86,94,63,0.26)]"
+            >
               {content.mapButtonLabel}
             </Button>
             <p className={isThai ? "max-w-full text-xs leading-relaxed text-stone" : "max-w-full text-xs leading-relaxed text-stone"}>

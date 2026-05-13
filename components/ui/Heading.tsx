@@ -19,6 +19,14 @@ const headingStyles: Record<HeadingLevel, string> = {
   h4: "font-display text-xl",
 };
 
+/** Primary headings lean olive for invitation hierarchy; H4 stays neutral for denser UI. */
+const headingTone: Record<HeadingLevel, string> = {
+  h1: "text-olive-deep",
+  h2: "text-olive-deep",
+  h3: "text-olive-deep",
+  h4: "text-charcoal",
+};
+
 export default function Heading({
   as = "h2",
   className,
@@ -31,13 +39,14 @@ export default function Heading({
   return (
     <div className={cn("min-w-0 space-y-3", className)}>
       {eyebrow ? (
-        <p className="max-w-full font-sans text-eyebrow uppercase tracking-[0.12em] text-stone sm:tracking-[0.15em]">
+        <p className="max-w-full font-display text-eyebrow uppercase tracking-[0.08em] text-olive-deep sm:tracking-[0.11em]">
           {eyebrow}
         </p>
       ) : null}
       <Tag
         className={cn(
-          "max-w-full text-pretty break-words text-charcoal",
+          "max-w-full text-pretty break-words",
+          headingTone[as],
           headingStyles[as],
           headingClassName,
         )}

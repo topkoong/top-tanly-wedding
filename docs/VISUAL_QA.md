@@ -12,12 +12,18 @@ Manual review (Developer Tools responsive mode or real devices):
 
 | Width | Typical use |
 |-------|--------------|
+| 360px | Smallest audited Android widths |
 | 375px | Small phone |
 | 390px | Many modern phones |
+| 393px | Pixel-class devices |
+| 414px | Large iPhone widths |
 | 430px | Large phone |
 | 768px | Tablet |
+| 1024px | Small laptop / tablet landscape |
 | 1280px | Laptop |
 | 1440px | Desktop |
+
+Botanical overlays must stay inside clipped parents—if any width introduces horizontal scrolling, shrink/hide offending decoration before shipping.
 
 Pages to open (production or local)—use **both** locales:
 
@@ -46,18 +52,19 @@ Pages to open (production or local)—use **both** locales:
 - No horizontal scrolling at audited widths (unless an intentional swipe area is added—currently none).
 - Tap targets roughly **≥ 44×44 px** on primary navigation and CTAs.
 - Thai body text readable (~16px, comfortable line-height).
+- Display headings read as **olive-deep** serif while body/meta copy stays charcoal/stone for readability.
 - Bride-first naming in visible content: **Tan & Top**, **Narueporn & Theerut**.
 - Primary nav excludes LINE, Accommodation, Dress Code, RSVP, Gift.
 - On **`lg` and below**, a fixed **bottom navigation** (Home · Schedule · Venue · Gallery · FAQ) uses icons + labels, olive active state, and safe-area padding—verify it never causes horizontal overflow and that scrollable content clears the bar.
-- Footer is light—not a heavy dark slab; typography centered and calm.
+- Footer matches the ivory→cream “closing pane” styling (subtle botanical echo, translucent gradient), not a dark slab.
 
 ### Page-specific quick checks
 
-- **Home:** Mobile **invitation** layout — centered names, ceremonial date card, quick-action destination cards, botanical hints; LINE remains supporting. **No** RSVP/Gift.
+- **Home:** Mobile **invitation** layout — display serif headline in olive-deep + ivory ceremonial card layered over corner botanical framing; LINE remains tertiary. **No** RSVP/Gift.
 - **Schedule:** Two main events understandable quickly; olive accent for times; chips tidy.
 - **Venue:** Strong Conrad Bangkok labeling; localized Google Maps CTA (`เปิด Google Maps` / `Open in Google Maps`); sensible map embed height on small screens.
 - **Gallery:** Premium placeholders; captions legible; category labels localized.
-- **FAQ:** Every question answered; accordion readable; LINE CTA is supporting secondary.
+- **FAQ:** Every question answered; ivory accordion cards readable; LINE CTA is supporting secondary.
 - **LINE:** Describes official updates / manual channel—never “chatbot AI” framing.
 
 ---

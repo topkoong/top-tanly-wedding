@@ -45,13 +45,14 @@ Never show groom-first variants in UI copy.
 
 ## Design quality checks
 
-- Site feels like a minimal luxury **mobile wedding invitation** (cream/ivory, olive accent, soft gold dividers).
+- Site feels like a minimal luxury **mobile wedding invitation**: cream/ivory canvas, botanical SVG framing, olive/sage washes, serif display titles tinted **olive-deep**, soft **gold-only** divider hairlines (never chunky gold banners).
 - Home is the most visually striking page.
 - **Primary CTAs and mobile bottom-nav active states** use **olive** (`olive` / `olive-deep`); rose remains a secondary warm accent only.
 - On viewports below **`lg`**, fixed **bottom navigation** (5 items) is present with safe-area padding; **no** horizontal overflow caused by nav or page content.
-- Navbar and footer feel refined; footer stays light with extra bottom padding on small screens so content clears the bottom nav.
+- Navbar and footer remain refined—footer uses a whisper **ivory→cream gradient** (`FooterBotanical`) instead of dark slabs while keeping extra bottom padding for the mobile navigation.
 - No dark heavy corporate section blocks.
 - Cards/placeholders look intentional and premium.
+- Supporting pages may enable **light** `SoftPageBotanical` accents (`Section` prop) yet must stay overflow-safe from 360 px widths upward.
 
 ## Page checks
 
@@ -87,12 +88,13 @@ Never show groom-first variants in UI copy.
 
 - No question without an answer.
 - Required guest questions fully covered in Thai and English.
+- Questions collapse/expand inside **ivory cards** with subdued gold/olive category markers—expanded panels rest on whisper cream washes.
 - Bottom LINE OA support CTA present and refined.
 
 ### Footer
 
-- Light cream footer with thin top border.
-- Small centered monogram and centered text hierarchy.
+- Invitations-style footer plane: translucent **ivory→cream gradient**, subtle botanical echoes, centered monogram + couple stack.
+- Typography stays subdued (formal olive-deep serif line, charcoal friendly line, stone meta).
 - No dark block and no giant monogram.
 - Footer links exclude LINE per latest footer direction.
 
@@ -100,10 +102,14 @@ Never show groom-first variants in UI copy.
 
 Validate at:
 
+- 360px
 - 375px
 - 390px
+- 393px
+- 414px
 - 430px
 - 768px
+- 1024px
 - 1280px
 - 1440px
 

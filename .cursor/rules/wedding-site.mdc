@@ -46,7 +46,7 @@ Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI 
 
 - Next.js App Router (currently **16.2.x**), TypeScript strict, Tailwind CSS v4
 - **pnpm only** (`packageManager` field)
-- `next/font/google` → Cormorant Garamond + Inter + **IBM Plex Sans Thai**
+- `next/font/google` → **Cormorant Garamond (weights 400–700)** + Inter + **IBM Plex Sans Thai**
 - `lucide-react`, `motion` (subtle, reduced-motion-safe)
 - Static export (**`output: 'export'`**), **`images.unoptimized: true`**
 - Playwright (**dev**) + `pnpm screenshots` for deterministic visual QA (see **`docs/VISUAL_QA.md`**)
@@ -77,6 +77,8 @@ GITHUB_PAGES=true → basePath "/top-tanly-wedding" + trailing assetPrefix (see 
 - **Primary buttons / key nav states:** **`olive` / `olive-deep`**. Reserve **`gold`** for small dividers and ceremonial lines.
 - Border radii: invitation-style cards `rounded-2xl` / `rounded-3xl`, media `rounded-xl`, CTAs `rounded-full`.
 - Shadows: soft warm elevation only; never generic heavy “dashboard” chrome.
+- **Typography pairing:** serif display headings for ceremony tint **`olive-deep`** (`Heading` `h1`–`h3` defaults); eyebrows share the serif with restrained tracking (**never widen tracking on Thai source strings**). IBM Plex Sans Thai remains the pragmatic body/stack voice.
+- **Botanical overlays:** strongest `BotanicalBackdrop` framing on Home; inner sections opt into `SoftPageBotanical` via **`Section`'s optional `botanical` flag**. Every layer stays `pointer-events-none` inside `overflow-hidden` parents so canvases ≥360 px never gain horizontal bleed.
 
 ### Animation posture
 
