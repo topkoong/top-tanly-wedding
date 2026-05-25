@@ -4,10 +4,12 @@ import { cn } from "@/lib/utils";
 
 /** Matches quiet-luxury home reference; clipped corners only (asset is a tall frame). */
 const FLORAL_QUIET_LUXURY = "/images/home-floral-quiet-luxury.png";
+/** 1024×682 sprite sheet — soft watercolor florals (white background; blend on cream). */
+const WATERCOLOR_SPRITE = "/images/home-watercolor-florals.png";
 
 /**
- * Corner floral framing for the home hero — photoreal whisper (muted) plus soft SVG echoes.
- * Clips the reference PNG to corners only so central content stays editorial (Tan & Top).
+ * Home hero botanical stack: watercolor sprite (corners + bottom band), photoreal corner whispers,
+ * radial cream veil, SVG line art. Keeps centre clear for Tan & Top.
  */
 export default function BotanicalBackdrop({ className }: { className?: string }) {
   return (
@@ -15,6 +17,55 @@ export default function BotanicalBackdrop({ className }: { className?: string })
       className={cn("pointer-events-none absolute inset-0 z-0 overflow-hidden", className)}
       aria-hidden
     >
+      {/* Watercolor sprite — bottom band for extra floral mass (quiet blend) */}
+      <div className="absolute inset-x-0 -bottom-16 h-[min(42vw,280px)] overflow-hidden md:h-[min(36vw,260px)]">
+        <Image
+          src={WATERCOLOR_SPRITE}
+          alt=""
+          fill
+          className="object-cover object-[52%_94%] mix-blend-multiply opacity-[0.32] saturate-[1.02] md:opacity-[0.36]"
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Watercolor corners — different sprite regions per corner */}
+      <div className="absolute -left-10 -top-2 h-[min(56vw,340px)] w-[min(74vw,340px)] overflow-hidden sm:left-0 sm:h-[min(50vw,380px)] sm:w-[min(60vw,400px)]">
+        <Image
+          src={WATERCOLOR_SPRITE}
+          alt=""
+          fill
+          className="object-cover object-[14%_26%] mix-blend-multiply opacity-[0.38] saturate-[1.04] brightness-[1.04] md:opacity-[0.44]"
+          sizes="(max-width:768px) 74vw, 400px"
+        />
+      </div>
+      <div className="absolute -right-12 top-0 h-[min(54vw,330px)] w-[min(74vw,340px)] overflow-hidden sm:right-0 sm:h-[min(48vw,360px)] sm:w-[min(58vw,390px)]">
+        <Image
+          src={WATERCOLOR_SPRITE}
+          alt=""
+          fill
+          className="object-cover object-[86%_28%] mix-blend-multiply opacity-[0.36] saturate-[1.04] brightness-[1.04] md:opacity-[0.42]"
+          sizes="(max-width:768px) 74vw, 390px"
+        />
+      </div>
+      <div className="absolute -bottom-6 -left-12 h-[min(58vw,360px)] w-[min(76vw,380px)] overflow-hidden sm:bottom-0 sm:left-0">
+        <Image
+          src={WATERCOLOR_SPRITE}
+          alt=""
+          fill
+          className="object-cover object-[18%_74%] mix-blend-multiply opacity-[0.34] saturate-[1.04] brightness-[1.03] md:opacity-[0.4]"
+          sizes="(max-width:768px) 76vw, 420px"
+        />
+      </div>
+      <div className="absolute -bottom-12 -right-12 h-[min(60vw,380px)] w-[min(78vw,400px)] overflow-hidden sm:-bottom-6 sm:right-0">
+        <Image
+          src={WATERCOLOR_SPRITE}
+          alt=""
+          fill
+          className="object-cover object-[84%_78%] mix-blend-multiply opacity-[0.34] saturate-[1.04] brightness-[1.03] md:opacity-[0.4]"
+          sizes="(max-width:768px) 78vw, 440px"
+        />
+      </div>
+
       {/* Photoreal lilac whisper — corner crops from authored reference */}
       <div className="absolute -left-8 -top-6 h-[min(46vw,300px)] w-[min(64vw,320px)] overflow-hidden sm:left-0 sm:h-[min(42vw,360px)] sm:w-[min(52vw,400px)]">
         <Image
