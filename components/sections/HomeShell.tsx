@@ -1,7 +1,6 @@
 import { ChevronDown } from "lucide-react";
 
 import Button from "@/components/ui/Button";
-import BotanicalBackdrop from "@/components/ui/BotanicalBackdrop";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import FadeIn from "@/components/ui/FadeIn";
@@ -25,10 +24,9 @@ export default function HomeShell({ content }: HomeShellProps) {
       <Section
         background="cream"
         className={cn(
-          "relative overflow-hidden bg-gradient-to-b from-cream via-cream to-olive-soft/25 py-16 md:py-24",
+          "relative overflow-hidden bg-gradient-to-b from-cream/74 via-cream/68 to-olive-soft/20 py-16 md:py-24",
         )}
       >
-        <BotanicalBackdrop />
         <Container className="relative z-10">
           <FadeIn className="mx-auto max-w-lg">
             <div className="flex flex-col items-center text-center">
@@ -86,7 +84,7 @@ export default function HomeShell({ content }: HomeShellProps) {
         </Container>
       </Section>
 
-      <Section background="transparent" className="scroll-mt-4 bg-cream py-14 md:py-20" id="quick-actions">
+      <Section background="transparent" className="scroll-mt-4 bg-cream/64 py-14 md:py-20" id="quick-actions">
         <Container>
           <div className="mx-auto min-w-0 max-w-3xl">
             <div className="grid min-w-0 grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4">
@@ -107,7 +105,7 @@ export default function HomeShell({ content }: HomeShellProps) {
 
       <DecorativeDivider />
 
-      <Section background="transparent" className="bg-cream pt-0">
+      <Section background="transparent" className="bg-cream/64 pt-0">
         <Container size="narrow">
           <div className="min-w-0 max-w-full space-y-5 rounded-[1.75rem] border border-olive/10 bg-ivory p-6 shadow-[0_16px_40px_-28px_rgba(86,94,63,0.14)] sm:p-8">
             <div className="flex flex-col items-center gap-3 text-center">

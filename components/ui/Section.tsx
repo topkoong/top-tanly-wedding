@@ -15,8 +15,8 @@ type SectionProps = {
 };
 
 const backgroundClasses: Record<SectionBackground, string> = {
-  cream: "bg-cream",
-  ivory: "bg-ivory",
+  cream: "bg-cream/72",
+  ivory: "bg-ivory/86",
   transparent: "bg-transparent",
 };
 

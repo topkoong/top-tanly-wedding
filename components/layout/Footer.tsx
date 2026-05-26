@@ -24,7 +24,7 @@ export default function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        "relative overflow-hidden border-t border-olive/10 bg-gradient-to-b from-ivory via-cream to-olive-soft/35 pt-12 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-12 lg:pb-10",
+        "relative overflow-hidden border-t border-olive/10 bg-gradient-to-b from-ivory/88 via-cream/80 to-olive-soft/30 pt-12 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-12 lg:pb-10",
         localeTextClass,
         className,
       )}
