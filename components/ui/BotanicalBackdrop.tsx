@@ -1,11 +1,12 @@
 import Image from "next/image";
 
+import { publicAssetPath } from "@/lib/publicAssetPath";
 import { cn } from "@/lib/utils";
 
 /** Matches quiet-luxury home reference; clipped corners only (asset is a tall frame). */
-const FLORAL_QUIET_LUXURY = "/images/home-floral-quiet-luxury.png";
+const FLORAL_QUIET_LUXURY = publicAssetPath("/images/home-floral-quiet-luxury.png");
 /** 1024×682 sprite sheet — soft watercolor florals (white background; blend on cream). */
-const WATERCOLOR_SPRITE = "/images/home-watercolor-florals.png";
+const WATERCOLOR_SPRITE = publicAssetPath("/images/home-watercolor-florals.png");
 
 /**
  * Home hero botanical stack: watercolor sprite (corners + bottom band), photoreal corner whispers,

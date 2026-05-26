@@ -166,6 +166,7 @@ Also check:
 
 - CSS loads correctly.
 - Fonts load correctly.
+- Decorative assets under **`/top-tanly-wedding/images/…`** load on GitHub Pages (the pages host is **`https://USER.github.io/REPO/…`**; **`https://USER.github.io/images/…`** is the wrong URL). Prefer `publicAssetPath()` (see **`lib/publicAssetPath.ts`**) when using `next/image` with `/public` files and `GITHUB_PAGES=true` static export.
 - Navigation links work.
 - Language switch works.
 - Google Maps button works.
