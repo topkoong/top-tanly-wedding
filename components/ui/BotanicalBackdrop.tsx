@@ -3,7 +3,7 @@ import Image from "next/image";
 import { publicAssetPath } from "@/lib/publicAssetPath";
 import { cn } from "@/lib/utils";
 
-/** 1536x1024 minimal floral background generated for reusable page framing. */
+/** 1536x1024 minimal floral background generated for hero framing. */
 const MINIMAL_FLOWER_BG = publicAssetPath("/images/minimal-flower-wedding-background.png");
 
 type BotanicalBackdropProps = {
@@ -34,9 +34,9 @@ export default function BotanicalBackdrop({ className, imageClassName }: Botanic
         />
       </div>
 
-      {/* Centre veil keeps typography calm on top of the page-wide image. */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_min(92%,96%)_at_50%_40%,rgb(248_245_239/0.93)_45%,transparent_74%)]" />
-      <div className="absolute inset-x-0 top-[42%] h-[30%] bg-gradient-to-b from-transparent via-cream/46 to-transparent" />
+      {/* Centre veil keeps typography calm on top of the decorative image. */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_min(92%,96%)_at_50%_40%,rgb(248_245_239/0.96)_43%,rgb(248_245_239/0.74)_62%,transparent_82%)]" />
+      <div className="absolute inset-x-0 top-[40%] h-[34%] bg-gradient-to-b from-transparent via-cream/62 to-transparent" />
     </div>
   );
 }

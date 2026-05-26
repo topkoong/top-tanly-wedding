@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 
 import Button from "@/components/ui/Button";
+import BotanicalBackdrop from "@/components/ui/BotanicalBackdrop";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import FadeIn from "@/components/ui/FadeIn";
@@ -27,6 +28,7 @@ export default function HomeShell({ content }: HomeShellProps) {
           "relative overflow-hidden bg-gradient-to-b from-cream via-cream to-olive-soft/25 py-16 md:py-24",
         )}
       >
+        <BotanicalBackdrop imageClassName="object-contain object-top opacity-[0.58] sm:object-cover sm:object-center sm:opacity-[0.72] md:opacity-[0.76]" />
         <Container className="relative z-10">
           <FadeIn className="mx-auto max-w-lg">
             <div className="flex flex-col items-center text-center">
