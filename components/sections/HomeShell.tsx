@@ -25,10 +25,10 @@ export default function HomeShell({ content }: HomeShellProps) {
       <Section
         background="cream"
         className={cn(
-          "relative overflow-hidden bg-gradient-to-b from-cream via-cream to-olive-soft/25 py-16 md:py-24",
+          "relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-gradient-to-b from-cream via-cream to-olive-soft/25 py-12 sm:py-16 md:py-24",
         )}
       >
-        <BotanicalBackdrop imageClassName="object-contain object-top opacity-[0.58] sm:object-cover sm:object-center sm:opacity-[0.72] md:opacity-[0.76]" />
+        <BotanicalBackdrop imageClassName="object-cover object-[18%_center] opacity-[0.62] sm:object-center sm:opacity-[0.72] md:opacity-[0.76]" />
         <Container className="relative z-10">
           <FadeIn className="mx-auto max-w-lg">
             <div className="flex flex-col items-center text-center">

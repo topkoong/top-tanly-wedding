@@ -37,6 +37,7 @@ export default function BotanicalBackdrop({ className, imageClassName }: Botanic
       {/* Centre veil keeps typography calm on top of the decorative image. */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_min(92%,96%)_at_50%_40%,rgb(248_245_239/0.96)_43%,rgb(248_245_239/0.74)_62%,transparent_82%)]" />
       <div className="absolute inset-x-0 top-[40%] h-[34%] bg-gradient-to-b from-transparent via-cream/62 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-cream" />
     </div>
   );
 }
