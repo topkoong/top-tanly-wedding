@@ -1,23 +1,41 @@
 import type { ReactNode } from "react";
 
-import SoftPageBotanical from "@/components/ui/SoftPageBotanical";
+import BotanicalBackdrop from "@/components/ui/BotanicalBackdrop";
+import { publicAssetPath } from "@/lib/publicAssetPath";
 import { cn } from "@/lib/utils";
 
 type SectionBackground = "cream" | "ivory" | "transparent";
+type BotanicalVariant = "upperRight" | "upperLeft" | "lowerRight" | "lowerLeft" | "balanced";
 
 type SectionProps = {
   className?: string;
   children: ReactNode;
   background?: SectionBackground;
   id?: string;
-  /** Subtle corner botanicals for inner invitation pages */
-  botanical?: boolean;
+  /** Subtle flower artwork variants for inner invitation pages */
+  botanical?: boolean | BotanicalVariant;
 };
 
 const backgroundClasses: Record<SectionBackground, string> = {
   cream: "bg-cream",
   ivory: "bg-ivory",
   transparent: "bg-transparent",
+};
+
+const botanicalImageClasses: Record<BotanicalVariant, string> = {
+  upperRight: "object-cover object-[82%_top] opacity-[0.24] sm:opacity-[0.28] md:opacity-[0.32]",
+  upperLeft: "object-cover object-[18%_top] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
+  lowerRight: "object-cover object-[84%_bottom] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
+  lowerLeft: "object-cover object-[16%_bottom] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
+  balanced: "object-cover object-center opacity-[0.2] sm:opacity-[0.24] md:opacity-[0.28]",
+};
+
+const botanicalImageSources: Record<BotanicalVariant, string> = {
+  upperRight: publicAssetPath("/images/wedding-flower-background-schedule.png"),
+  upperLeft: publicAssetPath("/images/wedding-flower-background-faq.png"),
+  lowerRight: publicAssetPath("/images/wedding-flower-background-line.png"),
+  lowerLeft: publicAssetPath("/images/wedding-flower-background-venue.png"),
+  balanced: publicAssetPath("/images/wedding-flower-background-gallery.png"),
 };
 
 export default function Section({
@@ -27,6 +45,8 @@ export default function Section({
   id,
   botanical,
 }: SectionProps) {
+  const botanicalVariant: BotanicalVariant = botanical === true || !botanical ? "upperRight" : botanical;
+
   return (
     <section
       id={id}
@@ -39,7 +59,10 @@ export default function Section({
     >
       {botanical ? (
         <>
-          <SoftPageBotanical />
+          <BotanicalBackdrop
+            imageSrc={botanicalImageSources[botanicalVariant]}
+            imageClassName={botanicalImageClasses[botanicalVariant]}
+          />
           <div className="relative z-10">{children}</div>
         </>
       ) : (

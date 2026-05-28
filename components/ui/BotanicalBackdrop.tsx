@@ -8,6 +8,7 @@ const MINIMAL_FLOWER_BG = publicAssetPath("/images/minimal-flower-wedding-backgr
 
 type BotanicalBackdropProps = {
   className?: string;
+  imageSrc?: string;
   imageClassName?: string;
 };
 
@@ -15,7 +16,11 @@ type BotanicalBackdropProps = {
  * Quiet-luxury floral framing with one minimal flower-only canvas.
  * Keeps center calm while preserving floral corners.
  */
-export default function BotanicalBackdrop({ className, imageClassName }: BotanicalBackdropProps) {
+export default function BotanicalBackdrop({
+  className,
+  imageSrc = MINIMAL_FLOWER_BG,
+  imageClassName,
+}: BotanicalBackdropProps) {
   return (
     <div
       className={cn("pointer-events-none absolute inset-0 z-0 overflow-hidden", className)}
@@ -23,7 +28,7 @@ export default function BotanicalBackdrop({ className, imageClassName }: Botanic
     >
       <div className="absolute inset-0">
         <Image
-          src={MINIMAL_FLOWER_BG}
+          src={imageSrc}
           alt=""
           fill
           className={cn(
