@@ -27,7 +27,7 @@ const botanicalImageClasses: Record<BotanicalVariant, string> = {
   upperLeft: "object-cover object-[18%_top] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
   lowerRight: "object-cover object-[84%_bottom] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
   lowerLeft: "object-cover object-[16%_bottom] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
-  balanced: "object-cover object-center opacity-[0.2] sm:opacity-[0.24] md:opacity-[0.28]",
+  balanced: "object-cover object-[72%_center] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
 };
 
 const botanicalImageSources: Record<BotanicalVariant, string> = {
