@@ -40,7 +40,7 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
   };
 
   return (
-    <Section background="cream" botanical="upperLeft">
+    <Section background="cream">
       <Container size="narrow" className={isThai ? "font-thai" : "font-body"}>
         <div className="min-w-0 space-y-8">
           <Heading

@@ -1,37 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  /* Align with @theme warm invitation palette */
-  --color-bg: #f8f5ef;
-  --color-bg-alt: #fcfaf6;
-  --color-text: #3b382f;
-  --color-text-muted: #7a766e;
-  --color-accent: #6f7654;
-  --color-accent-hover: #565e3f;
-  --color-border: rgba(59, 56, 47, 0.1);
+  /* Minimal invitation palette — near-black on warm cream */
+  --color-bg: #f4f0e9;
+  --color-bg-alt: #faf7f1;
+  --color-text: #1f1d18;
+  --color-text-muted: #6e6a61;
+  --color-accent: #2b2922;
+  --color-accent-hover: #16140f;
+  --color-border: rgba(31, 29, 24, 0.12);
 }
 
 @theme {
-  /* Warm invitation palette — olive / sage / cream harmony */
-  --color-cream: #f8f5ef;
-  --color-ivory: #fcfaf6;
-  --color-champagne: #ede6d9;
-  --color-rose: #c99b8b;
-  --color-rose-deep: #a87468;
+  /* Minimal invitation palette — warm cream + near-black ink, no florals.
+     Legacy olive/sage/gold token NAMES are retained but collapsed onto the
+     neutral ink/cream scale so existing class names render the minimal theme. */
+  --color-cream: #f4f0e9;
+  --color-ivory: #faf7f1;
+  --color-champagne: #e9e3d7;
+  --color-rose: #a89e92;
+  --color-rose-deep: #8a8074;
 
-  --color-olive: #6f7654;
-  --color-olive-deep: #565e3f;
-  --color-olive-soft: #e8e9e2;
+  /* "olive" → ink: primary text, buttons, key headings */
+  --color-olive: #2b2922;
+  --color-olive-deep: #16140f;
+  --color-olive-soft: #ebe6dc;
 
-  --color-sage: #a5ac8a;
-  --color-sage-soft: #d9dccf;
+  /* "sage" → muted neutral for secondary marks/dividers */
+  --color-sage: #8d887e;
+  --color-sage-soft: #ddd8cd;
 
-  --color-gold: #cdbd8b;
+  /* "gold" → quiet taupe-grey hairlines (no metallic accent) */
+  --color-gold: #c8c1b2;
 
-  --color-charcoal: #3b382f;
-  --color-stone: #7a766e;
+  --color-charcoal: #1f1d18;
+  --color-stone: #6e6a61;
 
   --font-display: var(--font-cormorant);
+  --font-script: var(--font-allura);
   --font-body: var(--font-inter);
   --font-thai: var(--font-ibm-plex-thai);
 
@@ -59,11 +65,6 @@ body {
   overflow-x: clip;
   background-color: var(--color-bg);
   color: var(--color-text);
-  /* Extremely soft botanical wash — corners only, zero layout width impact */
-  background-image:
-    radial-gradient(ellipse 95% 55% at 100% -3%, rgb(165 172 138 / 0.1), transparent 52%),
-    radial-gradient(ellipse 85% 50% at 0% 102%, rgb(111 118 84 / 0.06), transparent 50%),
-    radial-gradient(ellipse 70% 40% at 50% 50%, rgb(253 250 246 / 0.45), transparent 62%);
 }
 
 html {

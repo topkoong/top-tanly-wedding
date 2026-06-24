@@ -15,7 +15,7 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
   const isThai = site.locale === "th";
 
   return (
-    <Section background="cream" botanical="upperRight">
+    <Section background="cream">
       <Container className={isThai ? "font-thai" : "font-body"}>
         <div className="min-w-0 space-y-8">
           <Heading

@@ -46,7 +46,7 @@ Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI 
 
 - Next.js App Router (currently **16.2.x**), TypeScript strict, Tailwind CSS v4
 - **pnpm only** (`packageManager` field)
-- `next/font/google` → **Cormorant Garamond (weights 400–700)** + Inter + **IBM Plex Sans Thai**
+- `next/font/google` → **Allura (couple-name script)** + **Cormorant Garamond (weights 400–700)** + Inter + **IBM Plex Sans Thai**
 - `lucide-react`, `motion` (subtle, reduced-motion-safe)
 - Static export (**`output: 'export'`**), **`images.unoptimized: true`**
 - Playwright (**dev**) + `pnpm screenshots` for deterministic visual QA (see **`docs/VISUAL_QA.md`**)
@@ -72,19 +72,24 @@ GITHUB_PAGES=true → basePath "/top-tanly-wedding" + trailing assetPrefix (see 
 
 ## Styling (`03_DESIGN_SYSTEM.md`)
 
+**Visual direction: minimal invitation — warm cream + near-black ink, NO floral artwork.** The site mirrors a clean letterpress invitation: lots of whitespace, a flowing script couple-name, and letter-spaced uppercase supporting type. Do **not** reintroduce flower/leaf backgrounds, watercolor sprites, or botanical SVG corners.
+
 - Tailwind utilities + tokens from **`app/globals.css`** `@theme`.
-- Palette tokens: **`cream`**, **`ivory`**, **`champagne`**, **`olive`**, **`olive-deep`**, **`olive-soft`**, **`sage`**, **`gold`**, **`rose` / `rose-deep`** (warm accent only—not dominant for primary CTAs), **`charcoal`**, **`stone`**. No arbitrary hex unless deliberately extending `@theme`.
-- **Primary buttons / key nav states:** **`olive` / `olive-deep`**. Reserve **`gold`** for small dividers and ceremonial lines.
+- Palette tokens: **`cream`**, **`ivory`**, **`champagne`**, **`charcoal`**, **`stone`**, plus legacy names **`olive`/`olive-deep`/`olive-soft`**, **`sage`/`sage-soft`**, **`gold`**, **`rose`/`rose-deep`** that are now **collapsed onto the neutral ink/cream scale** (olive ≈ near-black, gold ≈ quiet taupe hairline). Existing class names therefore render the minimal theme; prefer **`charcoal`/`stone`/`cream`/`ivory`** for new work. No arbitrary hex unless deliberately extending `@theme`.
+- **Primary buttons / key nav states:** **`charcoal`** fill with cream uppercase tracked label; secondary = hairline `charcoal/30` outline on transparent. No colored CTAs.
 - Border radii: invitation-style cards `rounded-2xl` / `rounded-3xl`, media `rounded-xl`, CTAs `rounded-full`.
 - Shadows: soft warm elevation only; never generic heavy “dashboard” chrome.
-- **Typography pairing:** serif display headings for ceremony tint **`olive-deep`** (`Heading` `h1`–`h3` defaults); eyebrows share the serif with restrained tracking (**never widen tracking on Thai source strings**). IBM Plex Sans Thai remains the pragmatic body/stack voice.
-- **Botanical overlays:** strongest `BotanicalBackdrop` framing on Home; inner sections opt into `SoftPageBotanical` via **`Section`'s optional `botanical` flag**. Every layer stays `pointer-events-none` inside `overflow-hidden` parents so canvases ≥360 px never gain horizontal bleed.
+- **Typography pairing:** **Allura script (`font-script`) for the couple name** as the hero/footer focal — the **formal first names `Narueporn & Theerut`** (bride-first) are the large script, with the nickname `Tan & Top` as the small uppercase line beneath; Cormorant serif (`font-display`) for section headings; **letter-spaced uppercase Inter** for eyebrows/formal labels; IBM Plex Sans Thai for Thai body. **Never widen tracking on Thai source strings.** The couple-name strings are Latin, so the script renders in both locales.
+- **Logo / monogram:** `TNMonogram` renders a refined serif **`N & T`** lockup (SVG text, scales by height with `w-auto`). The navbar wordmark leads with the formal first names `Narueporn & Theerut` (bride-first), with `Tan & Top · Wedding` as the small subtitle. Do not restore the old geometric T-over-N mark.
+- **No decorative background layers.** `Section` renders no artwork — only a gentle `whileInView` opacity settle (reduced-motion safe). Hairline dividers (`InvitationBotanicalRule`, `DecorativeDivider`) are plain lines, never botanicals. `BotanicalBackdrop`/`FooterBotanical`/`SoftPageBotanical` were removed; do not recreate them.
+
+- Decorative elements must stay `pointer-events-none` inside `overflow-hidden` parents so layouts ≥360 px never gain horizontal bleed.
 
 ### Animation posture
 
-✅ Fade / soft upward reveal, gentle hover lift on decorative imagery, restrained button fades, accordion easing with readable content states.
+✅ Fade / soft upward reveal, gentle section opacity settle on scroll, restrained button fades, accordion easing with readable content states.
 
-⚠️ Flip/gimmick transitions only on ornamental Home/Gallery motifs—never for schedule facts or urgent venue instructions.
+⚠️ Keep motion subtle and ornamental—never on schedule facts or urgent venue instructions.
 
 ❌ Parallax loops, flashy 3D flips, marquees, autoplay gag animations, bouncing overshoot gimmicks—anything disrespecting **`prefers-reduced-motion`**.
 
@@ -101,7 +106,7 @@ Screenshots tooling may disable CSS animations for deterministic PNG QA—don't 
 
 Never list **Home** as a bullet. Logo lockup anchors to **`/`** (Thai) or **`/en`** (English).
 
-**Mobile (`lg` and below):** a **fixed bottom navigation** (`MobileBottomNav`) surfaces **Home · Schedule · Venue · Gallery · FAQ** with icons + labels, **`env(safe-area-inset-bottom)`** padding, and **olive** active styling. Do **not** add RSVP, Gift, LINE, Accommodation, or Dress-code entries.
+**Mobile (`lg` and below):** a **fixed bottom navigation** (`MobileBottomNav`) surfaces **Home · Schedule · Venue · Gallery · FAQ** with icons + labels, **`env(safe-area-inset-bottom)`** padding, and **ink/charcoal** active styling. Do **not** add RSVP, Gift, LINE, Accommodation, or Dress-code entries.
 
 Main **desktop** top nav mirrors product:
 
@@ -125,6 +130,8 @@ Follow **`06_RESPONSIVE_UX_SPEC.md`** + **`10_ACCEPTANCE_CRITERIA_QA.md`:**
 
 ## What NOT to do (recap)
 
+- ❌ Floral/botanical backgrounds, watercolor sprites, leaf SVG corners (minimal theme = no flowers)
+- ❌ Colored CTAs / reintroducing a green olive or gold accent as a dominant brand color
 - ❌ Accommodation / Dress-code resurrected casually
 - ❌ Hardcoded multilingual strings sprinkled in JSX
 - ❌ Runtime data fetching powering guest-critical info

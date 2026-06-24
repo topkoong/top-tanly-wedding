@@ -22,7 +22,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
   const isThai = site.locale === "th";
 
   return (
-    <Section background="cream" botanical="lowerLeft">
+    <Section background="cream">
       <Container className={isThai ? "font-thai" : "font-body"}>
         <div className="grid min-w-0 gap-8 lg:grid-cols-2">
           <div className="order-2 min-w-0 space-y-6 lg:order-1">

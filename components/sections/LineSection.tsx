@@ -14,7 +14,7 @@ export default function LineSection({ site, content }: LineSectionProps) {
   const isThai = site.locale === "th";
 
   return (
-    <Section background="cream" botanical="lowerRight">
+    <Section background="cream">
       <Container size="narrow" className={isThai ? "font-thai" : "font-body"}>
         <div className="min-w-0 space-y-8">
           <Heading

@@ -1,7 +1,6 @@
 import { ChevronDown } from "lucide-react";
 
 import Button from "@/components/ui/Button";
-import BotanicalBackdrop from "@/components/ui/BotanicalBackdrop";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import FadeIn from "@/components/ui/FadeIn";
@@ -25,32 +24,30 @@ export default function HomeShell({ content }: HomeShellProps) {
       <Section
         background="cream"
         className={cn(
-          "group relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-gradient-to-b from-cream via-cream to-olive-soft/25 py-12 sm:py-16 md:py-24",
+          "relative flex min-h-[calc(100svh-4rem)] items-center bg-cream py-12 sm:py-16 md:py-24",
         )}
       >
-        <BotanicalBackdrop imageClassName="object-cover object-[18%_center] opacity-[0.62] sm:object-center sm:opacity-[0.72] md:opacity-[0.76]" />
         <Container className="relative z-10">
-          <FadeIn className="mx-auto max-w-lg">
+          <FadeIn className="mx-auto max-w-2xl">
             <div className="flex flex-col items-center text-center">
-              <TNMonogram className="h-14 w-14 text-olive/45" title="" />
+              <TNMonogram className="h-11 w-auto text-charcoal/50" title="" />
               <p className="mt-6 max-w-xs text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.22em] text-charcoal/[0.65] sm:text-body-s sm:tracking-[0.2em]">
                 {content.homeShell.invitationLeadIn}
               </p>
               <Heading
                 as="h1"
-                headingClassName={cn(
-                  "mt-5 font-display text-display-xl font-bold leading-[1.02] text-olive-deep",
-                  !isThai && "uppercase tracking-[0.06em]",
-                )}
+                headingClassName="mt-3 font-script font-normal leading-[1.05] text-charcoal text-[clamp(2.5rem,9vw,4.5rem)]"
               >
-                {content.coupleFriendlyName}
+                {content.coupleFormalName}
               </Heading>
-              <p className="mt-3 max-w-full font-display text-body-l text-charcoal/85">{content.homeShell.formalNames}</p>
+              <p className="mt-4 max-w-full text-body-s uppercase tracking-[0.2em] text-stone sm:tracking-[0.24em]">
+                {content.coupleFriendlyName}
+              </p>
               <p className="mt-5 max-w-md text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.14em] text-stone sm:text-body-s">
                 {content.homeShell.invitationInviteLine}
               </p>
 
-              <div className="relative mt-10 w-full max-w-full rounded-[1.75rem] border border-olive/12 bg-ivory px-6 py-9 shadow-[0_26px_60px_-32px_rgba(86,94,63,0.26)] sm:rounded-[2rem] sm:px-8">
+              <div className="relative mx-auto mt-10 w-full max-w-md rounded-[1.75rem] border border-charcoal/10 bg-ivory px-6 py-9 shadow-[0_26px_60px_-32px_rgba(31,29,24,0.2)] sm:rounded-[2rem] sm:px-8">
                 <p className="text-body-s uppercase tracking-[0.14em] text-olive-deep">
                   {content.homeShell.invitationCardEyebrow}
                 </p>
@@ -109,7 +106,7 @@ export default function HomeShell({ content }: HomeShellProps) {
 
       <Section background="transparent" className="bg-cream pt-0">
         <Container size="narrow">
-          <div className="min-w-0 max-w-full space-y-5 rounded-[1.75rem] border border-olive/10 bg-ivory p-6 shadow-[0_16px_40px_-28px_rgba(86,94,63,0.14)] sm:p-8">
+          <div className="min-w-0 max-w-full space-y-5 rounded-[1.75rem] border border-charcoal/10 bg-ivory p-6 shadow-[0_16px_40px_-28px_rgba(31,29,24,0.12)] sm:p-8">
             <div className="flex flex-col items-center gap-3 text-center">
               <InvitationBotanicalRule className="max-w-[160px]" />
               <Heading

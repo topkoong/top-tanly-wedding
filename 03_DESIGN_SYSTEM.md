@@ -1,28 +1,33 @@
 # 03 — Design System
 
+> **Current direction (overrides older entries below): minimal invitation — warm cream + near-black ink, NO floral artwork.**
+> The site mirrors a clean letterpress invitation: generous whitespace, a flowing **Allura script** couple-name as the focal point (formal first names **`Narueporn & Theerut`**, bride-first; nickname `Tan & Top` as a small uppercase line), a refined serif **`N & T`** monogram, and **letter-spaced uppercase** Inter supporting type on a warm cream canvas. Flowers, watercolor sprites, and botanical SVG corners have been removed and must not return. The legacy `olive`/`sage`/`gold` token **names** still exist but are collapsed onto a neutral ink/cream scale (olive ≈ near-black, gold ≈ quiet taupe hairline), so older class names render the minimal theme. Prefer `charcoal`/`stone`/`cream`/`ivory` for new work.
+
 ## Visual quality bar
 
-The site must feel like a minimal luxury wedding invitation. Every page must have strong visual hierarchy, generous whitespace, warm colour usage, refined typography, and intentional card/placeholder styling. Plain documentation-style layouts are not acceptable.
+The site must feel like a minimal luxury wedding invitation. Every page must have strong visual hierarchy, generous whitespace, restrained colour usage, refined typography, and intentional card/placeholder styling. Plain documentation-style layouts are not acceptable.
 
 ## Brand mood
 
 - Minimal, elegant, classy, warm, premium, modern Thai hotel wedding style.
-- Feels like a luxury hotel wedding microsite, digital invitation, and editorial brochure.
-- Avoid heavy floral graphics, dark corporate blocks, over-animation, and cursive-heavy typography.
+- Feels like a luxury hotel wedding microsite and digital invitation card.
+- A single flowing **script** appears only for the couple friendly name; everything else stays serif headings + clean sans body. Avoid floral graphics, dark corporate blocks, and over-animation.
 
-## Colour palette (fixed)
+## Colour palette (minimal — current)
 
 Core tokens in `app/globals.css` `@theme` (hex references for handoff parity):
 
-| Token | Typical hex | Usage |
+| Token | Hex | Usage |
 |-------|----------------|-------|
-| `cream` | #F8F5EF | Page canvas |
-| `ivory` | #FCFAF6 | Invite cards / raised surfaces |
-| `olive` | #6F7654 | Primary actions, botanical silhouettes |
-| `olive-deep` | #565E3F | Page titles (`h1`–`h3`), richer emphasis |
-| `sage` / `sage-soft` | #A5AC8A / tinted wash | Whisper botanicals |
-| `gold` | #CDBD8B | Divider hairlines only |
-| `charcoal` | #3B382F | Default body hierarchy |
+| `cream` | #F4F0E9 | Page canvas |
+| `ivory` | #FAF7F1 | Invite cards / raised surfaces |
+| `charcoal` | #1F1D18 | Couple-name + default body ink |
+| `stone` | #6E6A61 | Secondary/muted text, eyebrows |
+| `olive` (legacy → ink) | #2B2922 | Primary buttons / strong accents |
+| `olive-deep` (legacy → near-black) | #16140F | Headings, hover ink |
+| `olive-soft` (legacy → warm grey) | #EBE6DC | Icon wells / chips |
+| `sage` / `sage-soft` (legacy → neutral) | #8D887E / #DDD8CD | Quiet secondary marks |
+| `gold` (legacy → taupe) | #C8C1B2 | Hairline dividers only (no metallic) |
 | `stone` | #7A766E | Secondary / meta copy |
 
 Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.

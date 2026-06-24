@@ -6,7 +6,6 @@ import { Fragment } from "react";
 
 import TNMonogram from "@/components/icons/TNMonogram";
 import Container from "@/components/ui/Container";
-import FooterBotanical from "@/components/ui/FooterBotanical";
 import { getSiteContent } from "@/content/site";
 import { getLocaleFromPathname } from "@/lib/locale";
 import { cn } from "@/lib/utils";
@@ -24,22 +23,23 @@ export default function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        "relative overflow-hidden border-t border-olive/10 bg-gradient-to-b from-ivory via-cream to-olive-soft/35 pt-12 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-12 lg:pb-10",
+        "relative overflow-hidden border-t border-charcoal/10 bg-cream pt-12 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-12 lg:pb-10",
         localeTextClass,
         className,
       )}
     >
-      <FooterBotanical />
       <Container className="relative z-10">
         <div className="mx-auto max-w-6xl text-center">
           <div className="mx-auto max-w-lg space-y-3">
-            <div className="flex justify-center text-olive/35">
-              <TNMonogram className="h-9 w-9" title="" />
+            <div className="flex justify-center text-charcoal/45">
+              <TNMonogram className="h-9 w-auto" title="" />
             </div>
-            <p className="mx-auto max-w-full text-pretty font-display text-h2 font-semibold leading-tight text-olive-deep">
+            <p className="mx-auto max-w-full text-pretty font-script leading-[1.1] text-charcoal text-[clamp(1.875rem,7vw,2.75rem)]">
               {siteContent.coupleFormalName}
             </p>
-            <p className="max-w-full text-body leading-relaxed text-charcoal">{siteContent.coupleFriendlyName}</p>
+            <p className="max-w-full text-body-s uppercase tracking-[0.18em] text-stone">
+              {siteContent.coupleFriendlyName}
+            </p>
             <div className="mx-auto h-px max-w-[3rem] bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
             <p className="max-w-full text-pretty text-body-s leading-relaxed text-stone">
               {siteContent.weddingDate} · {siteContent.footer.venueLabel}

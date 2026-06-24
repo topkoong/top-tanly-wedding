@@ -5,39 +5,42 @@ type TNMonogramProps = {
   title?: string;
 };
 
+/**
+ * Refined serif monogram "N & T" (bride-first initials) rendered as SVG text so
+ * it scales cleanly at any height. Sized by height; width follows the viewBox.
+ */
 export default function TNMonogram({
   className,
-  title = "TN monogram",
+  title = "N & T monogram",
 }: TNMonogramProps) {
+  const serif = "var(--font-cormorant), Georgia, 'Times New Roman', serif";
+
   return (
     <svg
-      viewBox="0 0 120 120"
+      viewBox="0 0 72 44"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("h-6 w-6", className)}
+      className={cn("h-7 w-auto", className)}
       role="img"
       aria-label={title}
       preserveAspectRatio="xMidYMid meet"
     >
-      <path
-        d="M18 24H102"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M60 24V96"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M32 96V42L88 96V42"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <text
+        x="36"
+        y="23"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fill="currentColor"
+        style={{ fontFamily: serif }}
+      >
+        <tspan style={{ fontSize: "34px", fontWeight: 500 }}>N</tspan>
+        <tspan dx="4" style={{ fontSize: "24px", fontWeight: 400, fontStyle: "italic" }}>
+          &amp;
+        </tspan>
+        <tspan dx="4" style={{ fontSize: "34px", fontWeight: 500 }}>
+          T
+        </tspan>
+      </text>
     </svg>
   );
 }
