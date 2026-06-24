@@ -26,7 +26,15 @@ export default function BotanicalBackdrop({
       className={cn("pointer-events-none absolute inset-0 z-0 overflow-hidden", className)}
       aria-hidden
     >
-      <div className="absolute inset-0">
+      {/* Drift wrapper: slow atmospheric translate on parent hover (group-hover). */}
+      <div
+        className={cn(
+          "absolute inset-[-4%] will-change-transform",
+          "transition-transform duration-[3000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "group-hover:translate-x-[1.4%] group-hover:-translate-y-[1%] group-hover:scale-[1.022]",
+          "motion-reduce:transform-none motion-reduce:transition-none",
+        )}
+      >
         <Image
           src={imageSrc}
           alt=""

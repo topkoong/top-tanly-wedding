@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { motion, useReducedMotion } from "motion/react";
 
 import BotanicalBackdrop from "@/components/ui/BotanicalBackdrop";
 import { publicAssetPath } from "@/lib/publicAssetPath";
@@ -47,29 +50,46 @@ export default function Section({
   id,
   botanical,
 }: SectionProps) {
+  const shouldReduceMotion = useReducedMotion();
   const botanicalVariant: BotanicalVariant = botanical === true || !botanical ? "upperRight" : botanical;
 
+  const sectionClass = cn(
+    "min-w-0 py-16 md:py-24",
+    botanical && "group relative overflow-hidden",
+    backgroundClasses[background],
+    className,
+  );
+
+  const inner = botanical ? (
+    <>
+      <BotanicalBackdrop
+        imageSrc={botanicalImageSources[botanicalVariant]}
+        imageClassName={botanicalImageClasses[botanicalVariant]}
+      />
+      <div className="relative z-10">{children}</div>
+    </>
+  ) : (
+    children
+  );
+
+  if (shouldReduceMotion) {
+    return (
+      <section id={id} className={sectionClass}>
+        {inner}
+      </section>
+    );
+  }
+
   return (
-    <section
+    <motion.section
       id={id}
-      className={cn(
-        "min-w-0 py-16 md:py-24",
-        botanical && "relative overflow-hidden",
-        backgroundClasses[background],
-        className,
-      )}
+      className={sectionClass}
+      initial={{ opacity: 0.88 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration: 1.1, ease: "easeOut" }}
     >
-      {botanical ? (
-        <>
-          <BotanicalBackdrop
-            imageSrc={botanicalImageSources[botanicalVariant]}
-            imageClassName={botanicalImageClasses[botanicalVariant]}
-          />
-          <div className="relative z-10">{children}</div>
-        </>
-      ) : (
-        children
-      )}
-    </section>
+      {inner}
+    </motion.section>
   );
 }

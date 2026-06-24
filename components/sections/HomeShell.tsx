@@ -25,7 +25,7 @@ export default function HomeShell({ content }: HomeShellProps) {
       <Section
         background="cream"
         className={cn(
-          "relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-gradient-to-b from-cream via-cream to-olive-soft/25 py-12 sm:py-16 md:py-24",
+          "group relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-gradient-to-b from-cream via-cream to-olive-soft/25 py-12 sm:py-16 md:py-24",
         )}
       >
         <BotanicalBackdrop imageClassName="object-cover object-[18%_center] opacity-[0.62] sm:object-center sm:opacity-[0.72] md:opacity-[0.76]" />
