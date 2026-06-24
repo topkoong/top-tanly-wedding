@@ -41,6 +41,7 @@ export const siteContentEn: SiteContent = {
     invitationProgrammeSummary: "Morning ceremony and wedding reception",
     invitationCtaLabel: "View Details",
     invitationCtaHref: "/en#quick-actions",
+    invitationOpenLabel: "Tap to open",
     supportLineLabel: "Go to LINE Official Account",
     quickActionCards: [
       {

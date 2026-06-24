@@ -41,6 +41,7 @@ export const siteContentTh: SiteContent = {
     invitationProgrammeSummary: "พิธีช่วงเช้าและงานเลี้ยงฉลองมงคลสมรส",
     invitationCtaLabel: "ดูรายละเอียด",
     invitationCtaHref: "/#quick-actions",
+    invitationOpenLabel: "แตะเพื่อเปิดการ์ดเชิญ",
     supportLineLabel: "ไปยังหน้า LINE Official Account",
     quickActionCards: [
       {

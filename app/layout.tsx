@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Allura, Cormorant_Garamond, IBM_Plex_Sans_Thai, Inter } from "next/font/google";
+import { Allura, Cormorant_Garamond, IBM_Plex_Sans_Thai, Inter, Pinyon_Script } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
@@ -15,6 +15,13 @@ const cormorant = Cormorant_Garamond({
 
 const allura = Allura({
   variable: "--font-allura",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
+
+const pinyon = Pinyon_Script({
+  variable: "--font-pinyon",
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
@@ -52,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="th"
-      className={`light h-full ${cormorant.variable} ${allura.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
+      className={`light h-full ${cormorant.variable} ${allura.variable} ${pinyon.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
     >
       <body className="min-h-full min-w-0 bg-cream text-charcoal font-body">
         <div className="flex min-h-screen min-w-0 flex-col">

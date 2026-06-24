@@ -6,7 +6,7 @@ Provide a **static, read-only, bilingual** (Thai-first) wedding microsite guests
 
 See also: [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md) for what obsolete docs said vs. shipping code.
 
-> **Visual direction (current): minimal invitation** — warm cream canvas, near-black ink, a flowing Allura script couple-name (formal first names `Narueporn & Theerut`, bride-first) with the `Tan & Top` nickname as a small uppercase line, a refined serif `N & T` monogram, letter-spaced uppercase supporting type, and **no floral/botanical artwork**. See `03_DESIGN_SYSTEM.md` and `.cursor/rules/wedding-site.mdc`.
+> **Visual direction (current): minimal invitation** — warm cream canvas, near-black ink, a flowing Allura script couple-name (formal first names `Narueporn & Theerut`, bride-first) with the `Tan & Top` nickname as a small uppercase line, an intertwined calligraphic `NT` monogram, letter-spaced uppercase supporting type, and **no floral/botanical artwork**. See `03_DESIGN_SYSTEM.md` and `.cursor/rules/wedding-site.mdc`.
 
 ## Key product decisions
 

@@ -44,6 +44,8 @@ export type SiteContent = {
     invitationCtaLabel: string;
     /** Hash link to on-page section, e.g. /#quick-actions */
     invitationCtaHref: string;
+    /** Prompt on the sealed envelope before it is opened (e.g. "Tap to open"). */
+    invitationOpenLabel: string;
     supportLineLabel: string;
     quickActionCards: Array<{
       href: string;

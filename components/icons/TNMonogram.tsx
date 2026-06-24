@@ -6,18 +6,20 @@ type TNMonogramProps = {
 };
 
 /**
- * Refined serif monogram "N & T" (bride-first initials) rendered as SVG text so
- * it scales cleanly at any height. Sized by height; width follows the viewBox.
+ * Elegant intertwined calligraphic "NT" monogram (initials of
+ * Narueporn & Theerut), rendered with Pinyon Script as SVG text so it scales
+ * cleanly at any height. Sized by height; width follows the viewBox. The wide
+ * viewBox leaves room for the script flourishes so they are not clipped.
  */
 export default function TNMonogram({
   className,
   title = "N & T monogram",
 }: TNMonogramProps) {
-  const serif = "var(--font-cormorant), Georgia, 'Times New Roman', serif";
+  const script = "var(--font-pinyon), 'Pinyon Script', cursive";
 
   return (
     <svg
-      viewBox="0 0 72 44"
+      viewBox="0 0 170 116"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={cn("h-7 w-auto", className)}
@@ -26,20 +28,15 @@ export default function TNMonogram({
       preserveAspectRatio="xMidYMid meet"
     >
       <text
-        x="36"
-        y="23"
+        x="85"
+        y="64"
         textAnchor="middle"
         dominantBaseline="central"
         fill="currentColor"
-        style={{ fontFamily: serif }}
+        style={{ fontFamily: script, fontWeight: 400, fontSize: "118px" }}
       >
-        <tspan style={{ fontSize: "34px", fontWeight: 500 }}>N</tspan>
-        <tspan dx="4" style={{ fontSize: "24px", fontWeight: 400, fontStyle: "italic" }}>
-          &amp;
-        </tspan>
-        <tspan dx="4" style={{ fontSize: "34px", fontWeight: 500 }}>
-          T
-        </tspan>
+        <tspan>N</tspan>
+        <tspan dx="-30">T</tspan>
       </text>
     </svg>
   );

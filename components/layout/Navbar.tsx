@@ -57,15 +57,7 @@ export default function Navbar({ className }: NavbarProps) {
             className="flex min-w-0 max-w-[calc(100%-3.75rem)] flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2"
             aria-label={siteContent.siteName}
           >
-            <TNMonogram className="h-7 w-auto shrink-0" />
-            <div className="min-w-0 leading-tight">
-              <span className="block truncate font-display text-[clamp(1rem,4vw,1.25rem)] leading-tight tracking-tight sm:text-xl">
-                {siteContent.coupleFormalName}
-              </span>
-              <span className="hidden text-[10px] uppercase tracking-[0.14em] text-stone sm:block">
-                {siteContent.coupleFriendlyName} · Wedding
-              </span>
-            </div>
+            <TNMonogram className="h-8 w-auto shrink-0 sm:h-9" />
           </Link>
 
           <nav aria-label="Desktop" className="hidden items-center gap-1 md:flex">

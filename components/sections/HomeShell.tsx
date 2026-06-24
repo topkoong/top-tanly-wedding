@@ -3,9 +3,9 @@ import { ChevronDown } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
-import FadeIn from "@/components/ui/FadeIn";
 import Heading from "@/components/ui/Heading";
 import InvitationBotanicalRule from "@/components/ui/InvitationBotanicalRule";
+import InvitationEnvelope from "@/components/sections/InvitationEnvelope";
 import QuickActionCard from "@/components/ui/QuickActionCard";
 import Section from "@/components/ui/Section";
 import TNMonogram from "@/components/icons/TNMonogram";
@@ -28,9 +28,14 @@ export default function HomeShell({ content }: HomeShellProps) {
         )}
       >
         <Container className="relative z-10">
-          <FadeIn className="mx-auto max-w-2xl">
+          <InvitationEnvelope
+            variant="hero"
+            openLabel={content.homeShell.invitationOpenLabel}
+            coupleName={content.coupleFormalName}
+            className="mx-auto max-w-2xl"
+          >
             <div className="flex flex-col items-center text-center">
-              <TNMonogram className="h-11 w-auto text-charcoal/50" title="" />
+              <TNMonogram className="h-14 w-auto text-charcoal/70" title="" />
               <p className="mt-6 max-w-xs text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.22em] text-charcoal/[0.65] sm:text-body-s sm:tracking-[0.2em]">
                 {content.homeShell.invitationLeadIn}
               </p>
@@ -79,7 +84,7 @@ export default function HomeShell({ content }: HomeShellProps) {
                 </div>
               </div>
             </div>
-          </FadeIn>
+          </InvitationEnvelope>
         </Container>
       </Section>
 

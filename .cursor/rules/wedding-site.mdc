@@ -46,7 +46,7 @@ Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI 
 
 - Next.js App Router (currently **16.2.x**), TypeScript strict, Tailwind CSS v4
 - **pnpm only** (`packageManager` field)
-- `next/font/google` → **Allura (couple-name script)** + **Cormorant Garamond (weights 400–700)** + Inter + **IBM Plex Sans Thai**
+- `next/font/google` → **Allura (couple-name script)** + **Pinyon Script (NT monogram)** + **Cormorant Garamond (weights 400–700)** + Inter + **IBM Plex Sans Thai**
 - `lucide-react`, `motion` (subtle, reduced-motion-safe)
 - Static export (**`output: 'export'`**), **`images.unoptimized: true`**
 - Playwright (**dev**) + `pnpm screenshots` for deterministic visual QA (see **`docs/VISUAL_QA.md`**)
@@ -80,7 +80,7 @@ GITHUB_PAGES=true → basePath "/top-tanly-wedding" + trailing assetPrefix (see 
 - Border radii: invitation-style cards `rounded-2xl` / `rounded-3xl`, media `rounded-xl`, CTAs `rounded-full`.
 - Shadows: soft warm elevation only; never generic heavy “dashboard” chrome.
 - **Typography pairing:** **Allura script (`font-script`) for the couple name** as the hero/footer focal — the **formal first names `Narueporn & Theerut`** (bride-first) are the large script, with the nickname `Tan & Top` as the small uppercase line beneath; Cormorant serif (`font-display`) for section headings; **letter-spaced uppercase Inter** for eyebrows/formal labels; IBM Plex Sans Thai for Thai body. **Never widen tracking on Thai source strings.** The couple-name strings are Latin, so the script renders in both locales.
-- **Logo / monogram:** `TNMonogram` renders a refined serif **`N & T`** lockup (SVG text, scales by height with `w-auto`). The navbar wordmark leads with the formal first names `Narueporn & Theerut` (bride-first), with `Tan & Top · Wedding` as the small subtitle. Do not restore the old geometric T-over-N mark.
+- **Logo / monogram:** `TNMonogram` renders an **intertwined calligraphic `NT`** mark (Pinyon Script as SVG text, scales by height with `w-auto`). The navbar wordmark leads with the formal first names `Narueporn & Theerut` (bride-first), with `Tan & Top · Wedding` as the small subtitle. Do not restore the old geometric T-over-N mark.
 - **No decorative background layers.** `Section` renders no artwork — only a gentle `whileInView` opacity settle (reduced-motion safe). Hairline dividers (`InvitationBotanicalRule`, `DecorativeDivider`) are plain lines, never botanicals. `BotanicalBackdrop`/`FooterBotanical`/`SoftPageBotanical` were removed; do not recreate them.
 
 - Decorative elements must stay `pointer-events-none` inside `overflow-hidden` parents so layouts ≥360 px never gain horizontal bleed.
