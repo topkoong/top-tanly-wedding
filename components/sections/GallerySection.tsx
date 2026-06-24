@@ -31,7 +31,7 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
   }, [content.items, tabIndex]);
 
   return (
-    <Section background="cream" botanical="balanced">
+    <Section background="cream" botanical="gallery">
       <Container className={isThai ? "font-thai" : "font-body"}>
         <div className="min-w-0 space-y-8">
           <Heading

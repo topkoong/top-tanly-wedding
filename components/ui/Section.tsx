@@ -5,7 +5,7 @@ import { publicAssetPath } from "@/lib/publicAssetPath";
 import { cn } from "@/lib/utils";
 
 type SectionBackground = "cream" | "ivory" | "transparent";
-type BotanicalVariant = "upperRight" | "upperLeft" | "lowerRight" | "lowerLeft" | "balanced";
+type BotanicalVariant = "upperRight" | "upperLeft" | "lowerRight" | "lowerLeft" | "balanced" | "gallery";
 
 type SectionProps = {
   className?: string;
@@ -28,6 +28,7 @@ const botanicalImageClasses: Record<BotanicalVariant, string> = {
   lowerRight: "object-cover object-[84%_bottom] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
   lowerLeft: "object-cover object-[16%_bottom] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
   balanced: "object-cover object-[72%_center] opacity-[0.22] sm:opacity-[0.26] md:opacity-[0.3]",
+  gallery: "object-cover object-[56%_42%] opacity-[0.14] sm:opacity-[0.17] md:opacity-[0.2]",
 };
 
 const botanicalImageSources: Record<BotanicalVariant, string> = {
@@ -36,6 +37,7 @@ const botanicalImageSources: Record<BotanicalVariant, string> = {
   lowerRight: publicAssetPath("/images/wedding-flower-background-line.png"),
   lowerLeft: publicAssetPath("/images/wedding-flower-background-venue.png"),
   balanced: publicAssetPath("/images/wedding-flower-background-gallery.png"),
+  gallery: publicAssetPath("/images/minimal-flower-wedding-background.png"),
 };
 
 export default function Section({
