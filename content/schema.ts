@@ -16,6 +16,8 @@ export type SiteContent = {
   coupleFriendlyName: string;
   coupleFormalName: string;
   weddingDate: string;
+  /** Machine-readable wedding date/time (ISO 8601 with offset) for the countdown. */
+  weddingDateISO: string;
   logoHref: string;
   linePageHref: string;
   navDesktop: NavigationItem[];
@@ -46,6 +48,15 @@ export type SiteContent = {
     invitationCtaHref: string;
     /** Prompt on the sealed envelope before it is opened (e.g. "Tap to open"). */
     invitationOpenLabel: string;
+    /** Short heading above the countdown (e.g. "Counting down to our day"). */
+    countdownTitle: string;
+    /** Localized unit labels for the countdown cells. */
+    countdownLabels: {
+      days: string;
+      hours: string;
+      minutes: string;
+      seconds: string;
+    };
     supportLineLabel: string;
     quickActionCards: Array<{
       href: string;

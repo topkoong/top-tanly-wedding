@@ -32,7 +32,7 @@ export default function Footer({ className }: FooterProps) {
         <div className="mx-auto max-w-6xl text-center">
           <div className="mx-auto max-w-lg space-y-3">
             <div className="flex justify-center text-charcoal/65">
-              <TNMonogram className="h-11 w-auto" title="" />
+              <TNMonogram className="h-14 w-auto" title="" />
             </div>
             <p className="mx-auto max-w-full text-pretty font-script leading-[1.1] text-charcoal text-[clamp(1.875rem,7vw,2.75rem)]">
               {siteContent.coupleFormalName}

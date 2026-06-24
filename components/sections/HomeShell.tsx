@@ -2,13 +2,13 @@ import { ChevronDown } from "lucide-react";
 
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import Countdown from "@/components/ui/Countdown";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
 import InvitationBotanicalRule from "@/components/ui/InvitationBotanicalRule";
 import InvitationEnvelope from "@/components/sections/InvitationEnvelope";
 import QuickActionCard from "@/components/ui/QuickActionCard";
 import Section from "@/components/ui/Section";
-import TNMonogram from "@/components/icons/TNMonogram";
 import type { SiteContent } from "@/content/schema";
 import { cn } from "@/lib/utils";
 
@@ -24,10 +24,10 @@ export default function HomeShell({ content }: HomeShellProps) {
       <Section
         background="cream"
         className={cn(
-          "relative flex min-h-[calc(100svh-4rem)] items-center bg-cream py-12 sm:py-16 md:py-24",
+          "relative flex min-h-[calc(100svh-4rem)] flex-col bg-cream pt-14 pb-12 sm:pt-16 sm:pb-16 md:pt-20 md:pb-24",
         )}
       >
-        <Container className="relative z-10">
+        <Container className="relative z-10 my-auto w-full">
           <InvitationEnvelope
             variant="hero"
             openLabel={content.homeShell.invitationOpenLabel}
@@ -35,8 +35,7 @@ export default function HomeShell({ content }: HomeShellProps) {
             className="mx-auto max-w-2xl"
           >
             <div className="flex flex-col items-center text-center">
-              <TNMonogram className="h-14 w-auto text-charcoal/70" title="" />
-              <p className="mt-6 max-w-xs text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.22em] text-charcoal/[0.65] sm:text-body-s sm:tracking-[0.2em]">
+              <p className="max-w-xs text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.22em] text-charcoal/[0.65] sm:text-body-s sm:tracking-[0.2em]">
                 {content.homeShell.invitationLeadIn}
               </p>
               <Heading
@@ -51,6 +50,14 @@ export default function HomeShell({ content }: HomeShellProps) {
               <p className="mt-5 max-w-md text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.14em] text-stone sm:text-body-s">
                 {content.homeShell.invitationInviteLine}
               </p>
+
+              <div className="mt-9 w-full max-w-md">
+                <Countdown
+                  targetISO={content.weddingDateISO}
+                  labels={content.homeShell.countdownLabels}
+                  isThai={isThai}
+                />
+              </div>
 
               <div className="relative mx-auto mt-10 w-full max-w-md rounded-[1.75rem] border border-charcoal/10 bg-ivory px-6 py-9 shadow-[0_26px_60px_-32px_rgba(31,29,24,0.2)] sm:rounded-[2rem] sm:px-8">
                 <p className="text-body-s uppercase tracking-[0.14em] text-olive-deep">

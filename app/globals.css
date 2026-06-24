@@ -36,9 +36,15 @@
   --color-charcoal: #1f1d18;
   --color-stone: #6e6a61;
 
+  /* Sage-green envelope accent (used only for the invitation envelope graphic;
+     the rest of the site stays on the cream + ink scale). */
+  --color-envelope: #767f5d;
+  --color-envelope-deep: #626b4c;
+  --color-envelope-soft: #8a9270;
+
   --font-display: var(--font-cormorant);
   --font-script: var(--font-allura);
-  --font-monogram: var(--font-pinyon);
+  --font-monogram: var(--font-allura);
   --font-body: var(--font-inter);
   --font-thai: var(--font-ibm-plex-thai);
 

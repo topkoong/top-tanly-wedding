@@ -7,6 +7,7 @@ export const siteContentTh: SiteContent = {
   coupleFriendlyName: "Tan & Top",
   coupleFormalName: "Narueporn & Theerut",
   weddingDate: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
+  weddingDateISO: "2026-11-29T09:00:00+07:00",
   logoHref: "/",
   linePageHref: "/line",
   navDesktop: [
@@ -32,8 +33,8 @@ export const siteContentTh: SiteContent = {
   mobileMenuOpenLabel: "เปิดเมนู",
   mobileMenuCloseLabel: "ปิดเมนู",
   homeShell: {
-    invitationCardEyebrow: "วันสำคัญของเรา",
-    invitationLeadIn: "ร่วมกับครอบครัวของเรา",
+    invitationCardEyebrow: "บันทึกวันสำคัญ",
+    invitationLeadIn: "ด้วยความยินดีของทั้งสองครอบครัว",
     formalNames: "Narueporn & Theerut",
     invitationInviteLine: "ขอเรียนเชิญท่านร่วมงานมงคลสมรส",
     dateLabel: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
@@ -42,6 +43,13 @@ export const siteContentTh: SiteContent = {
     invitationCtaLabel: "ดูรายละเอียด",
     invitationCtaHref: "/#quick-actions",
     invitationOpenLabel: "แตะเพื่อเปิดการ์ดเชิญ",
+    countdownTitle: "นับถอยหลังสู่วันสำคัญของเรา",
+    countdownLabels: {
+      days: "วัน",
+      hours: "ชั่วโมง",
+      minutes: "นาที",
+      seconds: "วินาที",
+    },
     supportLineLabel: "ไปยังหน้า LINE Official Account",
     quickActionCards: [
       {
@@ -71,7 +79,7 @@ export const siteContentTh: SiteContent = {
     ],
     welcomeTitle: "จากใจของเรา",
     welcomeMessage:
-      "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งของวันสำคัญของเรา เราหวังว่าเว็บไซต์นี้จะช่วยให้ทุกท่านเตรียมตัวและเดินทางมาร่วมงานได้อย่างสะดวก",
+      "เราดีใจที่ได้ต้อนรับทุกท่าน หวังว่าเว็บไซต์นี้จะช่วยให้ทุกท่านเตรียมตัวและเดินทางมาร่วมงานได้อย่างสะดวก",
   },
   footer: {
     thankYou: "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งของวันสำคัญของเรา",
