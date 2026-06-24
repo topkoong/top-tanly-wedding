@@ -129,7 +129,7 @@ export default function InvitationEnvelope({
           }}
           variants={{
             closed: { opacity: 1 },
-            open: { opacity: 0, transition: { delay: 0.5, duration: 0.45, ease: EASE } },
+            open: { opacity: 0, transition: { delay: 1.45, duration: 0.5, ease: EASE } },
           }}
           className={cn(
             "z-10 flex cursor-pointer flex-col items-center justify-center gap-7 px-6 outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:gap-8",
@@ -144,7 +144,7 @@ export default function InvitationEnvelope({
             <motion.span
               variants={{
                 closed: { opacity: 1, y: 0 },
-                open: { opacity: 0, y: -10, transition: { duration: 0.3, ease: EASE } },
+                open: { opacity: 0, y: -10, transition: { delay: 0.5, duration: 0.4, ease: EASE } },
               }}
               className={cn(
                 "font-script leading-none text-charcoal",
@@ -155,54 +155,98 @@ export default function InvitationEnvelope({
             </motion.span>
           ) : null}
 
-          {/* Sage-green envelope graphic */}
+          {/* Sage-green envelope graphic (opens: flap lifts, card slides out) */}
           <motion.span
             variants={{
-              closed: { opacity: 1, scale: 1, y: 0 },
-              open: { opacity: 0, scale: 0.96, y: 12, transition: { delay: 0.18, duration: 0.4, ease: EASE } },
+              closed: { opacity: 1, y: 0 },
+              open: { opacity: 0, y: 14, transition: { delay: 1.15, duration: 0.5, ease: EASE } },
             }}
-            style={{ perspective: 1400 }}
-            className="relative aspect-[7/5] w-full max-w-[20rem] overflow-hidden rounded-xl bg-envelope text-envelope shadow-[0_30px_60px_-32px_rgba(31,29,24,0.45)]"
+            style={{ perspective: 1500 }}
+            className="relative aspect-[7/5] w-full max-w-[20rem] [transform-style:preserve-3d]"
           >
-            {/* Faint laid-paper texture */}
+            {/* Envelope interior (revealed when the flap lifts) */}
             <span
               aria-hidden
-              className="absolute inset-0"
-              style={{ backgroundImage: PAPER_TEXTURE, backgroundSize: PAPER_TEXTURE_SIZE }}
+              className="absolute inset-0 rounded-xl bg-envelope-deep shadow-[inset_0_8px_18px_-10px_rgba(0,0,0,0.5)]"
             />
 
-            {/* Lower pocket seams (bottom corners to centre) */}
-            <span
+            {/* The card that slides up and out of the envelope */}
+            <motion.span
               aria-hidden
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(45deg, transparent calc(50% - 0.6px), rgba(0,0,0,0.16) 50%, transparent calc(50% + 0.6px)), linear-gradient(-45deg, transparent calc(50% - 0.6px), rgba(0,0,0,0.16) 50%, transparent calc(50% + 0.6px))",
+              variants={{
+                closed: { y: "10%", scale: 0.97, opacity: 0 },
+                open: {
+                  y: "-48%",
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    y: { delay: 0.5, duration: 0.85, ease: EASE },
+                    scale: { delay: 0.5, duration: 0.85, ease: EASE },
+                    opacity: { delay: 0.45, duration: 0.3, ease: EASE },
+                  },
+                },
               }}
+              style={{ zIndex: 20 }}
+              className="absolute inset-x-[14%] top-[9%] flex h-[82%] flex-col items-center justify-center gap-2 rounded-md border border-charcoal/10 bg-ivory shadow-[0_20px_34px_-18px_rgba(31,29,24,0.55)]"
+            >
+              <span className="inline-flex" style={{ filter: MONOGRAM_EMBOSS }}>
+                <TNMonogram className="h-12 w-auto text-envelope-deep" title="" />
+              </span>
+            </motion.span>
+
+            {/* Opaque envelope front pocket (hides the card's lower half) */}
+            <span
+              aria-hidden
+              style={{
+                zIndex: 30,
+                clipPath: "polygon(0% 40%, 50% 66%, 100% 40%, 100% 100%, 0% 100%)",
+              }}
+              className="absolute inset-0 rounded-xl bg-envelope shadow-[0_30px_60px_-32px_rgba(31,29,24,0.45)]"
+            >
+              <span
+                aria-hidden
+                className="absolute inset-0"
+                style={{ backgroundImage: PAPER_TEXTURE, backgroundSize: PAPER_TEXTURE_SIZE }}
+              />
+            </span>
+
+            {/* Pocket fold seams (bottom corners up to centre) */}
+            <span
+              aria-hidden
+              style={{
+                zIndex: 31,
+                background:
+                  "linear-gradient(45deg, transparent calc(50% - 0.6px), rgba(0,0,0,0.14) 50%, transparent calc(50% + 0.6px)), linear-gradient(-45deg, transparent calc(50% - 0.6px), rgba(0,0,0,0.14) 50%, transparent calc(50% + 0.6px))",
+                clipPath: "polygon(0% 40%, 50% 66%, 100% 40%, 100% 100%, 0% 100%)",
+              }}
+              className="absolute inset-0"
             />
 
-            {/* Opening flap (folds back on open) */}
+            {/* Opening flap (folds up and back to reveal the interior) */}
             <motion.span
               aria-hidden
               variants={{
                 closed: { rotateX: 0 },
-                open: { rotateX: -168, transition: { duration: 0.6, ease: EASE } },
+                open: { rotateX: -172, transition: { delay: 0.08, duration: 0.55, ease: EASE } },
               }}
               style={{
+                zIndex: 40,
                 transformOrigin: "50% 0%",
                 transformStyle: "preserve-3d",
                 clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
               }}
-              className="absolute inset-x-0 top-0 h-[66%] bg-envelope-soft shadow-[inset_0_-6px_14px_-8px_rgba(0,0,0,0.35)]"
+              className="absolute inset-x-0 top-0 h-[62%] rounded-t-xl bg-envelope-soft shadow-[inset_0_-8px_16px_-9px_rgba(0,0,0,0.4)]"
             />
 
-            {/* Wax-seal monogram */}
+            {/* Wax-seal monogram (pops off as the envelope opens) */}
             <motion.span
               aria-hidden
-              animate={{ scale: [1, 1.045, 1] }}
-              transition={{ duration: 2.8, ease: "easeInOut", repeat: Infinity }}
-              style={{ boxShadow: SEAL_EMBOSS }}
-              className="absolute left-1/2 top-1/2 z-10 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ivory sm:h-[4.5rem] sm:w-[4.5rem]"
+              variants={{
+                closed: { scale: 1, opacity: 1, y: 0 },
+                open: { scale: 1.3, opacity: 0, y: -8, transition: { duration: 0.32, ease: EASE } },
+              }}
+              style={{ zIndex: 50, boxShadow: SEAL_EMBOSS }}
+              className="absolute left-1/2 top-[59%] flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ivory sm:h-[4.5rem] sm:w-[4.5rem]"
             >
               <span
                 aria-hidden
@@ -236,7 +280,7 @@ export default function InvitationEnvelope({
       <motion.div
         initial={false}
         animate={open ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.97 }}
-        transition={{ delay: open ? 0.42 : 0, duration: 0.65, ease: EASE }}
+        transition={{ delay: open ? 1.45 : 0, duration: 0.7, ease: EASE }}
         aria-hidden={!revealed}
         inert={!revealed}
         className={cn(!revealed && "pointer-events-none")}

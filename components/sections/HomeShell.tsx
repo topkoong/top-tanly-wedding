@@ -10,6 +10,7 @@ import InvitationEnvelope from "@/components/sections/InvitationEnvelope";
 import QuickActionCard from "@/components/ui/QuickActionCard";
 import Section from "@/components/ui/Section";
 import type { SiteContent } from "@/content/schema";
+import { publicAssetPath } from "@/lib/publicAssetPath";
 import { cn } from "@/lib/utils";
 
 type HomeShellProps = {
@@ -44,9 +45,14 @@ export default function HomeShell({ content }: HomeShellProps) {
               >
                 {content.coupleFormalName}
               </Heading>
-              <p className="mt-4 max-w-full text-body-s uppercase tracking-[0.2em] text-stone sm:tracking-[0.24em]">
-                {content.coupleFriendlyName}
-              </p>
+              <img
+                src={publicAssetPath("/brand/tan-top.png")}
+                alt={content.coupleFriendlyName}
+                width={262}
+                height={383}
+                draggable={false}
+                className="mt-5 h-20 w-auto select-none opacity-90 sm:h-24"
+              />
               <p className="mt-5 max-w-md text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.14em] text-stone sm:text-body-s">
                 {content.homeShell.invitationInviteLine}
               </p>
