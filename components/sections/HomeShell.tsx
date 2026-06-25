@@ -41,7 +41,7 @@ export default function HomeShell({ content }: HomeShellProps) {
               </p>
               <Heading
                 as="h1"
-                headingClassName="mt-3 font-script font-normal leading-[1.05] text-charcoal text-[clamp(2.5rem,9vw,4.5rem)]"
+                headingClassName="mt-3 font-display font-medium italic leading-[1.05] text-charcoal text-[clamp(2.75rem,9.5vw,4.75rem)]"
               >
                 {content.coupleFormalName}
               </Heading>

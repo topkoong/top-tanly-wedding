@@ -147,8 +147,8 @@ export default function InvitationEnvelope({
                 open: { opacity: 0, y: -10, transition: { delay: 0.5, duration: 0.4, ease: EASE } },
               }}
               className={cn(
-                "font-script leading-none text-charcoal",
-                isHero ? "text-[2.4rem] sm:text-[3rem]" : "text-[2rem]",
+                "font-display font-medium italic leading-none text-charcoal",
+                isHero ? "text-[2.6rem] sm:text-[3.25rem]" : "text-[2.15rem]",
               )}
             >
               {coupleName}
