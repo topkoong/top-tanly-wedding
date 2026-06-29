@@ -25,7 +25,7 @@ export default function Navbar({ className }: NavbarProps) {
   const locale = getLocaleFromPathname(pathname);
   const siteContent = getSiteContent(locale);
   const languageSwitchHref = getLanguageSwitchHref(pathname);
-  const localeTextClass = locale === "th" ? "font-thai" : "font-body";
+  const localeTextClass = locale === "th" ? "font-thai" : "font-display";
   const isActive = (href: string) => pathname === href;
 
   useEffect(() => {

@@ -86,30 +86,35 @@ export type CoupleContent = {
   weddingDate: string;
 };
 
-export type ScheduleItem = {
+export type ScheduleTimelineEntry = {
   id: string;
-  number: string;
-  thaiName?: string;
-  englishName?: string;
-  title: string;
-  date: string;
+  /** Display time (locale-specific formatting, e.g. 07.09 or 07:09). */
   time: string;
-  /** Concise room / floor / access line (locale-specific); no travel or map copy. */
-  roomAccessLabel: string;
-  venuePageHref: string;
-  description: string;
-  chips: string[];
+  title: string;
+};
+
+/** One venue room with its programme times (morning vs reception, etc.). */
+export type ScheduleLocationGroup = {
+  id: string;
+  /** Session label, e.g. morning ceremonies / luncheon reception. */
+  sessionLabel: string;
+  /** Room name shown large, e.g. Beverly Hills. */
+  roomName: string;
+  /** Floor and building line, e.g. Floor 2 · Annex Building. */
+  floorLabel: string;
+  timeline: ScheduleTimelineEntry[];
 };
 
 export type SchedulePageContent = {
   title: string;
-  /** One line under the page hero, e.g. overall venue name (no duplicate per-card). */
-  pageVenueSummary: string;
   intro: string;
+  /** Hotel / overall venue name, e.g. Conrad Bangkok. */
+  venueHeadline: string;
+  locationGroups: ScheduleLocationGroup[];
   arrivalNote: string;
   updateNote: string;
-  events: ScheduleItem[];
   venueButtonLabel: string;
+  venuePageHref: string;
 };
 
 export type VenueContent = {
@@ -122,6 +127,8 @@ export type VenueContent = {
   /** Label above ceremony / reception room cards. */
   eventSpacesTitle?: string;
   eventSpaces: Array<{
+    /** Session label, e.g. morning ceremonies. */
+    sessionLabel?: string;
     room: string;
     floor?: string;
     eventName: string;

@@ -10,14 +10,16 @@ export const venueContentEn: VenueContent = {
   eventSpacesTitle: "Ceremony & reception spaces",
   eventSpaces: [
     {
+      sessionLabel: "Morning ceremonies",
       room: "Beverly Hills",
       floor: "Floor 2 · Annex Building",
-      eventName: "Engagement & Rubwai Ceremony",
+      eventName: "Paying respects · Engagement · Paying respects to elders",
     },
     {
+      sessionLabel: "Luncheon reception",
       room: "Conrad Ballroom",
       floor: "Floor 4 · Main Building",
-      eventName: "Wedding Reception",
+      eventName: "Wedding reception",
     },
   ],
   transport: [

@@ -10,11 +10,13 @@ export const venueContentTh: VenueContent = {
   eventSpacesTitle: "ห้องจัดงาน",
   eventSpaces: [
     {
+      sessionLabel: "พิธีช่วงเช้า",
       room: "Beverly Hills",
       floor: "ชั้น 2 · อาคาร Annex",
-      eventName: "พิธีหมั้นและพิธีรับไหว้",
+      eventName: "พิธีสู่ขอ · พิธีหมั้น · พิธีรับไหว้",
     },
     {
+      sessionLabel: "งานเลี้ยงฉลองมงคลสมรส",
       room: "Conrad Ballroom",
       floor: "ชั้น 4 · อาคารหลัก",
       eventName: "งานเลี้ยงฉลองมงคลสมรส",

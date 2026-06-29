@@ -4,7 +4,7 @@ export const siteContentEn: SiteContent = {
   locale: "en",
   htmlLang: "en",
   siteName: "Tan & Top Wedding",
-  coupleFriendlyName: "Tan & Top",
+  coupleFriendlyName: "Tan and Top",
   coupleFormalName: "Narueporn & Theerut",
   weddingDate: "Sunday, 29 November 2026",
   weddingDateISO: "2026-11-29T09:00:00+07:00",

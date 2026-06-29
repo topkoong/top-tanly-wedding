@@ -15,7 +15,7 @@ export default function LineSection({ site, content }: LineSectionProps) {
 
   return (
     <Section background="cream">
-      <Container size="narrow" className={isThai ? "font-thai" : "font-body"}>
+      <Container size="narrow" className={isThai ? "font-thai" : "font-display"}>
         <div className="min-w-0 space-y-8">
           <Heading
             as="h1"

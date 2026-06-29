@@ -16,7 +16,7 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
 
   return (
     <Section background="cream">
-      <Container className={isThai ? "font-thai" : "font-body"}>
+      <Container className={isThai ? "font-thai" : "font-display"}>
         <div className="min-w-0 space-y-8">
           <Heading
             as="h1"
@@ -26,79 +26,92 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
             {site.weddingDate}
           </Heading>
           <DecorativeDivider />
-          <p className="max-w-full text-body-s font-medium leading-relaxed text-charcoal/90">{content.pageVenueSummary}</p>
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+          <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
             {content.intro}
           </p>
 
-          <ol className="min-w-0 space-y-6 md:space-y-8">
-            {content.events.map((event, index) => (
-              <li
-                key={event.id}
-                className="relative min-w-0 max-w-full overflow-hidden rounded-2xl border border-charcoal/10 bg-gradient-to-br from-ivory via-cream/40 to-olive-soft/20 p-6 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.08)] md:p-8"
+          <p
+            className={cn(
+              "text-center font-display text-[clamp(1.75rem,6vw,2.5rem)] font-medium leading-tight text-charcoal",
+              isThai && "font-thai",
+            )}
+          >
+            {content.venueHeadline}
+          </p>
+
+          <div className="min-w-0 space-y-6">
+            {content.locationGroups.map((group) => (
+              <section
+                key={group.id}
+                className="min-w-0 overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]"
               >
-                <div
-                  className={
-                    index === 0
-                      ? "absolute inset-x-0 top-0 h-[3px] bg-olive/70"
-                      : "absolute inset-x-0 top-0 h-[3px] bg-gold/50"
-                  }
-                  aria-hidden
-                />
-                <p className="pointer-events-none absolute right-4 top-3 select-none font-display text-6xl leading-none text-olive/[0.08] sm:right-6 sm:top-4 sm:text-7xl md:text-8xl">
-                  {event.number}
-                </p>
-                <div className="relative min-w-0 space-y-5 pr-10 sm:pr-14 md:pr-16">
-                  <p className="max-w-full font-display text-3xl leading-none text-olive-deep sm:text-4xl md:text-5xl">
-                    {event.time}
-                  </p>
-                  <h2
-                    className={
-                      isThai
-                        ? "max-w-full text-pretty break-words text-h3 font-thai font-medium leading-snug text-olive-deep"
-                        : "max-w-full text-pretty break-words font-display text-h3 font-medium leading-snug text-olive-deep"
-                    }
-                  >
-                    {isThai ? event.thaiName : event.englishName}
-                  </h2>
-                  <div className="h-px w-full min-w-0 bg-charcoal/10" />
+                <div className="border-b border-charcoal/10 bg-cream/60 px-5 py-6 sm:px-7 sm:py-7">
                   <p
                     className={cn(
-                      "max-w-full text-pretty rounded-xl border border-olive/20 bg-olive-soft/45 px-4 py-3 text-body-s leading-snug text-charcoal",
+                      "text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-stone sm:text-xs",
+                      isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
+                    )}
+                  >
+                    {group.sessionLabel}
+                  </p>
+                  <p
+                    className={cn(
+                      "mt-2 font-display text-[clamp(1.5rem,5vw,2rem)] font-medium leading-tight text-charcoal",
                       isThai && "font-thai",
                     )}
                   >
-                    {event.roomAccessLabel}
+                    {group.roomName}
                   </p>
-                  <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-                    {event.description}
+                  <p
+                    className={cn(
+                      "mt-1.5 text-[clamp(1.0625rem,3.5vw,1.375rem)] font-medium leading-snug text-charcoal/85",
+                      isThai && "font-thai",
+                    )}
+                  >
+                    {group.floorLabel}
                   </p>
-
-                  <div className="flex min-w-0 flex-wrap content-start gap-x-2 gap-y-2.5">
-                    {event.chips.map((chip) => (
-                      <span
-                        key={chip}
-                        className="min-w-0 max-w-full rounded-full border border-charcoal/[0.08] bg-ivory/90 px-3 py-1.5 text-xs leading-snug text-charcoal break-words"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="min-w-0 pt-1">
-                    <Button href={event.venuePageHref} variant="secondary" className="w-full min-w-0 sm:w-auto sm:max-w-full">
-                      {content.venueButtonLabel}
-                    </Button>
-                  </div>
                 </div>
-              </li>
+
+                <ol className="min-w-0 divide-y divide-charcoal/10">
+                  {group.timeline.map((entry) => (
+                    <li
+                      key={entry.id}
+                      className="flex min-w-0 flex-col gap-2 px-5 py-5 sm:flex-row sm:items-baseline sm:gap-6 sm:px-7 sm:py-6"
+                    >
+                      <p
+                        className={cn(
+                          "shrink-0 font-display text-[clamp(1.75rem,5vw,2.25rem)] font-medium tabular-nums leading-none text-charcoal",
+                          isThai && "font-thai",
+                        )}
+                      >
+                        {entry.time}
+                      </p>
+                      <p
+                        className={cn(
+                          "min-w-0 text-pretty text-[clamp(1.125rem,3.5vw,1.5rem)] font-medium leading-snug text-charcoal",
+                          isThai ? "font-thai" : "font-display",
+                        )}
+                      >
+                        {entry.title}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+              </section>
             ))}
-          </ol>
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+          </div>
+
+          <div className="min-w-0 pt-1">
+            <Button href={content.venuePageHref} variant="secondary" className="w-full min-w-0 sm:w-auto sm:max-w-full">
+              {content.venueButtonLabel}
+            </Button>
+          </div>
+
+          <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
             {content.arrivalNote}
           </p>
 
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+          <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
             {content.updateNote}
           </p>
         </div>

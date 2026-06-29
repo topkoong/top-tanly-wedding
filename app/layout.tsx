@@ -1,32 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, IBM_Plex_Sans_Thai, Inter } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import Navbar from "@/components/layout/Navbar";
+import { bellefair, ibmPlexSansThai, inter, leJourScript } from "@/lib/fonts";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const ibmPlexSansThai = IBM_Plex_Sans_Thai({
-  variable: "--font-ibm-plex-thai",
-  subsets: ["thai", "latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Tan & Top Wedding",
@@ -46,7 +24,7 @@ export default function RootLayout({
   return (
     <html
       lang="th"
-      className={`light h-full ${cormorant.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
+      className={`light h-full ${bellefair.variable} ${leJourScript.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
     >
       <body className="min-h-full min-w-0 bg-cream text-charcoal font-body">
         <div className="flex min-h-screen min-w-0 flex-col">

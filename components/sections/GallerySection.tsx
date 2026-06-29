@@ -32,7 +32,7 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
 
   return (
     <Section background="cream">
-      <Container className={isThai ? "font-thai" : "font-body"}>
+      <Container className={isThai ? "font-thai" : "font-display"}>
         <div className="min-w-0 space-y-8">
           <Heading
             as="h1"

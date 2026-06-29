@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
+import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
 import TNMonogram from "@/components/icons/TNMonogram";
 import Container from "@/components/ui/Container";
 import { getSiteContent } from "@/content/site";
@@ -18,7 +19,7 @@ export default function Footer({ className }: FooterProps) {
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const siteContent = getSiteContent(locale);
-  const localeTextClass = locale === "th" ? "font-thai" : "font-body";
+  const localeTextClass = locale === "th" ? "font-thai" : "font-display";
 
   return (
     <footer
@@ -34,12 +35,9 @@ export default function Footer({ className }: FooterProps) {
             <div className="flex justify-center text-charcoal/65">
               <TNMonogram className="h-14 w-auto" title="" />
             </div>
-            <p className="mx-auto max-w-full text-pretty font-display font-medium italic leading-[1.1] text-charcoal text-[clamp(2rem,7.5vw,3rem)]">
-              {siteContent.coupleFormalName}
-            </p>
-            <p className="max-w-full text-body-s uppercase tracking-[0.18em] text-stone">
-              {siteContent.coupleFriendlyName}
-            </p>
+            <div className="flex justify-center">
+              <CoupleScriptMark size="footer" name={siteContent.coupleFriendlyName} />
+            </div>
             <div className="mx-auto h-px max-w-[3rem] bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
             <p className="max-w-full text-pretty text-body-s leading-relaxed text-stone">
               {siteContent.weddingDate} · {siteContent.footer.venueLabel}

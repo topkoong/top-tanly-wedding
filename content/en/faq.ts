@@ -23,7 +23,7 @@ export const faqContentEn: FaqPageContent = {
       category: "General Information",
       question: "How many parts are there?",
       answer:
-        "There are two main parts: the Engagement & Rubwai Ceremony from 07:00–11:00 in the Beverly Hills room, followed by the Wedding Reception from 11:00–14:00 in Conrad Ballroom.",
+        "Morning at Beverly Hills: paying respects (Soo Khor) 07:09 · engagement (ring exchange) 07:39 · paying respects to elders 08:09 · wedding reception 11:30 at Conrad Ballroom.",
     },
     {
       id: "faq-arrival",
@@ -44,7 +44,7 @@ export const faqContentEn: FaqPageContent = {
       category: "Travel & Parking",
       question: "Where is the venue?",
       answer:
-        "The wedding will take place at Conrad Bangkok. The Engagement & Rubwai Ceremony will be held in the Beverly Hills room, and the Wedding Reception will be held in Conrad Ballroom.",
+        "Conrad Bangkok · Beverly Hills, Floor 2, Annex Building (morning ceremonies) · Conrad Ballroom, Floor 4, Main Building (wedding reception).",
       relatedHref: "/en/venue",
     },
     {

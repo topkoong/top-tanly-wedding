@@ -2,54 +2,33 @@ import type { SchedulePageContent } from "@/content/schema";
 
 export const scheduleContentTh: SchedulePageContent = {
   title: "กำหนดการ",
-  pageVenueSummary: "สถานที่จัดงาน: Conrad Bangkok",
   intro:
     "กำหนดการหลักของวันงาน แบ่งออกเป็นพิธีช่วงเช้าและงานเลี้ยงฉลองมงคลสมรส",
+  venueHeadline: "Conrad Bangkok",
+  locationGroups: [
+    {
+      id: "morning",
+      sessionLabel: "พิธีช่วงเช้า",
+      roomName: "Beverly Hills",
+      floorLabel: "ชั้น 2 · อาคาร Annex",
+      timeline: [
+        { id: "soo-khor", time: "07.09", title: "พิธีสู่ขอ" },
+        { id: "engagement", time: "07.39", title: "พิธีหมั้น (สวมแหวน)" },
+        { id: "paying-respects", time: "08.09", title: "พิธีรับไหว้" },
+      ],
+    },
+    {
+      id: "reception",
+      sessionLabel: "งานเลี้ยงฉลองมงคลสมรส",
+      roomName: "Conrad Ballroom",
+      floorLabel: "ชั้น 4 · อาคารหลัก",
+      timeline: [{ id: "reception", time: "11.30", title: "งานเลี้ยงฉลองมงคลสมรส" }],
+    },
+  ],
   arrivalNote:
     "แนะนำให้มาถึงก่อนเวลาเริ่มงานประมาณ 20–30 นาที เพื่อเผื่อเวลาสำหรับการเดินทาง จอดรถ และลงทะเบียน",
   updateNote:
     "รายละเอียดบางส่วนอาจมีการอัปเดตเพิ่มเติมเมื่อใกล้ถึงวันงาน กรุณาตรวจสอบข้อมูลล่าสุดจากเว็บไซต์หรือ LINE Official Account",
   venueButtonLabel: "ดูแผนที่และวิธีเดินทาง",
-  events: [
-    {
-      id: "engagement-rubwai",
-      number: "01",
-      thaiName: "พิธีหมั้นและพิธีรับไหว้",
-      englishName: "Engagement & Rubwai Ceremony",
-      title: "พิธีหมั้นและพิธีรับไหว้",
-      date: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
-      time: "07:00–11:00",
-      roomAccessLabel: "ห้อง Beverly Hills · ชั้น 2 · อาคาร Annex",
-      venuePageHref: "/venue",
-      description:
-        "ช่วงเช้าสำหรับพิธีหมั้นและพิธีรับไหว้แบบอบอุ่น ร่วมกับครอบครัวและแขกคนสำคัญ",
-      chips: [
-        "ต้อนรับแขก",
-        "ลงทะเบียน",
-        "พิธีหมั้น",
-        "พิธีรับไหว้",
-        "ถ่ายภาพร่วมกัน",
-      ],
-    },
-    {
-      id: "wedding-reception",
-      number: "02",
-      thaiName: "งานเลี้ยงฉลองมงคลสมรส",
-      englishName: "Wedding Reception",
-      title: "งานเลี้ยงฉลองมงคลสมรส",
-      date: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
-      time: "11:00–14:00",
-      roomAccessLabel: "ห้อง Conrad Ballroom · ชั้น 4 · อาคารหลัก",
-      venuePageHref: "/venue",
-      description:
-        "งานเลี้ยงฉลองมงคลสมรสในบรรยากาศอบอุ่น เรียบง่าย และเป็นกันเอง",
-      chips: [
-        "ต้อนรับแขก",
-        "งานเลี้ยงฉลอง",
-        "ถ่ายภาพ",
-        "พบปะแขก",
-        "กล่าวขอบคุณ",
-      ],
-    },
-  ],
+  venuePageHref: "/venue",
 };

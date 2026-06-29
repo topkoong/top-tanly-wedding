@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Minimal invitation palette — near-black on warm cream */
-  --color-bg: #f4f0e9;
-  --color-bg-alt: #faf7f1;
+  /* Canva invitation canvas (#f9f5f2) + near-black ink */
+  --color-bg: #f9f5f2;
+  --color-bg-alt: #fdfcfa;
   --color-text: #1f1d18;
   --color-text-muted: #6e6a61;
   --color-accent: #2b2922;
@@ -15,16 +15,16 @@
   /* Minimal invitation palette — warm cream + near-black ink, no florals.
      Legacy olive/sage/gold token NAMES are retained but collapsed onto the
      neutral ink/cream scale so existing class names render the minimal theme. */
-  --color-cream: #f4f0e9;
-  --color-ivory: #faf7f1;
-  --color-champagne: #e9e3d7;
+  --color-cream: #f9f5f2;
+  --color-ivory: #fdfcfa;
+  --color-champagne: #eee8e2;
   --color-rose: #a89e92;
   --color-rose-deep: #8a8074;
 
   /* "olive" → ink: primary text, buttons, key headings */
   --color-olive: #2b2922;
   --color-olive-deep: #16140f;
-  --color-olive-soft: #ebe6dc;
+  --color-olive-soft: #f0ebe6;
 
   /* "sage" → muted neutral for secondary marks/dividers */
   --color-sage: #8d887e;
@@ -36,13 +36,13 @@
   --color-charcoal: #1f1d18;
   --color-stone: #6e6a61;
 
-  /* Sage-green envelope accent (used only for the invitation envelope graphic;
-     the rest of the site stays on the cream + ink scale). */
+  /* Sage-green envelope accent (tap-to-open graphic only — site stays cream + ink). */
   --color-envelope: #767f5d;
   --color-envelope-deep: #626b4c;
   --color-envelope-soft: #8a9270;
 
-  --font-display: var(--font-cormorant);
+  --font-display: var(--font-bellefair);
+  --font-script: var(--font-le-jour-script);
   --font-body: var(--font-inter);
   --font-thai: var(--font-ibm-plex-thai);
 

@@ -5,7 +5,7 @@ export const coupleContentEn: CoupleContent = {
   groomNickname: "Top",
   brideFirstName: "Narueporn",
   brideNickname: "Tan",
-  friendlyDisplayName: "Tan & Top",
+  friendlyDisplayName: "Tan + Top",
   formalDisplayName: "Narueporn & Theerut",
   weddingDate: "Sunday, 29 November 2026",
 };

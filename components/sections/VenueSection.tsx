@@ -6,6 +6,7 @@ import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import type { SiteContent, TransportOption, VenueContent } from "@/content/schema";
+import { cn } from "@/lib/utils";
 
 const transportIcons: Record<TransportOption["icon"], LucideIcon> = {
   train: TrainFront,
@@ -23,15 +24,15 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
 
   return (
     <Section background="cream">
-      <Container className={isThai ? "font-thai" : "font-body"}>
+      <Container className={isThai ? "font-thai" : "font-display"}>
         <div className="grid min-w-0 gap-8 lg:grid-cols-2">
           <div className="order-2 min-w-0 space-y-6 lg:order-1">
             <Heading
               as="h1"
-              eyebrow={content.mainVenue}
+              eyebrow={content.title}
               headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
             >
-              {content.title}
+              {content.mainVenue}
             </Heading>
             <DecorativeDivider className="mx-0" />
             <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
@@ -55,29 +56,44 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
                   {content.eventSpacesTitle}
                 </p>
               ) : null}
-              <div className="space-y-3">
+              <ul className="min-w-0 space-y-4 rounded-2xl border border-charcoal/10 bg-ivory p-5 shadow-[0_8px_28px_-18px_rgba(31,29,24,0.08)] sm:p-6">
                 {content.eventSpaces.map((space) => (
-                  <article key={space.room} className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-4 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
+                  <li key={space.room} className="min-w-0 max-w-full border-b border-charcoal/10 pb-5 last:border-0 last:pb-0">
+                    {space.sessionLabel ? (
+                      <p
+                        className={
+                          isThai
+                            ? "text-[0.6875rem] font-thai font-medium text-stone"
+                            : "text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-stone"
+                        }
+                      >
+                        {space.sessionLabel}
+                      </p>
+                    ) : null}
+                    <p
+                      className={cn(
+                        "font-medium leading-snug text-charcoal text-[clamp(1.25rem,4vw,1.625rem)]",
+                        space.sessionLabel && "mt-2",
+                        isThai ? "font-thai" : "font-display",
+                      )}
+                    >
+                      {space.room}
+                      {space.floor ? (
+                        <span className="font-normal text-stone"> · {space.floor}</span>
+                      ) : null}
+                    </p>
                     <p
                       className={
                         isThai
-                          ? "text-body-s font-thai font-medium tracking-normal text-olive-deep"
-                          : "font-display text-body-s uppercase tracking-[0.09em] text-olive-deep"
+                          ? "mt-1.5 max-w-full text-body leading-relaxed text-stone"
+                          : "mt-1.5 max-w-full text-body leading-relaxed text-stone"
                       }
                     >
-                      {space.room}
-                      {space.floor && (
-                        <span className="ml-2 font-normal normal-case tracking-normal text-stone/60">
-                          · {space.floor}
-                        </span>
-                      )}
-                    </p>
-                    <p className={isThai ? "mt-1 max-w-full text-body leading-relaxed text-charcoal/92" : "mt-1 max-w-full text-body leading-relaxed text-charcoal"}>
                       {space.eventName}
                     </p>
-                  </article>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             {content.transport && content.transport.length > 0 && content.gettingHereTitle ? (

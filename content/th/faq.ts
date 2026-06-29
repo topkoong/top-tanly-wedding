@@ -22,7 +22,7 @@ export const faqContentTh: FaqPageContent = {
       category: "ข้อมูลทั่วไป",
       question: "งานมีกี่ช่วง?",
       answer:
-        "งานแบ่งเป็น 2 ช่วงหลัก ได้แก่ พิธีหมั้นและพิธีรับไหว้ เวลา 07:00–11:00 ที่ห้อง Beverly Hills และงานเลี้ยงฉลองมงคลสมรส เวลา 11:00–14:00 ที่ห้อง Conrad Ballroom",
+        "ช่วงเช้า (ห้อง Beverly Hills): พิธีสู่ขอ 07.09 · พิธีหมั้น (สวมแหวน) 07.39 · พิธีรับไหว้ 08.09 · งานเลี้ยงฉลองมงคลสมรส 11.30 ที่ห้อง Conrad Ballroom",
     },
     {
       id: "faq-arrival",
@@ -43,7 +43,7 @@ export const faqContentTh: FaqPageContent = {
       category: "การเดินทางและที่จอดรถ",
       question: "สถานที่จัดงานอยู่ที่ไหน?",
       answer:
-        "งานจัดที่โรงแรม Conrad Bangkok โดยพิธีหมั้นและพิธีรับไหว้จัดที่ห้อง Beverly Hills และงานเลี้ยงฉลองมงคลสมรสจัดที่ห้อง Conrad Ballroom",
+        "งานจัดที่โรงแรม Conrad Bangkok · Beverly Hills ชั้น 2 อาคาร Annex (พิธีช่วงเช้า) · Conrad Ballroom ชั้น 4 อาคารหลัก (งานเลี้ยงฉลองมงคลสมรส)",
       relatedHref: "/venue",
     },
     {
