@@ -1,3 +1,4 @@
+import ScheduleTimelineIcon from "@/components/icons/ScheduleTimelineIcon";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
@@ -13,6 +14,7 @@ type ScheduleSectionProps = {
 
 export default function ScheduleSection({ site, content }: ScheduleSectionProps) {
   const isThai = site.locale === "th";
+  const timelineEntries = content.locationGroups.flatMap((group) => group.timeline);
 
   return (
     <Section background="cream">
@@ -39,48 +41,26 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
             {content.venueHeadline}
           </p>
 
-          <div className="min-w-0 space-y-6">
-            {content.locationGroups.map((group) => (
-              <section
-                key={group.id}
-                className="min-w-0 overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]"
-              >
-                <div className="border-b border-charcoal/10 bg-cream/60 px-5 py-6 sm:px-7 sm:py-7">
-                  <p
-                    className={cn(
-                      "text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-stone sm:text-xs",
-                      isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
-                    )}
-                  >
-                    {group.sessionLabel}
-                  </p>
-                  <p
-                    className={cn(
-                      "mt-2 font-display text-[clamp(1.5rem,5vw,2rem)] font-medium leading-tight text-charcoal",
-                      isThai && "font-thai",
-                    )}
-                  >
-                    {group.roomName}
-                  </p>
-                  <p
-                    className={cn(
-                      "mt-1.5 text-[clamp(1.0625rem,3.5vw,1.375rem)] font-medium leading-snug text-charcoal/85",
-                      isThai && "font-thai",
-                    )}
-                  >
-                    {group.floorLabel}
-                  </p>
-                </div>
-
-                <ol className="min-w-0 divide-y divide-charcoal/10">
-                  {group.timeline.map((entry) => (
-                    <li
-                      key={entry.id}
-                      className="flex min-w-0 flex-col gap-2 px-5 py-5 sm:flex-row sm:items-baseline sm:gap-6 sm:px-7 sm:py-6"
-                    >
+          <div className="mx-auto min-w-0 max-w-4xl rounded-[1.75rem] border border-charcoal/10 bg-cream px-4 py-8 shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)] sm:px-8 sm:py-10">
+            <div className="relative min-w-0">
+              <div
+                aria-hidden
+                className="absolute left-[12%] right-[12%] top-[1.35rem] hidden h-px bg-gold/70 md:block"
+              />
+              <ol className="grid min-w-0 grid-cols-2 gap-x-3 gap-y-8 md:grid-cols-4 md:gap-x-2">
+                {timelineEntries.map((entry) => (
+                    <li key={entry.id} className="flex min-w-0 flex-col items-center text-center">
+                      <ScheduleTimelineIcon
+                        id={entry.id}
+                        className="mb-3 text-charcoal/80"
+                      />
+                      <span
+                        aria-hidden
+                        className="mb-3 h-2.5 w-2.5 rounded-full bg-charcoal"
+                      />
                       <p
                         className={cn(
-                          "shrink-0 font-display text-[clamp(1.75rem,5vw,2.25rem)] font-medium tabular-nums leading-none text-charcoal",
+                          "text-[clamp(1rem,3.5vw,1.25rem)] font-medium tabular-nums leading-none text-charcoal",
                           isThai && "font-thai",
                         )}
                       >
@@ -88,17 +68,41 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
                       </p>
                       <p
                         className={cn(
-                          "min-w-0 text-pretty text-[clamp(1.125rem,3.5vw,1.5rem)] font-medium leading-snug text-charcoal",
-                          isThai ? "font-thai" : "font-display",
+                          "mt-2 max-w-[11rem] text-pretty text-[0.6875rem] font-medium uppercase leading-snug tracking-[0.08em] text-charcoal sm:text-body-s sm:tracking-[0.1em]",
+                          isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
                         )}
                       >
                         {entry.title}
                       </p>
                     </li>
                   ))}
-                </ol>
-              </section>
-            ))}
+              </ol>
+            </div>
+
+            <div className="mx-auto my-8 h-px max-w-md bg-gold/50" />
+
+            <div className="min-w-0 space-y-5 text-center">
+              {content.locationGroups.map((group) => (
+                <div key={group.id} className="min-w-0 space-y-1">
+                  <p
+                    className={cn(
+                      "text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-stone sm:text-body-s sm:tracking-[0.16em]",
+                      isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
+                    )}
+                  >
+                    {group.sessionLabel}
+                  </p>
+                  <p
+                    className={cn(
+                      "text-pretty text-[clamp(1rem,3.5vw,1.25rem)] font-medium leading-snug text-charcoal",
+                      isThai && "font-thai",
+                    )}
+                  >
+                    {group.roomName}, {group.floorLabel}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="min-w-0 pt-1">

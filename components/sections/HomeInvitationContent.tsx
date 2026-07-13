@@ -15,23 +15,56 @@ type HomeInvitationContentProps = {
   content: SiteContent;
 };
 
-const fieldLabelClass = (isThai: boolean) =>
+const invitationFieldLabelClass = (isThai: boolean) =>
   cn(
-    "text-body-s font-semibold uppercase tracking-[0.16em] text-charcoal sm:tracking-[0.14em]",
-    isThai ? "font-thai normal-case tracking-normal sm:tracking-normal" : "font-display",
+    "text-body uppercase tracking-[0.12em] text-charcoal sm:text-body-s sm:tracking-[0.1em]",
+    isThai
+      ? "font-thai font-semibold normal-case tracking-normal sm:tracking-normal"
+      : "font-display font-medium",
   );
 
-const factValueClass = (isThai: boolean) =>
+const venueValueClass = (isThai: boolean) =>
   cn(
-    "text-[clamp(1.5rem,5vw,2.125rem)] font-medium leading-tight text-charcoal",
+    "text-[clamp(1.25rem,4.5vw,2.125rem)] font-medium leading-tight text-charcoal",
     isThai ? "font-thai" : "font-display",
   );
 
 const timeSummaryClass = (isThai: boolean) =>
   cn(
-    "text-body-l leading-relaxed text-charcoal",
+    "text-body leading-relaxed text-charcoal sm:text-body-l",
     isThai ? "font-thai" : "font-display",
   );
+
+type InvitationDateDisplayProps = {
+  date: SiteContent["homeShell"]["invitationDateDisplay"];
+  isThai: boolean;
+};
+
+/** Stacked date block — weekday eyebrow, day/month + year on one line. */
+function InvitationDateDisplay({ date, isThai }: InvitationDateDisplayProps) {
+  return (
+    <div className="mx-auto w-full space-y-1.5 text-center">
+      <p
+        className={cn(
+          "text-body-s font-medium uppercase tracking-[0.2em] text-charcoal sm:tracking-[0.18em]",
+          isThai ? "font-thai normal-case tracking-normal sm:tracking-normal" : "font-display",
+        )}
+      >
+        {date.weekday}
+      </p>
+      <p
+        className={cn(
+          "whitespace-nowrap text-[1.0625rem] font-medium leading-snug text-charcoal sm:text-[clamp(1.25rem,5vw,2.125rem)]",
+          isThai ? "font-thai" : "font-display",
+        )}
+      >
+        {date.dayMonth}
+        {"\u00a0"}
+        {date.year}
+      </p>
+    </div>
+  );
+}
 
 /**
  * Hero invitation copy revealed in a staggered cascade after the sealed
@@ -92,9 +125,9 @@ export default function HomeInvitationContent({ content }: HomeInvitationContent
             {content.homeShell.invitationCardEyebrow}
           </p>
 
-          <div className="mt-7 space-y-2">
-            <p className={fieldLabelClass(isThai)}>{content.homeShell.dateHeading}</p>
-            <p className={factValueClass(isThai)}>{content.homeShell.dateLabel}</p>
+          <div className="mt-7 space-y-3">
+            <p className={invitationFieldLabelClass(isThai)}>{content.homeShell.dateHeading}</p>
+            <InvitationDateDisplay date={content.homeShell.invitationDateDisplay} isThai={isThai} />
             <p className={timeSummaryClass(isThai)}>{content.homeShell.invitationTimeSummary}</p>
           </div>
 
@@ -103,11 +136,11 @@ export default function HomeInvitationContent({ content }: HomeInvitationContent
           </div>
 
           <div className="space-y-2">
-            <p className={fieldLabelClass(isThai)}>{content.homeShell.venueHeading}</p>
+            <p className={invitationFieldLabelClass(isThai)}>{content.homeShell.venueHeading}</p>
             <Link
               href={content.homeShell.invitationVenueHref}
               className={cn(
-                factValueClass(isThai),
+                venueValueClass(isThai),
                 "inline-block transition-colors duration-200 hover:text-stone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
               )}
             >
@@ -115,7 +148,7 @@ export default function HomeInvitationContent({ content }: HomeInvitationContent
             </Link>
             <p
               className={cn(
-                "pt-0.5 text-body leading-relaxed text-charcoal/80",
+                "pt-0.5 text-body leading-relaxed text-charcoal",
                 isThai ? "font-thai" : "font-display",
               )}
             >

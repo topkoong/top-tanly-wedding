@@ -39,7 +39,12 @@ export type SiteContent = {
     formalNames: string;
     /** Short sentence before the save-the-date card (e.g. we invite you…). */
     invitationInviteLine: string;
-    dateLabel: string;
+    /** Invitation-style date stack — weekday, day/month, year (printed card reference). */
+    invitationDateDisplay: {
+      weekday: string;
+      dayMonth: string;
+      year: string;
+    };
     /** Short field label above the date (e.g. Date / วันที่). */
     dateHeading: string;
     locationLabel: string;

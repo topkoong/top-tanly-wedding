@@ -48,7 +48,7 @@ export default function Navbar({ className }: NavbarProps) {
       <Container>
         <div
           className={cn(
-            "relative flex min-h-[5.75rem] min-w-0 items-center justify-between gap-2 sm:min-h-[6.5rem] sm:gap-4",
+            "relative flex min-h-16 min-w-0 items-center justify-between gap-2 sm:min-h-[5.5rem] sm:gap-4",
             localeTextClass,
           )}
         >
@@ -57,7 +57,7 @@ export default function Navbar({ className }: NavbarProps) {
             className="flex min-w-0 max-w-[calc(100%-3.75rem)] flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2"
             aria-label={siteContent.siteName}
           >
-            <TNMonogram className="h-[4.75rem] w-auto shrink-0 sm:h-28" />
+            <TNMonogram className="h-12 w-auto shrink-0 sm:h-20" />
           </Link>
 
           <nav aria-label="Desktop" className="hidden items-center gap-1 md:flex">

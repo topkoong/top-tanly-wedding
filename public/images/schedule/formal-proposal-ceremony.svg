@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="300" viewBox="0 0 240 300" fill="none" stroke="#000" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M120 14 L 86 118 L 154 118 Z"/>
+  <path d="M108 50 H 132"/>
+  <rect x="80" y="118" width="80" height="13" rx="3"/>
+  <rect x="70" y="131" width="100" height="14" rx="3"/>
+  <rect x="58" y="145" width="124" height="15" rx="4"/>
+  <rect x="48" y="160" width="144" height="16" rx="4"/>
+  <path d="M48 166 C 38 160 26 161 18 170 C 24 179 38 178 48 173"/>
+  <path d="M46 170 C 38 167 30 168 22 170"/>
+  <path d="M192 166 C 202 160 214 161 222 170 C 216 179 202 178 192 173"/>
+  <path d="M194 170 C 202 167 210 168 218 170"/>
+  <path d="M54 176 C 56 212 74 236 90 241 L 150 241 C 166 236 184 212 186 176"/>
+  <path d="M88 240 C 78 216 90 192 120 180 C 150 192 162 216 152 240"/>
+  <path d="M83 179 C 66 198 66 222 88 240"/>
+  <path d="M157 179 C 174 198 174 222 152 240"/>
+  <path d="M100 241 C 98 252 94 262 84 280 L 156 280 C 146 262 142 252 140 241"/>
+  <path d="M96 254 H 144"/>
+</svg>
