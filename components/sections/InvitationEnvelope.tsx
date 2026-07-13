@@ -10,7 +10,6 @@ import {
 import { createPortal } from "react-dom";
 import { motion, useReducedMotion } from "motion/react";
 
-import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
 import TNMonogram from "@/components/icons/TNMonogram";
 import { InvitationRevealProvider } from "@/components/ui/InvitationReveal";
 import { cn } from "@/lib/utils";
@@ -20,8 +19,6 @@ type InvitationEnvelopeProps = {
   children: ReactNode;
   /** Localized prompt shown on the sealed envelope (e.g. "Tap to open"). */
   openLabel: string;
-  /** Couple name shown in script above the sealed envelope. */
-  coupleName?: string;
   /**
    * "card" overlays a single invitation card; "hero" takes over the whole hero
    * so guests first see only the sealed envelope, then reveal everything on tap.
@@ -53,7 +50,6 @@ const SEAL_RING_EMBOSS =
 export default function InvitationEnvelope({
   children,
   openLabel,
-  coupleName,
   variant = "card",
   className,
 }: InvitationEnvelopeProps) {
@@ -118,18 +114,6 @@ export default function InvitationEnvelope({
           isHero ? "max-w-[min(100%,20rem)] gap-4 sm:max-w-[22rem] sm:gap-5" : "max-w-[18rem] gap-4",
         )}
       >
-      {coupleName ? (
-        <motion.span
-          variants={{
-            closed: { opacity: 1, y: 0 },
-            open: { opacity: 0, y: -12, transition: { delay: 0.35, duration: 0.45, ease: EASE } },
-          }}
-          className="flex w-full justify-center"
-        >
-          <CoupleScriptMark decorative size="envelope" name={coupleName} />
-        </motion.span>
-      ) : null}
-
       {/* Sage-green envelope (flap lifts, card slides out) */}
       <motion.span
         variants={{
@@ -166,9 +150,9 @@ export default function InvitationEnvelope({
             },
           }}
           style={{ zIndex: 20 }}
-          className="absolute inset-x-[14%] top-[9%] flex h-[82%] flex-col items-center justify-center gap-2 rounded-md border border-charcoal/8 bg-ivory shadow-[0_22px_38px_-20px_rgba(31,29,24,0.45)]"
+          className="absolute inset-x-[14%] top-[9%] flex h-[82%] flex-col items-center justify-center gap-2 rounded-md border border-charcoal/8 bg-cream shadow-[0_22px_38px_-20px_rgba(31,29,24,0.45)]"
         >
-          <TNMonogram className="h-12 w-auto text-charcoal/85" title="" />
+          <TNMonogram className="h-auto w-[58%] max-w-[11rem] min-w-0 sm:w-[52%] sm:max-w-[13rem]" title="" />
         </motion.span>
 
         <span
@@ -221,14 +205,14 @@ export default function InvitationEnvelope({
           animate={open ? undefined : { scale: [1, 1.04, 1] }}
           transition={open ? undefined : { duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
           style={{ zIndex: 50, boxShadow: SEAL_EMBOSS }}
-          className="absolute left-1/2 top-[59%] flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ivory sm:h-[4.5rem] sm:w-[4.5rem]"
+          className="absolute left-1/2 top-[59%] flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full bg-cream sm:h-36 sm:w-36"
         >
           <span
             aria-hidden
-            className="absolute inset-1.5 rounded-full"
+            className="absolute inset-1 rounded-full"
             style={{ boxShadow: SEAL_RING_EMBOSS }}
           />
-          <TNMonogram className="h-9 w-auto text-charcoal sm:h-10" title="" />
+          <TNMonogram className="h-[5.75rem] w-auto text-charcoal sm:h-[6.75rem]" title="" />
         </motion.span>
         </motion.span>
       </motion.span>

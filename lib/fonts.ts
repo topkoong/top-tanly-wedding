@@ -1,26 +1,25 @@
 import localFont from "next/font/local";
-import { Cormorant_Garamond, IBM_Plex_Sans_Thai, Inter } from "next/font/google";
+import { Bellefair, IBM_Plex_Sans_Thai, Inter } from "next/font/google";
 
 /**
- * | Role              | Font               | Site token      |
- * |-------------------|--------------------|-----------------|
- * | Script names      | Le Jour Script     | `font-script`   |
- * | English display   | Cormorant Garamond | `font-display`  |
- * | UI / body         | Inter              | `font-body`     |
- * | Thai              | IBM Plex Sans Thai | `font-thai`     |
+ * | Role              | Font                  | Site token      |
+ * |-------------------|-----------------------|-----------------|
+ * | English display   | Bellefair             | `font-display`  |
+ * | Couple name stack | Perandory (SemiCond)  | `font-couple`   |
+ * | UI / body         | Inter                 | `font-body`     |
+ * | Thai              | IBM Plex Sans Thai    | `font-thai`     |
  */
-export const leJourScript = localFont({
-  src: "../public/fonts/LeJourScript-Regular.otf",
-  variable: "--font-le-jour-script",
+export const perandory = localFont({
+  src: "../public/fonts/PerandorySemiCondensed.woff",
+  variable: "--font-perandory",
   display: "swap",
-  fallback: ["cursive"],
+  fallback: ["serif"],
 });
 
-export const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-cormorant",
+export const bellefair = Bellefair({
+  variable: "--font-bellefair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: "400",
   display: "swap",
 });
 

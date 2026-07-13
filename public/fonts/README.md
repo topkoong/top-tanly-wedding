@@ -1,21 +1,19 @@
 # Invitation fonts
 
-**Canva design:** https://www.canva.com/design/DAHNaD5h7rk/JQ_1xL50NlIlAXdn7L0aZA/edit (pages 3 & 7)
-
 | Role | Font | Site token | File |
 |------|------|------------|------|
-| Script (`Tan & Top`) | **Le Jour Script** | `font-script` | `LeJourScript-Regular.otf` |
-| English serif | **Bellefair** | `font-display` | Google Fonts |
+| English display | **Perandory** (Semi-Condensed) | `font-display` | `PerandorySemiCondensed.woff` |
+| UI body | **Inter** | `font-body` | Google Fonts |
+| Thai | **IBM Plex Sans Thai** | `font-thai` | Google Fonts |
 
-**Le Jour Script** is self-hosted from Din Studio ([dafont reference](https://www.dafont.com/le-jour-script.font)). The hero nickname also uses `public/brand/tan-top.png`.
+**Perandory** matches the printed invitation (Kulturë Type). The site uses the Semi-Condensed cut for headings, nav, and the stacked **Tan / Top** couple name.
 
 ## Licensing
 
-The dafont package is **personal use only**. For a public wedding website, purchase a commercial/web license from [Din Studio](https://din-studio.com/product/le-jour-font-duo/) if required by their terms.
+Perandory is **free for personal use** via [Kulturë Type on Gumroad](https://kulture.gumroad.com/l/onpto). For a public wedding website, confirm personal-use coverage or purchase a [commercial license](https://creativemarket.com/kulturefoundry/6953752-Perandory-Display-Type).
 
-The same dafont download also includes **Le Jour Serif** (the script’s paired serif). If your Canva pages use that instead of Bellefair, add `LeJourSerif-Regular.otf` and we can wire it as `font-display`.
+## Replace the font file
 
-## Replace the script file
-
-1. Save as `public/fonts/LeJourScript-Regular.otf`
-2. Rebuild: `pnpm build`
+1. Export or download `Perandory-Regular.otf` / `.woff` from your Canva font kit or Gumroad.
+2. Save as `public/fonts/PerandorySemiCondensed.woff` (or add a second `localFont` entry in `lib/fonts.ts`).
+3. Rebuild: `pnpm build`

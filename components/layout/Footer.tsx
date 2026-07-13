@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
-import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
 import TNMonogram from "@/components/icons/TNMonogram";
 import Container from "@/components/ui/Container";
 import { getSiteContent } from "@/content/site";
@@ -31,17 +30,10 @@ export default function Footer({ className }: FooterProps) {
     >
       <Container className="relative z-10">
         <div className="mx-auto max-w-6xl text-center">
-          <div className="mx-auto max-w-lg space-y-3">
+          <div className="mx-auto max-w-lg space-y-4">
             <div className="flex justify-center text-charcoal/65">
-              <TNMonogram className="h-14 w-auto" title="" />
+              <TNMonogram className="h-32 w-auto" title="" />
             </div>
-            <div className="flex justify-center">
-              <CoupleScriptMark size="footer" name={siteContent.coupleFriendlyName} />
-            </div>
-            <div className="mx-auto h-px max-w-[3rem] bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
-            <p className="max-w-full text-pretty text-body-s leading-relaxed text-stone">
-              {siteContent.weddingDate} · {siteContent.footer.venueLabel}
-            </p>
             <p className="mx-auto max-w-sm text-body leading-relaxed text-stone/80">
               {siteContent.footer.thankYou}
             </p>

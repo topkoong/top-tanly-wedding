@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
 import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
@@ -13,6 +14,24 @@ import { cn } from "@/lib/utils";
 type HomeInvitationContentProps = {
   content: SiteContent;
 };
+
+const fieldLabelClass = (isThai: boolean) =>
+  cn(
+    "text-body-s font-semibold uppercase tracking-[0.16em] text-charcoal sm:tracking-[0.14em]",
+    isThai ? "font-thai normal-case tracking-normal sm:tracking-normal" : "font-display",
+  );
+
+const factValueClass = (isThai: boolean) =>
+  cn(
+    "text-[clamp(1.5rem,5vw,2.125rem)] font-medium leading-tight text-charcoal",
+    isThai ? "font-thai" : "font-display",
+  );
+
+const timeSummaryClass = (isThai: boolean) =>
+  cn(
+    "text-body-l leading-relaxed text-charcoal",
+    isThai ? "font-thai" : "font-display",
+  );
 
 /**
  * Hero invitation copy revealed in a staggered cascade after the sealed
@@ -63,38 +82,47 @@ export default function HomeInvitationContent({ content }: HomeInvitationContent
       </InvitationRevealItem>
 
       <InvitationRevealItem delay={0.34} className="relative mx-auto mt-10 w-full max-w-md">
-        <div className="rounded-[1.75rem] border border-charcoal/10 bg-ivory px-6 py-9 shadow-[0_26px_60px_-32px_rgba(31,29,24,0.2)] sm:rounded-[2rem] sm:px-8">
+        <div className="rounded-[1.75rem] border border-charcoal/10 bg-cream px-6 py-9 shadow-[0_26px_60px_-32px_rgba(31,29,24,0.2)] sm:rounded-[2rem] sm:px-8">
           <p
             className={cn(
-              "text-body-s uppercase tracking-[0.14em] text-olive-deep",
+              "text-body-s uppercase tracking-[0.14em] text-charcoal",
               isThai ? "font-thai" : "font-display",
             )}
           >
             {content.homeShell.invitationCardEyebrow}
           </p>
-          <p className={cn("mt-3 font-display text-h2 text-olive-deep", isThai && "font-thai")}>
-            {content.homeShell.dateLabel}
-          </p>
-          <div className="my-4">
+
+          <div className="mt-7 space-y-2">
+            <p className={fieldLabelClass(isThai)}>{content.homeShell.dateHeading}</p>
+            <p className={factValueClass(isThai)}>{content.homeShell.dateLabel}</p>
+            <p className={timeSummaryClass(isThai)}>{content.homeShell.invitationTimeSummary}</p>
+          </div>
+
+          <div className="my-7">
             <InvitationBotanicalRule />
           </div>
-          <p
-            className={cn(
-              "text-body leading-relaxed text-stone",
-              isThai ? "font-thai" : "font-display",
-            )}
-          >
-            {content.homeShell.invitationProgrammeSummary}
-          </p>
-          <div className="mx-auto my-5 h-px max-w-xs bg-gold/50" />
-          <p
-            className={cn(
-              "font-display text-body-l text-charcoal",
-              !isThai && "text-sm uppercase tracking-[0.1em] text-stone sm:text-body-l sm:tracking-[0.12em]",
-            )}
-          >
-            {content.homeShell.locationLabel}
-          </p>
+
+          <div className="space-y-2">
+            <p className={fieldLabelClass(isThai)}>{content.homeShell.venueHeading}</p>
+            <Link
+              href={content.homeShell.invitationVenueHref}
+              className={cn(
+                factValueClass(isThai),
+                "inline-block transition-colors duration-200 hover:text-stone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+              )}
+            >
+              {content.homeShell.locationLabel}
+            </Link>
+            <p
+              className={cn(
+                "pt-0.5 text-body leading-relaxed text-charcoal/80",
+                isThai ? "font-thai" : "font-display",
+              )}
+            >
+              {content.homeShell.locationDetail}
+            </p>
+          </div>
+
           <div className="mt-8 flex justify-center">
             <Button
               href={content.homeShell.invitationCtaHref}

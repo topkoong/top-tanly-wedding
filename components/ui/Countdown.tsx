@@ -53,7 +53,7 @@ export default function Countdown({ targetISO, labels, isThai, className }: Coun
       {cells.map((cell) => (
         <div
           key={cell.key}
-          className="flex min-w-0 flex-col items-center rounded-xl border border-charcoal/10 bg-ivory px-1 py-3 shadow-[0_10px_30px_-26px_rgba(31,29,24,0.4)] sm:py-4"
+          className="flex min-w-0 flex-col items-center rounded-xl border border-charcoal/10 bg-cream px-1 py-3 shadow-[0_10px_30px_-26px_rgba(31,29,24,0.4)] sm:py-4"
         >
           <span
             className="font-display text-h2 leading-none tabular-nums text-charcoal"
@@ -66,7 +66,7 @@ export default function Countdown({ targetISO, labels, isThai, className }: Coun
               "mt-1.5 text-stone",
               isThai
                 ? "font-thai text-[0.625rem] sm:text-[0.6875rem]"
-                : "text-[0.5625rem] uppercase tracking-[0.16em] sm:text-[0.625rem]",
+                : "font-display text-[0.5625rem] uppercase tracking-[0.16em] sm:text-[0.625rem]",
             )}
           >
             {cell.label}

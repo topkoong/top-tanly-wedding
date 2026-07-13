@@ -50,7 +50,12 @@ export default function QuickActionCard({
         >
           {title}
         </span>
-        <span className={cn("mt-0.5 block text-body-s leading-relaxed text-stone", isThai && "font-thai")}>
+        <span
+          className={cn(
+            "mt-0.5 block text-body-s leading-relaxed text-stone",
+            isThai ? "font-thai" : "font-display",
+          )}
+        >
           {subtitle}
         </span>
       </span>

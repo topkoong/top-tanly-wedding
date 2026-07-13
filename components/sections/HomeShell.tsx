@@ -1,6 +1,3 @@
-import { ChevronDown } from "lucide-react";
-
-import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
@@ -31,7 +28,6 @@ export default function HomeShell({ content }: HomeShellProps) {
           <InvitationEnvelope
             variant="hero"
             openLabel={content.homeShell.invitationOpenLabel}
-            coupleName={content.coupleFriendlyName}
             className="mx-auto max-w-2xl"
           >
             <HomeInvitationContent content={content} />
@@ -82,9 +78,6 @@ export default function HomeShell({ content }: HomeShellProps) {
             >
               {content.homeShell.welcomeMessage}
             </p>
-            <Button href={content.linePageHref} variant="tertiary" className="max-w-full text-left sm:text-center">
-              {content.homeShell.supportLineLabel}
-            </Button>
           </div>
         </Container>
       </Section>

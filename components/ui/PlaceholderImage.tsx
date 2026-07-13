@@ -52,7 +52,7 @@ export default function PlaceholderImage({
       aria-label={alt}
     >
       <div className={cn("absolute inset-0 flex items-center justify-center", watermarkOpacityClass)}>
-        <TNMonogram className="h-24 w-24" title="" />
+        <TNMonogram className="h-28 w-auto" title="" />
       </div>
       {caption ? (
         <p

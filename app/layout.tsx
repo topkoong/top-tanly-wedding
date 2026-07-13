@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import Navbar from "@/components/layout/Navbar";
-import { cormorantGaramond, ibmPlexSansThai, inter, leJourScript } from "@/lib/fonts";
+import { bellefair, ibmPlexSansThai, inter, perandory } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html
       lang="th"
-      className={`light h-full ${cormorantGaramond.variable} ${leJourScript.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
+      className={`light h-full ${bellefair.variable} ${perandory.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
     >
       <body className="min-h-full min-w-0 bg-cream text-charcoal font-body">
         <div className="flex min-h-screen min-w-0 flex-col">

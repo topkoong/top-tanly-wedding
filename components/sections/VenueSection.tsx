@@ -25,156 +25,217 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
   return (
     <Section background="cream">
       <Container className={isThai ? "font-thai" : "font-display"}>
-        <div className="grid min-w-0 gap-8 lg:grid-cols-2">
-          <div className="order-2 min-w-0 space-y-6 lg:order-1">
-            <Heading
-              as="h1"
-              eyebrow={content.title}
-              headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
-            >
-              {content.mainVenue}
-            </Heading>
-            <DecorativeDivider className="mx-0" />
-            <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-              {content.summary}
-            </p>
-            {content.address ? (
-              <p className={isThai ? "max-w-full text-body-s leading-relaxed text-stone" : "max-w-full text-body-s leading-relaxed text-stone"}>
-                {content.address}
-              </p>
-            ) : null}
+        <div className="min-w-0 space-y-8">
+          <Heading
+            as="h1"
+            eyebrow={content.title}
+            headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
+          >
+            {content.mainVenue}
+          </Heading>
+          <DecorativeDivider />
+          <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
+            {content.summary}
+          </p>
 
-            <div className="space-y-4">
+          {content.address ? (
+            <p
+              className={cn(
+                "text-center font-display text-[clamp(1.0625rem,3.5vw,1.375rem)] font-medium leading-snug text-charcoal/85",
+                isThai && "font-thai",
+              )}
+            >
+              {content.address}
+            </p>
+          ) : null}
+
+          {content.eventSpaces.length > 0 ? (
+            <div className="min-w-0 space-y-6">
               {content.eventSpacesTitle ? (
                 <p
-                  className={
-                    isThai
-                      ? "text-xs font-thai font-medium tracking-normal text-olive-deep"
-                      : "text-[0.6875rem] font-display uppercase tracking-[0.07em] text-olive-deep sm:text-xs sm:tracking-[0.09em]"
-                  }
+                  className={cn(
+                    "text-center text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-stone sm:text-xs",
+                    isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
+                  )}
                 >
                   {content.eventSpacesTitle}
                 </p>
               ) : null}
-              <ul className="min-w-0 space-y-4 rounded-2xl border border-charcoal/10 bg-ivory p-5 shadow-[0_8px_28px_-18px_rgba(31,29,24,0.08)] sm:p-6">
-                {content.eventSpaces.map((space) => (
-                  <li key={space.room} className="min-w-0 max-w-full border-b border-charcoal/10 pb-5 last:border-0 last:pb-0">
+
+              {content.eventSpaces.map((space) => (
+                <section
+                  key={`${space.room}-${space.floor ?? ""}`}
+                  className="min-w-0 overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]"
+                >
+                  <div className="border-b border-charcoal/10 bg-cream/60 px-5 py-6 sm:px-7 sm:py-7">
                     {space.sessionLabel ? (
                       <p
-                        className={
-                          isThai
-                            ? "text-[0.6875rem] font-thai font-medium text-stone"
-                            : "text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-stone"
-                        }
+                        className={cn(
+                          "text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-stone sm:text-xs",
+                          isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
+                        )}
                       >
                         {space.sessionLabel}
                       </p>
                     ) : null}
                     <p
                       className={cn(
-                        "font-medium leading-snug text-charcoal text-[clamp(1.25rem,4vw,1.625rem)]",
+                        "font-display text-[clamp(1.5rem,5vw,2rem)] font-medium leading-tight text-charcoal",
                         space.sessionLabel && "mt-2",
-                        isThai ? "font-thai" : "font-display",
+                        isThai && "font-thai",
                       )}
                     >
                       {space.room}
-                      {space.floor ? (
-                        <span className="font-normal text-stone"> · {space.floor}</span>
-                      ) : null}
                     </p>
+                    {space.floor ? (
+                      <p
+                        className={cn(
+                          "mt-1.5 text-[clamp(1.0625rem,3.5vw,1.375rem)] font-medium leading-snug text-charcoal/85",
+                          isThai && "font-thai",
+                        )}
+                      >
+                        {space.floor}
+                      </p>
+                    ) : null}
+                  </div>
+                  <div className="px-5 py-5 sm:px-7 sm:py-6">
                     <p
-                      className={
-                        isThai
-                          ? "mt-1.5 max-w-full text-body leading-relaxed text-stone"
-                          : "mt-1.5 max-w-full text-body leading-relaxed text-stone"
-                      }
+                      className={cn(
+                        "text-pretty text-[clamp(1.125rem,3.5vw,1.5rem)] font-medium leading-snug text-charcoal",
+                        isThai ? "font-thai" : "font-display",
+                      )}
                     >
                       {space.eventName}
                     </p>
-                  </li>
-                ))}
-              </ul>
+                  </div>
+                </section>
+              ))}
             </div>
+          ) : null}
 
-            {content.transport && content.transport.length > 0 && content.gettingHereTitle ? (
-              <section className="min-w-0 max-w-full space-y-5 rounded-2xl border border-charcoal/10 bg-ivory p-5 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
+          <div className="grid min-w-0 gap-8 lg:grid-cols-2 lg:items-start">
+            <div className="order-2 min-w-0 space-y-6 lg:order-1">
+              {content.transport && content.transport.length > 0 && content.gettingHereTitle ? (
+                <section className="min-w-0 overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]">
+                  <div className="border-b border-charcoal/10 bg-cream/60 px-5 py-5 sm:px-7">
+                    <p
+                      className={cn(
+                        "text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-stone sm:text-xs",
+                        isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
+                      )}
+                    >
+                      {content.gettingHereTitle}
+                    </p>
+                  </div>
+                  <ul className="min-w-0 divide-y divide-charcoal/10">
+                    {content.transport.map((item, index) => {
+                      const Icon = transportIcons[item.icon];
+                      return (
+                        <li key={`${item.label}-${index}`} className="min-w-0 px-5 py-5 sm:px-7 sm:py-6">
+                          <div className="flex min-w-0 gap-3">
+                            <Icon className="mt-1 h-5 w-5 shrink-0 text-charcoal/70" aria-hidden />
+                            <div className="min-w-0 space-y-2">
+                              <p
+                                className={cn(
+                                  "text-[clamp(1.125rem,3.5vw,1.375rem)] font-medium leading-snug text-charcoal",
+                                  isThai ? "font-thai" : "font-display",
+                                )}
+                              >
+                                {item.label}
+                              </p>
+                              <p
+                                className={cn(
+                                  "max-w-full text-body leading-relaxed text-stone",
+                                  isThai && "font-thai",
+                                )}
+                              >
+                                {item.detail}
+                              </p>
+                              {item.steps && item.steps.length > 0 ? (
+                                <ol
+                                  className={cn(
+                                    "list-decimal space-y-1.5 pl-5 text-body-s leading-relaxed text-stone",
+                                    isThai && "font-thai",
+                                  )}
+                                >
+                                  {item.steps.map((step, stepIndex) => (
+                                    <li key={stepIndex}>{step}</li>
+                                  ))}
+                                </ol>
+                              ) : null}
+                              {item.note ? (
+                                <p
+                                  className={cn(
+                                    "max-w-full text-body-s leading-relaxed text-stone/90",
+                                    isThai && "font-thai",
+                                  )}
+                                >
+                                  {item.note}
+                                </p>
+                              ) : null}
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </section>
+              ) : null}
+
+              <section className="min-w-0 rounded-2xl border border-charcoal/10 bg-cream/40 px-5 py-5 sm:px-7">
                 <p
-                  className={
-                    isThai
-                      ? "text-xs font-thai font-medium tracking-normal text-olive-deep"
-                      : "text-[0.6875rem] font-display uppercase tracking-[0.07em] text-olive-deep sm:text-xs sm:tracking-[0.09em]"
-                  }
+                  className={cn(
+                    "text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-stone sm:text-xs",
+                    isThai && "font-thai normal-case tracking-normal sm:tracking-normal",
+                  )}
                 >
-                  {content.gettingHereTitle}
+                  {isThai ? "ที่จอดรถ" : "Parking"}
                 </p>
-                <ul className="space-y-5">
-                  {content.transport.map((item, index) => {
-                    const Icon = transportIcons[item.icon];
-                    return (
-                      <li key={`${item.label}-${index}`} className="flex min-w-0 gap-3">
-                        <Icon className="mt-0.5 h-5 w-5 shrink-0 text-olive-deep" aria-hidden />
-                        <div className="min-w-0 space-y-2">
-                          <p className="text-body font-medium text-charcoal">{item.label}</p>
-                          <p className="max-w-full text-body leading-relaxed text-stone">{item.detail}</p>
-                          {item.steps && item.steps.length > 0 ? (
-                            <ol className="mt-2 list-decimal space-y-1 pl-5 text-body-s leading-relaxed text-stone">
-                              {item.steps.map((step, stepIndex) => (
-                                <li key={stepIndex}>{step}</li>
-                              ))}
-                            </ol>
-                          ) : null}
-                          {item.note ? (
-                            <p className="max-w-full text-body-s leading-relaxed text-stone/90">{item.note}</p>
-                          ) : null}
-                        </div>
-                      </li>
-                    );
-                  })}
+                <p
+                  className={cn(
+                    "mt-3 text-body leading-relaxed text-charcoal",
+                    isThai && "font-thai",
+                  )}
+                >
+                  {content.parkingNote}
+                </p>
+                <ul
+                  className={cn(
+                    "mt-3 list-disc space-y-1 pl-5 text-body-s leading-relaxed text-stone",
+                    isThai && "font-thai",
+                  )}
+                >
+                  {content.parking.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
               </section>
-            ) : null}
-
-            <section className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-5">
-              <p
-                className={
-                  isThai
-                    ? "text-xs font-thai font-medium tracking-normal text-olive-deep"
-                    : "text-[0.6875rem] font-display uppercase tracking-[0.07em] text-olive-deep sm:text-xs sm:tracking-[0.09em]"
-                }
-              >
-                {isThai ? "ที่จอดรถ" : "Parking"}
-              </p>
-              <p className={isThai ? "mt-2 text-body text-charcoal leading-[1.7]" : "mt-2 text-body text-charcoal"}>
-                {content.parkingNote}
-              </p>
-              <ul className={isThai ? "mt-3 list-disc space-y-1 pl-5 text-body-s text-stone leading-[1.7]" : "mt-3 list-disc space-y-1 pl-5 text-body-s text-stone"}>
-                {content.parking.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
-          </div>
-
-          <div className="order-1 min-w-0 max-w-full space-y-3 lg:order-2 lg:sticky lg:top-24 lg:self-start">
-            <div className="overflow-hidden rounded-2xl border border-charcoal/[0.08] bg-ivory shadow-[0_8px_28px_-18px_rgba(86,94,63,0.12)]">
-              <iframe
-                src={content.mapEmbedUrl}
-                title={content.mainVenue}
-                className="block h-[260px] w-full max-w-full sm:h-[340px] lg:h-[520px]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
             </div>
-            <Button
-              href={content.mapButtonUrl}
-              variant="secondary"
-              className="w-full shadow-[0_6px_20px_-12px_rgba(86,94,63,0.22)] hover:shadow-[0_8px_24px_-12px_rgba(86,94,63,0.26)]"
-            >
-              {content.mapButtonLabel}
-            </Button>
-            <p className={isThai ? "max-w-full text-xs leading-relaxed text-stone" : "max-w-full text-xs leading-relaxed text-stone"}>
-              {content.helperText}
-            </p>
+
+            <div className="order-1 min-w-0 max-w-full lg:sticky lg:top-24 lg:order-2 lg:self-start">
+              <div className="overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]">
+                <iframe
+                  src={content.mapEmbedUrl}
+                  title={content.mainVenue}
+                  className="block h-[260px] w-full max-w-full sm:h-[320px] lg:h-[min(520px,70vh)]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="mt-4 space-y-2">
+                <Button href={content.mapButtonUrl} variant="secondary" className="w-full">
+                  {content.mapButtonLabel}
+                </Button>
+                <p
+                  className={cn(
+                    "max-w-full text-center text-xs leading-relaxed text-stone",
+                    isThai && "font-thai",
+                  )}
+                >
+                  {content.helperText}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </Container>
