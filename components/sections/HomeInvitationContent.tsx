@@ -15,18 +15,21 @@ type HomeInvitationContentProps = {
   content: SiteContent;
 };
 
+/** Solid charcoal on EN — Bellefair only has weight 400; faux-bold on uppercase labels reads gray. */
+const invitationPrimaryEnClass = "font-display font-medium text-charcoal";
+
 const invitationFieldLabelClass = (isThai: boolean) =>
   cn(
-    "text-[1.125rem] uppercase tracking-[0.12em] text-charcoal sm:text-body-l sm:tracking-[0.1em]",
+    "text-[1.125rem] uppercase tracking-[0.12em] sm:text-body-l sm:tracking-[0.1em]",
     isThai
-      ? "font-thai font-semibold normal-case tracking-normal sm:tracking-normal"
-      : "font-display font-medium",
+      ? "font-thai font-semibold text-charcoal normal-case tracking-normal sm:tracking-normal"
+      : invitationPrimaryEnClass,
   );
 
 const venueValueClass = (isThai: boolean) =>
   cn(
-    "text-[clamp(1.25rem,4.5vw,2.125rem)] font-medium leading-tight text-charcoal",
-    isThai ? "font-thai" : "font-display",
+    "text-[clamp(1.25rem,4.5vw,2.125rem)] leading-tight",
+    isThai ? "font-thai font-medium text-charcoal" : invitationPrimaryEnClass,
   );
 
 const timeSummaryClass = (isThai: boolean) =>
@@ -46,16 +49,18 @@ function InvitationDateDisplay({ date, isThai }: InvitationDateDisplayProps) {
     <div className="mx-auto w-full space-y-1.5 text-center">
       <p
         className={cn(
-          "text-body font-medium uppercase tracking-[0.2em] text-charcoal sm:text-body-l sm:tracking-[0.18em]",
-          isThai ? "font-thai normal-case tracking-normal sm:tracking-normal" : "font-display",
+          "text-body uppercase tracking-[0.2em] sm:text-body-l sm:tracking-[0.18em]",
+          isThai
+            ? "font-thai font-medium text-charcoal normal-case tracking-normal sm:tracking-normal"
+            : invitationPrimaryEnClass,
         )}
       >
         {date.weekday}
       </p>
       <p
         className={cn(
-          "whitespace-nowrap text-[1.125rem] font-medium leading-snug text-charcoal sm:text-[clamp(1.25rem,5vw,2.125rem)]",
-          isThai ? "font-thai" : "font-display",
+          "whitespace-nowrap text-[1.125rem] leading-snug sm:text-[clamp(1.25rem,5vw,2.125rem)]",
+          isThai ? "font-thai font-medium text-charcoal" : invitationPrimaryEnClass,
         )}
       >
         {date.dayMonth}
