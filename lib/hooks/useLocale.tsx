@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { toBrowserPathname } from "@/lib/basePath";
 import { getSiteContent } from "@/content/site";
 import {
   getLocaleFromPathname,
@@ -38,7 +39,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       if (next === locale) return;
 
       const nextPath = getLocalizedPathname(pathname, next);
-      window.history.replaceState(window.history.state, "", nextPath);
+      window.history.replaceState(window.history.state, "", toBrowserPathname(nextPath));
       setLocale(next);
       document.documentElement.lang = getSiteContent(next).htmlLang;
     },

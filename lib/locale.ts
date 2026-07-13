@@ -1,8 +1,12 @@
+import { stripBasePath } from "@/lib/basePath";
+
 export type Locale = "th" | "en";
 
 /** English routes live at `/`; Thai routes use the `/th` prefix. */
 export function getLocaleFromPathname(pathname: string): Locale {
-  return pathname === "/th" || pathname.startsWith("/th/") ? "th" : "en";
+  const appPath = stripBasePath(pathname);
+
+  return appPath === "/th" || appPath === "/th/" || appPath.startsWith("/th/") ? "th" : "en";
 }
 
 export function getLocalizedHomeHref(locale: Locale): string {
@@ -11,15 +15,17 @@ export function getLocalizedHomeHref(locale: Locale): string {
 
 /** Strip locale prefix so `/th/schedule` and `/schedule` both map to `/schedule`. */
 export function getLocaleNeutralPathname(pathname: string): string {
-  if (pathname === "/th") {
+  const appPath = stripBasePath(pathname);
+
+  if (appPath === "/th" || appPath === "/th/") {
     return "/";
   }
 
-  if (pathname.startsWith("/th/")) {
-    return pathname.slice(3) || "/";
+  if (appPath.startsWith("/th/")) {
+    return appPath.slice(3) || "/";
   }
 
-  return pathname;
+  return appPath;
 }
 
 export function getLocalizedPathname(pathname: string, locale: Locale): string {

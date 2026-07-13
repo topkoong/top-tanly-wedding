@@ -45,21 +45,19 @@ export default function Navbar({ className }: NavbarProps) {
       )}
     >
       <Container>
-        <div
-          className={cn(
-            "relative flex min-h-16 min-w-0 items-center justify-between gap-2 sm:min-h-[5.5rem] sm:gap-4",
-            localeTextClass,
-          )}
-        >
+        <div className="relative flex min-h-16 min-w-0 items-center justify-between gap-2 sm:min-h-[5.5rem] sm:gap-4">
           <Link
             href={getLocalizedHomeHref(locale)}
-            className="flex min-w-0 max-w-[calc(100%-8.5rem)] flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2"
+            className="flex min-w-[3rem] max-w-[calc(100%-8.5rem)] shrink-0 flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2"
             aria-label={siteContent.siteName}
           >
             <TNMonogram className="h-12 w-auto shrink-0 sm:h-20" />
           </Link>
 
-          <nav aria-label="Desktop" className="hidden items-center gap-1 md:flex">
+          <nav
+            aria-label="Desktop"
+            className={cn("hidden items-center gap-1 md:flex", localeTextClass)}
+          >
             {siteContent.navDesktop.map((item) => (
               <Link
                 key={item.href}
@@ -77,7 +75,7 @@ export default function Navbar({ className }: NavbarProps) {
             <LanguageToggle className="ml-1" />
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 md:hidden">
+          <div className={cn("flex shrink-0 items-center gap-2 md:hidden", localeTextClass)}>
             <LanguageToggle />
             <MobileMenu
               items={siteContent.navMobile}

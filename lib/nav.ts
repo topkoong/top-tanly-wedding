@@ -1,7 +1,7 @@
 /** Normalize pathname / href for route comparison (trailing slash, locale home). */
 export function normalizeRoutePath(path: string): string {
-  if (path === "/" || path === "/th") {
-    return path;
+  if (path === "/" || path === "/th" || path === "/th/") {
+    return path === "/th/" ? "/th" : path;
   }
   return path.replace(/\/$/, "") || "/";
 }
