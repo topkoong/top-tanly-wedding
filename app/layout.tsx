@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
+import LocaleHtmlLang from "@/components/layout/LocaleHtmlLang";
+import LocaleProviderShell from "@/components/layout/LocaleProviderShell";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import Navbar from "@/components/layout/Navbar";
 import { bellefair, ibmPlexSansThai, inter, perandory } from "@/lib/fonts";
@@ -23,18 +25,21 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="th"
+      lang="en"
       className={`light h-full ${bellefair.variable} ${perandory.variable} ${inter.variable} ${ibmPlexSansThai.variable} antialiased`}
     >
       <body className="min-h-full min-w-0 bg-cream text-charcoal font-body">
-        <div className="flex min-h-screen min-w-0 flex-col">
+        <LocaleProviderShell>
+          <LocaleHtmlLang />
+          <div className="flex min-h-screen min-w-0 flex-col">
           <Navbar />
           <main className="min-w-0 flex-1 overflow-x-clip pb-[calc(4.75rem+env(safe-area-inset-bottom))] lg:pb-0">
             {children}
           </main>
           <Footer />
           <MobileBottomNav />
-        </div>
+          </div>
+        </LocaleProviderShell>
       </body>
     </html>
   );

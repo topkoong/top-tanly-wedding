@@ -7,12 +7,11 @@ import { useEffect, useState } from "react";
 import TNMonogram from "@/components/icons/TNMonogram";
 import MobileMenu from "@/components/layout/MobileMenu";
 import Container from "@/components/ui/Container";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 import { getSiteContent } from "@/content/site";
-import {
-  getLanguageSwitchHref,
-  getLocalizedHomeHref,
-  getLocaleFromPathname,
-} from "@/lib/locale";
+import { useLocale } from "@/lib/hooks/useLocale";
+import { getLocalizedHomeHref, getLocalizedPathname } from "@/lib/locale";
+import { isRouteActive } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 type NavbarProps = {
@@ -22,11 +21,11 @@ type NavbarProps = {
 export default function Navbar({ className }: NavbarProps) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const locale = getLocaleFromPathname(pathname);
+  const locale = useLocale();
   const siteContent = getSiteContent(locale);
-  const languageSwitchHref = getLanguageSwitchHref(pathname);
   const localeTextClass = locale === "th" ? "font-thai" : "font-display";
-  const isActive = (href: string) => pathname === href;
+  const effectivePathname = getLocalizedPathname(pathname, locale);
+  const isActive = (href: string) => isRouteActive(effectivePathname, href);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 8);
@@ -54,7 +53,7 @@ export default function Navbar({ className }: NavbarProps) {
         >
           <Link
             href={getLocalizedHomeHref(locale)}
-            className="flex min-w-0 max-w-[calc(100%-3.75rem)] flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2"
+            className="flex min-w-0 max-w-[calc(100%-8.5rem)] flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 text-charcoal transition-colors duration-200 hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2"
             aria-label={siteContent.siteName}
           >
             <TNMonogram className="h-12 w-auto shrink-0 sm:h-20" />
@@ -75,22 +74,17 @@ export default function Navbar({ className }: NavbarProps) {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href={languageSwitchHref}
-              className="rounded-full border border-olive/35 bg-cream px-3 py-1.5 text-xs font-medium tracking-wide text-charcoal transition-colors duration-200 hover:border-olive/55 hover:bg-olive-soft/60 focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-            >
-              {siteContent.languageSwitchLabel}
-            </Link>
+            <LanguageToggle className="ml-1" />
           </nav>
 
-          <MobileMenu
-            className="shrink-0"
-            items={siteContent.navMobile}
-            languageSwitchHref={languageSwitchHref}
-            languageSwitchLabel={siteContent.languageSwitchLabel}
-            openLabel={siteContent.mobileMenuOpenLabel}
-            closeLabel={siteContent.mobileMenuCloseLabel}
-          />
+          <div className="flex shrink-0 items-center gap-2 md:hidden">
+            <LanguageToggle />
+            <MobileMenu
+              items={siteContent.navMobile}
+              openLabel={siteContent.mobileMenuOpenLabel}
+              closeLabel={siteContent.mobileMenuCloseLabel}
+            />
+          </div>
         </div>
       </Container>
     </header>

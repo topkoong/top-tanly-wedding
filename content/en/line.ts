@@ -3,7 +3,7 @@ import type { LineContent } from "@/content/schema";
 export const lineContentEn: LineContent = {
   title: "LINE OA",
   intro: "A supporting channel for official updates and announcements.",
-  linePageHref: "/en/line",
+  linePageHref: "/line",
   lineOaUrl: "https://line.me/R/ti/p/[LINE-OA-ID-placeholder]",
   purpose:
     "Our LINE Official Account is used for official updates, reminders, important announcements, and schedule/venue notices.",

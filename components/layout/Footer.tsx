@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
 import TNMonogram from "@/components/icons/TNMonogram";
 import Container from "@/components/ui/Container";
 import { getSiteContent } from "@/content/site";
-import { getLocaleFromPathname } from "@/lib/locale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import { cn } from "@/lib/utils";
 
 type FooterProps = {
@@ -15,8 +14,7 @@ type FooterProps = {
 };
 
 export default function Footer({ className }: FooterProps) {
-  const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
+  const locale = useLocale();
   const siteContent = getSiteContent(locale);
   const localeTextClass = locale === "th" ? "font-thai" : "font-display";
 

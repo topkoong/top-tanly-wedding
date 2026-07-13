@@ -1,5 +1,5 @@
 import HomePage from "@/components/pages/HomePage";
 
-export default function HomeEnglish() {
+export default function HomeThai() {
   return <HomePage />;
 }

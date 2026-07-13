@@ -30,5 +30,5 @@ export const scheduleContentEn: SchedulePageContent = {
   updateNote:
     "Some details may be updated closer to the wedding date. Please check this website for the latest information.",
   venueButtonLabel: "View map and directions",
-  venuePageHref: "/en/venue",
+  venuePageHref: "/venue",
 };

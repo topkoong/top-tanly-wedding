@@ -1,5 +1,5 @@
 import VenuePage from "@/components/pages/VenuePage";
 
-export default function VenuePageEn() {
+export default function VenuePageTh() {
   return <VenuePage />;
 }

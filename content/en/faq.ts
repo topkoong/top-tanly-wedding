@@ -45,7 +45,7 @@ export const faqContentEn: FaqPageContent = {
       question: "Where is the venue?",
       answer:
         "Conrad Bangkok · Beverly Hills, Floor 2, Annex Building (morning ceremonies) · Conrad Ballroom, Floor 4, Main Building (wedding reception).",
-      relatedHref: "/en/venue",
+      relatedHref: "/venue",
     },
     {
       id: "faq-map",
@@ -53,7 +53,7 @@ export const faqContentEn: FaqPageContent = {
       question: "How do I open the map?",
       answer:
         "Please use the “Open in Google Maps” button on the Venue page to open directions to Conrad Bangkok.",
-      relatedHref: "/en/venue",
+      relatedHref: "/venue",
     },
     {
       id: "faq-parking",
@@ -82,7 +82,7 @@ export const faqContentEn: FaqPageContent = {
       question: "Can I bring children?",
       answer:
         "If you have questions about bringing children, please contact us via LINE Official Account so we can help confirm the details.",
-      relatedHref: "/en/line",
+      relatedHref: "/line",
     },
     {
       id: "faq-bring",
@@ -97,7 +97,7 @@ export const faqContentEn: FaqPageContent = {
       question: "Who should I contact on the wedding day?",
       answer:
         "Please use our LINE Official Account or check this website for the latest information.",
-      relatedHref: "/en/line",
+      relatedHref: "/line",
     },
     {
       id: "faq-photos",
@@ -105,7 +105,7 @@ export const faqContentEn: FaqPageContent = {
       question: "Where can I view photos?",
       answer:
         "Photos will be available on the Gallery page. At first, the gallery may show placeholders or pre-wedding photos, with more photos added later.",
-      relatedHref: "/en/gallery",
+      relatedHref: "/gallery",
     },
     {
       id: "faq-photo-policy",
@@ -127,7 +127,7 @@ export const faqContentEn: FaqPageContent = {
       question: "How can I contact you?",
       answer:
         "Please visit the LINE Official Account page for the latest updates and contact information.",
-      relatedHref: "/en/line",
+      relatedHref: "/line",
     },
   ],
 };

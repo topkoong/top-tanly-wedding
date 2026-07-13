@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 
 import { getSiteContent } from "@/content/site";
 import type { BottomNavIconKey } from "@/content/schema";
-import { getLocaleFromPathname } from "@/lib/locale";
+import { useLocale } from "@/lib/hooks/useLocale";
+import { getLocalizedPathname } from "@/lib/locale";
 import { isRouteActive } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
@@ -20,8 +21,9 @@ const iconMap: Record<BottomNavIconKey, typeof Home> = {
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
+  const locale = useLocale();
   const site = getSiteContent(locale);
+  const effectivePathname = getLocalizedPathname(pathname, locale);
 
   return (
     <nav
@@ -31,7 +33,7 @@ export default function MobileBottomNav() {
       <div className="mx-auto flex min-h-[3.35rem] max-w-lg min-w-0 items-stretch justify-between gap-0.5 px-1.5">
         {site.bottomNav.map((item) => {
           const Icon = iconMap[item.icon];
-          const active = isRouteActive(pathname, item.href);
+          const active = isRouteActive(effectivePathname, item.href);
           return (
             <Link
               key={item.href}

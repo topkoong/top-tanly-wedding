@@ -17,7 +17,7 @@ type HomeInvitationContentProps = {
 
 const invitationFieldLabelClass = (isThai: boolean) =>
   cn(
-    "text-body uppercase tracking-[0.12em] text-charcoal sm:text-body-s sm:tracking-[0.1em]",
+    "text-[1.125rem] uppercase tracking-[0.12em] text-charcoal sm:text-body-l sm:tracking-[0.1em]",
     isThai
       ? "font-thai font-semibold normal-case tracking-normal sm:tracking-normal"
       : "font-display font-medium",
@@ -31,7 +31,7 @@ const venueValueClass = (isThai: boolean) =>
 
 const timeSummaryClass = (isThai: boolean) =>
   cn(
-    "text-body leading-relaxed text-charcoal sm:text-body-l",
+    "text-[0.8125rem] leading-relaxed text-charcoal sm:text-body-s",
     isThai ? "font-thai" : "font-display",
   );
 
@@ -46,7 +46,7 @@ function InvitationDateDisplay({ date, isThai }: InvitationDateDisplayProps) {
     <div className="mx-auto w-full space-y-1.5 text-center">
       <p
         className={cn(
-          "text-body-s font-medium uppercase tracking-[0.2em] text-charcoal sm:tracking-[0.18em]",
+          "text-body font-medium uppercase tracking-[0.2em] text-charcoal sm:text-body-l sm:tracking-[0.18em]",
           isThai ? "font-thai normal-case tracking-normal sm:tracking-normal" : "font-display",
         )}
       >
@@ -54,7 +54,7 @@ function InvitationDateDisplay({ date, isThai }: InvitationDateDisplayProps) {
       </p>
       <p
         className={cn(
-          "whitespace-nowrap text-[1.0625rem] font-medium leading-snug text-charcoal sm:text-[clamp(1.25rem,5vw,2.125rem)]",
+          "whitespace-nowrap text-[1.125rem] font-medium leading-snug text-charcoal sm:text-[clamp(1.25rem,5vw,2.125rem)]",
           isThai ? "font-thai" : "font-display",
         )}
       >

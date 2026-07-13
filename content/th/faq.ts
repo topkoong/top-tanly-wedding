@@ -44,7 +44,7 @@ export const faqContentTh: FaqPageContent = {
       question: "สถานที่จัดงานอยู่ที่ไหน?",
       answer:
         "งานจัดที่โรงแรม Conrad Bangkok · Beverly Hills ชั้น 2 อาคาร Annex (พิธีช่วงเช้า) · Conrad Ballroom ชั้น 4 อาคารหลัก (งานเลี้ยงฉลองมงคลสมรส)",
-      relatedHref: "/venue",
+      relatedHref: "/th/venue",
     },
     {
       id: "faq-maps",
@@ -52,7 +52,7 @@ export const faqContentTh: FaqPageContent = {
       question: "เปิดแผนที่ได้จากที่ไหน?",
       answer:
         "สามารถกดปุ่ม “เปิด Google Maps” ในหน้าสถานที่ เพื่อเปิดแผนที่ไปยัง Conrad Bangkok ได้โดยตรง",
-      relatedHref: "/venue",
+      relatedHref: "/th/venue",
     },
     {
       id: "faq-parking",
@@ -81,7 +81,7 @@ export const faqContentTh: FaqPageContent = {
       question: "สามารถพาเด็กมาด้วยได้ไหม?",
       answer:
         "หากมีข้อสงสัยเกี่ยวกับการพาเด็กมาร่วมงาน สามารถสอบถามผ่าน LINE Official Account เพื่อให้ทีมงานช่วยตรวจสอบรายละเอียดเพิ่มเติม",
-      relatedHref: "/line",
+      relatedHref: "/th/line",
     },
     {
       id: "faq-bring",
@@ -96,7 +96,7 @@ export const faqContentTh: FaqPageContent = {
       question: "ควรติดต่อใครหากมีคำถามในวันงาน?",
       answer:
         "สามารถติดต่อผ่าน LINE Official Account หรือดูข้อมูลล่าสุดจากเว็บไซต์นี้",
-      relatedHref: "/line",
+      relatedHref: "/th/line",
     },
     {
       id: "faq-photos",
@@ -104,7 +104,7 @@ export const faqContentTh: FaqPageContent = {
       question: "จะดูรูปภาพได้จากที่ไหน?",
       answer:
         "สามารถดูรูปภาพได้ที่หน้าแกลเลอรี โดยช่วงแรกอาจเป็นภาพตัวอย่างหรือภาพพรีเวดดิ้ง และจะมีการอัปเดตภาพเพิ่มเติมภายหลัง",
-      relatedHref: "/gallery",
+      relatedHref: "/th/gallery",
     },
     {
       id: "faq-take-photos",
@@ -126,7 +126,7 @@ export const faqContentTh: FaqPageContent = {
       question: "ติดต่อผ่านช่องทางไหนได้บ้าง?",
       answer:
         "สามารถดูรายละเอียดการติดต่อและติดตามข้อมูลอัปเดตได้ที่หน้า LINE Official Account",
-      relatedHref: "/line",
+      relatedHref: "/th/line",
     },
   ],
 };

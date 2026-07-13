@@ -10,8 +10,6 @@ import { cn } from "@/lib/utils";
 type MobileMenuProps = {
   className?: string;
   items: NavigationItem[];
-  languageSwitchLabel: string;
-  languageSwitchHref: string;
   openLabel: string;
   closeLabel: string;
 };
@@ -19,8 +17,6 @@ type MobileMenuProps = {
 export default function MobileMenu({
   className,
   items,
-  languageSwitchHref,
-  languageSwitchLabel,
   openLabel,
   closeLabel,
 }: MobileMenuProps) {
@@ -57,13 +53,6 @@ export default function MobileMenu({
               {item.label}
             </Link>
           ))}
-          <Link
-            href={languageSwitchHref}
-            onClick={() => setIsOpen(false)}
-            className="min-h-11 rounded-full border border-olive/30 px-4 py-3 text-body font-medium tracking-wide text-charcoal transition-colors duration-200 hover:border-olive/50 hover:bg-olive-soft/50 focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-          >
-            {languageSwitchLabel}
-          </Link>
         </nav>
       </div>
     </div>

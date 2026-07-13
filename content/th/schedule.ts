@@ -30,5 +30,5 @@ export const scheduleContentTh: SchedulePageContent = {
   updateNote:
     "รายละเอียดบางส่วนอาจมีการอัปเดตเพิ่มเติมเมื่อใกล้ถึงวันงาน กรุณาตรวจสอบข้อมูลล่าสุดจากเว็บไซต์นี้",
   venueButtonLabel: "ดูแผนที่และวิธีเดินทาง",
-  venuePageHref: "/venue",
+  venuePageHref: "/th/venue",
 };
