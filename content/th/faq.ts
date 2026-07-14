@@ -21,8 +21,26 @@ export const faqContentTh: FaqPageContent = {
       id: "faq-event-parts",
       category: "ข้อมูลทั่วไป",
       question: "งานมีกี่ช่วง?",
-      answer:
-        "ช่วงเช้า (ห้อง Beverly Hills): พิธีสู่ขอ 07.09 · พิธีหมั้น (สวมแหวน) 07.39 · พิธีรับไหว้ 08.09 · งานเลี้ยงฉลองมงคลสมรส 11.30 ที่ห้อง Conrad Ballroom",
+      timelineGroups: [
+        {
+          id: "morning",
+          sessionLabel: "พิธีช่วงเช้า",
+          roomName: "Beverly Hills Room",
+          floorLabel: "ชั้น 2 (Annex)",
+          timeline: [
+            { id: "soo-khor", time: "07.09", title: "พิธีสู่ขอ" },
+            { id: "engagement", time: "07.39", title: "พิธีหมั้น (สวมแหวน)" },
+            { id: "paying-respects", time: "08.09", title: "พิธีรับไหว้ผู้ใหญ่" },
+          ],
+        },
+        {
+          id: "reception",
+          sessionLabel: "งานเลี้ยงกลางวัน",
+          roomName: "Conrad Ballroom",
+          floorLabel: "ชั้น 4 (อาคารหลัก)",
+          timeline: [{ id: "reception", time: "11.30", title: "งานเลี้ยงฉลองมงคลสมรส" }],
+        },
+      ],
     },
     {
       id: "faq-arrival",
@@ -51,7 +69,14 @@ export const faqContentTh: FaqPageContent = {
       category: "การเดินทางและที่จอดรถ",
       question: "เปิดแผนที่ได้จากที่ไหน?",
       answer:
-        "สามารถกดปุ่ม “เปิด Google Maps” ในหน้าสถานที่ เพื่อเปิดแผนที่ไปยัง Conrad Bangkok ได้โดยตรง",
+        "ดูแผนที่ด้านล่างเพื่อตรวจสอบตำแหน่ง Conrad Bangkok แล้วกดเปิด Google Maps เพื่อเปิดเส้นทางในแอป",
+      mapPreview: {
+        venueName: "Conrad Bangkok",
+        embedUrl: "https://www.google.com/maps?q=Conrad%20Bangkok&output=embed",
+        buttonUrl: "https://www.google.com/maps/search/?api=1&query=Conrad%20Bangkok",
+        buttonLabel: "เปิด Google Maps",
+        helperText: "กดเพื่อเปิดเส้นทางใน Google Maps",
+      },
       relatedHref: "/th/venue",
     },
     {

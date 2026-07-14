@@ -22,8 +22,26 @@ export const faqContentEn: FaqPageContent = {
       id: "faq-event-parts",
       category: "General Information",
       question: "How many parts are there?",
-      answer:
-        "Morning at Beverly Hills: paying respects (Soo Khor) 07:09 · engagement (ring exchange) 07:39 · paying respects to elders 08:09 · wedding reception 11:30 at Conrad Ballroom.",
+      timelineGroups: [
+        {
+          id: "morning",
+          sessionLabel: "Morning ceremonies",
+          roomName: "Beverly Hills Room",
+          floorLabel: "2nd Floor (Annex)",
+          timeline: [
+            { id: "soo-khor", time: "7:09 AM", title: "Paying respects (Soo Khor)" },
+            { id: "engagement", time: "7:39 AM", title: "Engagement (ring exchange)" },
+            { id: "paying-respects", time: "8:09 AM", title: "Paying respects to elders" },
+          ],
+        },
+        {
+          id: "reception",
+          sessionLabel: "Luncheon reception",
+          roomName: "Conrad Ballroom",
+          floorLabel: "4th Floor (Main Building)",
+          timeline: [{ id: "reception", time: "11:30 AM", title: "Wedding reception" }],
+        },
+      ],
     },
     {
       id: "faq-arrival",
@@ -52,7 +70,14 @@ export const faqContentEn: FaqPageContent = {
       category: "Travel & Parking",
       question: "How do I open the map?",
       answer:
-        "Please use the “Open in Google Maps” button on the Venue page to open directions to Conrad Bangkok.",
+        "Use the map below to preview Conrad Bangkok, then tap Open in Google Maps to launch directions in the app.",
+      mapPreview: {
+        venueName: "Conrad Bangkok",
+        embedUrl: "https://www.google.com/maps?q=Conrad%20Bangkok&output=embed",
+        buttonUrl: "https://www.google.com/maps/search/?api=1&query=Conrad%20Bangkok",
+        buttonLabel: "Open in Google Maps",
+        helperText: "Tap to open directions in Google Maps.",
+      },
       relatedHref: "/venue",
     },
     {

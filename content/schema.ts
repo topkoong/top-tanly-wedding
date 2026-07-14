@@ -185,11 +185,23 @@ export type GalleryPageContent = {
   items: GalleryItem[];
 };
 
+export type MapEmbedContent = {
+  venueName: string;
+  embedUrl: string;
+  buttonUrl: string;
+  buttonLabel: string;
+  helperText: string;
+};
+
 export type FaqItem = {
   id: string;
   category: string;
   question: string;
-  answer: string;
+  answer?: string;
+  /** Optional vertical programme timeline (e.g. event parts FAQ). */
+  timelineGroups?: ScheduleLocationGroup[];
+  /** Optional embedded map with Google Maps deep link. */
+  mapPreview?: MapEmbedContent;
   relatedHref?: string;
 };
 

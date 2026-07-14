@@ -1,10 +1,10 @@
 import { BusFront, Car, TrainFront, type LucideIcon } from "lucide-react";
 
-import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
+import VenueMapEmbed from "@/components/ui/VenueMapEmbed";
 import type { SiteContent, TransportOption, VenueContent } from "@/content/schema";
 import { cn } from "@/lib/utils";
 
@@ -213,28 +213,14 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
             </div>
 
             <div className="order-1 min-w-0 max-w-full lg:sticky lg:top-24 lg:order-2 lg:self-start">
-              <div className="overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]">
-                <iframe
-                  src={content.mapEmbedUrl}
-                  title={content.mainVenue}
-                  className="block h-[260px] w-full max-w-full sm:h-[320px] lg:h-[min(520px,70vh)]"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-              <div className="mt-4 space-y-2">
-                <Button href={content.mapButtonUrl} variant="secondary" className="w-full">
-                  {content.mapButtonLabel}
-                </Button>
-                <p
-                  className={cn(
-                    "max-w-full text-center text-xs leading-relaxed text-stone",
-                    isThai && "font-thai",
-                  )}
-                >
-                  {content.helperText}
-                </p>
-              </div>
+              <VenueMapEmbed
+                venueName={content.mainVenue}
+                embedUrl={content.mapEmbedUrl}
+                buttonUrl={content.mapButtonUrl}
+                buttonLabel={content.mapButtonLabel}
+                helperText={content.helperText}
+                isThai={isThai}
+              />
             </div>
           </div>
         </div>

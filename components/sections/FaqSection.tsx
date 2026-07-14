@@ -10,6 +10,8 @@ import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
+import VenueMapEmbed from "@/components/ui/VenueMapEmbed";
+import VerticalEventTimeline from "@/components/ui/VerticalEventTimeline";
 import type { FaqPageContent, SiteContent } from "@/content/schema";
 import { cn } from "@/lib/utils";
 
@@ -103,10 +105,23 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                             transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="overflow-hidden border-t border-charcoal/[0.06]"
                           >
-                            <div className="space-y-3 bg-cream/25 px-5 py-5 sm:px-6">
-                              <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-                                {item.answer}
-                              </p>
+                            <div className="space-y-4 bg-cream/25 px-5 py-5 sm:px-6">
+                              {item.timelineGroups ? (
+                                <VerticalEventTimeline groups={item.timelineGroups} isThai={isThai} />
+                              ) : item.answer ? (
+                                <p
+                                  className={
+                                    isThai
+                                      ? "max-w-full text-body leading-relaxed text-stone"
+                                      : "max-w-full text-body leading-relaxed text-stone"
+                                  }
+                                >
+                                  {item.answer}
+                                </p>
+                              ) : null}
+                              {item.mapPreview ? (
+                                <VenueMapEmbed {...item.mapPreview} isThai={isThai} compact />
+                              ) : null}
                               {item.relatedHref ? (
                                 <Link
                                   href={item.relatedHref}
