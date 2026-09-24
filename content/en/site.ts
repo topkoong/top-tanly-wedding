@@ -61,7 +61,6 @@ export const siteContentEn: SiteContent = {
       seconds: "Seconds",
     },
     invitationMailLabel: "You've got mail!",
-    postcardEyebrow: "We're getting married",
     saveTheDateLabel: "Save the date",
     saveTheDateNumeric: "29.11.2026",
     timelineLead: "We hope you can join us",

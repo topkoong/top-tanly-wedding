@@ -22,6 +22,14 @@ type HomeInvitationContentProps = {
 /** Seconds between collage pieces — each one is tossed onto the table in turn. */
 const STAGGER = 0.16;
 
+const eyebrowClass = (isThai: boolean) =>
+  cn(
+    "text-stone",
+    isThai
+      ? "font-thai text-[0.6875rem] leading-snug"
+      : "font-display text-[0.5625rem] uppercase leading-relaxed tracking-[0.2em] sm:text-[0.6875rem]",
+  );
+
 const PRINT_SHADOW = "shadow-[0_22px_30px_-18px_rgba(0,0,0,0.65)]";
 
 /**
@@ -54,26 +62,18 @@ export default function HomeInvitationContent({ content, photos }: HomeInvitatio
         >
           <div
             className={cn(
-              "relative flex aspect-[3/2] rotate-[3deg] flex-col items-start justify-center rounded-[2px] bg-ivory pl-[9%] pr-[30%]",
+              "relative flex aspect-[3/2] rotate-[3deg] flex-col items-center justify-center rounded-[2px] bg-ivory pl-[6%] pr-[30%] text-center",
               PRINT_SHADOW,
             )}
           >
-            <p
-              className={cn(
-                "text-stone",
-                isThai
-                  ? "font-thai text-[0.6875rem]"
-                  : "font-display text-[0.5625rem] uppercase tracking-[0.22em] sm:text-[0.6875rem]",
-              )}
-            >
-              {hs.postcardEyebrow}
-            </p>
+            <p className={eyebrowClass(isThai)}>{hs.invitationLeadIn}</p>
             <CoupleScriptMark
               as="h1"
               size="postcard"
               name={content.coupleFriendlyName}
-              className="mt-2 items-start text-charcoal"
+              className="mt-2"
             />
+            <p className={cn(eyebrowClass(isThai), "mt-2 text-charcoal/80")}>{content.weddingDate}</p>
             <div className="absolute right-[6%] top-[9%] w-[23%] rotate-[5deg]">
               <ScallopFrame
                 scallop={7}

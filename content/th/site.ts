@@ -61,7 +61,6 @@ export const siteContentTh: SiteContent = {
       seconds: "วินาที",
     },
     invitationMailLabel: "มีจดหมายถึงคุณ",
-    postcardEyebrow: "เรากำลังจะแต่งงาน",
     saveTheDateLabel: "Save the date",
     saveTheDateNumeric: "29.11.2569",
     timelineLead: "หวังว่าจะได้พบกัน",

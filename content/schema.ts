@@ -67,8 +67,6 @@ export type SiteContent = {
     invitationSkipLabel: string;
     /** Eyebrow above the sealed envelope (e.g. "You've got mail"). */
     invitationMailLabel: string;
-    /** Small line on the collage postcard above the names. */
-    postcardEyebrow: string;
     /** Script text inside the lace heart (Latin script font). */
     saveTheDateLabel: string;
     /** Compact numeric date inside the lace heart, e.g. 29.11.2026. */
