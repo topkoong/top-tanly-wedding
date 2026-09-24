@@ -93,7 +93,7 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                           className={
                             isThai
                               ? "min-w-0 flex-1 break-words font-thai text-h3 font-semibold leading-snug text-olive-deep"
-                              : "min-w-0 flex-1 break-words font-display text-h3 font-semibold leading-snug text-olive-deep"
+                              : "min-w-0 flex-1 break-words font-display text-h3 leading-snug text-olive-deep"
                           }
                         >
                           {item.question}
@@ -115,7 +115,7 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                             transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="overflow-hidden border-t border-charcoal/[0.06]"
                           >
-                            <div className="space-y-4 bg-cream/25 px-5 py-5 sm:px-6">
+                            <div className="space-y-4 px-5 py-5 sm:px-6">
                               {item.timelineGroups ? (
                                 <VerticalEventTimeline groups={item.timelineGroups} isThai={isThai} />
                               ) : item.answer ? (

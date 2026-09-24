@@ -17,18 +17,18 @@
      neutral ink/cream scale so existing class names render the minimal theme. */
   --color-cream: #fdf1e2;
   --color-ivory: #fffaf3;
-  --color-champagne: #eee8e2;
+  --color-champagne: #f3e4d0;
   --color-rose: #a89e92;
   --color-rose-deep: #8a8074;
 
   /* "olive" → ink: primary text, buttons, key headings */
   --color-olive: #2b2922;
   --color-olive-deep: #16140f;
-  --color-olive-soft: #f0ebe6;
+  --color-olive-soft: #f6e8d6;
 
   /* "sage" → muted neutral for secondary marks/dividers */
   --color-sage: #8d887e;
-  --color-sage-soft: #ddd8cd;
+  --color-sage-soft: #e6d9c6;
 
   /* "gold" → quiet taupe-grey hairlines (no metallic accent) */
   --color-gold: #c8c1b2;
@@ -82,6 +82,11 @@ html {
 }
 
 @layer base {
+  /* Bellefair ships a single weight — never let the browser fake a smeared bold. */
+  html {
+    font-synthesis-weight: none;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
