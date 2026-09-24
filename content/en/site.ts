@@ -50,7 +50,7 @@ export const siteContentEn: SiteContent = {
     invitationVenueHref: "/venue",
     invitationProgrammeSummary: "Morning ceremonies and luncheon reception",
     invitationCtaLabel: "View Details",
-    invitationCtaHref: "/#quick-actions",
+    invitationCtaHref: "/#invitation",
     invitationOpenLabel: "Please tap to open",
     invitationSkipLabel: "Skip",
     countdownTitle: "Counting down to our wedding day",
@@ -60,6 +60,14 @@ export const siteContentEn: SiteContent = {
       minutes: "Minutes",
       seconds: "Seconds",
     },
+    invitationMailLabel: "You've got mail!",
+    postcardEyebrow: "We're getting married",
+    saveTheDateLabel: "Save the date",
+    saveTheDateNumeric: "29.11.2026",
+    timelineLead: "We hope you can join us",
+    timelineTitle: "Our Timeline",
+    timelineCtaLabel: "View full schedule",
+    timelineCtaHref: "/schedule",
     supportLineLabel: "Go to LINE Official Account",
     quickActionCards: [
       {

@@ -26,7 +26,7 @@ type InvitationEnvelopeProps = {
   sealedHeader?: ReactNode;
   /** Letter that slides out of the envelope; defaults to the monogram. */
   letter?: ReactNode;
-  /** Full-screen photo behind the envelope (hero variant); olive backdrop when null. */
+  /** Full-screen photo behind the envelope (hero variant); flat olive when null. */
   backdropSrc?: string | null;
   /**
    * "card" overlays a single invitation card; "hero" takes over the whole
@@ -48,7 +48,7 @@ const SESSION_KEY = 'tan-top-invitation-opened';
 const EASE = [0.22, 1, 0.36, 1] as const;
 const FLAP_EASE = [0.55, 0, 0.3, 1] as const;
 
-/* Tap timeline: seal pops → flap swings open → letter rises → cream flash → page. */
+/* Tap timeline: seal pops → flap swings open → letter rises → fade to dark → page. */
 const OPEN_MS = 1500;
 const FLASH_IN = 0.35;
 const OVERLAY_OUT = 0.5;
@@ -167,7 +167,7 @@ function Envelope({ open, letter }: { open: boolean; letter: ReactNode }) {
 
 /**
  * Sealed olive envelope intro. On tap the seal pops, the flap swings open and
- * the letter rises, then the scene flashes to cream and the page cascades in.
+ * the letter rises, then the scene dims to dark and the page cascades in.
  * Hero variant fills the viewport until opened, is skipped for the rest of the
  * browser session once opened, and never renders for reduced motion.
  */
@@ -268,7 +268,7 @@ export default function InvitationEnvelope({
       transition={{ duration: OVERLAY_OUT, delay: fading ? FLASH_IN : 0, ease: EASE }}
       style={{ willChange: fading ? 'opacity' : undefined }}
       className={cn(
-        'overflow-hidden bg-night text-paper',
+        'overflow-hidden bg-backdrop text-paper',
         isHero
           ? 'fixed inset-0 z-[60] h-[100dvh]'
           : 'absolute inset-0 z-10 min-h-[22rem] rounded-[1.75rem] sm:rounded-[2rem]',
@@ -286,16 +286,11 @@ export default function InvitationEnvelope({
           />
           <span aria-hidden className='absolute inset-0 bg-night/55' />
         </>
-      ) : (
-        <span
-          aria-hidden
-          className='absolute inset-0 bg-[radial-gradient(80%_55%_at_50%_52%,rgba(122,111,84,0.32)_0%,transparent_70%),radial-gradient(140%_100%_at_50%_100%,rgba(0,0,0,0.35)_0%,transparent_60%)]'
-        />
-      )}
+      ) : null}
 
       <motion.span
         aria-hidden
-        className='pointer-events-none absolute inset-0 z-20 bg-cream'
+        className='pointer-events-none absolute inset-0 z-20 bg-backdrop'
         initial={false}
         animate={{ opacity: fading ? 1 : 0 }}
         transition={{ duration: FLASH_IN, ease: 'easeOut' }}
@@ -305,7 +300,7 @@ export default function InvitationEnvelope({
         <button
           type='button'
           onClick={skipIntro}
-          className='absolute right-[max(1rem,env(safe-area-inset-right))] top-[max(1rem,env(safe-area-inset-top))] z-30 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-4 text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-paper/75 transition-colors duration-200 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper/60 focus-visible:ring-offset-2 focus-visible:ring-offset-night [&:lang(th)]:font-thai [&:lang(th)]:text-xs [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal'
+          className='absolute right-[max(1rem,env(safe-area-inset-right))] top-[max(1rem,env(safe-area-inset-top))] z-30 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-4 text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-paper/75 transition-colors duration-200 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper/60 focus-visible:ring-offset-2 focus-visible:ring-offset-backdrop [&:lang(th)]:font-thai [&:lang(th)]:text-xs [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal'
         >
           {skipLabel}
         </button>
@@ -336,7 +331,7 @@ export default function InvitationEnvelope({
           onClick={openInvitation}
           aria-disabled={phase !== 'sealed' || undefined}
           className={cn(
-            'flex cursor-pointer flex-col items-center rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-paper/60 focus-visible:ring-offset-4 focus-visible:ring-offset-night',
+            'flex cursor-pointer flex-col items-center rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-paper/60 focus-visible:ring-offset-4 focus-visible:ring-offset-backdrop',
             isHero ? 'gap-9 sm:gap-11' : 'gap-5',
             phase !== 'sealed' && 'cursor-default',
           )}
@@ -365,8 +360,8 @@ export default function InvitationEnvelope({
             animate={open ? { opacity: 0, y: 8 } : { opacity: 1, y: 0 }}
             transition={{ duration: open ? 0.3 : 0.7, delay: open ? 0 : 1.1, ease: EASE }}
             className={cn(
-              'inline-flex min-h-11 items-center justify-center rounded-full border border-paper/45 text-center font-medium uppercase tracking-[0.28em] text-paper/90 [&:lang(th)]:font-thai [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal',
-              isHero ? 'min-w-[13rem] px-8 text-[0.6875rem] sm:text-xs' : 'px-6 text-[0.625rem]',
+              'inline-flex min-h-11 items-center justify-center rounded-full border border-paper/70 text-center font-display uppercase tracking-[0.06em] text-paper [&:lang(th)]:font-thai [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal',
+              isHero ? 'min-w-[11rem] px-6 text-[0.9375rem]' : 'px-5 text-[0.8125rem]',
             )}
           >
             {openLabel}

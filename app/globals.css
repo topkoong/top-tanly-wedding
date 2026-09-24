@@ -38,10 +38,11 @@
 
   /* Olive envelope (intro + hero collage envelope only — the site stays cream + ink).
      envelope: pocket flaps · deep: back panel + closed top flap · soft: fold highlights ·
-     ink: creases · night: full-screen intro backdrop · paper: letter stock + light type. */
-  --color-envelope: #3d3824;
-  --color-envelope-deep: #333020;
-  --color-envelope-soft: #5b5440;
+     ink: creases · backdrop: flat olive page behind the intro, hero and timeline · night: deepest shade · paper: letter stock + light type. */
+  --color-backdrop: #3d3824;
+  --color-envelope: #544c35;
+  --color-envelope-deep: #463f2b;
+  --color-envelope-soft: #6b6348;
   --color-envelope-ink: #1f1c14;
   --color-night: #25221a;
   --color-paper: #fdf1e2;

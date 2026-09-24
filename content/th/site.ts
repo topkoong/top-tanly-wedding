@@ -50,7 +50,7 @@ export const siteContentTh: SiteContent = {
     invitationVenueHref: "/th/venue",
     invitationProgrammeSummary: "พิธีช่วงเช้าและงานเลี้ยงกลางวัน",
     invitationCtaLabel: "ดูรายละเอียด",
-    invitationCtaHref: "/th/#quick-actions",
+    invitationCtaHref: "/th/#invitation",
     invitationOpenLabel: "แตะเพื่อเปิดการ์ดเชิญ",
     invitationSkipLabel: "ข้าม",
     countdownTitle: "นับถอยหลังสู่วันสำคัญของเรา",
@@ -60,6 +60,14 @@ export const siteContentTh: SiteContent = {
       minutes: "นาที",
       seconds: "วินาที",
     },
+    invitationMailLabel: "มีจดหมายถึงคุณ",
+    postcardEyebrow: "เรากำลังจะแต่งงาน",
+    saveTheDateLabel: "Save the date",
+    saveTheDateNumeric: "29.11.2569",
+    timelineLead: "หวังว่าจะได้พบกัน",
+    timelineTitle: "กำหนดการ",
+    timelineCtaLabel: "ดูกำหนดการทั้งหมด",
+    timelineCtaHref: "/th/schedule",
     supportLineLabel: "ไปยังหน้า LINE Official Account",
     quickActionCards: [
       {
