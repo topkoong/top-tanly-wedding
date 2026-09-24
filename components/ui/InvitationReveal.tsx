@@ -45,10 +45,7 @@ export function InvitationRevealItem({
   const revealed = useInvitationRevealed();
   const shouldReduceMotion = useReducedMotion();
 
-  if (shouldReduceMotion) {
-    return <div className={cn("min-w-0 max-w-full", className)}>{children}</div>;
-  }
-
+  /* Same element tree for reduced motion so server HTML hydrates cleanly. */
   return (
     <motion.div
       className={cn("min-w-0 max-w-full", className)}
@@ -58,11 +55,15 @@ export function InvitationRevealItem({
           ? { opacity: 1, y: 0 }
           : { opacity: 0, y: 14 }
       }
-      transition={{
-        delay: revealed ? 0.08 + delay : 0,
-        duration: 0.65,
-        ease: REVEAL_EASE,
-      }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : {
+              delay: revealed ? 0.08 + delay : 0,
+              duration: 0.65,
+              ease: REVEAL_EASE,
+            }
+      }
     >
       {children}
     </motion.div>
