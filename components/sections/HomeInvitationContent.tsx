@@ -58,13 +58,14 @@ function Paper({ children, className }: PaperProps) {
   );
 }
 
-/** Open cream envelope with the monogram card tucked inside. */
+/** The opened brown envelope from the intro, with the monogram card tucked inside. */
 function CollageEnvelope() {
   return (
     <div aria-hidden className="relative aspect-[140/130] w-full">
       <svg viewBox="0 0 140 130" className="absolute inset-0 h-full w-full overflow-visible">
-        <path d="M0 30L70 0L140 30Z" className="fill-sage-soft" stroke="rgba(31,29,24,0.12)" strokeWidth="0.6" />
-        <rect y="30" width="140" height="100" rx="2" className="fill-sage-soft" />
+        <path d="M0 30L70 0L140 30Z" className="fill-envelope-deep" />
+        <path d="M0 30L70 0L140 30" fill="none" className="stroke-envelope-soft" strokeWidth="0.5" />
+        <rect y="30" width="140" height="100" rx="2" className="fill-envelope-deep" />
       </svg>
       <div className="absolute inset-x-[11%] top-[9%] bottom-[16%] flex justify-center rounded-[2px] bg-ivory pt-[9%] ring-1 ring-charcoal/[0.07]">
         <TNMonogram className="h-[34%] w-auto" title="" />
@@ -75,12 +76,10 @@ function CollageEnvelope() {
       >
         <path
           d="M0 30L70 80L140 30V128a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2Z"
-          className="fill-champagne"
-          stroke="rgba(31,29,24,0.12)"
-          strokeWidth="0.6"
+          className="fill-envelope"
         />
-        <path d="M0 130L62 76M140 130L78 76" fill="none" stroke="rgba(31,29,24,0.07)" strokeWidth="0.6" />
-        <path d="M0 30L70 80L140 30" fill="none" stroke="rgba(31,29,24,0.18)" strokeWidth="0.8" />
+        <path d="M0 130L62 76M140 130L78 76" fill="none" stroke="rgba(40,32,22,0.18)" strokeWidth="0.6" />
+        <path d="M0 30L70 80L140 30" fill="none" className="stroke-envelope-soft" strokeWidth="0.8" />
       </svg>
     </div>
   );

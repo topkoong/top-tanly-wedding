@@ -41,7 +41,7 @@ Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.
 | `envelope-soft` | #A69580 | Fold highlights |
 | `envelope-ink` | #5E503E | Tone-on-tone emboss texture (~8–10% opacity) |
 
-Tapping dissolves the sealed scene while the home hero builds as a flat-lay stationery collage (ivory/champagne cards fading in one after another). Brown belongs **only** to the tap-to-open envelope graphic; the collage stays ivory/champagne on cream. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never brown surfaces, buttons, or text.
+Tapping dissolves the sealed scene while the home hero builds as a flat-lay stationery collage (ivory/champagne cards fading in one after another). Brown belongs **only** to the envelope itself — the tap-to-open graphic and the same opened envelope inside the hero collage. Every other collage card stays ivory on cream. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never brown surfaces, buttons, or text.
 
 Ceremony typography colour pattern:
 
