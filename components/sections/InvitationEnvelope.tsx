@@ -111,7 +111,7 @@ function SealedEnvelopeArt() {
       <path d='M140 0L67 55L140 100Z' className='fill-envelope' opacity='0.9' />
       <path d='M0 100L70 47L140 100Z' className='fill-envelope-soft' opacity='0.55' />
       <path d='M0 100L70 47L140 100Z' className='fill-envelope' opacity='0.6' />
-      <path d='M0 1.6L140 1.6L70 61.6Z' fill='rgba(40,32,22,0.22)' />
+      <path d='M0 1.6L140 1.6L70 61.6Z' fill='rgba(12,30,28,0.28)' />
       <path d='M0 0L140 0L70 60Z' className='fill-envelope-deep' />
       <path
         d='M0 0L70 60L140 0'
@@ -130,7 +130,7 @@ function EnvelopeSeal() {
   return (
     <span
       aria-hidden
-      className='absolute left-1/2 top-[60%] block aspect-square w-[27%] -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_12px_24px_-14px_rgba(31,24,16,0.55)]'
+      className='absolute left-1/2 top-[60%] block aspect-square w-[27%] -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_12px_24px_-14px_rgba(12,30,28,0.6)]'
     >
       <svg viewBox='0 0 100 100' className='absolute inset-0 h-full w-full'>
         <path
@@ -303,7 +303,7 @@ export default function InvitationEnvelope({
               ? 'min(22rem, calc(100vw - 3.5rem), calc((100dvh - 22rem) * 7 / 5))'
               : 'min(18rem, 100%)',
           }}
-          className='relative block aspect-[7/5] overflow-visible rounded-[3px] shadow-[0_26px_44px_-26px_rgba(31,24,16,0.55)]'
+          className='relative block aspect-[7/5] overflow-visible rounded-[3px] shadow-[0_26px_44px_-26px_rgba(12,30,28,0.55)]'
         >
           <SealedEnvelopeArt />
           <EnvelopeSeal />

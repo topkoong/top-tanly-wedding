@@ -58,7 +58,7 @@ function Paper({ children, className }: PaperProps) {
   );
 }
 
-/** The opened brown envelope from the intro, with the monogram card tucked inside. */
+/** The opened envelope from the intro, with the monogram card tucked inside. */
 function CollageEnvelope() {
   return (
     <div aria-hidden className="relative aspect-[140/130] w-full">
@@ -78,7 +78,7 @@ function CollageEnvelope() {
           d="M0 30L70 80L140 30V128a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2Z"
           className="fill-envelope"
         />
-        <path d="M0 130L62 76M140 130L78 76" fill="none" stroke="rgba(40,32,22,0.18)" strokeWidth="0.6" />
+        <path d="M0 130L62 76M140 130L78 76" fill="none" stroke="rgba(12,30,28,0.22)" strokeWidth="0.6" />
         <path d="M0 30L70 80L140 30" fill="none" className="stroke-envelope-soft" strokeWidth="0.8" />
       </svg>
     </div>

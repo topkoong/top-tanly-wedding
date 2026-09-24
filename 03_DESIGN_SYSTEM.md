@@ -32,16 +32,16 @@ Core tokens in `app/globals.css` `@theme` (hex references for handoff parity):
 
 Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.
 
-**Opening invitation only — brown sealed envelope (`InvitationEnvelope`):**
+**Envelope only — deep green sealed envelope (`InvitationEnvelope`):**
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `envelope` | #907B60 | Side and bottom flaps |
-| `envelope-deep` | #7A6851 | Closed top flap, shadowed surfaces |
-| `envelope-soft` | #A69580 | Fold highlights |
-| `envelope-ink` | #5E503E | Tone-on-tone emboss texture (~8–10% opacity) |
+| `envelope` | #355E5B | Side and bottom flaps |
+| `envelope-deep` | #2D504D | Closed top flap, shadowed surfaces |
+| `envelope-soft` | #537674 | Fold highlights |
+| `envelope-ink` | #223D3B | Tone-on-tone emboss texture (~8–10% opacity) |
 
-Tapping dissolves the sealed scene while the home hero builds as a flat-lay stationery collage (ivory/champagne cards fading in one after another). Brown belongs **only** to the envelope itself — the tap-to-open graphic and the same opened envelope inside the hero collage. Every other collage card stays ivory on cream. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never brown surfaces, buttons, or text.
+Tapping dissolves the sealed scene while the home hero builds as a flat-lay stationery collage (ivory/champagne cards fading in one after another). The green belongs **only** to the envelope itself — the tap-to-open graphic and the same opened envelope inside the hero collage. Every other collage card stays ivory on cream. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never green surfaces, buttons, or text.
 
 Ceremony typography colour pattern:
 
