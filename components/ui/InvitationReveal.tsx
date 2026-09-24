@@ -34,8 +34,8 @@ type InvitationRevealItemProps = {
 };
 
 /**
- * Staggered fade-up for hero content once the sealed envelope opens — mirrors the
- * gentle cascade in digital wedding-invite reels after the card is revealed.
+ * One piece of the hero collage: fades in and settles once the sealed envelope
+ * dissolves. Stagger pieces with `delay` so the flat lay builds top to bottom.
  */
 export function InvitationRevealItem({
   children,
@@ -52,15 +52,15 @@ export function InvitationRevealItem({
       initial={false}
       animate={
         revealed
-          ? { opacity: 1, y: 0 }
-          : { opacity: 0, y: 14 }
+          ? { opacity: 1, y: 0, scale: 1 }
+          : { opacity: 0, y: 10, scale: 0.97 }
       }
       transition={
         shouldReduceMotion
           ? { duration: 0 }
           : {
-              delay: revealed ? 0.08 + delay : 0,
-              duration: 0.65,
+              delay: revealed ? 0.1 + delay : 0,
+              duration: 0.55,
               ease: REVEAL_EASE,
             }
       }

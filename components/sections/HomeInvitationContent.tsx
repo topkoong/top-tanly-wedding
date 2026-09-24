@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import type { ReactNode } from "react";
 
 import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
-import Button from "@/components/ui/Button";
+import TNMonogram from "@/components/icons/TNMonogram";
 import Countdown from "@/components/ui/Countdown";
-import InvitationBotanicalRule from "@/components/ui/InvitationBotanicalRule";
 import { InvitationRevealItem } from "@/components/ui/InvitationReveal";
 import type { SiteContent } from "@/content/schema";
 import { cn } from "@/lib/utils";
@@ -15,161 +15,189 @@ type HomeInvitationContentProps = {
   content: SiteContent;
 };
 
-/** Solid charcoal on EN — Bellefair only has weight 400; faux-bold on uppercase labels reads gray. */
-const invitationPrimaryEnClass = "font-display font-medium text-charcoal";
+/** Seconds between collage pieces — the flat lay builds top to bottom. */
+const STAGGER = 0.12;
 
-const invitationFieldLabelClass = (isThai: boolean) =>
+const PAPER_SHADOW = "shadow-[0_18px_34px_-22px_rgba(31,29,24,0.5)]";
+
+const eyebrowClass = (isThai: boolean) =>
   cn(
-    "text-[1.125rem] uppercase tracking-[0.12em] sm:text-body-l sm:tracking-[0.1em]",
+    "text-stone",
     isThai
-      ? "font-thai font-semibold text-charcoal normal-case tracking-normal sm:tracking-normal"
-      : invitationPrimaryEnClass,
+      ? "font-thai text-[0.75rem] leading-snug"
+      : "font-display text-[0.625rem] uppercase leading-relaxed tracking-[0.2em] sm:text-[0.6875rem]",
   );
 
-const venueValueClass = (isThai: boolean) =>
+const bodyClass = (isThai: boolean) =>
   cn(
-    "text-[clamp(1.25rem,4.5vw,2.125rem)] leading-tight",
-    isThai ? "font-thai font-medium text-charcoal" : invitationPrimaryEnClass,
+    "text-charcoal",
+    isThai ? "font-thai text-[0.75rem] leading-snug" : "font-display text-[0.75rem] leading-snug",
   );
 
-const timeSummaryClass = (isThai: boolean) =>
-  cn(
-    "text-[0.8125rem] leading-relaxed text-charcoal sm:text-body-s",
-    isThai ? "font-thai" : "font-display",
-  );
-
-type InvitationDateDisplayProps = {
-  date: SiteContent["homeShell"]["invitationDateDisplay"];
-  isThai: boolean;
+type PaperProps = {
+  children: ReactNode;
+  className?: string;
 };
 
-/** Stacked date block — weekday eyebrow, day/month + year on one line. */
-function InvitationDateDisplay({ date, isThai }: InvitationDateDisplayProps) {
+/** Ivory stationery card with a letterpress hairline frame. */
+function Paper({ children, className }: PaperProps) {
   return (
-    <div className="mx-auto w-full space-y-1.5 text-center">
-      <p
-        className={cn(
-          "text-body uppercase tracking-[0.2em] sm:text-body-l sm:tracking-[0.18em]",
-          isThai
-            ? "font-thai font-medium text-charcoal normal-case tracking-normal sm:tracking-normal"
-            : invitationPrimaryEnClass,
-        )}
+    <div
+      className={cn(
+        "relative rounded-[3px] bg-ivory ring-1 ring-charcoal/[0.07]",
+        PAPER_SHADOW,
+        className,
+      )}
+    >
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-[6px] rounded-[2px] border border-charcoal/10"
+      />
+      <div className="relative">{children}</div>
+    </div>
+  );
+}
+
+/** Open cream envelope with the monogram card tucked inside. */
+function CollageEnvelope() {
+  return (
+    <div aria-hidden className="relative aspect-[140/130] w-full">
+      <svg viewBox="0 0 140 130" className="absolute inset-0 h-full w-full overflow-visible">
+        <path d="M0 30L70 0L140 30Z" className="fill-sage-soft" stroke="rgba(31,29,24,0.12)" strokeWidth="0.6" />
+        <rect y="30" width="140" height="100" rx="2" className="fill-sage-soft" />
+      </svg>
+      <div className="absolute inset-x-[11%] top-[9%] bottom-[16%] flex justify-center rounded-[2px] bg-ivory pt-[9%] ring-1 ring-charcoal/[0.07]">
+        <TNMonogram className="h-[34%] w-auto" title="" />
+      </div>
+      <svg
+        viewBox="0 0 140 130"
+        className="absolute inset-0 h-full w-full overflow-visible drop-shadow-[0_-1px_0_rgba(31,29,24,0.06)]"
       >
-        {date.weekday}
-      </p>
-      <p
-        className={cn(
-          "whitespace-nowrap text-[1.125rem] leading-snug sm:text-[clamp(1.25rem,5vw,2.125rem)]",
-          isThai ? "font-thai font-medium text-charcoal" : invitationPrimaryEnClass,
-        )}
-      >
-        {date.dayMonth}
-        {"\u00a0"}
-        {date.year}
-      </p>
+        <path
+          d="M0 30L70 80L140 30V128a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2Z"
+          className="fill-champagne"
+          stroke="rgba(31,29,24,0.12)"
+          strokeWidth="0.6"
+        />
+        <path d="M0 130L62 76M140 130L78 76" fill="none" stroke="rgba(31,29,24,0.07)" strokeWidth="0.6" />
+        <path d="M0 30L70 80L140 30" fill="none" stroke="rgba(31,29,24,0.18)" strokeWidth="0.8" />
+      </svg>
     </div>
   );
 }
 
 /**
- * Hero invitation copy revealed in a staggered cascade after the sealed
- * envelope opens — matching digital wedding-invite reel pacing.
+ * Hero flat lay revealed after the sealed envelope dissolves: tilted
+ * stationery pieces (invitation, date, countdown, details) fade in one after
+ * another, echoing digital wedding-invite reels.
  */
 export default function HomeInvitationContent({ content }: HomeInvitationContentProps) {
   const isThai = content.locale === "th";
+  const hs = content.homeShell;
+  const date = hs.invitationDateDisplay;
+  const [day, ...monthParts] = date.dayMonth.split(" ");
+  const month = monthParts.join(" ");
 
   return (
-    <div className="flex flex-col items-center text-center">
-      <InvitationRevealItem delay={0}>
-        <p
+    <div className="mx-auto w-full max-w-[25rem] sm:max-w-[32rem]">
+      <InvitationRevealItem delay={0} className="flex flex-col items-center text-center">
+        <p className={cn(eyebrowClass(isThai), "max-w-xs")}>{hs.invitationLeadIn}</p>
+        <CoupleScriptMark as="h1" size="envelope" name={content.coupleFriendlyName} className="mt-2" />
+        <p className={cn(eyebrowClass(isThai), "mt-2 text-charcoal/80")}>{content.weddingDate}</p>
+      </InvitationRevealItem>
+
+      <div className="mt-5 flex items-start sm:mt-8">
+        <div className="relative z-10 flex w-[46%] flex-col pt-6">
+          <InvitationRevealItem delay={STAGGER}>
+            <div className="-rotate-6 drop-shadow-[0_14px_18px_rgba(31,29,24,0.14)]">
+              <CollageEnvelope />
+            </div>
+          </InvitationRevealItem>
+
+          <InvitationRevealItem delay={STAGGER * 3} className="relative z-20 -mt-4 ml-[6%]">
+            <Paper className="-rotate-3 px-4 py-5 text-center">
+              <p className={eyebrowClass(isThai)}>{hs.dateHeading}</p>
+              <p className={cn(bodyClass(isThai), "mt-2 uppercase tracking-[0.14em] [&:lang(th)]:tracking-normal")}>
+                {date.weekday}
+              </p>
+              <p className="mt-1 font-display text-[2.25rem] leading-none text-charcoal sm:text-[2.75rem]">
+                {day}
+              </p>
+              <p
+                className={cn(
+                  "mt-1 leading-tight text-charcoal",
+                  isThai
+                    ? "font-thai text-[0.9375rem] font-medium"
+                    : "font-display text-[0.9375rem] uppercase tracking-[0.14em] sm:text-[1.0625rem]",
+                )}
+              >
+                {month}
+              </p>
+              <p className={cn(bodyClass(isThai), "mt-1")}>{date.year}</p>
+            </Paper>
+          </InvitationRevealItem>
+        </div>
+
+        <div className="relative z-20 -ml-[6%] flex w-[60%] flex-col">
+          <InvitationRevealItem delay={STAGGER * 2}>
+            <Paper className="rotate-[2.5deg] px-5 pb-6 pt-6 text-center">
+              <p className={eyebrowClass(isThai)}>{hs.invitationInviteLine}</p>
+              <TNMonogram className="mx-auto mt-3 h-10 w-auto" title="" />
+              <p className={cn(eyebrowClass(isThai), "mt-4")}>{hs.venueHeading}</p>
+              <Link
+                href={hs.invitationVenueHref}
+                className={cn(
+                  "mt-1 inline-block rounded-sm leading-tight text-charcoal transition-colors duration-200 hover:text-stone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
+                  isThai ? "font-thai text-[1rem] font-medium" : "font-display text-[1.25rem] sm:text-[1.5rem]",
+                )}
+              >
+                {hs.locationLabel}
+              </Link>
+              <p className={cn(bodyClass(isThai), "mt-1 text-stone")}>{hs.locationDetail}</p>
+              <p className={cn(bodyClass(isThai), "mt-3")}>{hs.invitationTimeSummary}</p>
+            </Paper>
+          </InvitationRevealItem>
+
+          <InvitationRevealItem delay={STAGGER * 4} className="mt-4 ml-[8%]">
+            <Paper className="rotate-[1.5deg] px-3 pb-3 pt-4 text-center">
+              <p className={eyebrowClass(isThai)}>{hs.countdownTitle}</p>
+              <Countdown
+                targetISO={content.weddingDateISO}
+                labels={hs.countdownLabels}
+                isThai={isThai}
+                className="mt-2 grid-cols-2 gap-1.5 sm:gap-2"
+              />
+            </Paper>
+          </InvitationRevealItem>
+        </div>
+      </div>
+
+      <InvitationRevealItem delay={STAGGER * 5} className="mx-auto mt-6 w-[72%] sm:w-[60%]">
+        <Link
+          href={hs.invitationCtaHref}
           className={cn(
-            "max-w-xs text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.22em] text-charcoal/[0.65] sm:text-body-s sm:tracking-[0.2em]",
-            !isThai && "font-display",
+            "group relative block -rotate-2 rounded-[3px] bg-ivory px-5 pb-5 pt-9 text-center ring-1 ring-charcoal/[0.07] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+            PAPER_SHADOW,
           )}
         >
-          {content.homeShell.invitationLeadIn}
-        </p>
-      </InvitationRevealItem>
-
-      <InvitationRevealItem delay={0.08}>
-        <CoupleScriptMark
-          as="h1"
-          size="hero"
-          name={content.coupleFriendlyName}
-          className="mt-1"
-        />
-      </InvitationRevealItem>
-
-      <InvitationRevealItem delay={0.16}>
-        <p
-          className={cn(
-            "mt-5 max-w-md text-center text-[0.6875rem] font-medium uppercase leading-relaxed tracking-[0.14em] text-stone sm:text-body-s",
-            !isThai && "font-display",
-          )}
-        >
-          {content.homeShell.invitationInviteLine}
-        </p>
-      </InvitationRevealItem>
-
-      <InvitationRevealItem delay={0.24} className="mt-9 w-full max-w-md">
-        <Countdown
-          targetISO={content.weddingDateISO}
-          labels={content.homeShell.countdownLabels}
-          isThai={isThai}
-        />
-      </InvitationRevealItem>
-
-      <InvitationRevealItem delay={0.34} className="relative mx-auto mt-10 w-full max-w-md">
-        <div className="rounded-[1.75rem] border border-charcoal/10 bg-cream px-6 py-9 shadow-[0_26px_60px_-32px_rgba(31,29,24,0.2)] sm:rounded-[2rem] sm:px-8">
-          <p
+          <svg
+            aria-hidden
+            viewBox="0 0 100 24"
+            preserveAspectRatio="none"
+            className="absolute inset-x-0 top-0 h-7 w-full"
+          >
+            <path d="M0 0L50 22L100 0" fill="none" stroke="rgba(31,29,24,0.14)" strokeWidth="0.8" vectorEffect="non-scaling-stroke" />
+          </svg>
+          <span
             className={cn(
-              "text-body-s uppercase tracking-[0.14em] text-charcoal",
-              isThai ? "font-thai" : "font-display",
+              "inline-flex items-center gap-1.5 text-charcoal",
+              isThai ? "font-thai text-[1rem] font-medium" : "font-display text-[1.25rem] uppercase tracking-[0.12em]",
             )}
           >
-            {content.homeShell.invitationCardEyebrow}
-          </p>
-
-          <div className="mt-7 space-y-3">
-            <p className={invitationFieldLabelClass(isThai)}>{content.homeShell.dateHeading}</p>
-            <InvitationDateDisplay date={content.homeShell.invitationDateDisplay} isThai={isThai} />
-            <p className={timeSummaryClass(isThai)}>{content.homeShell.invitationTimeSummary}</p>
-          </div>
-
-          <div className="my-7">
-            <InvitationBotanicalRule />
-          </div>
-
-          <div className="space-y-2">
-            <p className={invitationFieldLabelClass(isThai)}>{content.homeShell.venueHeading}</p>
-            <Link
-              href={content.homeShell.invitationVenueHref}
-              className={cn(
-                venueValueClass(isThai),
-                "inline-block transition-colors duration-200 hover:text-stone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
-              )}
-            >
-              {content.homeShell.locationLabel}
-            </Link>
-            <p
-              className={cn(
-                "pt-0.5 text-body leading-relaxed text-charcoal",
-                isThai ? "font-thai" : "font-display",
-              )}
-            >
-              {content.homeShell.locationDetail}
-            </p>
-          </div>
-
-          <div className="mt-8 flex justify-center">
-            <Button
-              href={content.homeShell.invitationCtaHref}
-              endIcon={<ChevronDown className="h-4 w-4 shrink-0 opacity-95" strokeWidth={2} aria-hidden />}
-            >
-              {content.homeShell.invitationCtaLabel}
-            </Button>
-          </div>
-        </div>
+            {hs.invitationCtaLabel}
+            <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-y-0.5" strokeWidth={1.75} aria-hidden />
+          </span>
+        </Link>
       </InvitationRevealItem>
     </div>
   );
