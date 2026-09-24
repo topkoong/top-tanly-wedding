@@ -32,16 +32,16 @@ Core tokens in `app/globals.css` `@theme` (hex references for handoff parity):
 
 Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.
 
-**Opening invitation only — brown gate-fold (`InvitationEnvelope`):**
+**Opening invitation only — brown sealed envelope (`InvitationEnvelope`):**
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `envelope` | #907B60 | Main gate-fold door face (right door) |
-| `envelope-deep` | #7A6851 | Left door, shadowed surfaces, door back faces |
-| `envelope-soft` | #A69580 | Bevel / illuminated edges |
-| `envelope-ink` | #5E503E | Tone-on-tone emboss / laid-paper texture (~8–10% opacity) |
+| `envelope` | #907B60 | Side and bottom flaps |
+| `envelope-deep` | #7A6851 | Closed top flap, shadowed surfaces |
+| `envelope-soft` | #A69580 | Fold highlights |
+| `envelope-ink` | #5E503E | Tone-on-tone emboss texture (~8–10% opacity) |
 
-Brown belongs **only** to the tap-to-open gate-fold intro graphic. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never brown surfaces, buttons, or text.
+Tapping dissolves the sealed scene while the home hero builds as a flat-lay stationery collage (ivory/champagne cards fading in one after another). Brown belongs **only** to the tap-to-open envelope graphic; the collage stays ivory/champagne on cream. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never brown surfaces, buttons, or text.
 
 Ceremony typography colour pattern:
 

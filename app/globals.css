@@ -36,9 +36,9 @@
   --color-charcoal: #1f1d18;
   --color-stone: #6e6a61;
 
-  /* Brown gate-fold invitation (opening intro graphic only — site stays cream + ink).
-     envelope: door face · deep: shadowed/left door + door backs ·
-     soft: bevel highlights · ink: tone-on-tone emboss lines. */
+  /* Brown sealed envelope (opening intro graphic only — site stays cream + ink).
+     envelope: side/bottom flaps · deep: closed top flap + shadowed surfaces ·
+     soft: fold highlights · ink: tone-on-tone emboss lines. */
   --color-envelope: #907b60;
   --color-envelope-deep: #7a6851;
   --color-envelope-soft: #a69580;

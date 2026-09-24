@@ -1,3 +1,4 @@
+import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
@@ -21,7 +22,7 @@ export default function HomeShell({ content }: HomeShellProps) {
       <Section
         background="cream"
         className={cn(
-          "relative flex min-h-[calc(100svh-4rem)] flex-col bg-cream pt-14 pb-12 sm:pt-16 sm:pb-16 md:pt-20 md:pb-24",
+          "relative flex min-h-[calc(100svh-4rem)] flex-col bg-cream pt-8 pb-12 sm:pt-16 sm:pb-16 md:pt-20 md:pb-24",
         )}
       >
         <Container className="relative z-10 my-auto w-full">
@@ -29,6 +30,26 @@ export default function HomeShell({ content }: HomeShellProps) {
             variant="hero"
             openLabel={content.homeShell.invitationOpenLabel}
             skipLabel={content.homeShell.invitationSkipLabel}
+            sealedHeader={
+              <>
+                <p
+                  className={cn(
+                    "text-stone",
+                    isThai
+                      ? "font-thai text-body-s"
+                      : "font-display text-[0.6875rem] uppercase tracking-[0.24em] sm:text-body-s",
+                  )}
+                >
+                  {content.homeShell.invitationLeadIn}
+                </p>
+                <CoupleScriptMark
+                  size="envelope"
+                  name={content.coupleFriendlyName}
+                  decorative
+                  className="mt-3"
+                />
+              </>
+            }
             className="mx-auto max-w-2xl"
           >
             <HomeInvitationContent content={content} />
