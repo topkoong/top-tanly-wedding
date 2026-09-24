@@ -32,16 +32,21 @@ Core tokens in `app/globals.css` `@theme` (hex references for handoff parity):
 
 Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.
 
-**Envelope only — deep green sealed envelope (`InvitationEnvelope`):**
+**Intro + home hero only — photo-booth invitation (`InvitationEnvelope`, `PhotoStrip`):**
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `envelope` | #355E5B | Side and bottom flaps |
-| `envelope-deep` | #2D504D | Closed top flap, shadowed surfaces |
-| `envelope-soft` | #537674 | Fold highlights |
-| `envelope-ink` | #223D3B | Tone-on-tone emboss texture (~8–10% opacity) |
+| `night` | #3D3824 | Dark olive backdrop of the intro and home hero |
+| `night-deep` | #2E2A1E | Vignette / photo-frame shadow |
+| `brass` | #A6957B | Brushed booth metal |
+| `brass-deep` | #8B7A68 | Shaded metal |
+| `brass-soft` | #B0A086 | Metal highlights, backdrop glow |
+| `brass-ink` | #282219 | Print slot |
+| `paper` | #FDF1E2 | Photo-strip stock; light type on `night` |
 
-Tapping dissolves the sealed scene while the home hero builds as a flat-lay stationery collage (ivory/champagne cards fading in one after another). The green belongs **only** to the envelope itself — the tap-to-open graphic and the same opened envelope inside the hero collage. Every other collage card stays ivory on cream. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never green surfaces, buttons, or text.
+The intro shows a brass photo booth printing a photo strip on the dark backdrop, with an outlined "tap to open" pill fading in. On tap the booth fades (0.3 s), the backdrop lifts (0.5 s), and after a brief dark pause the home hero builds as a flat-lay collage on `night` (the same strip plus ivory stationery cards, ~0.12 s stagger). `night` / `brass` / `paper` never appear outside the intro and home hero — every other section stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink.
+
+**Page motion:** blocks on every page fade up softly (`Reveal`, 16 px, 0.6 s) the first time they scroll into view, with short staggers for sibling cards and timeline rows. Reduced motion shows everything instantly.
 
 Ceremony typography colour pattern:
 

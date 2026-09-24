@@ -3,7 +3,6 @@
 import {
   useCallback,
   useEffect,
-  useId,
   useLayoutEffect,
   useRef,
   useState,
@@ -12,22 +11,24 @@ import {
 import { createPortal } from 'react-dom';
 import { motion, useReducedMotion } from 'motion/react';
 
-import TNMonogram from '@/components/icons/TNMonogram';
 import { InvitationRevealProvider } from '@/components/ui/InvitationReveal';
+import PhotoStrip from '@/components/ui/PhotoStrip';
 import { cn } from '@/lib/utils';
 
 type InvitationEnvelopeProps = {
   /** The content revealed once the invitation is opened. */
   children: ReactNode;
-  /** Localized prompt shown under the sealed envelope (e.g. "Tap to open"). */
+  /** Localized prompt shown under the photo booth (e.g. "Tap to open"). */
   openLabel: string;
   /** Localized label for the control that bypasses the intro (hero variant only). */
   skipLabel?: string;
-  /** Optional heading shown above the sealed envelope (hero variant). */
+  /** Optional heading shown above the photo booth (hero variant). */
   sealedHeader?: ReactNode;
+  /** Print that slides out of the booth; defaults to a monogram-only strip. */
+  photoStrip?: ReactNode;
   /**
    * "card" overlays a single invitation card; "hero" takes over the whole
-   * viewport so guests first see only the sealed envelope, then reveal
+   * viewport so guests first see only the photo booth, then reveal
    * everything on tap.
    */
   variant?: 'card' | 'hero';
@@ -43,29 +44,28 @@ type Phase = 'checking' | 'sealed' | 'fading' | 'revealed';
 const SESSION_KEY = 'tan-top-invitation-opened';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const PRINT_EASE = [0.45, 0, 0.2, 1] as const;
 
-/** The sealed scene dissolves while the revealed content starts its cascade underneath. */
-const OVERLAY_FADE = 0.4;
+/** On tap: booth + text fade first, then the dark backdrop lifts; the page cascades in after. */
+const SCENE_FADE = 0.3;
+const BACKDROP_FADE = 0.5;
+const INTRO_EXIT_MS = (SCENE_FADE + BACKDROP_FADE) * 1000;
 
-const SEAL_EMBOSS =
-  '0 1px 0 rgba(255,255,255,0.75), 0 10px 22px -12px rgba(31,29,24,0.38),' +
-  'inset 0 1px 1.5px rgba(255,255,255,0.95), inset 0 -1.5px 2px rgba(31,29,24,0.12)';
-const SEAL_RING_EMBOSS =
-  'inset 0 1px 1px rgba(31,29,24,0.12), inset 0 -1px 1px rgba(255,255,255,0.9)';
-
-function scallopPath(lobes: number, radius: number) {
-  const step = (Math.PI * 2) / lobes;
-  const lobeRadius = (radius * Math.sin(step / 2) * 1.12).toFixed(2);
-  let d = '';
-  for (let i = 0; i <= lobes; i++) {
-    const angle = i * step - Math.PI / 2;
-    const x = (50 + radius * Math.cos(angle)).toFixed(2);
-    const y = (50 + radius * Math.sin(angle)).toFixed(2);
-    d += i === 0 ? `M${x} ${y}` : `A${lobeRadius} ${lobeRadius} 0 0 1 ${x} ${y}`;
-  }
-  return `${d}Z`;
-}
-const SEAL_SCALLOP_PATH = scallopPath(20, 44);
+const BRUSHED =
+  'repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 3px)';
+const BOOTH_METAL =
+  `${BRUSHED}, linear-gradient(90deg, var(--color-brass-deep) 0%, var(--color-brass-soft) 14%, ` +
+  'var(--color-brass) 34%, var(--color-brass-deep) 52%, var(--color-brass) 70%, ' +
+  'var(--color-brass-soft) 88%, var(--color-brass-deep) 100%)';
+const BOOTH_SHADOW =
+  '0 40px 60px -30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -2px 3px rgba(0,0,0,0.3)';
+const RECESS_METAL =
+  `${BRUSHED}, linear-gradient(180deg, var(--color-brass-deep), var(--color-brass) 55%, var(--color-brass-deep))`;
+const RECESS_SHADOW =
+  'inset 0 16px 24px -12px rgba(0,0,0,0.6), inset 7px 0 12px -8px rgba(0,0,0,0.45), inset -7px 0 12px -8px rgba(0,0,0,0.45)';
+const TRAY_METAL =
+  `${BRUSHED}, linear-gradient(180deg, var(--color-brass-soft), var(--color-brass) 35%, var(--color-brass-deep))`;
+const TRAY_SHADOW = 'inset 0 1px 0 rgba(255,255,255,0.5), 0 -8px 14px -8px rgba(0,0,0,0.5)';
 
 const useIsomorphicLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect;
@@ -86,94 +86,50 @@ function rememberOpened() {
   }
 }
 
-/** Back of a sealed landscape envelope: side and bottom flaps under a closed top flap. */
-function SealedEnvelopeArt() {
-  const latticeId = useId();
-  return (
-    <svg
-      aria-hidden
-      viewBox='0 0 140 100'
-      preserveAspectRatio='none'
-      className='absolute inset-0 h-full w-full'
-    >
-      <defs>
-        <pattern id={latticeId} width='7' height='7' patternUnits='userSpaceOnUse'>
-          <path
-            d='M3.5 0.3L6.7 3.5L3.5 6.7L0.3 3.5Z'
-            fill='none'
-            className='stroke-envelope-ink'
-            strokeWidth='0.3'
-          />
-        </pattern>
-      </defs>
-      <rect width='140' height='100' rx='2' className='fill-envelope-deep' />
-      <path d='M0 0L73 55L0 100Z' className='fill-envelope' />
-      <path d='M140 0L67 55L140 100Z' className='fill-envelope' opacity='0.9' />
-      <path d='M0 100L70 47L140 100Z' className='fill-envelope-soft' opacity='0.55' />
-      <path d='M0 100L70 47L140 100Z' className='fill-envelope' opacity='0.6' />
-      <path d='M0 1.6L140 1.6L70 61.6Z' fill='rgba(12,30,28,0.28)' />
-      <path d='M0 0L140 0L70 60Z' className='fill-envelope-deep' />
-      <path
-        d='M0 0L70 60L140 0'
-        fill='none'
-        className='stroke-envelope-soft'
-        strokeWidth='0.35'
-        opacity='0.9'
-      />
-      <rect width='140' height='100' fill={`url(#${latticeId})`} opacity='0.09' />
-    </svg>
-  );
-}
-
-/** Ivory scalloped medallion with the couple's monogram. */
-function EnvelopeSeal() {
+/** Brushed-brass photo booth slot with a print feeding down into its tray. */
+function PhotoBooth({ strip }: { strip: ReactNode }) {
   return (
     <span
       aria-hidden
-      className='absolute left-1/2 top-[60%] block aspect-square w-[27%] -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_12px_24px_-14px_rgba(12,30,28,0.6)]'
+      className='relative block aspect-[8/15] w-full rounded-[8px]'
+      style={{ backgroundImage: BOOTH_METAL, boxShadow: BOOTH_SHADOW }}
     >
-      <svg viewBox='0 0 100 100' className='absolute inset-0 h-full w-full'>
-        <path
-          d={SEAL_SCALLOP_PATH}
-          className='fill-ivory'
-          stroke='rgba(31,29,24,0.12)'
-          strokeWidth='0.6'
-        />
-        <circle
-          cx='50'
-          cy='50'
-          r='39.5'
-          fill='none'
-          stroke='rgba(31,29,24,0.14)'
-          strokeWidth='0.5'
-        />
-      </svg>
       <span
-        className='absolute inset-[16%] grid place-items-center rounded-full bg-cream'
-        style={{ boxShadow: SEAL_EMBOSS }}
-      >
-        <span
-          className='absolute inset-[5%] rounded-full'
-          style={{ boxShadow: SEAL_RING_EMBOSS }}
-        />
-        <TNMonogram className='relative h-[64%] w-auto' title='' />
+        className='absolute inset-x-[8%] top-[5%] bottom-[5%] rounded-[5px]'
+        style={{ backgroundImage: RECESS_METAL, boxShadow: RECESS_SHADOW }}
+      />
+      <span
+        className='absolute inset-x-[8%] bottom-[5%] h-[19%] rounded-b-[5px]'
+        style={{ backgroundImage: TRAY_METAL, boxShadow: TRAY_SHADOW }}
+      />
+      <span className='absolute inset-x-[23%] top-[10.8%] bottom-[9%] overflow-hidden'>
+        <motion.span
+          className='block'
+          initial={{ y: '-44%' }}
+          animate={{ y: '0%' }}
+          transition={{ delay: 0.4, duration: 2.6, ease: PRINT_EASE }}
+        >
+          {strip}
+        </motion.span>
       </span>
+      <span className='absolute inset-x-[17%] top-[9.2%] h-[2.6%] rounded-[2px] bg-brass-ink shadow-[inset_0_2px_3px_rgba(0,0,0,0.7),0_1px_0_rgba(255,255,255,0.3)]' />
     </span>
   );
 }
 
 /**
- * Sealed wedding-invitation envelope. On tap the whole sealed scene dissolves
- * while the revealed content cascades in underneath — the pacing of digital
- * e-invite reels. Hero variant fills the viewport until opened, is skipped for
- * the rest of the browser session once opened, and never renders for reduced
- * motion.
+ * Photo-booth invitation intro: a print feeds out of a brass booth on a dark
+ * backdrop. On tap the booth fades, the backdrop lifts, and the revealed
+ * content cascades in. Hero variant fills the viewport until opened, is
+ * skipped for the rest of the browser session once opened, and never renders
+ * for reduced motion.
  */
 export default function InvitationEnvelope({
   children,
   openLabel,
   skipLabel,
   sealedHeader,
+  photoStrip,
   variant = 'card',
   className,
 }: InvitationEnvelopeProps) {
@@ -204,7 +160,6 @@ export default function InvitationEnvelope({
   useEffect(() => clearTimer, [clearTimer]);
 
   const overlayActive = phase === 'sealed' || phase === 'fading';
-  const contentShown = phase === 'fading' || phase === 'revealed';
   const revealed = phase === 'revealed';
 
   /*
@@ -242,10 +197,7 @@ export default function InvitationEnvelope({
     openedRef.current = true;
     if (isHero) rememberOpened();
     setPhase('fading');
-    timerRef.current = window.setTimeout(
-      () => setPhase('revealed'),
-      OVERLAY_FADE * 1000,
-    );
+    timerRef.current = window.setTimeout(() => setPhase('revealed'), INTRO_EXIT_MS);
   }, [isHero]);
 
   const skipIntro = useCallback(() => {
@@ -255,78 +207,94 @@ export default function InvitationEnvelope({
     setPhase('revealed');
   }, [isHero, clearTimer]);
 
+  const fading = phase === 'fading';
+
   const overlay = overlayActive ? (
     <motion.div
       ref={overlayRef}
       initial={false}
-      animate={{ opacity: phase === 'fading' ? 0 : 1 }}
-      transition={{ duration: OVERLAY_FADE, ease: EASE }}
-      style={{ willChange: phase === 'fading' ? 'opacity' : undefined }}
+      animate={{ opacity: fading ? 0 : 1 }}
+      transition={{ duration: BACKDROP_FADE, delay: fading ? SCENE_FADE : 0, ease: EASE }}
+      style={{ willChange: fading ? 'opacity' : undefined }}
       className={cn(
-        'overflow-hidden',
+        'overflow-hidden bg-night text-paper',
         isHero
-          ? 'fixed inset-0 z-[60] flex h-[100dvh] flex-col items-center justify-center bg-cream px-6 pt-[max(2.5rem,env(safe-area-inset-top))] pb-[max(2.5rem,env(safe-area-inset-bottom))]'
-          : 'absolute inset-0 z-10 flex min-h-[22rem] flex-col items-center justify-center rounded-[1.75rem] px-6 sm:rounded-[2rem]',
-        phase === 'fading' && 'pointer-events-none',
+          ? 'fixed inset-0 z-[60] h-[100dvh] px-6 pt-[max(2.5rem,env(safe-area-inset-top))] pb-[max(2.5rem,env(safe-area-inset-bottom))]'
+          : 'absolute inset-0 z-10 min-h-[22rem] rounded-[1.75rem] px-6 sm:rounded-[2rem]',
+        fading && 'pointer-events-none',
       )}
     >
+      <span
+        aria-hidden
+        className='pointer-events-none absolute inset-0 bg-[radial-gradient(90%_60%_at_50%_58%,rgba(176,160,134,0.16)_0%,transparent_70%)]'
+      />
+
       {isHero && skipLabel ? (
         <button
           type='button'
           onClick={skipIntro}
-          className='absolute right-[max(1rem,env(safe-area-inset-right))] top-[max(1rem,env(safe-area-inset-top))] z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-4 text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-charcoal/70 transition-colors duration-200 hover:text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream [&:lang(th)]:font-thai [&:lang(th)]:text-xs [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal'
+          className='absolute right-[max(1rem,env(safe-area-inset-right))] top-[max(1rem,env(safe-area-inset-top))] z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-4 text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-paper/70 transition-colors duration-200 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper/60 focus-visible:ring-offset-2 focus-visible:ring-offset-night [&:lang(th)]:font-thai [&:lang(th)]:text-xs [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal'
         >
           {skipLabel}
         </button>
       ) : null}
 
-      {isHero && sealedHeader ? (
-        <div aria-hidden className='mb-10 flex flex-col items-center text-center sm:mb-12'>
-          {sealedHeader}
-        </div>
-      ) : null}
-
-      <button
-        type='button'
-        onClick={openInvitation}
-        aria-disabled={phase !== 'sealed' || undefined}
-        className={cn(
-          'flex cursor-pointer flex-col items-center rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40 focus-visible:ring-offset-4 focus-visible:ring-offset-cream',
-          isHero ? 'gap-10 sm:gap-12' : 'gap-5',
-          phase !== 'sealed' && 'cursor-default',
-        )}
+      <motion.div
+        initial={false}
+        animate={{ opacity: fading ? 0 : 1 }}
+        transition={{ duration: SCENE_FADE, ease: EASE }}
+        className='relative flex h-full flex-col items-center justify-center'
       >
-        <span
-          aria-hidden
-          style={{
-            width: isHero
-              ? 'min(22rem, calc(100vw - 3.5rem), calc((100dvh - 22rem) * 7 / 5))'
-              : 'min(18rem, 100%)',
-          }}
-          className='relative block aspect-[7/5] overflow-visible rounded-[3px] shadow-[0_26px_44px_-26px_rgba(12,30,28,0.55)]'
-        >
-          <SealedEnvelopeArt />
-          <EnvelopeSeal />
-        </span>
+        {isHero && sealedHeader ? (
+          <div aria-hidden className='mb-8 flex flex-col items-center text-center sm:mb-10'>
+            {sealedHeader}
+          </div>
+        ) : null}
 
-        <span
+        <button
+          type='button'
+          onClick={openInvitation}
+          aria-disabled={phase !== 'sealed' || undefined}
           className={cn(
-            'text-center font-medium uppercase tracking-[0.28em] text-charcoal/80 [&:lang(th)]:font-thai [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal',
-            isHero ? 'text-[0.6875rem] sm:text-xs' : 'text-[0.625rem]',
+            'flex cursor-pointer flex-col items-center rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-paper/60 focus-visible:ring-offset-4 focus-visible:ring-offset-night',
+            isHero ? 'gap-8 sm:gap-10' : 'gap-5',
+            phase !== 'sealed' && 'cursor-default',
           )}
         >
-          {openLabel}
-        </span>
-      </button>
+          <span
+            aria-hidden
+            className='block'
+            style={{
+              width: isHero
+                ? 'min(12.5rem, 52vw, calc((100dvh - 21rem) * 8 / 15))'
+                : 'min(9rem, 50%)',
+            }}
+          >
+            <PhotoBooth strip={photoStrip ?? <PhotoStrip />} />
+          </span>
+
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.7, ease: EASE }}
+            className={cn(
+              'inline-flex min-h-11 items-center justify-center rounded-full border border-paper/45 text-center font-medium uppercase tracking-[0.28em] text-paper/90 [&:lang(th)]:font-thai [&:lang(th)]:normal-case [&:lang(th)]:tracking-normal',
+              isHero ? 'min-w-[13rem] px-8 text-[0.6875rem] sm:text-xs' : 'px-6 text-[0.625rem]',
+            )}
+          >
+            {openLabel}
+          </motion.span>
+        </button>
+      </motion.div>
     </motion.div>
   ) : null;
 
   return (
-    <InvitationRevealProvider revealed={contentShown}>
+    <InvitationRevealProvider revealed={revealed}>
       <div className={cn('relative min-w-0 max-w-full', className)}>
         <motion.div
           initial={false}
-          animate={{ opacity: contentShown ? 1 : 0 }}
+          animate={{ opacity: revealed ? 1 : 0 }}
           transition={{ duration: instant ? 0 : 0.2, ease: EASE }}
           aria-hidden={!revealed}
           inert={!revealed}

@@ -8,6 +8,7 @@ import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
 import TNMonogram from "@/components/icons/TNMonogram";
 import Countdown from "@/components/ui/Countdown";
 import { InvitationRevealItem } from "@/components/ui/InvitationReveal";
+import PhotoStrip from "@/components/ui/PhotoStrip";
 import type { SiteContent } from "@/content/schema";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +19,7 @@ type HomeInvitationContentProps = {
 /** Seconds between collage pieces — the flat lay builds top to bottom. */
 const STAGGER = 0.12;
 
-const PAPER_SHADOW = "shadow-[0_18px_34px_-22px_rgba(31,29,24,0.5)]";
+const PAPER_SHADOW = "shadow-[0_22px_36px_-20px_rgba(0,0,0,0.6)]";
 
 const eyebrowClass = (isThai: boolean) =>
   cn(
@@ -58,37 +59,10 @@ function Paper({ children, className }: PaperProps) {
   );
 }
 
-/** The opened envelope from the intro, with the monogram card tucked inside. */
-function CollageEnvelope() {
-  return (
-    <div aria-hidden className="relative aspect-[140/130] w-full">
-      <svg viewBox="0 0 140 130" className="absolute inset-0 h-full w-full overflow-visible">
-        <path d="M0 30L70 0L140 30Z" className="fill-envelope-deep" />
-        <path d="M0 30L70 0L140 30" fill="none" className="stroke-envelope-soft" strokeWidth="0.5" />
-        <rect y="30" width="140" height="100" rx="2" className="fill-envelope-deep" />
-      </svg>
-      <div className="absolute inset-x-[11%] top-[9%] bottom-[16%] flex justify-center rounded-[2px] bg-ivory pt-[9%] ring-1 ring-charcoal/[0.07]">
-        <TNMonogram className="h-[34%] w-auto" title="" />
-      </div>
-      <svg
-        viewBox="0 0 140 130"
-        className="absolute inset-0 h-full w-full overflow-visible drop-shadow-[0_-1px_0_rgba(31,29,24,0.06)]"
-      >
-        <path
-          d="M0 30L70 80L140 30V128a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2Z"
-          className="fill-envelope"
-        />
-        <path d="M0 130L62 76M140 130L78 76" fill="none" stroke="rgba(12,30,28,0.22)" strokeWidth="0.6" />
-        <path d="M0 30L70 80L140 30" fill="none" className="stroke-envelope-soft" strokeWidth="0.8" />
-      </svg>
-    </div>
-  );
-}
-
 /**
- * Hero flat lay revealed after the sealed envelope dissolves: tilted
- * stationery pieces (invitation, date, countdown, details) fade in one after
- * another, echoing digital wedding-invite reels.
+ * Hero flat lay revealed after the photo-booth intro: the print from the
+ * booth plus tilted stationery (invitation, date, countdown, details) fade in
+ * one after another on the dark backdrop, echoing digital wedding-invite reels.
  */
 export default function HomeInvitationContent({ content }: HomeInvitationContentProps) {
   const isThai = content.locale === "th";
@@ -100,20 +74,18 @@ export default function HomeInvitationContent({ content }: HomeInvitationContent
   return (
     <div className="mx-auto w-full max-w-[25rem] sm:max-w-[32rem]">
       <InvitationRevealItem delay={0} className="flex flex-col items-center text-center">
-        <p className={cn(eyebrowClass(isThai), "max-w-xs")}>{hs.invitationLeadIn}</p>
-        <CoupleScriptMark as="h1" size="envelope" name={content.coupleFriendlyName} className="mt-2" />
-        <p className={cn(eyebrowClass(isThai), "mt-2 text-charcoal/80")}>{content.weddingDate}</p>
+        <p className={cn(eyebrowClass(isThai), "max-w-xs text-paper/75")}>{hs.invitationLeadIn}</p>
+        <CoupleScriptMark as="h1" size="envelope" name={content.coupleFriendlyName} className="mt-2 text-paper" />
+        <p className={cn(eyebrowClass(isThai), "mt-2 text-paper/85")}>{content.weddingDate}</p>
       </InvitationRevealItem>
 
       <div className="mt-5 flex items-start sm:mt-8">
         <div className="relative z-10 flex w-[46%] flex-col pt-6">
-          <InvitationRevealItem delay={STAGGER}>
-            <div className="-rotate-6 drop-shadow-[0_14px_18px_rgba(31,29,24,0.14)]">
-              <CollageEnvelope />
-            </div>
+          <InvitationRevealItem delay={STAGGER} className="ml-[10%] w-[64%]">
+            <PhotoStrip className="-rotate-6" />
           </InvitationRevealItem>
 
-          <InvitationRevealItem delay={STAGGER * 3} className="relative z-20 -mt-4 ml-[6%]">
+          <InvitationRevealItem delay={STAGGER * 3} className="relative z-20 -mt-12 ml-[6%]">
             <Paper className="-rotate-3 px-4 py-5 text-center">
               <p className={eyebrowClass(isThai)}>{hs.dateHeading}</p>
               <p className={cn(bodyClass(isThai), "mt-2 uppercase tracking-[0.14em] [&:lang(th)]:tracking-normal")}>
@@ -175,7 +147,7 @@ export default function HomeInvitationContent({ content }: HomeInvitationContent
         <Link
           href={hs.invitationCtaHref}
           className={cn(
-            "group relative block -rotate-2 rounded-[3px] bg-ivory px-5 pb-5 pt-9 text-center ring-1 ring-charcoal/[0.07] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+            "group relative block -rotate-2 rounded-[3px] bg-ivory px-5 pb-5 pt-9 text-center ring-1 ring-charcoal/[0.07] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper focus-visible:ring-offset-2 focus-visible:ring-offset-night",
             PAPER_SHADOW,
           )}
         >

@@ -36,13 +36,17 @@
   --color-charcoal: #1f1d18;
   --color-stone: #6e6a61;
 
-  /* Deep green sealed envelope (envelope graphic only — site stays cream + ink).
-     envelope: side/bottom flaps · deep: closed top flap + shadowed surfaces ·
-     soft: fold highlights · ink: tone-on-tone emboss lines. */
-  --color-envelope: #355e5b;
-  --color-envelope-deep: #2d504d;
-  --color-envelope-soft: #537674;
-  --color-envelope-ink: #223d3b;
+  /* Photo-booth invitation (intro + home hero only — other sections stay cream + ink).
+     night: backdrop · night-deep: vignette · brass: booth metal ·
+     brass-deep: shaded metal · brass-soft: highlights · brass-ink: print slot ·
+     paper: photo-strip stock and light type on night. */
+  --color-night: #3d3824;
+  --color-night-deep: #2e2a1e;
+  --color-brass: #a6957b;
+  --color-brass-deep: #8b7a68;
+  --color-brass-soft: #b0a086;
+  --color-brass-ink: #282219;
+  --color-paper: #fdf1e2;
 
   --font-display: var(--font-bellefair);
   --font-body: var(--font-inter);
