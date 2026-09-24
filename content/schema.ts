@@ -91,6 +91,15 @@ export type SiteContent = {
     }>;
     welcomeTitle: string;
     welcomeMessage: string;
+    /** RSVP band — replies are collected by an external Google Form, never on this site. */
+    rsvpEyebrow: string;
+    rsvpTitle: string;
+    rsvpMessage: string;
+    rsvpCtaLabel: string;
+    /** Google Form share link; leave empty until the form exists (shows the pending label). */
+    rsvpFormUrl: string;
+    rsvpPendingLabel: string;
+    rsvpNote: string;
   };
   footer: {
     thankYou: string;

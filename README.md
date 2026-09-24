@@ -10,7 +10,7 @@ Static, read-only, bilingual wedding information website for **Tan & Top**.
 
 - **Languages:** Thai is the default. English routes live under `/en`.
 - **Visible naming (bride-first):** Friendly **Tan & Top** · Formal **Narueporn & Theerut**.
-- **No RSVP** and no attendance counting.
+- **RSVP is external only:** the home page links to the couple's Google Form (`homeShell.rsvpFormUrl`); the site itself stores or counts nothing.
 - **No forms** (no public contact RSVPs or guest uploads).
 - **No chatbot** / AI assistant on the website.
 - **No backend surfaces:** no API routes, server actions, database, or authentication.

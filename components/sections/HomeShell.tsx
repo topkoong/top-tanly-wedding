@@ -3,6 +3,7 @@ import Link from "next/link";
 import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
 import Container from "@/components/ui/Container";
 import BowOrnament from "@/components/ui/BowOrnament";
+import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import TNMonogram from "@/components/icons/TNMonogram";
 import InvitationBotanicalRule from "@/components/ui/InvitationBotanicalRule";
@@ -133,6 +134,44 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
             <p className={cn("text-stone", isThai ? "font-thai text-body-s" : "font-display text-body-s")}>
               {hs.locationDetail}
             </p>
+          </Reveal>
+        </Container>
+      </section>
+
+      <section id="rsvp" className="scroll-mt-16 border-t border-charcoal/10 bg-cream py-16 text-center sm:py-20">
+        <Container size="narrow">
+          <Reveal>
+            <p className={eyebrow}>{hs.rsvpEyebrow}</p>
+            <h2 className={cn("mt-3 text-charcoal", isThai ? "font-thai text-h2 leading-snug" : "font-display text-h2")}>
+              {hs.rsvpTitle}
+            </h2>
+            <p
+              className={cn(
+                "mx-auto mt-4 max-w-md text-body leading-relaxed text-stone",
+                isThai ? "font-thai" : "font-display",
+              )}
+            >
+              {hs.rsvpMessage}
+            </p>
+          </Reveal>
+          <Reveal delay={0.12} className="mt-8 flex flex-col items-center gap-3">
+            {hs.rsvpFormUrl ? (
+              <>
+                <Button href={hs.rsvpFormUrl} className={cn(isThai && "font-thai normal-case tracking-normal")}>
+                  {hs.rsvpCtaLabel}
+                </Button>
+                <p className={cn("text-body-s text-stone", isThai ? "font-thai" : "font-display")}>{hs.rsvpNote}</p>
+              </>
+            ) : (
+              <span
+                className={cn(
+                  "inline-flex min-h-11 items-center rounded-full border border-charcoal/20 px-6 text-stone",
+                  isThai ? "font-thai text-body-s" : "font-display text-[0.75rem] uppercase tracking-[0.2em]",
+                )}
+              >
+                {hs.rsvpPendingLabel}
+              </span>
+            )}
           </Reveal>
         </Container>
       </section>

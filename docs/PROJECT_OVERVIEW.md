@@ -12,7 +12,7 @@ See also: [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md) for what obsolete d
 
 - **Default locale:** Thai at root URLs; **English** under `/en/*`.
 - **Visible naming (bride-first):** Tan & Top · Narueporn & Theerut (never groom-first ordering in UI copy).
-- **No RSVP**, attendance counting, forms, chatbot, API routes, server actions, database, auth, or analytics in MVP.
+- **No on-site RSVP** (the home page only links to an external Google Form), attendance counting, forms, chatbot, API routes, server actions, database, auth, or analytics in MVP.
 - **No middleware** locale detection—explicit routes only.
 - **Navigation:** Schedule, Venue, Gallery, FAQ + language switch. **Mobile:** fixed bottom bar (Home, Schedule, Venue, Gallery, FAQ) below `lg`. **LINE** is **not** in primary nav; pages `/line` and `/en/line` exist for official updates/reminders/manual support wording only.
 - **Removed from website IA:** Accommodation page, Dress Code page (dress guidance may appear in FAQ only).

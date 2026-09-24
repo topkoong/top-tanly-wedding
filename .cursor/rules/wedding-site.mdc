@@ -11,7 +11,7 @@ You are helping build a **static, read-only** Next.js wedding site. Canonical pr
 
 Never create:
 
-- ❌ RSVP page or RSVP workflow
+- ❌ RSVP page or on-site RSVP workflow — the **only** RSVP is the home-page `#rsvp` band linking out to the couple's external Google Form (`homeShell.rsvpFormUrl`); responses land in their Google Sheet, never on this site
 - ❌ Attendance counting / guest tracking / confirmation flows
 - ❌ Chatbot, AI chat widget, or chatbot SDK
 - ❌ Public contact form or any `<form>` UX that collects guest data

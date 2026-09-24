@@ -95,6 +95,13 @@ export const siteContentEn: SiteContent = {
     welcomeTitle: "From us",
     welcomeMessage:
       "We're so glad you're here. We hope this website helps you find everything you need before the celebration.",
+    rsvpEyebrow: "RSVP",
+    rsvpTitle: "Will you join us?",
+    rsvpMessage: "Kindly let us know whether you can celebrate with us, so we can save a seat for you.",
+    rsvpCtaLabel: "Reply to the invitation",
+    rsvpFormUrl: "",
+    rsvpPendingLabel: "RSVP link coming soon",
+    rsvpNote: "Opens a short Google Form — it takes about a minute.",
   },
   footer: {
     thankYou: "Thank you for being part of our special day.",
