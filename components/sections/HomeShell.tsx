@@ -28,6 +28,7 @@ export default function HomeShell({ content }: HomeShellProps) {
           <InvitationEnvelope
             variant="hero"
             openLabel={content.homeShell.invitationOpenLabel}
+            skipLabel={content.homeShell.invitationSkipLabel}
             className="mx-auto max-w-2xl"
           >
             <HomeInvitationContent content={content} />
