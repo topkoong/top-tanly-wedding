@@ -55,7 +55,7 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
     <>
       <section
         id="home-hero"
-        className="relative isolate -mt-16 flex min-h-[100svh] flex-col overflow-hidden bg-backdrop pt-24 pb-16 sm:-mt-[5.5rem] sm:pt-32 sm:pb-20"
+        className="relative isolate -mt-[65px] flex min-h-[100svh] flex-col overflow-hidden bg-backdrop pt-24 pb-16 sm:-mt-[97px] sm:pt-32 sm:pb-20"
       >
         <PhotoBackdrop src={photos["intro-blur"]} blur />
         <Container className="relative z-10 my-auto w-full">
@@ -106,26 +106,20 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
       <section id="invitation" className="scroll-mt-16 bg-paper py-16 text-center sm:py-24">
         <Container size="narrow">
           <Reveal>
-            <p className={eyebrow}>{hs.invitationLeadIn}</p>
             <p
               className={cn(
-                "mx-auto mt-4 max-w-sm text-charcoal/85",
-                isThai ? "font-thai text-body leading-relaxed" : "font-display text-body leading-relaxed",
+                "mx-auto max-w-sm text-charcoal/85",
+                isThai ? "font-thai text-body-l leading-relaxed" : "font-display text-body-l leading-relaxed",
               )}
             >
               {hs.invitationInviteLine}
             </p>
           </Reveal>
-          <Reveal variant="scale" delay={0.1} className="mt-8 flex flex-col items-center">
-            <CoupleScriptMark size="envelope" name={content.coupleFriendlyName} decorative />
-            <BowOrnament className="mt-5" />
+          <Reveal variant="scale" delay={0.1} className="mt-6 flex justify-center">
+            <BowOrnament />
           </Reveal>
-          <Reveal delay={0.2} className="mt-8 space-y-2">
-            <p className={eyebrow}>{hs.dateHeading}</p>
-            <p className={cn("text-charcoal", isThai ? "font-thai text-h3" : "font-display text-h3")}>
-              {content.weddingDate}
-            </p>
-            <p className={cn("pt-4", eyebrow)}>{hs.venueHeading}</p>
+          <Reveal delay={0.2} className="mt-6 space-y-2">
+            <p className={eyebrow}>{hs.venueHeading}</p>
             <Link
               href={hs.invitationVenueHref}
               className={cn(
@@ -137,9 +131,6 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
             </Link>
             <p className={cn("text-stone", isThai ? "font-thai text-body-s" : "font-display text-body-s")}>
               {hs.locationDetail}
-            </p>
-            <p className={cn("pt-3 text-charcoal/85", isThai ? "font-thai text-body" : "font-display text-body")}>
-              {hs.invitationTimeSummary}
             </p>
           </Reveal>
         </Container>

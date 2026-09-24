@@ -45,15 +45,11 @@ export type SiteContent = {
       dayMonth: string;
       year: string;
     };
-    /** Short field label above the date (e.g. Date / วันที่). */
-    dateHeading: string;
     locationLabel: string;
     /** Short field label above the venue (e.g. Venue / สถานที่). */
     venueHeading: string;
     /** Recognizable address line under the venue name. */
     locationDetail: string;
-    /** Ceremony and reception start times shown under the date. */
-    invitationTimeSummary: string;
     /** Link to the venue page from the invitation card. */
     invitationVenueHref: string;
     /** One line under the date inside the invitation card (main day summary). */
