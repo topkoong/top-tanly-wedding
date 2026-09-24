@@ -1,51 +1,27 @@
 import type { GalleryItem, GalleryPageContent } from "@/content/schema";
 
-const portraitItems: GalleryItem[] = Array.from({ length: 6 }, (_, index) => ({
-  id: `en-portrait-${index + 1}`,
+/* Placeholder shapes cycle portrait → landscape → square; swap `src` (and the
+   real width/height printed by `pnpm photos`) as photos arrive. */
+const shapes = [
+  { width: 800, height: 1000 },
+  { width: 900, height: 600 },
+  { width: 900, height: 900 },
+] as const;
+const tones = ["ivory", "champagne", "rose"] as const;
+
+const items: GalleryItem[] = Array.from({ length: 18 }, (_, index) => ({
+  id: `en-photo-${index + 1}`,
   src: null,
-  alt: `Engagement portrait placeholder ${index + 1}`,
+  alt: `Pre-wedding photo placeholder ${index + 1}`,
   caption: index % 2 === 0 ? "Memory placeholder" : "Coming soon",
-  categoryLabel: "Engagement",
-  width: 800,
-  height: 1000,
-  tone: index % 3 === 0 ? "rose" : index % 2 === 0 ? "champagne" : "ivory",
-  category: "engagement",
+  ...shapes[index % 3],
+  tone: tones[(index + Math.floor(index / 3)) % 3],
 }));
-
-const landscapeItems: GalleryItem[] = Array.from({ length: 6 }, (_, index) => ({
-  id: `en-landscape-${index + 1}`,
-  src: null,
-  alt: `Pre-wedding landscape placeholder ${index + 1}`,
-  caption: index % 2 === 0 ? "Pre-wedding moment" : "Memory placeholder",
-  categoryLabel: "Pre-wedding",
-  width: 900,
-  height: 600,
-  tone: index % 3 === 0 ? "champagne" : index % 2 === 0 ? "ivory" : "rose",
-  category: "pre-wedding",
-}));
-
-const squareItems: GalleryItem[] = Array.from({ length: 6 }, (_, index) => ({
-  id: `en-square-${index + 1}`,
-  src: null,
-  alt: `Wedding day square placeholder ${index + 1}`,
-  caption: index % 2 === 0 ? "Wedding-day highlight" : "Coming soon",
-  categoryLabel: "Wedding Day",
-  width: 900,
-  height: 900,
-  tone: index % 3 === 0 ? "ivory" : index % 2 === 0 ? "rose" : "champagne",
-  category: "wedding-day",
-}));
-
-const items: GalleryItem[] = [];
-for (let i = 0; i < 6; i += 1) {
-  items.push(portraitItems[i], landscapeItems[i], squareItems[i]);
-}
 
 export const galleryContentEn: GalleryPageContent = {
   title: "Gallery",
   intro:
-    "A collection of our memories, including moments before the wedding, pre-wedding photos, and wedding-day highlights. More photos will be added later.",
+    "A collection of our pre-wedding photos. More photos will be added later.",
   note: "Real photos will be added when available.",
-  categoryTabs: ["All", "Engagement", "Pre-wedding", "Wedding Day"],
   items,
 };

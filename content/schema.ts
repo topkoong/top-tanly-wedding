@@ -172,18 +172,15 @@ export type GalleryItem = {
   src: string | null;
   alt: string;
   caption: string;
-  categoryLabel: string;
   width: number;
   height: number;
   tone: "ivory" | "champagne" | "rose";
-  category: "engagement" | "pre-wedding" | "wedding-day";
 };
 
 export type GalleryPageContent = {
   title: string;
   intro: string;
   note: string;
-  categoryTabs: string[];
   items: GalleryItem[];
 };
 
