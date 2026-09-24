@@ -144,7 +144,6 @@ export type SchedulePageContent = {
 
 export type VenueContent = {
   title: string;
-  summary: string;
   mainVenue: string;
   address?: string;
   /** Section heading; shown only when `transport` has at least one item. */
@@ -156,10 +155,10 @@ export type VenueContent = {
     sessionLabel?: string;
     room: string;
     floor?: string;
-    eventName: string;
   }>;
+  /** One line per option — full step-by-step directions live with the LINE coordinators. */
   transport?: TransportOption[];
-  parking: string[];
+  parkingTitle: string;
   parkingNote: string;
   mapEmbedUrl: string;
   mapButtonUrl: string;
@@ -171,8 +170,6 @@ export type TransportOption = {
   icon: "train" | "car" | "shuttle";
   label: string;
   detail: string;
-  steps?: string[];
-  note?: string;
 };
 
 export type GalleryItem = {
