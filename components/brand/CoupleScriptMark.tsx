@@ -1,7 +1,7 @@
 import { perandory } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
-type CoupleScriptMarkSize = "hero" | "envelope" | "footer";
+type CoupleScriptMarkSize = "hero" | "envelope" | "postcard" | "footer";
 
 type CoupleScriptMarkProps = {
   /** e.g. `Narueporn and Theerut` from `content.coupleFriendlyName` */
@@ -17,6 +17,7 @@ type CoupleScriptMarkProps = {
 const sizeClasses: Record<CoupleScriptMarkSize, string> = {
   hero: "text-[clamp(2.75rem,11vw,4.75rem)] tracking-[0.05em]",
   envelope: "text-[clamp(2.25rem,9vw,3.5rem)] tracking-[0.04em]",
+  postcard: "text-[clamp(1.35rem,6vw,2.25rem)] tracking-[0.04em]",
   footer: "text-[clamp(1.85rem,7vw,2.75rem)] tracking-[0.04em]",
 };
 
