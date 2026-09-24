@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Canva invitation canvas (#f9f5f2) + near-black ink */
-  --color-bg: #f9f5f2;
-  --color-bg-alt: #fdfcfa;
+  /* Warm paper invitation canvas (#fdf1e2) + near-black ink */
+  --color-bg: #fdf1e2;
+  --color-bg-alt: #fffaf3;
   --color-text: #1f1d18;
   --color-text-muted: #6e6a61;
   --color-accent: #2b2922;
@@ -15,8 +15,8 @@
   /* Minimal invitation palette — warm cream + near-black ink, no florals.
      Legacy olive/sage/gold token NAMES are retained but collapsed onto the
      neutral ink/cream scale so existing class names render the minimal theme. */
-  --color-cream: #f9f5f2;
-  --color-ivory: #fdfcfa;
+  --color-cream: #fdf1e2;
+  --color-ivory: #fffaf3;
   --color-champagne: #eee8e2;
   --color-rose: #a89e92;
   --color-rose-deep: #8a8074;
@@ -88,9 +88,17 @@ html {
   }
 }
 
-/* Scoped prose width — avoid forcing grid/flex children wider than viewport */
-p {
-  max-width: min(65ch, 100%);
+@layer base {
+  /* Scoped prose width — avoid forcing grid/flex children wider than viewport */
+  p {
+    max-width: min(65ch, 100%);
+  }
+
+  /* Capped paragraphs must stay on the centre line of centred blocks. */
+  .text-center p,
+  p.text-center {
+    margin-inline: auto;
+  }
 }
 
 :lang(th) {
