@@ -1,27 +1,112 @@
 import type { GalleryItem, GalleryPageContent } from "@/content/schema";
 
-/* Placeholder shapes cycle portrait → landscape → square; swap `src` (and the
-   real width/height printed by `pnpm photos`) as photos arrive. */
-const shapes = [
-  { width: 800, height: 1000 },
-  { width: 900, height: 600 },
-  { width: 900, height: 900 },
-] as const;
-const tones = ["ivory", "champagne", "rose"] as const;
-
-const items: GalleryItem[] = Array.from({ length: 18 }, (_, index) => ({
-  id: `th-photo-${index + 1}`,
-  src: null,
-  alt: `ภาพพรีเวดดิ้ง ${index + 1}`,
-  caption: index % 2 === 0 ? "ภาพความทรงจำ" : "เร็ว ๆ นี้",
-  ...shapes[index % 3],
-  tone: tones[(index + Math.floor(index / 3)) % 3],
-}));
+/* Files come from `pnpm photos` (photos-src/gallery → public/images/gallery); width/height are the exported sizes. */
+const items: GalleryItem[] = [
+  {
+    id: "th-01-shutterbooth",
+    src: "/images/gallery/01-shutterbooth.webp",
+    alt: "ตันและท็อปหน้าตู้ถ่ายรูปวินเทจ Shutterbooth",
+    caption: "ตู้ถ่ายรูป",
+    width: 1067,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "th-08-balcony-lounge",
+    src: "/images/gallery/08-balcony-lounge.webp",
+    alt: "ตันและท็อปนั่งพักผ่อนบนระเบียงใต้โคมระย้า",
+    caption: "ระเบียง",
+    width: 1600,
+    height: 1066,
+    tone: "ivory",
+  },
+  {
+    id: "th-10-ring-closeup",
+    src: "/images/gallery/10-ring-closeup.webp",
+    alt: "ภาพระยะใกล้ของมือตันและแหวนหมั้น",
+    caption: "ระยะใกล้",
+    width: 1600,
+    height: 949,
+    tone: "ivory",
+  },
+  {
+    id: "th-04-crosswalk-street",
+    src: "/images/gallery/04-crosswalk-street.webp",
+    alt: "ตันและท็อปเดินข้ามถนนด้วยกัน",
+    caption: "เดินเล่นในเมือง",
+    width: 1600,
+    height: 1066,
+    tone: "ivory",
+  },
+  {
+    id: "th-09-ring-portrait",
+    src: "/images/gallery/09-ring-portrait.webp",
+    alt: "ตันโชว์แหวนหมั้นโดยมีท็อปอยู่ด้านหลัง",
+    caption: "แหวน",
+    width: 1065,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "th-02-garden-wall",
+    src: "/images/gallery/02-garden-wall.webp",
+    alt: "ตันและท็อปยืนเคียงกันริมกำแพงสวน",
+    caption: "เคียงข้างกัน",
+    width: 1600,
+    height: 1064,
+    tone: "ivory",
+  },
+  {
+    id: "th-11-crosswalk-walk",
+    src: "/images/gallery/11-crosswalk-walk.webp",
+    alt: "ตันและท็อปเดินข้ามถนนในย่านเมืองเก่า",
+    caption: "ย่านเมืองเก่า",
+    width: 1600,
+    height: 1067,
+    tone: "ivory",
+  },
+  {
+    id: "th-05-crosswalk-portrait",
+    src: "/images/gallery/05-crosswalk-portrait.webp",
+    alt: "ตันและท็อปจูงมือเดินบนทางม้าลาย",
+    caption: "จูงมือกัน",
+    width: 1209,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "th-07-cafe-window",
+    src: "/images/gallery/07-cafe-window.webp",
+    alt: "ตันและท็อปนั่งบนม้านั่งใต้หน้าต่างคาเฟ่",
+    caption: "ริมหน้าต่าง",
+    width: 1066,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "th-03-cafe-seated",
+    src: "/images/gallery/03-cafe-seated.webp",
+    alt: "ตันและท็อปนั่งเคียงกันในคาเฟ่",
+    caption: "ยามบ่ายในคาเฟ่",
+    width: 1067,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "th-06-photo-booth-closeup",
+    src: "/images/gallery/06-photo-booth-closeup.webp",
+    alt: "ตันและท็อปใกล้ชิดกันในตู้ถ่ายรูป",
+    caption: "ยิ้มหน่อย",
+    width: 1600,
+    height: 1065,
+    tone: "ivory",
+  },
+];
 
 export const galleryContentTh: GalleryPageContent = {
   title: "แกลเลอรี",
   intro:
     "พื้นที่รวบรวมภาพพรีเวดดิ้งของเรา โดยจะมีการอัปเดตรูปภาพเพิ่มเติมภายหลัง",
-  note: "ภาพจริงจะถูกเพิ่มเข้ามาเมื่อพร้อม",
+  note: "แวะกลับมาชมอีกครั้ง เราจะทยอยเพิ่มภาพที่ชอบเรื่อย ๆ",
   items,
 };

@@ -1,27 +1,112 @@
 import type { GalleryItem, GalleryPageContent } from "@/content/schema";
 
-/* Placeholder shapes cycle portrait → landscape → square; swap `src` (and the
-   real width/height printed by `pnpm photos`) as photos arrive. */
-const shapes = [
-  { width: 800, height: 1000 },
-  { width: 900, height: 600 },
-  { width: 900, height: 900 },
-] as const;
-const tones = ["ivory", "champagne", "rose"] as const;
-
-const items: GalleryItem[] = Array.from({ length: 18 }, (_, index) => ({
-  id: `en-photo-${index + 1}`,
-  src: null,
-  alt: `Pre-wedding photo placeholder ${index + 1}`,
-  caption: index % 2 === 0 ? "Memory placeholder" : "Coming soon",
-  ...shapes[index % 3],
-  tone: tones[(index + Math.floor(index / 3)) % 3],
-}));
+/* Files come from `pnpm photos` (photos-src/gallery → public/images/gallery); width/height are the exported sizes. */
+const items: GalleryItem[] = [
+  {
+    id: "en-01-shutterbooth",
+    src: "/images/gallery/01-shutterbooth.webp",
+    alt: "Tan and Top in front of a vintage Shutterbooth photo booth",
+    caption: "Photo booth",
+    width: 1067,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "en-08-balcony-lounge",
+    src: "/images/gallery/08-balcony-lounge.webp",
+    alt: "Tan and Top relaxing on a balcony lounge under a chandelier",
+    caption: "Balcony",
+    width: 1600,
+    height: 1066,
+    tone: "ivory",
+  },
+  {
+    id: "en-10-ring-closeup",
+    src: "/images/gallery/10-ring-closeup.webp",
+    alt: "Close-up of Tan's hand and engagement ring",
+    caption: "Close-up",
+    width: 1600,
+    height: 949,
+    tone: "ivory",
+  },
+  {
+    id: "en-04-crosswalk-street",
+    src: "/images/gallery/04-crosswalk-street.webp",
+    alt: "Tan and Top crossing a city street together",
+    caption: "City walk",
+    width: 1600,
+    height: 1066,
+    tone: "ivory",
+  },
+  {
+    id: "en-09-ring-portrait",
+    src: "/images/gallery/09-ring-portrait.webp",
+    alt: "Tan showing her engagement ring with Top behind her",
+    caption: "The ring",
+    width: 1065,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "en-02-garden-wall",
+    src: "/images/gallery/02-garden-wall.webp",
+    alt: "Tan and Top standing together by a garden wall",
+    caption: "Side by side",
+    width: 1600,
+    height: 1064,
+    tone: "ivory",
+  },
+  {
+    id: "en-11-crosswalk-walk",
+    src: "/images/gallery/11-crosswalk-walk.webp",
+    alt: "Tan and Top walking across a street in the old town",
+    caption: "Old town",
+    width: 1600,
+    height: 1067,
+    tone: "ivory",
+  },
+  {
+    id: "en-05-crosswalk-portrait",
+    src: "/images/gallery/05-crosswalk-portrait.webp",
+    alt: "Tan and Top walking hand in hand on a crosswalk",
+    caption: "Hand in hand",
+    width: 1209,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "en-07-cafe-window",
+    src: "/images/gallery/07-cafe-window.webp",
+    alt: "Tan and Top seated on a bench beneath a café window",
+    caption: "By the window",
+    width: 1066,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "en-03-cafe-seated",
+    src: "/images/gallery/03-cafe-seated.webp",
+    alt: "Tan and Top seated side by side in a café",
+    caption: "Café afternoon",
+    width: 1067,
+    height: 1600,
+    tone: "ivory",
+  },
+  {
+    id: "en-06-photo-booth-closeup",
+    src: "/images/gallery/06-photo-booth-closeup.webp",
+    alt: "Tan and Top close together inside a photo booth",
+    caption: "Say cheese",
+    width: 1600,
+    height: 1065,
+    tone: "ivory",
+  },
+];
 
 export const galleryContentEn: GalleryPageContent = {
   title: "Gallery",
   intro:
     "A collection of our pre-wedding photos. More photos will be added later.",
-  note: "Real photos will be added when available.",
+  note: "Tap back soon — we'll keep adding favourites.",
   items,
 };
