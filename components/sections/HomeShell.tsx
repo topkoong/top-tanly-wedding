@@ -55,6 +55,7 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
     <>
       <section
         id="home-hero"
+        data-nav-theme="dark"
         className="relative isolate -mt-[65px] flex min-h-[100svh] flex-col overflow-hidden bg-backdrop pt-24 pb-16 sm:-mt-[97px] sm:pt-32 sm:pb-20"
       >
         <PhotoBackdrop src={photos["intro-blur"]} blur />
@@ -136,7 +137,7 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
         </Container>
       </section>
 
-      <section aria-hidden className="relative isolate overflow-hidden bg-backdrop py-16 sm:py-24">
+      <section aria-hidden data-nav-theme="dark" className="relative isolate overflow-hidden bg-backdrop py-16 sm:py-24">
         <PhotoBackdrop src={photos.frame} blur />
         <Reveal variant="scale" className="relative mx-auto w-[82%] max-w-md">
           <ScallopFrame scallop={18} margin={22} className="drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]">
@@ -156,13 +157,13 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
 
       <section aria-hidden className="overflow-hidden bg-cream pt-14 md:pt-20">
         <Container>
-          <div className="mx-auto grid max-w-3xl grid-cols-3 items-start gap-2.5 sm:gap-4">
+          <div className="mx-auto grid max-w-sm grid-cols-1 items-start gap-4 sm:max-w-3xl sm:grid-cols-3">
             {(["band-1", "band-2", "band-3"] as const).map((slot, index) => (
               <Reveal
                 key={slot}
-                variant={index === 0 ? "left" : index === 2 ? "right" : "up"}
+                variant={index % 2 ? "right" : "left"}
                 delay={index * 0.1}
-                className={cn(index === 1 && "mt-8 sm:mt-12")}
+                className={cn(index === 1 && "sm:mt-12")}
               >
                 <PhotoFrame src={photos[slot]} width={1200} height={1500} className="rounded-xl" />
               </Reveal>

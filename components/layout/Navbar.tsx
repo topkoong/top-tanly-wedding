@@ -19,41 +19,40 @@ type NavbarProps = {
 
 export default function Navbar({ className }: NavbarProps) {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
   const locale = useLocale();
   const siteContent = getSiteContent(locale);
   const localeTextClass = locale === "th" ? "font-thai" : "font-display";
   const effectivePathname = getLocalizedPathname(pathname, locale);
   const isActive = (href: string) => isRouteActive(effectivePathname, href);
   const isHome = getLocaleNeutralPathname(pathname) === "/";
-  const [overHero, setOverHero] = useState(true);
-  /* Home opens on a dark photo hero: the bar floats over it in light ink until the hero scrolls away. */
-  const onDark = isHome && overHero;
+  const [overDark, setOverDark] = useState<boolean | null>(null);
+  /* The bar stays transparent; its ink flips to light over sections marked data-nav-theme="dark". Home opens on one. */
+  const onDark = overDark ?? isHome;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 8);
-      const hero = document.getElementById("home-hero");
-      setOverHero(hero ? hero.getBoundingClientRect().bottom > 72 : false);
+    const update = () => {
+      const header = document.querySelector("header");
+      const probe = header ? header.getBoundingClientRect().height / 2 : 40;
+      const dark = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-theme="dark"]')).some((el) => {
+        const rect = el.getBoundingClientRect();
+        return rect.top <= probe && rect.bottom >= probe;
+      });
+      setOverDark(dark);
     };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, [pathname]);
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-300",
-        onDark
-          ? "border-paper/10 bg-transparent"
-          : isScrolled
-            ? "border-charcoal/10 bg-cream shadow-[0_8px_24px_-20px_rgba(31,29,24,0.35)]"
-            : "border-charcoal/10 bg-cream",
+        "sticky top-0 z-40 bg-transparent transition-colors duration-300",
+        onDark ? "text-paper" : "text-charcoal",
         className,
       )}
     >
@@ -65,7 +64,7 @@ export default function Navbar({ className }: NavbarProps) {
               "flex min-w-[3rem] max-w-[calc(100%-8.5rem)] shrink-0 flex-1 items-center gap-2 rounded-full py-2 pl-1 pr-2 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-1 sm:max-w-none sm:flex-none sm:gap-3 sm:px-2",
               onDark
                 ? "hover:bg-paper/10 focus-visible:ring-paper/50 focus-visible:ring-offset-transparent"
-                : "text-charcoal hover:bg-charcoal/8 hover:text-charcoal focus-visible:ring-charcoal/40",
+                : "hover:bg-charcoal/8 focus-visible:ring-charcoal/40",
             )}
             aria-label={siteContent.siteName}
           >
@@ -82,18 +81,16 @@ export default function Navbar({ className }: NavbarProps) {
                 href={item.href}
                 className={cn(
                   "rounded-full px-4 py-3 text-body-s font-medium tracking-[0.04em] transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-1",
-                  onDark
-                    ? "text-paper/90 hover:text-paper focus-visible:ring-paper/50"
-                    : "text-charcoal hover:text-olive-deep focus-visible:ring-olive/50",
+                  onDark ? "focus-visible:ring-paper/50" : "focus-visible:ring-charcoal/40",
                   isActive(item.href)
-                    ? "font-medium text-olive-deep underline decoration-olive/45 underline-offset-4"
-                    : "",
+                    ? "underline decoration-current/45 underline-offset-[6px]"
+                    : "opacity-80 hover:opacity-100",
                 )}
               >
                 {item.label}
               </Link>
             ))}
-            <LanguageToggle className="ml-1" />
+            <LanguageToggle className="ml-3" />
           </nav>
 
           <div className={cn("flex shrink-0 items-center gap-2 md:hidden", localeTextClass)}>

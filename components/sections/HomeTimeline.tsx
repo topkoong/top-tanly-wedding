@@ -48,7 +48,7 @@ export default function HomeTimeline({ lead, title, groups, ctaLabel, ctaHref, i
   );
 
   return (
-    <section id="timeline" className="scroll-mt-16 overflow-hidden bg-backdrop py-16 text-paper sm:py-24">
+    <section id="timeline" data-nav-theme="dark" className="scroll-mt-16 overflow-hidden bg-backdrop py-16 text-paper sm:py-24">
       <div className="mx-auto max-w-xl px-5">
         <Reveal className="text-center">
           <h2 className="text-paper">
