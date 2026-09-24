@@ -30,3 +30,8 @@ pnpm-debug.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# original photos — convert with `pnpm photos`, only the optimized output is committed
+photos-src/**
+!photos-src/**/
+!photos-src/**/.gitkeep
