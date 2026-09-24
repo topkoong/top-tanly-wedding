@@ -99,7 +99,7 @@ export const siteContentTh: SiteContent = {
     rsvpTitle: "ร่วมงานกับเราได้ไหม",
     rsvpMessage: "รบกวนแจ้งให้เราทราบว่าท่านจะสามารถร่วมงานได้หรือไม่ เพื่อที่เราจะได้เตรียมที่นั่งไว้ให้ท่าน",
     rsvpCtaLabel: "ตอบรับการ์ดเชิญ",
-    rsvpFormUrl: "",
+    rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "ลิงก์ตอบรับจะเปิดเร็ว ๆ นี้",
     rsvpNote: "เปิดแบบฟอร์ม Google สั้น ๆ ใช้เวลาประมาณ 1 นาที",
   },

@@ -99,7 +99,7 @@ export const siteContentEn: SiteContent = {
     rsvpTitle: "Will you join us?",
     rsvpMessage: "Kindly let us know whether you can celebrate with us, so we can save a seat for you.",
     rsvpCtaLabel: "Reply to the invitation",
-    rsvpFormUrl: "",
+    rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "RSVP link coming soon",
     rsvpNote: "Opens a short Google Form — it takes about a minute.",
   },
