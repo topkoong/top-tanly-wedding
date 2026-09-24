@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import TNMonogram from "@/components/icons/TNMonogram";
-import MobileMenu from "@/components/layout/MobileMenu";
 import Container from "@/components/ui/Container";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 import { getSiteContent } from "@/content/site";
@@ -99,11 +98,6 @@ export default function Navbar({ className }: NavbarProps) {
 
           <div className={cn("flex shrink-0 items-center gap-2 md:hidden", localeTextClass)}>
             <LanguageToggle />
-            <MobileMenu
-              items={siteContent.navMobile}
-              openLabel={siteContent.mobileMenuOpenLabel}
-              closeLabel={siteContent.mobileMenuCloseLabel}
-            />
           </div>
         </div>
       </Container>

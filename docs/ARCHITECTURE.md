@@ -37,14 +37,14 @@ Branding constants also exist under `content/th/couple.ts` and `content/en/coupl
 ## Component structure
 
 ```
-components/layout/   Navbar, Footer, MobileMenu, MobileBottomNav
+components/layout/   Navbar, Footer, MobileBottomNav
 components/sections/ HomeShell, ScheduleSection, VenueSection, GallerySection,
                      FaqSection, LineSection
 components/ui/       Button, Container, Section, Heading, PlaceholderImage, FadeIn, …
 components/icons/    TNMonogram (and similar)
 ```
 
-- Prefer **React Server Components**; use **`"use client"`** where state/browser APIs are needed (Navbar scroll, MobileMenu, **MobileBottomNav**, FAQ accordion, client-heavy sections like interactive Gallery filters, FadeIn wrappers using `motion`).
+- Prefer **React Server Components**; use **`"use client"`** where state/browser APIs are needed (Navbar scroll, **MobileBottomNav**, FAQ accordion, client-heavy sections like interactive Gallery filters, FadeIn wrappers using `motion`).
 - Compose with **`cn()`** (`clsx` + `tailwind-merge`).
 
 ## Styling
