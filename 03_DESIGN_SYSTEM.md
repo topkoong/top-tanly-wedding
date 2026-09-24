@@ -32,6 +32,17 @@ Core tokens in `app/globals.css` `@theme` (hex references for handoff parity):
 
 Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.
 
+**Opening invitation only — brown gate-fold (`InvitationEnvelope`):**
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `envelope` | #907B60 | Main gate-fold door face (right door) |
+| `envelope-deep` | #7A6851 | Left door, shadowed surfaces, door back faces |
+| `envelope-soft` | #A69580 | Bevel / illuminated edges |
+| `envelope-ink` | #5E503E | Tone-on-tone emboss / laid-paper texture (~8–10% opacity) |
+
+Brown belongs **only** to the tap-to-open gate-fold intro graphic. The rest of the site stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink — never brown surfaces, buttons, or text.
+
 Ceremony typography colour pattern:
 
 - **Primary headings (`h1`–`h3`):** olive-deep invitations tone.

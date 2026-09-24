@@ -36,10 +36,13 @@
   --color-charcoal: #1f1d18;
   --color-stone: #6e6a61;
 
-  /* Sage-green envelope accent (tap-to-open graphic only — site stays cream + ink). */
-  --color-envelope: #767f5d;
-  --color-envelope-deep: #626b4c;
-  --color-envelope-soft: #8a9270;
+  /* Brown gate-fold invitation (opening intro graphic only — site stays cream + ink).
+     envelope: door face · deep: shadowed/left door + door backs ·
+     soft: bevel highlights · ink: tone-on-tone emboss lines. */
+  --color-envelope: #907b60;
+  --color-envelope-deep: #7a6851;
+  --color-envelope-soft: #a69580;
+  --color-envelope-ink: #5e503e;
 
   --font-display: var(--font-bellefair);
   --font-body: var(--font-inter);
