@@ -41,7 +41,7 @@ export default function LineSection({ site, content }: LineSectionProps) {
             </p>
           </Reveal>
 
-          <Reveal delay={0.24} className="max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-6 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
+          <Reveal delay={0.24} variant="scale" className="max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-6 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
             <h2 className={isThai ? "text-h3 font-thai text-charcoal" : "font-display text-h3 text-charcoal"}>
               {site.footer.lineLabel}
             </h2>

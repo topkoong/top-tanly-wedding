@@ -80,7 +80,8 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                     <Reveal
                       as="article"
                       key={item.id}
-                      delay={index * 0.06}
+                      variant="left"
+                      delay={index * 0.08}
                       className="min-w-0 overflow-hidden rounded-2xl border border-charcoal/[0.08] bg-ivory shadow-[0_10px_32px_-24px_rgba(86,94,63,0.14)]"
                     >
                       <button

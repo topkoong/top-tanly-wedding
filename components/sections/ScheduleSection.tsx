@@ -2,6 +2,7 @@ import ScheduleTimelineIcon from "@/components/icons/ScheduleTimelineIcon";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
+import DrawLine from "@/components/ui/DrawLine";
 import Heading from "@/components/ui/Heading";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
@@ -49,7 +50,7 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
             </p>
           </Reveal>
 
-          <Reveal delay={0.32} className="mx-auto min-w-0 max-w-lg rounded-[1.75rem] border border-charcoal/10 bg-cream px-5 py-8 shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)] sm:px-8 sm:py-10">
+          <Reveal delay={0.32} variant="scale" className="mx-auto min-w-0 max-w-lg rounded-[1.75rem] border border-charcoal/10 bg-cream px-5 py-8 shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)] sm:px-8 sm:py-10">
             <div className="space-y-10">
               {content.locationGroups.map((group) => (
                 <div key={group.id} className="min-w-0">
@@ -72,12 +73,14 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
                     </p>
                   </div>
 
-                  <ol className="relative ml-5 border-l border-charcoal/20 pl-8">
+                  <ol className="relative ml-5 pl-8">
+                    <DrawLine />
                     {group.timeline.map((entry, index) => (
                       <Reveal
                         as="li"
                         key={entry.id}
-                        delay={index * 0.07}
+                        variant="right"
+                        delay={0.15 + index * 0.12}
                         className="relative pb-8 last:pb-0"
                       >
                         <span

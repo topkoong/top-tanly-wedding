@@ -85,7 +85,7 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
 
           <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {visibleItems.map((item, index) => (
-              <Reveal key={`${tabIndex}-${item.id}`} delay={(index % 3) * 0.08} className="max-w-full">
+              <Reveal key={`${tabIndex}-${item.id}`} variant="scale" delay={(index % 3) * 0.1} className="max-w-full">
                 {item.src ? (
                   <div
                     className="relative min-w-0 max-w-full overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_24px_-16px_rgba(45,38,32,0.1)]"

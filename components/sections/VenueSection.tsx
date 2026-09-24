@@ -71,10 +71,11 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
                 </p>
               ) : null}
 
-              {content.eventSpaces.map((space) => (
+              {content.eventSpaces.map((space, index) => (
                 <Reveal
                   as="section"
                   key={`${space.room}-${space.floor ?? ""}`}
+                  variant={index % 2 ? "right" : "left"}
                   className="min-w-0 overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]"
                 >
                   <div className="border-b border-charcoal/10 bg-cream/60 px-5 py-6 sm:px-7 sm:py-7">
@@ -126,7 +127,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
           <div className="grid min-w-0 gap-8 lg:grid-cols-2 lg:items-start">
             <div className="order-2 min-w-0 space-y-6 lg:order-1">
               {content.transport && content.transport.length > 0 && content.gettingHereTitle ? (
-                <Reveal as="section" className="overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]">
+                <Reveal as="section" variant="left" className="overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)]">
                   <div className="border-b border-charcoal/10 bg-cream/60 px-5 py-5 sm:px-7">
                     <p
                       className={cn(
@@ -192,7 +193,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
                 </Reveal>
               ) : null}
 
-              <Reveal as="section" className="rounded-2xl border border-charcoal/10 bg-cream/40 px-5 py-5 sm:px-7">
+              <Reveal as="section" variant="left" delay={0.1} className="rounded-2xl border border-charcoal/10 bg-cream/40 px-5 py-5 sm:px-7">
                 <p
                   className={cn(
                     "text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-stone sm:text-xs",
@@ -223,7 +224,7 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
             </div>
 
             <div className="order-1 min-w-0 max-w-full lg:sticky lg:top-24 lg:order-2 lg:self-start">
-              <Reveal>
+              <Reveal variant="scale">
                 <VenueMapEmbed
                   venueName={content.mainVenue}
                   embedUrl={content.mapEmbedUrl}
