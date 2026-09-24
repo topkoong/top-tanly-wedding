@@ -26,24 +26,30 @@ export function InvitationRevealProvider({
 
 const REVEAL_EASE = [0.22, 1, 0.36, 1] as const;
 
+type RevealFrom = { x?: number; y?: number; rotate?: number; scale?: number };
+
 type InvitationRevealItemProps = {
   children: ReactNode;
   className?: string;
   /** Seconds after the envelope finishes opening. */
   delay?: number;
+  /** Offset the piece starts from before settling (px / deg). */
+  from?: RevealFrom;
 };
 
 /**
- * One piece of the hero collage: fades in and settles once the sealed envelope
- * dissolves. Stagger pieces with `delay` so the flat lay builds top to bottom.
+ * One piece of the hero collage: slides, turns and settles into place once
+ * the envelope opens. Stagger pieces with `delay` so the flat lay builds up.
  */
 export function InvitationRevealItem({
   children,
   className,
   delay = 0,
+  from,
 }: InvitationRevealItemProps) {
   const revealed = useInvitationRevealed();
   const shouldReduceMotion = useReducedMotion();
+  const start = { x: 0, y: 36, rotate: 0, scale: 0.9, ...from };
 
   /* Same element tree for reduced motion so server HTML hydrates cleanly. */
   return (
@@ -52,15 +58,15 @@ export function InvitationRevealItem({
       initial={false}
       animate={
         revealed
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 10, scale: 0.97 }
+          ? { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }
+          : { opacity: 0, ...start }
       }
       transition={
         shouldReduceMotion
           ? { duration: 0 }
           : {
-              delay: revealed ? 0.1 + delay : 0,
-              duration: 0.55,
+              delay: revealed ? 0.05 + delay : 0,
+              duration: 0.85,
               ease: REVEAL_EASE,
             }
       }

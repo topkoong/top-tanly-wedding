@@ -36,16 +36,14 @@
   --color-charcoal: #1f1d18;
   --color-stone: #6e6a61;
 
-  /* Photo-booth invitation (intro + home hero only — other sections stay cream + ink).
-     night: backdrop · night-deep: vignette · brass: booth metal ·
-     brass-deep: shaded metal · brass-soft: highlights · brass-ink: print slot ·
-     paper: photo-strip stock and light type on night. */
-  --color-night: #3d3824;
-  --color-night-deep: #2e2a1e;
-  --color-brass: #a6957b;
-  --color-brass-deep: #8b7a68;
-  --color-brass-soft: #b0a086;
-  --color-brass-ink: #282219;
+  /* Olive envelope (intro + hero collage envelope only — the site stays cream + ink).
+     envelope: pocket flaps · deep: back panel + closed top flap · soft: fold highlights ·
+     ink: creases · night: full-screen intro backdrop · paper: letter stock + light type. */
+  --color-envelope: #3d3824;
+  --color-envelope-deep: #333020;
+  --color-envelope-soft: #5b5440;
+  --color-envelope-ink: #1f1c14;
+  --color-night: #25221a;
   --color-paper: #fdf1e2;
 
   --font-display: var(--font-bellefair);

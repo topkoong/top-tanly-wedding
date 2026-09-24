@@ -2,30 +2,29 @@ import CoupleScriptMark from "@/components/brand/CoupleScriptMark";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
+import TNMonogram from "@/components/icons/TNMonogram";
 import InvitationBotanicalRule from "@/components/ui/InvitationBotanicalRule";
 import HomeInvitationContent from "@/components/sections/HomeInvitationContent";
 import InvitationEnvelope from "@/components/sections/InvitationEnvelope";
-import PhotoStrip from "@/components/ui/PhotoStrip";
+import PhotoFrame from "@/components/ui/PhotoFrame";
 import QuickActionCard from "@/components/ui/QuickActionCard";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import type { SiteContent } from "@/content/schema";
+import type { PhotoMap } from "@/lib/photos";
 import { cn } from "@/lib/utils";
 
 type HomeShellProps = {
   content: SiteContent;
+  photos: PhotoMap;
 };
 
-export default function HomeShell({ content }: HomeShellProps) {
+export default function HomeShell({ content, photos }: HomeShellProps) {
   const isThai = content.locale === "th";
 
   return (
     <>
-      <Section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-night pt-8 pb-12 text-paper sm:pt-16 sm:pb-16 md:pt-20 md:pb-24">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_45%_at_50%_42%,rgba(176,160,134,0.2)_0%,transparent_70%),radial-gradient(120%_80%_at_50%_100%,var(--color-night-deep)_0%,transparent_60%)]"
-        />
+      <Section className="relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-cream pt-8 pb-12 sm:pt-16 sm:pb-16 md:pt-20 md:pb-24">
         <Container className="relative z-10 my-auto w-full">
           <InvitationEnvelope
             variant="hero"
@@ -35,7 +34,7 @@ export default function HomeShell({ content }: HomeShellProps) {
               <>
                 <p
                   className={cn(
-                    "text-paper/75",
+                    "text-paper/80",
                     isThai
                       ? "font-thai text-body-s"
                       : "font-display text-[0.6875rem] uppercase tracking-[0.24em] sm:text-body-s",
@@ -51,12 +50,25 @@ export default function HomeShell({ content }: HomeShellProps) {
                 />
               </>
             }
-            photoStrip={
-              <PhotoStrip date={content.homeShell.invitationDateDisplay} isThai={isThai} />
+            letter={
+              <>
+                <TNMonogram className="h-[clamp(2.5rem,9vw,4.5rem)] w-auto" title="" />
+                <span
+                  className={cn(
+                    "mt-[0.6em] text-charcoal/75",
+                    isThai
+                      ? "font-thai text-[clamp(0.625rem,2.4vw,0.875rem)]"
+                      : "font-display text-[clamp(0.5625rem,2vw,0.8125rem)] uppercase tracking-[0.22em]",
+                  )}
+                >
+                  {content.weddingDate}
+                </span>
+              </>
             }
+            backdropSrc={photos.intro}
             className="mx-auto max-w-2xl"
           >
-            <HomeInvitationContent content={content} />
+            <HomeInvitationContent content={content} photos={photos} />
           </InvitationEnvelope>
         </Container>
       </Section>
@@ -66,7 +78,7 @@ export default function HomeShell({ content }: HomeShellProps) {
           <div className="mx-auto min-w-0 max-w-3xl">
             <div className="grid min-w-0 grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4">
               {content.homeShell.quickActionCards.map((card, index) => (
-                <Reveal key={card.href} delay={(index % 2) * 0.08}>
+                <Reveal key={card.href} variant={index % 2 ? "right" : "left"} delay={Math.floor(index / 2) * 0.08}>
                   <QuickActionCard
                     href={card.href}
                     title={card.title}
@@ -80,6 +92,23 @@ export default function HomeShell({ content }: HomeShellProps) {
           </div>
         </Container>
       </Section>
+
+      <section aria-hidden className="overflow-hidden bg-cream pb-14 md:pb-20">
+        <Container>
+          <div className="mx-auto grid max-w-3xl grid-cols-3 items-start gap-2.5 sm:gap-4">
+            {(["band-1", "band-2", "band-3"] as const).map((slot, index) => (
+              <Reveal
+                key={slot}
+                variant={index === 0 ? "left" : index === 2 ? "right" : "up"}
+                delay={index * 0.1}
+                className={cn(index === 1 && "mt-8 sm:mt-12")}
+              >
+                <PhotoFrame src={photos[slot]} width={1200} height={1500} className="rounded-xl" />
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <DecorativeDivider />
 

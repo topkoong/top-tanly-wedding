@@ -32,21 +32,22 @@ Core tokens in `app/globals.css` `@theme` (hex references for handoff parity):
 
 Supporting: `champagne`, `rose` / `rose-deep` stay rare accents only.
 
-**Intro + home hero only — photo-booth invitation (`InvitationEnvelope`, `PhotoStrip`):**
+**Envelope only — olive envelope (`InvitationEnvelope`, hero collage):**
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `night` | #3D3824 | Dark olive backdrop of the intro and home hero |
-| `night-deep` | #2E2A1E | Vignette / photo-frame shadow |
-| `brass` | #A6957B | Brushed booth metal |
-| `brass-deep` | #8B7A68 | Shaded metal |
-| `brass-soft` | #B0A086 | Metal highlights, backdrop glow |
-| `brass-ink` | #282219 | Print slot |
-| `paper` | #FDF1E2 | Photo-strip stock; light type on `night` |
+| `envelope` | #3D3824 | Pocket flaps |
+| `envelope-deep` | #333020 | Back panel, closed top flap |
+| `envelope-soft` | #5B5440 | Fold highlights, photo placeholders |
+| `envelope-ink` | #1F1C14 | Creases |
+| `night` | #25221A | Full-screen intro backdrop (under `photos/intro.webp` when present) |
+| `paper` | #FDF1E2 | Letter / seal stock, light type on `night` |
 
-The intro shows a brass photo booth printing a photo strip on the dark backdrop, with an outlined "tap to open" pill fading in. On tap the booth fades (0.3 s), the backdrop lifts (0.5 s), and after a brief dark pause the home hero builds as a flat-lay collage on `night` (the same strip plus ivory stationery cards, ~0.12 s stagger). `night` / `brass` / `paper` never appear outside the intro and home hero — every other section stays cream (#F9F5F2), ivory (#FDFCFA), and near-black ink.
+The intro is a large responsive envelope (up to 40rem wide) that drifts in with a softly pulsing monogram seal. On tap the seal pops, the flap swings open in 3D, the letter rises, the scene flashes to cream, and the home hero collage (on cream) flies in piece by piece: opened envelope, stationery cards, oval photo, photo strip. Olive stays on the envelope and photo placeholders — navbar, footer and every section stay cream (#F9F5F2), ivory (#FDFCFA) and near-black ink.
 
-**Page motion:** blocks on every page fade up softly (`Reveal`, 16 px, 0.6 s) the first time they scroll into view, with short staggers for sibling cards and timeline rows. Reduced motion shows everything instantly.
+**Photos:** slots resolve at build time from `public/images/photos/<slot>.webp` (`lib/photos.ts`); missing files render olive-tinted placeholders at the final aspect ratio.
+
+**Page motion:** blocks on every page slide or scale in (`Reveal`: up / left / right / scale, 0.8 s) the first time they scroll into view with short sibling staggers; dividers draw outward and the schedule spine draws downward. Reduced motion shows everything instantly.
 
 Ceremony typography colour pattern:
 

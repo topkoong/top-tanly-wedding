@@ -38,9 +38,7 @@ export default function Navbar({ className }: NavbarProps) {
     <header
       className={cn(
         "sticky top-0 z-40 border-b border-charcoal/10 transition-colors duration-200",
-        isScrolled
-          ? "bg-cream/95 backdrop-blur-md"
-          : "bg-cream/88 backdrop-blur-sm",
+        isScrolled ? "bg-cream shadow-[0_8px_24px_-20px_rgba(31,29,24,0.35)]" : "bg-cream",
         className,
       )}
     >
