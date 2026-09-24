@@ -32,6 +32,9 @@ const HOME_SLOTS = {
   "band-1": [1200, 1500],
   "band-2": [1200, 1500],
   "band-3": [1200, 1500],
+  postcard: [1200, 800],
+  stamp: [400, 480],
+  frame: [1200, 1500],
 };
 /* Crop anchor per slot; others use sharp's attention (salient-region) crop. */
 const HOME_POSITION = { intro: "centre", oval: "north" };
@@ -113,6 +116,16 @@ async function home() {
           .resize(w, h, { fit: "cover", position: HOME_POSITION[slot] ?? sharp.strategy.attention })
           .webp(WEBP),
       `home/${slot}`,
+    );
+  }
+  const intro = files.find((f) => slug(path.basename(f)) === "intro");
+  if (intro) {
+    /* Tiny pre-blurred copy: scaled up behind the hero it looks like a soft-focus photo at ~10 KB. */
+    await convert(
+      intro,
+      path.join(PUBLIC, "images", "photos", "intro-blur.webp"),
+      (img) => img.resize(216, 384, { fit: "cover", position: "centre" }).blur(6).webp({ quality: 55 }),
+      "home/intro-blur",
     );
   }
   const missing = Object.keys(HOME_SLOTS).filter((s) => !seen.has(s));

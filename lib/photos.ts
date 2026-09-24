@@ -13,6 +13,10 @@ import { publicAssetPath } from "@/lib/publicAssetPath";
  *   oval       800×1000   4:5   ≤120 KB — oval frame in the hero collage
  *   strip-1…3  600×480    5:4   ≤60 KB  — photo-strip frames
  *   band-1…3   1200×1500  4:5   ≤200 KB — home photo band
+ *   postcard   1200×800   3:2   ≤120 KB — white-bordered print in the hero collage
+ *   stamp      400×480    5:6   ≤40 KB  — postage stamp on the collage postcard
+ *   frame      1200×1500  4:5   ≤200 KB — scalloped frame section
+ *   intro-blur (derived from intro by `pnpm photos`) — soft backdrop behind the hero
  */
 export const PHOTO_SLOTS = [
   "intro",
@@ -23,6 +27,10 @@ export const PHOTO_SLOTS = [
   "band-1",
   "band-2",
   "band-3",
+  "postcard",
+  "stamp",
+  "frame",
+  "intro-blur",
 ] as const;
 
 export type PhotoSlot = (typeof PHOTO_SLOTS)[number];
