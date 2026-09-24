@@ -63,6 +63,8 @@ export type SiteContent = {
     invitationCtaHref: string;
     /** Prompt on the sealed envelope before it is opened (e.g. "Tap to open"). */
     invitationOpenLabel: string;
+    /** Small control that bypasses the opening invitation animation (e.g. "Skip"). */
+    invitationSkipLabel: string;
     /** Short heading above the countdown (e.g. "Counting down to our day"). */
     countdownTitle: string;
     /** Localized unit labels for the countdown cells. */

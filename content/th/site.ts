@@ -52,6 +52,7 @@ export const siteContentTh: SiteContent = {
     invitationCtaLabel: "ดูรายละเอียด",
     invitationCtaHref: "/th/#quick-actions",
     invitationOpenLabel: "แตะเพื่อเปิดการ์ดเชิญ",
+    invitationSkipLabel: "ข้าม",
     countdownTitle: "นับถอยหลังสู่วันสำคัญของเรา",
     countdownLabels: {
       days: "วัน",

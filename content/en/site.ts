@@ -52,6 +52,7 @@ export const siteContentEn: SiteContent = {
     invitationCtaLabel: "View Details",
     invitationCtaHref: "/#quick-actions",
     invitationOpenLabel: "Please tap to open",
+    invitationSkipLabel: "Skip",
     countdownTitle: "Counting down to our wedding day",
     countdownLabels: {
       days: "Days",
