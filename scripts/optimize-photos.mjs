@@ -33,6 +33,8 @@ const HOME_SLOTS = {
   "band-2": [1200, 1500],
   "band-3": [1200, 1500],
 };
+/* Crop anchor per slot; others use sharp's attention (salient-region) crop. */
+const HOME_POSITION = { intro: "centre", oval: "north" };
 const GALLERY_LONG_EDGE = 1600;
 const WEBP = { quality: 75, effort: 5, smartSubsample: true };
 
@@ -106,7 +108,10 @@ async function home() {
     await convert(
       file,
       path.join(PUBLIC, "images", "photos", `${slot}.webp`),
-      (img) => img.resize(w, h, { fit: "cover", position: sharp.strategy.attention }).webp(WEBP),
+      (img) =>
+        img
+          .resize(w, h, { fit: "cover", position: HOME_POSITION[slot] ?? sharp.strategy.attention })
+          .webp(WEBP),
       `home/${slot}`,
     );
   }
