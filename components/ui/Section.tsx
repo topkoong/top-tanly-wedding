@@ -1,7 +1,4 @@
-"use client";
-
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -20,34 +17,16 @@ const backgroundClasses: Record<SectionBackground, string> = {
   transparent: "bg-transparent",
 };
 
+/** Layout band only — entrance motion lives on the blocks inside (`Reveal`). */
 export default function Section({
   className,
   children,
   background = "transparent",
   id,
 }: SectionProps) {
-  const shouldReduceMotion = useReducedMotion();
-
-  const sectionClass = cn("min-w-0 py-16 md:py-24", backgroundClasses[background], className);
-
-  if (shouldReduceMotion) {
-    return (
-      <section id={id} className={sectionClass}>
-        {children}
-      </section>
-    );
-  }
-
   return (
-    <motion.section
-      id={id}
-      className={sectionClass}
-      initial={{ opacity: 0.88 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: 1.1, ease: "easeOut" }}
-    >
+    <section id={id} className={cn("min-w-0 py-16 md:py-24", backgroundClasses[background], className)}>
       {children}
-    </motion.section>
+    </section>
   );
 }

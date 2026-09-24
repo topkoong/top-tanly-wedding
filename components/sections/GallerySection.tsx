@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
+import Reveal from "@/components/ui/Reveal";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import Section from "@/components/ui/Section";
 import type { GalleryPageContent, SiteContent } from "@/content/schema";
@@ -34,21 +35,29 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
     <Section background="cream">
       <Container className={isThai ? "font-thai" : "font-display"}>
         <div className="min-w-0 space-y-8">
-          <Heading
-            as="h1"
-            headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
-          >
-            {content.title}
-          </Heading>
-          <DecorativeDivider />
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-            {content.intro}
-          </p>
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-            {content.note}
-          </p>
+          <Reveal>
+            <Heading
+              as="h1"
+              headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
+            >
+              {content.title}
+            </Heading>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <DecorativeDivider />
+          </Reveal>
+          <Reveal delay={0.16}>
+            <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+              {content.intro}
+            </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+              {content.note}
+            </p>
+          </Reveal>
 
-          <div className="-mx-1 min-w-0 px-1">
+          <Reveal delay={0.24} className="-mx-1 px-1">
             <div
               className="flex flex-nowrap gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               role="tablist"
@@ -72,11 +81,11 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
                 </button>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {visibleItems.map((item) => (
-              <div key={item.id} className="min-w-0 max-w-full">
+            {visibleItems.map((item, index) => (
+              <Reveal key={`${tabIndex}-${item.id}`} delay={(index % 3) * 0.08} className="max-w-full">
                 {item.src ? (
                   <div
                     className="relative min-w-0 max-w-full overflow-hidden rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8px_24px_-16px_rgba(45,38,32,0.1)]"
@@ -100,7 +109,7 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
                     }
                   />
                 )}
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

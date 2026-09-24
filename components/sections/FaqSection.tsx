@@ -9,6 +9,7 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
+import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import VenueMapEmbed from "@/components/ui/VenueMapEmbed";
 import VerticalEventTimeline from "@/components/ui/VerticalEventTimeline";
@@ -45,16 +46,22 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
     <Section background="cream">
       <Container size="narrow" className={isThai ? "font-thai" : "font-display"}>
         <div className="min-w-0 space-y-8">
-          <Heading
-            as="h1"
-            headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
-          >
-            {content.title}
-          </Heading>
-          <DecorativeDivider />
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-            {content.intro}
-          </p>
+          <Reveal>
+            <Heading
+              as="h1"
+              headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
+            >
+              {content.title}
+            </Heading>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <DecorativeDivider />
+          </Reveal>
+          <Reveal delay={0.16}>
+            <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+              {content.intro}
+            </p>
+          </Reveal>
 
           <div>
             {groupedItems.map((group) => (
@@ -69,9 +76,11 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                   <span className="min-w-0 max-w-full break-words">{group.category}</span>
                 </div>
                 <div className="space-y-3">
-                  {group.items.map((item) => (
-                    <article
+                  {group.items.map((item, index) => (
+                    <Reveal
+                      as="article"
                       key={item.id}
+                      delay={index * 0.06}
                       className="min-w-0 overflow-hidden rounded-2xl border border-charcoal/[0.08] bg-ivory shadow-[0_10px_32px_-24px_rgba(86,94,63,0.14)]"
                     >
                       <button
@@ -134,18 +143,18 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
                           </motion.div>
                         ) : null}
                       </AnimatePresence>
-                    </article>
+                    </Reveal>
                   ))}
                 </div>
               </section>
             ))}
           </div>
 
-          <div className="flex min-w-0 flex-col pt-2 sm:flex-row">
+          <Reveal className="flex flex-col pt-2 sm:flex-row">
             <Button href={lineHref} variant="secondary" className="w-full shrink-0 sm:w-auto">
               {content.lineCtaLabel}
             </Button>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </Section>

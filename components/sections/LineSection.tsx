@@ -2,6 +2,7 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
+import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import type { LineContent, SiteContent } from "@/content/schema";
 
@@ -17,22 +18,30 @@ export default function LineSection({ site, content }: LineSectionProps) {
     <Section background="cream">
       <Container size="narrow" className={isThai ? "font-thai" : "font-display"}>
         <div className="min-w-0 space-y-8">
-          <Heading
-            as="h1"
-            eyebrow={site.footer.lineLabel}
-            headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
-          >
-            {content.title}
-          </Heading>
-          <DecorativeDivider />
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-            {content.intro}
-          </p>
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-            {content.purpose}
-          </p>
+          <Reveal>
+            <Heading
+              as="h1"
+              eyebrow={site.footer.lineLabel}
+              headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
+            >
+              {content.title}
+            </Heading>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <DecorativeDivider />
+          </Reveal>
+          <Reveal delay={0.16}>
+            <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+              {content.intro}
+            </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+              {content.purpose}
+            </p>
+          </Reveal>
 
-          <div className="min-w-0 max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-6 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
+          <Reveal delay={0.24} className="max-w-full rounded-2xl border border-charcoal/10 bg-ivory p-6 shadow-[0_8px_28px_-18px_rgba(45,38,32,0.06)]">
             <h2 className={isThai ? "text-h3 font-thai text-charcoal" : "font-display text-h3 text-charcoal"}>
               {site.footer.lineLabel}
             </h2>
@@ -46,18 +55,24 @@ export default function LineSection({ site, content }: LineSectionProps) {
                 <li key={item}>- {item}</li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
-          <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
-            {content.urgentHelp}
-          </p>
+          <Reveal>
+            <p className={isThai ? "max-w-full text-body leading-relaxed text-stone" : "max-w-full text-body leading-relaxed text-stone"}>
+              {content.urgentHelp}
+            </p>
+          </Reveal>
 
-          <Button href={content.lineOaUrl} className="w-full shrink-0 sm:w-auto">
-            {content.ctaLabel}
-          </Button>
-          <p className={isThai ? "max-w-full text-body-s leading-relaxed text-stone" : "max-w-full text-body-s leading-relaxed text-stone"}>
-            {content.helperText}
-          </p>
+          <Reveal>
+            <Button href={content.lineOaUrl} className="w-full shrink-0 sm:w-auto">
+              {content.ctaLabel}
+            </Button>
+          </Reveal>
+          <Reveal>
+            <p className={isThai ? "max-w-full text-body-s leading-relaxed text-stone" : "max-w-full text-body-s leading-relaxed text-stone"}>
+              {content.helperText}
+            </p>
+          </Reveal>
         </div>
       </Container>
     </Section>

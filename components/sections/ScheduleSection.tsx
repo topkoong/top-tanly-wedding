@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
+import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import type { SchedulePageContent, SiteContent } from "@/content/schema";
 import { cn } from "@/lib/utils";
@@ -19,28 +20,36 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
     <Section background="cream">
       <Container className={isThai ? "font-thai" : "font-display"}>
         <div className="min-w-0 space-y-8">
-          <Heading
-            as="h1"
-            eyebrow={content.title}
-            headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
-          >
-            {site.weddingDate}
-          </Heading>
-          <DecorativeDivider />
-          <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
-            {content.intro}
-          </p>
+          <Reveal>
+            <Heading
+              as="h1"
+              eyebrow={content.title}
+              headingClassName={isThai ? "font-thai text-h1 leading-[1.4]" : "font-display text-h1"}
+            >
+              {site.weddingDate}
+            </Heading>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <DecorativeDivider />
+          </Reveal>
+          <Reveal delay={0.16}>
+            <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
+              {content.intro}
+            </p>
+          </Reveal>
 
-          <p
-            className={cn(
-              "text-center font-display text-[clamp(1.75rem,6vw,2.5rem)] font-medium leading-tight text-charcoal",
-              isThai && "font-thai",
-            )}
-          >
-            {content.venueHeadline}
-          </p>
+          <Reveal delay={0.24}>
+            <p
+              className={cn(
+                "text-center font-display text-[clamp(1.75rem,6vw,2.5rem)] font-medium leading-tight text-charcoal",
+                isThai && "font-thai",
+              )}
+            >
+              {content.venueHeadline}
+            </p>
+          </Reveal>
 
-          <div className="mx-auto min-w-0 max-w-lg rounded-[1.75rem] border border-charcoal/10 bg-cream px-5 py-8 shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)] sm:px-8 sm:py-10">
+          <Reveal delay={0.32} className="mx-auto min-w-0 max-w-lg rounded-[1.75rem] border border-charcoal/10 bg-cream px-5 py-8 shadow-[0_8px_28px_-18px_rgba(31,29,24,0.1)] sm:px-8 sm:py-10">
             <div className="space-y-10">
               {content.locationGroups.map((group) => (
                 <div key={group.id} className="min-w-0">
@@ -65,12 +74,11 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
 
                   <ol className="relative ml-5 border-l border-charcoal/20 pl-8">
                     {group.timeline.map((entry, index) => (
-                      <li
+                      <Reveal
+                        as="li"
                         key={entry.id}
-                        className={cn(
-                          "relative pb-8 last:pb-0",
-                          index < group.timeline.length - 1 && "mb-0",
-                        )}
+                        delay={index * 0.07}
+                        className="relative pb-8 last:pb-0"
                       >
                         <span
                           aria-hidden
@@ -100,27 +108,31 @@ export default function ScheduleSection({ site, content }: ScheduleSectionProps)
                             </p>
                           </div>
                         </div>
-                      </li>
+                      </Reveal>
                     ))}
                   </ol>
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
-          <div className="min-w-0 pt-1">
+          <Reveal className="pt-1">
             <Button href={content.venuePageHref} variant="secondary" className="w-full min-w-0 sm:w-auto sm:max-w-full">
               {content.venueButtonLabel}
             </Button>
-          </div>
+          </Reveal>
 
-          <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
-            {content.arrivalNote}
-          </p>
+          <Reveal>
+            <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
+              {content.arrivalNote}
+            </p>
+          </Reveal>
 
-          <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
-            {content.updateNote}
-          </p>
+          <Reveal>
+            <p className={cn("max-w-full text-body leading-relaxed text-stone", isThai && "font-thai")}>
+              {content.updateNote}
+            </p>
+          </Reveal>
         </div>
       </Container>
     </Section>
