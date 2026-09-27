@@ -171,20 +171,17 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
             >
               {hs.rsvpMessage}
             </p>
-            <div className="mt-8 flex flex-col items-center gap-3">
+            <div className="mt-8 flex flex-col items-center">
               {hs.rsvpFormUrl ? (
-                <>
-                  <Button
-                    href={hs.rsvpFormUrl}
-                    className={cn(
-                      "min-h-14 px-10 py-4 text-cream shadow-[0_16px_32px_-14px_rgba(31,29,24,0.55)]",
-                      isThai && "font-thai normal-case tracking-normal",
-                    )}
-                  >
-                    {hs.rsvpCtaLabel}
-                  </Button>
-                  <p className={cn("text-body-s text-stone", isThai ? "font-thai" : "font-display")}>{hs.rsvpNote}</p>
-                </>
+                <Button
+                  href={hs.rsvpFormUrl}
+                  className={cn(
+                    "min-h-14 px-10 py-4 text-cream shadow-[0_16px_32px_-14px_rgba(31,29,24,0.55)]",
+                    isThai && "font-thai normal-case tracking-normal",
+                  )}
+                >
+                  {hs.rsvpCtaLabel}
+                </Button>
               ) : (
                 <span
                   className={cn(

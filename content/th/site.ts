@@ -100,7 +100,6 @@ export const siteContentTh: SiteContent = {
     rsvpCtaLabel: "ตอบรับการ์ดเชิญ",
     rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "ลิงก์ตอบรับจะเปิดเร็ว ๆ นี้",
-    rsvpNote: "เปิดแบบฟอร์ม Google สั้น ๆ",
   },
   footer: {
     thankYou: "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งของวันสำคัญของเรา",

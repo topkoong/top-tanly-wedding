@@ -97,7 +97,6 @@ export type SiteContent = {
     /** Google Form share link; leave empty until the form exists (shows the pending label). */
     rsvpFormUrl: string;
     rsvpPendingLabel: string;
-    rsvpNote: string;
   };
   footer: {
     thankYou: string;

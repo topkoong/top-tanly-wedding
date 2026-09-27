@@ -100,7 +100,6 @@ export const siteContentEn: SiteContent = {
     rsvpCtaLabel: "Reply to the invitation",
     rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "RSVP link coming soon",
-    rsvpNote: "Opens a short Google Form.",
   },
   footer: {
     thankYou: "Thank you for being part of our special day.",
