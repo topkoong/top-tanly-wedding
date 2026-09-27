@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Provide a **static, read-only, bilingual** (Thai-first) wedding microsite guests can open from LINE or mobile browsers. Content covers schedule, venue/maps, curated gallery placeholders, FAQ, and a **supporting** LINE Official Account explainer—not guest management tools.
+Provide a **static, read-only, bilingual** (Thai-first) wedding microsite guests can open from a mobile browser. Content covers schedule, venue/maps, curated gallery, and FAQ—not guest management tools.
 
 See also: [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md) for what obsolete docs said vs. shipping code.
 
@@ -14,7 +14,7 @@ See also: [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md) for what obsolete d
 - **Visible naming (bride-first):** Tan & Top · Narueporn & Theerut (never groom-first ordering in UI copy).
 - **No on-site RSVP** (the home page only links to an external Google Form), attendance counting, forms, chatbot, API routes, server actions, database, auth, or analytics in MVP.
 - **No middleware** locale detection—explicit routes only.
-- **Navigation:** Schedule, Venue, Gallery, FAQ + language switch. **Mobile:** fixed bottom bar (Home, Schedule, Venue, Gallery, FAQ) below `lg`. **LINE** is **not** in primary nav; pages `/line` and `/en/line` exist for official updates/reminders/manual support wording only.
+- **Navigation:** Schedule, Venue, Gallery, FAQ + language switch. **Mobile:** fixed bottom bar (Home, Schedule, Venue, Gallery, FAQ) below `lg`. There is **no LINE Official Account**.
 - **Removed from website IA:** Accommodation page, Dress Code page (dress guidance may appear in FAQ only).
 
 ## Wedding details
@@ -34,11 +34,11 @@ Operational detail on venue/floors/transit must stay accurate or marked “to be
 
 Thai:
 
-- `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`, `/line/`
+- `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`
 
 English:
 
-- `/en/`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`, `/en/line/`
+- `/en/`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`
 
 ### Not shipped (legacy spec only)
 

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
@@ -19,10 +18,9 @@ import { cn } from "@/lib/utils";
 type FaqSectionProps = {
   site: SiteContent;
   content: FaqPageContent;
-  lineHref: string;
 };
 
-export default function FaqSection({ site, content, lineHref }: FaqSectionProps) {
+export default function FaqSection({ site, content }: FaqSectionProps) {
   const isThai = site.locale === "th";
   const locale = site.locale;
   const groupedItems = content.categories.map((category) => ({
@@ -150,12 +148,6 @@ export default function FaqSection({ site, content, lineHref }: FaqSectionProps)
               </section>
             ))}
           </div>
-
-          <Reveal className="flex flex-col pt-2 sm:flex-row">
-            <Button href={lineHref} variant="secondary" className="w-full shrink-0 sm:w-auto">
-              {content.lineCtaLabel}
-            </Button>
-          </Reveal>
         </div>
       </Container>
     </Section>

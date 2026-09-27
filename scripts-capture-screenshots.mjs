@@ -10,14 +10,12 @@ const routes = [
   { name: "venue", path: "/venue/" },
   { name: "gallery", path: "/gallery/" },
   { name: "faq", path: "/faq/" },
-  { name: "line", path: "/line/" },
 
   { name: "en-home", path: "/en/" },
   { name: "en-schedule", path: "/en/schedule/" },
   { name: "en-venue", path: "/en/venue/" },
   { name: "en-gallery", path: "/en/gallery/" },
   { name: "en-faq", path: "/en/faq/" },
-  { name: "en-line", path: "/en/line/" },
 ];
 
 const viewports = [

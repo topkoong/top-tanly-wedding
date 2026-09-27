@@ -34,7 +34,6 @@ Pages to open (production or local)—use **both** locales:
 - `/venue/`
 - `/gallery/`
 - `/faq/`
-- `/line/`
 
 **English**
 
@@ -43,7 +42,6 @@ Pages to open (production or local)—use **both** locales:
 - `/en/venue/`
 - `/en/gallery/`
 - `/en/faq/`
-- `/en/line/`
 
 ---
 
@@ -60,7 +58,7 @@ Pages to open (production or local)—use **both** locales:
 
 ### Page-specific quick checks
 
-- **Home:** Mobile **invitation** layout — display serif headline in olive-deep + ivory ceremonial card layered over corner botanical framing; LINE remains tertiary. **No** RSVP/Gift.
+- **Home:** Mobile **invitation** layout — display serif headline in olive-deep + ivory ceremonial card. The home-page `#rsvp` band links out to the couple's Google Form.
 - **Schedule:** Two main events understandable quickly; olive accent for times; chips tidy.
 - **Venue:** Strong Conrad Bangkok labeling; localized Google Maps CTA (`เปิด Google Maps` / `Open in Google Maps`); sensible map embed height on small screens.
 - **Gallery:** Premium placeholders; captions legible; category labels localized.

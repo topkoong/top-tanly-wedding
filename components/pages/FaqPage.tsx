@@ -11,7 +11,6 @@ export default function FaqPage() {
   const locale = useLocale();
   const site = locale === "th" ? siteContentTh : siteContentEn;
   const content = locale === "th" ? faqContentTh : faqContentEn;
-  const lineHref = locale === "th" ? "/th/line" : "/line";
 
-  return <FaqSection site={site} content={content} lineHref={lineHref} />;
+  return <FaqSection site={site} content={content} />;
 }

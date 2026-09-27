@@ -16,7 +16,7 @@ Static, read-only, bilingual wedding information website for **Tan & Top**.
 - **No backend surfaces:** no API routes, server actions, database, or authentication.
 - **No analytics** in MVP.
 - **No middleware** for locale routing (explicit Thai + `/en` routes only).
-- **LINE:** supporting pages `/line` and `/en/line` only—not in primary navigation. LINE is for official updates, reminders, and manual support—**not** for describing instant answers or automated RSVP.
+- **No LINE Official Account** — guest support is the FAQ page only.
 
 ## Visual direction (summary)
 
@@ -42,7 +42,6 @@ Cream/ivory invitation surfaces, **olive** as the primary interactive accent (bu
 - `/venue/`
 - `/gallery/`
 - `/faq/`
-- `/line/`
 
 **English**
 
@@ -51,7 +50,6 @@ Cream/ivory invitation surfaces, **olive** as the primary interactive accent (bu
 - `/en/venue/`
 - `/en/gallery/`
 - `/en/faq/`
-- `/en/line/`
 
 > Production uses `trailingSlash: true`; paths above match deployed URLs.
 
@@ -62,9 +60,7 @@ Cream/ivory invitation surfaces, **olive** as the primary interactive accent (bu
 **Primary navigation**
 
 - Thai: กำหนดการ · สถานที่ · แกลเลอรี · คำถามที่พบบ่อย · EN  
-- English: Schedule · Venue · Gallery · FAQ · TH  
-
-LINE is not a main-nav item.
+- English: Schedule · Venue · Gallery · FAQ · TH
 
 ## Tech stack
 

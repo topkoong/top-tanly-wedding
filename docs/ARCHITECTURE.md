@@ -10,14 +10,14 @@ Pinned versions live in **`package.json`** (currently Next **16.2.6**, React **1
 
 - **`layout.tsx`** — Root shell: fonts (`next/font/google`: Cormorant Garamond, Inter, IBM Plex Sans Thai), metadata, Navbar, Footer, `MobileBottomNav` (fixed, `lg:hidden`), global styles; main has bottom padding on small screens for the nav + safe area.
 - **`page.tsx`** — Thai home (`/`).
-- **`schedule/page.tsx`**, **`venue/page.tsx`**, **`gallery/page.tsx`**, **`faq/page.tsx`**, **`line/page.tsx`** — Thai routes.
+- **`schedule/page.tsx`**, **`venue/page.tsx`**, **`gallery/page.tsx`**, **`faq/page.tsx`** — Thai routes.
 - **`en/`** — Mirrors the above under `/en/...`.
 
 **Not present:** dynamic API routes, `middleware.ts` locale redirects, RSVP or form endpoints.
 
 ## Route structure & i18n
 
-- **Thai:** root paths (`/` … `/line/`).
+- **Thai:** root paths (`/` … `/faq/`).
 - **English:** prefixed with `/en/`.
 - **No middleware.** Locale follows the URL segment only.
 
@@ -39,7 +39,7 @@ Branding constants also exist under `content/th/couple.ts` and `content/en/coupl
 ```
 components/layout/   Navbar, Footer, MobileBottomNav
 components/sections/ HomeShell, ScheduleSection, VenueSection, GallerySection,
-                     FaqSection, LineSection
+                     FaqSection
 components/ui/       Button, Container, Section, Heading, PlaceholderImage, FadeIn, …
 components/icons/    TNMonogram (and similar)
 ```

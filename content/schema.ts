@@ -19,10 +19,9 @@ export type SiteContent = {
   /** Machine-readable wedding date/time (ISO 8601 with offset) for the countdown. */
   weddingDateISO: string;
   logoHref: string;
-  linePageHref: string;
   navDesktop: NavigationItem[];
   navMobile: NavigationItem[];
-  /** Fixed bottom navigation (mobile / small tablet only); 5 items, no LINE. */
+  /** Fixed bottom navigation (mobile / small tablet only); 5 items. */
   bottomNav: Array<{
     href: string;
     label: string;
@@ -82,7 +81,6 @@ export type SiteContent = {
       minutes: string;
       seconds: string;
     };
-    supportLineLabel: string;
     quickActionCards: Array<{
       href: string;
       title: string;
@@ -103,8 +101,6 @@ export type SiteContent = {
   };
   footer: {
     thankYou: string;
-    lineLabel: string;
-    lineLinkText: string;
     venueLabel: string;
     footerLinks: NavigationItem[];
   };
@@ -165,7 +161,7 @@ export type VenueContent = {
     room: string;
     floor?: string;
   }>;
-  /** One line per option — full step-by-step directions live with the LINE coordinators. */
+  /** One line per option — full step-by-step directions live on the venue page. */
   transport?: TransportOption[];
   parkingTitle: string;
   parkingNote: string;
@@ -222,19 +218,5 @@ export type FaqPageContent = {
   title: string;
   intro: string;
   categories: string[];
-  lineCtaLabel: string;
   items: FaqItem[];
-};
-
-export type LineContent = {
-  title: string;
-  intro: string;
-  linePageHref: string;
-  lineOaUrl: string;
-  purpose: string;
-  updates: string[];
-  notUsedFor: string[];
-  urgentHelp: string;
-  helperText: string;
-  ctaLabel: string;
 };

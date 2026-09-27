@@ -138,9 +138,13 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
         </Container>
       </section>
 
-      <section id="rsvp" className="scroll-mt-16 border-t border-charcoal/10 bg-cream py-16 text-center sm:py-20">
+      <section
+        id="rsvp"
+        data-nav-theme="dark"
+        className="scroll-mt-16 bg-backdrop py-16 text-center sm:py-24"
+      >
         <Container size="narrow">
-          <Reveal>
+          <Reveal className="rounded-[1.75rem] bg-ivory px-6 py-10 shadow-[0_28px_56px_-28px_rgba(0,0,0,0.45)] sm:px-10 sm:py-14">
             <p className={eyebrow}>{hs.rsvpEyebrow}</p>
             <h2 className={cn("mt-3 text-charcoal", isThai ? "font-thai text-h2 leading-snug" : "font-display text-h2")}>
               {hs.rsvpTitle}
@@ -153,25 +157,31 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
             >
               {hs.rsvpMessage}
             </p>
-          </Reveal>
-          <Reveal delay={0.12} className="mt-8 flex flex-col items-center gap-3">
-            {hs.rsvpFormUrl ? (
-              <>
-                <Button href={hs.rsvpFormUrl} className={cn(isThai && "font-thai normal-case tracking-normal")}>
-                  {hs.rsvpCtaLabel}
-                </Button>
-                <p className={cn("text-body-s text-stone", isThai ? "font-thai" : "font-display")}>{hs.rsvpNote}</p>
-              </>
-            ) : (
-              <span
-                className={cn(
-                  "inline-flex min-h-11 items-center rounded-full border border-charcoal/20 px-6 text-stone",
-                  isThai ? "font-thai text-body-s" : "font-display text-[0.75rem] uppercase tracking-[0.2em]",
-                )}
-              >
-                {hs.rsvpPendingLabel}
-              </span>
-            )}
+            <div className="mt-8 flex flex-col items-center gap-3">
+              {hs.rsvpFormUrl ? (
+                <>
+                  <Button
+                    href={hs.rsvpFormUrl}
+                    className={cn(
+                      "min-h-14 px-10 py-4 text-cream shadow-[0_16px_32px_-14px_rgba(31,29,24,0.55)]",
+                      isThai && "font-thai normal-case tracking-normal",
+                    )}
+                  >
+                    {hs.rsvpCtaLabel}
+                  </Button>
+                  <p className={cn("text-body-s text-stone", isThai ? "font-thai" : "font-display")}>{hs.rsvpNote}</p>
+                </>
+              ) : (
+                <span
+                  className={cn(
+                    "inline-flex min-h-14 items-center rounded-full border border-charcoal/20 px-8 text-stone",
+                    isThai ? "font-thai text-body" : "font-display text-[0.8125rem] uppercase tracking-[0.2em]",
+                  )}
+                >
+                  {hs.rsvpPendingLabel}
+                </span>
+              )}
+            </div>
           </Reveal>
         </Container>
       </section>

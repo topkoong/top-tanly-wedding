@@ -23,7 +23,7 @@ Never create:
 - ❌ Middleware-based language routing / locale redirects
 - ❌ Analytics in MVP
 
-Guest support stays informational: deterministic FAQ plus **supporting LINE pages** documented in **`08_LINE_OA_RICH_MENU_SPEC.md`**—still **never** marketed as realtime AI concierge.
+Guest support stays informational: deterministic FAQ only. There is **no LINE Official Account**, chatbot, or realtime concierge.
 
 ## Product truth — naming & locales
 
@@ -36,8 +36,8 @@ Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI 
 
 **Routing:**
 
-- Thai default: `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`, `/line/`
-- English: `/en`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`, `/en/line/`
+- Thai default: `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`
+- English: `/en`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`
 - **`trailingSlash: true`** in production config — prefer links that match exported URLs.
 
 **Do not restore** Accommodation or Dress-code routes/menus unless the product charter changes.
@@ -113,11 +113,7 @@ Main **desktop** top nav mirrors product:
 - Thai: `กำหนดการ · สถานที่ · แกลเลอรี · คำถามที่พบบ่อย · EN`
 - English: `Schedule · Venue · Gallery · FAQ · TH`
 
-**LINE** stays ancillary (support pages + CTAs)—never co-equal with Schedule/Venue in **`Navbar.tsx`/`MobileMenu.tsx`**.
-
-## LINE positioning
-
-Maintain `/line` + `/en/line` informational pages about official updates/reminders/coordinator assistance. Copy must clarify manual/human pacing—**not** instantaneous AI concierge nor RSVP automation.
+Do **not** add LINE Official Account pages, CTAs, or rich-menu marketing.
 
 ## Accessibility & responsiveness
 

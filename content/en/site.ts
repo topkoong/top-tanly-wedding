@@ -9,7 +9,6 @@ export const siteContentEn: SiteContent = {
   weddingDate: "Sunday, 29 November 2026",
   weddingDateISO: "2026-11-29T09:00:00+07:00",
   logoHref: "/",
-  linePageHref: "/line",
   navDesktop: [
     { href: "/schedule", label: "Schedule" },
     { href: "/venue", label: "Venue" },
@@ -65,7 +64,6 @@ export const siteContentEn: SiteContent = {
     timelineTitle: "Our Timeline",
     timelineCtaLabel: "View full schedule",
     timelineCtaHref: "/schedule",
-    supportLineLabel: "Go to LINE Official Account",
     quickActionCards: [
       {
         href: "/schedule",
@@ -96,17 +94,16 @@ export const siteContentEn: SiteContent = {
     welcomeMessage:
       "We're so glad you're here. We hope this website helps you find everything you need before the celebration.",
     rsvpEyebrow: "RSVP",
-    rsvpTitle: "Will you join us?",
-    rsvpMessage: "Kindly let us know whether you can celebrate with us, so we can save a seat for you.",
+    rsvpTitle: "Kindly reply",
+    rsvpMessage:
+      "Please tap the button below to let us know whether you can celebrate with us. It takes about a minute, and it helps us save a seat for you.",
     rsvpCtaLabel: "Reply to the invitation",
     rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "RSVP link coming soon",
-    rsvpNote: "Opens a short Google Form — it takes about a minute.",
+    rsvpNote: "Opens a short Google Form.",
   },
   footer: {
     thankYou: "Thank you for being part of our special day.",
-    lineLabel: "Official updates channel",
-    lineLinkText: "LINE OA",
     venueLabel: "Conrad Bangkok",
     footerLinks: [
       { href: "/schedule", label: "Schedule" },

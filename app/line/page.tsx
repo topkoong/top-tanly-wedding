@@ -1,5 +1,0 @@
-import LinePage from "@/components/pages/LinePage";
-
-export default function LinePageEn() {
-  return <LinePage />;
-}

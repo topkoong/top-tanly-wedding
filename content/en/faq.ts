@@ -3,14 +3,7 @@ import type { FaqPageContent } from "@/content/schema";
 export const faqContentEn: FaqPageContent = {
   title: "FAQ",
   intro: "Quick answers to the most common questions before the wedding day.",
-  categories: [
-    "General Information",
-    "Travel & Parking",
-    "During the Event",
-    "Photos & Contact",
-  ],
-  lineCtaLabel:
-    "If you have any other questions, please follow updates through our LINE Official Account.",
+  categories: ["General Information", "Travel & Parking"],
   items: [
     {
       id: "faq-date",
@@ -93,66 +86,6 @@ export const faqContentEn: FaqPageContent = {
       question: "Can I use Grab or taxi?",
       answer:
         "Yes. You can set your destination as Conrad Bangkok in Google Maps or your preferred ride-hailing app.",
-    },
-    {
-      id: "faq-both",
-      category: "During the Event",
-      question: "Do I need to attend both events?",
-      answer:
-        "You are welcome to attend the part that is most convenient for you or the part stated on your invitation. For questions, please contact us via LINE Official Account.",
-    },
-    {
-      id: "faq-children",
-      category: "During the Event",
-      question: "Can I bring children?",
-      answer:
-        "If you have questions about bringing children, please contact us via LINE Official Account so we can help confirm the details.",
-      relatedHref: "/line",
-    },
-    {
-      id: "faq-bring",
-      category: "During the Event",
-      question: "Do I need to bring anything?",
-      answer:
-        "Nothing special is required. Please allow enough time for travel and come celebrate with us.",
-    },
-    {
-      id: "faq-contact-day",
-      category: "During the Event",
-      question: "Who should I contact on the wedding day?",
-      answer:
-        "Please use our LINE Official Account or check this website for the latest information.",
-      relatedHref: "/line",
-    },
-    {
-      id: "faq-photos",
-      category: "Photos & Contact",
-      question: "Where can I view photos?",
-      answer:
-        "Photos will be available on the Gallery page. At first, the gallery may show placeholders or pre-wedding photos, with more photos added later.",
-      relatedHref: "/gallery",
-    },
-    {
-      id: "faq-photo-policy",
-      category: "Photos & Contact",
-      question: "Can I take photos during the event?",
-      answer:
-        "Yes, photos are welcome where appropriate. We kindly ask guests not to block the official photographers during key moments.",
-    },
-    {
-      id: "faq-updates",
-      category: "Photos & Contact",
-      question: "Will this website be updated?",
-      answer:
-        "Yes. Some details may be updated closer to the wedding date. Please check this website for the latest information.",
-    },
-    {
-      id: "faq-contact-channel",
-      category: "Photos & Contact",
-      question: "How can I contact you?",
-      answer:
-        "Please visit the LINE Official Account page for the latest updates and contact information.",
-      relatedHref: "/line",
     },
   ],
 };

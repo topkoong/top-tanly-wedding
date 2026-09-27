@@ -9,7 +9,6 @@ export const siteContentTh: SiteContent = {
   weddingDate: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
   weddingDateISO: "2026-11-29T09:00:00+07:00",
   logoHref: "/th",
-  linePageHref: "/th/line",
   navDesktop: [
     { href: "/th/schedule", label: "กำหนดการ" },
     { href: "/th/venue", label: "สถานที่" },
@@ -65,7 +64,6 @@ export const siteContentTh: SiteContent = {
     timelineTitle: "กำหนดการ",
     timelineCtaLabel: "ดูกำหนดการทั้งหมด",
     timelineCtaHref: "/th/schedule",
-    supportLineLabel: "ไปยังหน้า LINE Official Account",
     quickActionCards: [
       {
         href: "/th/schedule",
@@ -96,17 +94,16 @@ export const siteContentTh: SiteContent = {
     welcomeMessage:
       "เราดีใจที่ได้ต้อนรับทุกท่าน หวังว่าเว็บไซต์นี้จะช่วยให้ทุกท่านเตรียมตัวและเดินทางมาร่วมงานได้อย่างสะดวก",
     rsvpEyebrow: "ตอบรับการเข้าร่วมงาน",
-    rsvpTitle: "ร่วมงานกับเราได้ไหม",
-    rsvpMessage: "รบกวนแจ้งให้เราทราบว่าท่านจะสามารถร่วมงานได้หรือไม่ เพื่อที่เราจะได้เตรียมที่นั่งไว้ให้ท่าน",
+    rsvpTitle: "กรุณาตอบรับการ์ดเชิญ",
+    rsvpMessage:
+      "กรุณากดปุ่มด้านล่างเพื่อแจ้งให้เราทราบว่าท่านจะร่วมงานได้หรือไม่ ใช้เวลาประมาณ 1 นาที เพื่อที่เราจะได้เตรียมที่นั่งไว้ให้ท่าน",
     rsvpCtaLabel: "ตอบรับการ์ดเชิญ",
     rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "ลิงก์ตอบรับจะเปิดเร็ว ๆ นี้",
-    rsvpNote: "เปิดแบบฟอร์ม Google สั้น ๆ ใช้เวลาประมาณ 1 นาที",
+    rsvpNote: "เปิดแบบฟอร์ม Google สั้น ๆ",
   },
   footer: {
     thankYou: "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งของวันสำคัญของเรา",
-    lineLabel: "ช่องทางอัปเดตอย่างเป็นทางการ",
-    lineLinkText: "LINE OA",
     venueLabel: "Conrad Bangkok",
     footerLinks: [
       { href: "/th/schedule", label: "กำหนดการ" },
