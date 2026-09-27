@@ -145,10 +145,24 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
       >
         <Container size="narrow">
           <Reveal className="rounded-[1.75rem] bg-ivory px-6 py-10 shadow-[0_28px_56px_-28px_rgba(0,0,0,0.45)] sm:px-10 sm:py-14">
-            <p className={eyebrow}>{hs.rsvpEyebrow}</p>
-            <h2 className={cn("mt-3 text-charcoal", isThai ? "font-thai text-h2 leading-snug" : "font-display text-h2")}>
-              {hs.rsvpTitle}
+            <h2
+              className={cn(
+                "text-charcoal",
+                isThai
+                  ? "font-thai text-h2 leading-snug"
+                  : "font-display text-[clamp(2.5rem,10vw,3.75rem)] uppercase tracking-[0.16em]",
+              )}
+            >
+              {hs.rsvpEyebrow}
             </h2>
+            <p
+              className={cn(
+                "mt-3 text-charcoal",
+                isThai ? "font-thai text-h3 leading-snug" : "font-display text-h3",
+              )}
+            >
+              {hs.rsvpTitle}
+            </p>
             <p
               className={cn(
                 "mx-auto mt-4 max-w-md text-body leading-relaxed text-stone",
