@@ -77,8 +77,8 @@ export default function HomeInvitationContent({ content, photos }: HomeInvitatio
             <div className="absolute right-[6%] top-[9%] w-[23%] rotate-[5deg]">
               <ScallopFrame
                 scallop={7}
-                margin={4}
-                className="drop-shadow-[0_3px_3px_rgba(31,29,24,0.25)]"
+                margin={6}
+                className="drop-shadow-[0_2px_1px_rgba(31,29,24,0.28)]"
               >
                 <PhotoFrame src={photos.stamp} width={400} height={480} />
               </ScallopFrame>

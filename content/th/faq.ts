@@ -22,9 +22,9 @@ export const faqContentTh: FaqPageContent = {
           roomName: "Beverly Hills Room",
           floorLabel: "ชั้น 2 (Annex)",
           timeline: [
-            { id: "soo-khor", time: "07.09", title: "พิธีสู่ขอ" },
-            { id: "engagement", time: "07.39", title: "พิธีหมั้น (สวมแหวน)" },
-            { id: "paying-respects", time: "08.09", title: "พิธีรับไหว้ผู้ใหญ่" },
+            { id: "soo-khor", time: "7:09 น.", title: "พิธีสู่ขอ" },
+            { id: "engagement", time: "7:39 น.", title: "พิธีหมั้น (สวมแหวน)" },
+            { id: "paying-respects", time: "8:09 น.", title: "พิธีรับไหว้ผู้ใหญ่" },
           ],
         },
         {
@@ -32,7 +32,7 @@ export const faqContentTh: FaqPageContent = {
           sessionLabel: "งานเลี้ยงกลางวัน",
           roomName: "Conrad Ballroom",
           floorLabel: "ชั้น 4 (อาคารหลัก)",
-          timeline: [{ id: "reception", time: "11.30", title: "งานเลี้ยงฉลองมงคลสมรส" }],
+          timeline: [{ id: "reception", time: "11:30 น.", title: "งานเลี้ยงฉลองมงคลสมรส" }],
         },
       ],
     },

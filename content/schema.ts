@@ -117,7 +117,7 @@ export type CoupleContent = {
 
 export type ScheduleTimelineEntry = {
   id: string;
-  /** Display time (locale-specific formatting, e.g. 07.09 or 07:09). */
+  /** Display time (locale-specific formatting, e.g. 7:09 น. or 7:09 AM). */
   time: string;
   title: string;
 };

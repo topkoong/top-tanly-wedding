@@ -101,7 +101,14 @@ export default function HomeTimeline({ lead, title, groups, ctaLabel, ctaHref, i
                   className={cn("flex flex-col items-center text-center", !left && "col-start-2")}
                 >
                   <ScheduleTimelineIcon id={entry.id} className="h-16 w-16 opacity-90 invert sm:h-20 sm:w-20" />
-                  <p className="mt-3 font-display text-[1.25rem] leading-tight tabular-nums">{entry.time}</p>
+                  <p
+                    className={cn(
+                      "mt-3 text-[1.25rem] leading-tight tabular-nums",
+                      isThai ? "font-thai" : "font-display",
+                    )}
+                  >
+                    {entry.time}
+                  </p>
                   <p
                     className={cn(
                       "mt-1 text-paper/85",

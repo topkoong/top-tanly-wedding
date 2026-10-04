@@ -26,11 +26,13 @@ export default function Navbar({ className }: NavbarProps) {
   const isActive = (href: string) => isRouteActive(effectivePathname, href);
   const isHome = getLocaleNeutralPathname(pathname) === "/";
   const [overDark, setOverDark] = useState<boolean | null>(null);
-  /* The bar stays transparent; its ink flips to light over sections marked data-nav-theme="dark". Home opens on one. */
+  const [scrolled, setScrolled] = useState(false);
+  /* Ink flips to light over sections marked data-nav-theme="dark". Once the page moves, the bar frosts so content shows through a blur. */
   const onDark = overDark ?? isHome;
 
   useEffect(() => {
     const update = () => {
+      setScrolled(window.scrollY > 8);
       const header = document.querySelector("header");
       const probe = header ? header.getBoundingClientRect().height / 2 : 40;
       const dark = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-theme="dark"]')).some((el) => {
@@ -51,8 +53,12 @@ export default function Navbar({ className }: NavbarProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 bg-transparent transition-colors duration-300",
+        "sticky top-0 z-40 bg-transparent transition-[background-color,color] duration-300",
         onDark ? "text-paper" : "text-charcoal",
+        scrolled &&
+          (onDark
+            ? "bg-backdrop/55 backdrop-blur-md"
+            : "bg-cream/70 backdrop-blur-md"),
         className,
       )}
     >

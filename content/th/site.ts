@@ -4,8 +4,8 @@ export const siteContentTh: SiteContent = {
   locale: "th",
   htmlLang: "th",
   siteName: "Tan & Top Wedding",
-  coupleFriendlyName: "Narueporn and Theerut",
-  coupleFormalName: "Narueporn & Theerut",
+  coupleFriendlyName: "นฤพร และ ธีรุตม์",
+  coupleFormalName: "นางสาวนฤพร ภวังค์ทัศน์ และ นายธีรุตม์ ฟุ้งเกียรติเจริญ",
   weddingDate: "วันอาทิตย์ที่ 29 พฤศจิกายน 2569",
   weddingDateISO: "2026-11-29T09:00:00+07:00",
   logoHref: "/th",
@@ -34,7 +34,7 @@ export const siteContentTh: SiteContent = {
   homeShell: {
     invitationCardEyebrow: "บันทึกวันสำคัญ",
     invitationLeadIn: "ด้วยความยินดีของทั้งสองครอบครัว",
-    formalNames: "Narueporn & Theerut",
+    formalNames: "นางสาวนฤพร ภวังค์ทัศน์ และ นายธีรุตม์ ฟุ้งเกียรติเจริญ",
     invitationInviteLine: "ขอเรียนเชิญท่านร่วมงานมงคลสมรส",
     invitationDateDisplay: {
       weekday: "วันอาทิตย์",

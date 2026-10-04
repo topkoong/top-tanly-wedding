@@ -200,7 +200,7 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
       <section aria-hidden data-nav-theme="dark" className="relative isolate overflow-hidden bg-backdrop py-16 sm:py-24">
         <PhotoBackdrop src={photos.frame} blur />
         <Reveal variant="scale" className="relative mx-auto w-[82%] max-w-md">
-          <ScallopFrame scallop={18} margin={22} className="drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]">
+          <ScallopFrame scallop={14} margin={16} className="drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]">
             <PhotoFrame src={photos.frame} width={1200} height={1500} />
           </ScallopFrame>
         </Reveal>

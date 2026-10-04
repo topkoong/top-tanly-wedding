@@ -5,7 +5,7 @@ const items: GalleryItem[] = [
   {
     id: "th-01-shutterbooth",
     src: "/images/gallery/01-shutterbooth.webp",
-    alt: "ตันและท็อปหน้าตู้ถ่ายรูปวินเทจ Shutterbooth",
+    alt: "ตาลและต๊อปหน้าตู้ถ่ายรูปวินเทจ Shutterbooth",
     caption: "ตู้ถ่ายรูป",
     width: 1067,
     height: 1600,
@@ -14,7 +14,7 @@ const items: GalleryItem[] = [
   {
     id: "th-08-balcony-lounge",
     src: "/images/gallery/08-balcony-lounge.webp",
-    alt: "ตันและท็อปนั่งพักผ่อนบนระเบียงใต้โคมระย้า",
+    alt: "ตาลและต๊อปนั่งพักผ่อนบนระเบียงใต้โคมระย้า",
     caption: "ระเบียง",
     width: 1600,
     height: 1066,
@@ -23,7 +23,7 @@ const items: GalleryItem[] = [
   {
     id: "th-10-ring-closeup",
     src: "/images/gallery/10-ring-closeup.webp",
-    alt: "ภาพระยะใกล้ของมือตันและแหวนหมั้น",
+    alt: "ภาพระยะใกล้ของมือตาลและแหวนหมั้น",
     caption: "ระยะใกล้",
     width: 1600,
     height: 949,
@@ -32,7 +32,7 @@ const items: GalleryItem[] = [
   {
     id: "th-04-crosswalk-street",
     src: "/images/gallery/04-crosswalk-street.webp",
-    alt: "ตันและท็อปเดินข้ามถนนด้วยกัน",
+    alt: "ตาลและต๊อปเดินข้ามถนนด้วยกัน",
     caption: "เดินเล่นในเมือง",
     width: 1600,
     height: 1066,
@@ -41,7 +41,7 @@ const items: GalleryItem[] = [
   {
     id: "th-09-ring-portrait",
     src: "/images/gallery/09-ring-portrait.webp",
-    alt: "ตันโชว์แหวนหมั้นโดยมีท็อปอยู่ด้านหลัง",
+    alt: "ตาลโชว์แหวนหมั้นโดยมีต๊อปอยู่ด้านหลัง",
     caption: "แหวน",
     width: 1065,
     height: 1600,
@@ -50,7 +50,7 @@ const items: GalleryItem[] = [
   {
     id: "th-02-garden-wall",
     src: "/images/gallery/02-garden-wall.webp",
-    alt: "ตันและท็อปยืนเคียงกันริมกำแพงสวน",
+    alt: "ตาลและต๊อปยืนเคียงกันริมกำแพงสวน",
     caption: "เคียงข้างกัน",
     width: 1600,
     height: 1064,
@@ -59,7 +59,7 @@ const items: GalleryItem[] = [
   {
     id: "th-11-crosswalk-walk",
     src: "/images/gallery/11-crosswalk-walk.webp",
-    alt: "ตันและท็อปเดินข้ามถนนในย่านเมืองเก่า",
+    alt: "ตาลและต๊อปเดินข้ามถนนในย่านเมืองเก่า",
     caption: "ย่านเมืองเก่า",
     width: 1600,
     height: 1067,
@@ -68,7 +68,7 @@ const items: GalleryItem[] = [
   {
     id: "th-05-crosswalk-portrait",
     src: "/images/gallery/05-crosswalk-portrait.webp",
-    alt: "ตันและท็อปจูงมือเดินบนทางม้าลาย",
+    alt: "ตาลและต๊อปจูงมือเดินบนทางม้าลาย",
     caption: "จูงมือกัน",
     width: 1209,
     height: 1600,
@@ -77,7 +77,7 @@ const items: GalleryItem[] = [
   {
     id: "th-07-cafe-window",
     src: "/images/gallery/07-cafe-window.webp",
-    alt: "ตันและท็อปนั่งบนม้านั่งใต้หน้าต่างคาเฟ่",
+    alt: "ตาลและต๊อปนั่งบนม้านั่งใต้หน้าต่างคาเฟ่",
     caption: "ริมหน้าต่าง",
     width: 1066,
     height: 1600,
@@ -86,7 +86,7 @@ const items: GalleryItem[] = [
   {
     id: "th-03-cafe-seated",
     src: "/images/gallery/03-cafe-seated.webp",
-    alt: "ตันและท็อปนั่งเคียงกันในคาเฟ่",
+    alt: "ตาลและต๊อปนั่งเคียงกันในคาเฟ่",
     caption: "ยามบ่ายในคาเฟ่",
     width: 1067,
     height: 1600,
@@ -95,7 +95,7 @@ const items: GalleryItem[] = [
   {
     id: "th-06-photo-booth-closeup",
     src: "/images/gallery/06-photo-booth-closeup.webp",
-    alt: "ตันและท็อปใกล้ชิดกันในตู้ถ่ายรูป",
+    alt: "ตาลและต๊อปใกล้ชิดกันในตู้ถ่ายรูป",
     caption: "ยิ้มหน่อย",
     width: 1600,
     height: 1065,
@@ -104,7 +104,7 @@ const items: GalleryItem[] = [
   {
     id: "th-12-temple-courtyard",
     src: "/images/gallery/12-temple-courtyard.webp",
-    alt: "ตันและท็อปยืนคู่กันในลานวัด",
+    alt: "ตาลและต๊อปยืนคู่กันในลานวัด",
     caption: "ลานวัด",
     width: 1065,
     height: 1600,
@@ -113,7 +113,7 @@ const items: GalleryItem[] = [
   {
     id: "th-13-temple-walkway",
     src: "/images/gallery/13-temple-walkway.webp",
-    alt: "ตันและท็อปเดินเคียงกันบนทางเดินในวัด",
+    alt: "ตาลและต๊อปเดินเคียงกันบนทางเดินในวัด",
     caption: "เดินในวัด",
     width: 1600,
     height: 1066,
@@ -122,7 +122,7 @@ const items: GalleryItem[] = [
   {
     id: "th-15-proposal-kneeling",
     src: "/images/gallery/15-proposal-kneeling.webp",
-    alt: "ท็อปคุกเข่าขอแต่งงาน ตันยิ้มด้วยความประหลาดใจ",
+    alt: "ต๊อปคุกเข่าขอแต่งงาน ตาลยิ้มด้วยความประหลาดใจ",
     caption: "ขอแต่งงาน",
     width: 1035,
     height: 1600,
@@ -131,7 +131,7 @@ const items: GalleryItem[] = [
   {
     id: "th-16-showing-rings",
     src: "/images/gallery/16-showing-rings.webp",
-    alt: "ตันและท็อปยิ้มพร้อมโชว์แหวน",
+    alt: "ตาลและต๊อปยิ้มพร้อมโชว์แหวน",
     caption: "แหวนของเรา",
     width: 1600,
     height: 1065,
@@ -140,7 +140,7 @@ const items: GalleryItem[] = [
   {
     id: "th-14-temple-steps-seated",
     src: "/images/gallery/14-temple-steps-seated.webp",
-    alt: "ตันและท็อปนั่งบนขั้นบันไดวัดใต้ผนังโมเสก",
+    alt: "ตาลและต๊อปนั่งบนขั้นบันไดวัดใต้ผนังโมเสก",
     caption: "บันไดวัด",
     width: 1067,
     height: 1600,
@@ -149,7 +149,7 @@ const items: GalleryItem[] = [
   {
     id: "th-18-temple-balcony",
     src: "/images/gallery/18-temple-balcony.webp",
-    alt: "ตันและท็อปพิงระเบียงวัดที่ตกแต่งสวยงาม",
+    alt: "ตาลและต๊อปพิงระเบียงวัดที่ตกแต่งสวยงาม",
     caption: "ระเบียงวัด",
     width: 1600,
     height: 1066,
@@ -158,7 +158,7 @@ const items: GalleryItem[] = [
   {
     id: "th-17-rings-hands",
     src: "/images/gallery/17-rings-hands.webp",
-    alt: "มือของตันและท็อปวางคู่กัน เห็นแหวนทั้งสองวง",
+    alt: "มือของตาลและต๊อปวางคู่กัน เห็นแหวนทั้งสองวง",
     caption: "มือเรา",
     width: 1066,
     height: 1600,
@@ -167,7 +167,7 @@ const items: GalleryItem[] = [
   {
     id: "th-19-temple-stroll",
     src: "/images/gallery/19-temple-stroll.webp",
-    alt: "ตันและท็อปสบตากันระหว่างเดินในวัด",
+    alt: "ตาลและต๊อปสบตากันระหว่างเดินในวัด",
     caption: "สบตา",
     width: 1600,
     height: 950,
@@ -176,7 +176,7 @@ const items: GalleryItem[] = [
   {
     id: "th-20-temple-wall",
     src: "/images/gallery/20-temple-wall.webp",
-    alt: "ตันและท็อปยืนข้างกำแพงกระเบื้องในวัด",
+    alt: "ตาลและต๊อปยืนข้างกำแพงกระเบื้องในวัด",
     caption: "กำแพงวัด",
     width: 1065,
     height: 1600,

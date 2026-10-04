@@ -23,7 +23,7 @@ const sizeClasses: Record<CoupleScriptMarkSize, string> = {
 
 function parseCoupleFriendlyName(name: string): { first: string; second: string } {
   const parts = name
-    .split(/\s*(?:\+|&|and)\s*/i)
+    .split(/\s*(?:\+|&|and|และ)\s*/i)
     .map((part) => part.trim())
     .filter(Boolean);
   return { first: parts[0] ?? name, second: parts[1] ?? "" };
@@ -39,20 +39,25 @@ export default function CoupleScriptMark({
 }: CoupleScriptMarkProps) {
   const { first, second } = parseCoupleFriendlyName(name);
   const sizes = sizeClasses[size];
+  const isThai = /[\u0E00-\u0E7F]/.test(name);
 
   return (
     <Tag
       aria-hidden={decorative || undefined}
       className={cn(
-        perandory.className,
-        "flex flex-col items-center uppercase leading-none text-charcoal",
+        isThai ? "font-thai" : perandory.className,
+        "flex flex-col items-center leading-none text-charcoal",
+        isThai ? "tracking-normal" : "uppercase",
         sizes,
+        isThai && "leading-[1.35] tracking-normal",
         className,
       )}
     >
-      <span className="block leading-none">{first}</span>
+      <span className={cn("block", isThai ? "leading-[1.15]" : "leading-none")}>{first}</span>
       {second ? (
-        <span className="mt-[0.02em] block leading-none">{second}</span>
+        <span className={cn("block", isThai ? "mt-[0.12em] leading-[1.15]" : "mt-[0.02em] leading-none")}>
+          {second}
+        </span>
       ) : null}
     </Tag>
   );
