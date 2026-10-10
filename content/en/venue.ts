@@ -4,6 +4,8 @@ export const venueContentEn: VenueContent = {
   title: "Venue",
   mainVenue: "Conrad Bangkok",
   address: "All Seasons Place, 87 Wireless Rd, Lumpini, Pathumwan, Bangkok 10330",
+  photoAlt: "Conrad Bangkok at night, seen from above",
+  photoAltSecondary: "The lobby staircase at Conrad Bangkok",
   eventSpacesTitle: "Ceremony & reception",
   eventSpaces: [
     {

@@ -104,11 +104,5 @@ export const siteContentTh: SiteContent = {
   footer: {
     thankYou: "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งของวันสำคัญของเรา",
     venueLabel: "Conrad Bangkok",
-    footerLinks: [
-      { href: "/th/schedule", label: "กำหนดการ" },
-      { href: "/th/venue", label: "สถานที่" },
-      { href: "/th/gallery", label: "แกลเลอรี" },
-      { href: "/th/faq", label: "คำถามที่พบบ่อย" },
-    ],
   },
 };

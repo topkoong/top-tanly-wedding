@@ -1,8 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { Fragment } from "react";
-
 import TNMonogram from "@/components/icons/TNMonogram";
 import Container from "@/components/ui/Container";
 import { getSiteContent } from "@/content/site";
@@ -37,25 +34,7 @@ export default function Footer({ className }: FooterProps) {
             </p>
           </div>
 
-          <nav aria-label="Footer" className="mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-2">
-            {siteContent.footer.footerLinks.map((item, index) => (
-              <Fragment key={item.href}>
-                {index > 0 ? (
-                  <span className="text-charcoal/30 select-none" aria-hidden>
-                    ·
-                  </span>
-                ) : null}
-                <Link
-                  href={item.href}
-                  className="max-w-full text-pretty text-body-s leading-snug text-charcoal transition-colors duration-200 hover:text-olive-deep focus-visible:ring-2 focus-visible:ring-olive-deep focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
-                >
-                  {item.label}
-                </Link>
-              </Fragment>
-            ))}
-          </nav>
-
-          <p className="mt-4 text-xs tracking-[0.06em] text-stone/55">Tan & Top Wedding 2026</p>
+          <p className="mt-8 text-xs tracking-[0.06em] text-stone/55">Tan & Top Wedding 2026</p>
         </div>
       </Container>
     </footer>

@@ -120,7 +120,20 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
           <Reveal variant="scale" delay={0.1} className="mt-6 flex justify-center">
             <BowOrnament />
           </Reveal>
-          <Reveal delay={0.2} className="mt-6 space-y-2">
+          <Reveal delay={0.2} className="mx-auto mt-8 max-w-sm">
+            <Link
+              href={hs.invitationVenueHref}
+              className="block overflow-hidden rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+            >
+              <PhotoFrame
+                src={photos.venue}
+                alt={hs.locationLabel}
+                width={1600}
+                height={1067}
+              />
+            </Link>
+          </Reveal>
+          <Reveal delay={0.28} className="mt-6 space-y-2">
             <p className={eyebrow}>{hs.venueHeading}</p>
             <Link
               href={hs.invitationVenueHref}

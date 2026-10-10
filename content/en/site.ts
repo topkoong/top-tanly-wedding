@@ -104,11 +104,5 @@ export const siteContentEn: SiteContent = {
   footer: {
     thankYou: "Thank you for being part of our special day.",
     venueLabel: "Conrad Bangkok",
-    footerLinks: [
-      { href: "/schedule", label: "Schedule" },
-      { href: "/venue", label: "Venue" },
-      { href: "/gallery", label: "Gallery" },
-      { href: "/faq", label: "FAQ" },
-    ],
   },
 };

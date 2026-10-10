@@ -3,10 +3,12 @@ import { BusFront, Car, SquareParking, TrainFront, type LucideIcon } from "lucid
 import Container from "@/components/ui/Container";
 import DecorativeDivider from "@/components/ui/DecorativeDivider";
 import Heading from "@/components/ui/Heading";
+import PhotoFrame from "@/components/ui/PhotoFrame";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import VenueMapEmbed from "@/components/ui/VenueMapEmbed";
 import type { SiteContent, TransportOption, VenueContent } from "@/content/schema";
+import type { PhotoMap } from "@/lib/photos";
 import { cn } from "@/lib/utils";
 
 const transportIcons: Record<TransportOption["icon"], LucideIcon> = {
@@ -20,9 +22,10 @@ const CARD = "min-w-0 rounded-2xl border border-charcoal/10 bg-ivory shadow-[0_8
 type VenueSectionProps = {
   site: SiteContent;
   content: VenueContent;
+  photos: PhotoMap;
 };
 
-export default function VenueSection({ site, content }: VenueSectionProps) {
+export default function VenueSection({ site, content, photos }: VenueSectionProps) {
   const isThai = site.locale === "th";
   const eyebrow = isThai
     ? "font-thai text-body-s text-stone"
@@ -51,7 +54,24 @@ export default function VenueSection({ site, content }: VenueSectionProps) {
             ) : null}
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal variant="scale" delay={0.08} className="grid gap-3 sm:grid-cols-2">
+            <PhotoFrame
+              src={photos.venue}
+              alt={content.photoAlt}
+              width={1600}
+              height={1067}
+              className="rounded-2xl"
+            />
+            <PhotoFrame
+              src={photos["venue-2"]}
+              alt={content.photoAltSecondary ?? content.photoAlt}
+              width={1600}
+              height={1067}
+              className="rounded-2xl"
+            />
+          </Reveal>
+
+          <Reveal delay={0.12}>
             <DecorativeDivider />
           </Reveal>
 

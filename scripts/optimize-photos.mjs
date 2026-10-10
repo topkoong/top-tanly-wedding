@@ -35,9 +35,11 @@ const HOME_SLOTS = {
   postcard: [1200, 800],
   stamp: [400, 480],
   frame: [1200, 1500],
+  venue: [1600, 1067],
+  "venue-2": [1600, 1067],
 };
 /* Crop anchor per slot; others use sharp's attention (salient-region) crop. */
-const HOME_POSITION = { intro: "centre", oval: "north" };
+const HOME_POSITION = { intro: "centre", oval: "north", venue: "north", "venue-2": "centre" };
 const GALLERY_LONG_EDGE = 1600;
 const WEBP = { quality: 75, effort: 5, smartSubsample: true };
 

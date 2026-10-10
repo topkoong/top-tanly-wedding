@@ -16,6 +16,8 @@ import { publicAssetPath } from "@/lib/publicAssetPath";
  *   postcard   1200×800   3:2   ≤120 KB — white-bordered print in the hero collage
  *   stamp      400×480    5:6   ≤40 KB  — postage stamp on the collage postcard
  *   frame      1200×1500  4:5   ≤200 KB — scalloped frame section
+ *   venue      1600×1067  3:2   ≤160 KB — Conrad night exterior on home + venue
+ *   venue-2    1600×1067  3:2   ≤160 KB — Conrad lobby on the venue page
  *   intro-blur (derived from intro by `pnpm photos`) — soft backdrop behind the hero
  */
 export const PHOTO_SLOTS = [
@@ -30,6 +32,8 @@ export const PHOTO_SLOTS = [
   "postcard",
   "stamp",
   "frame",
+  "venue",
+  "venue-2",
   "intro-blur",
 ] as const;
 

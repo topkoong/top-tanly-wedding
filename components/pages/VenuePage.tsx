@@ -6,11 +6,12 @@ import { siteContentTh } from "@/content/th/site";
 import { venueContentEn } from "@/content/en/venue";
 import { venueContentTh } from "@/content/th/venue";
 import { useLocale } from "@/lib/hooks/useLocale";
+import type { PhotoMap } from "@/lib/photos";
 
-export default function VenuePage() {
+export default function VenuePage({ photos }: { photos: PhotoMap }) {
   const locale = useLocale();
   const site = locale === "th" ? siteContentTh : siteContentEn;
   const content = locale === "th" ? venueContentTh : venueContentEn;
 
-  return <VenueSection site={site} content={content} />;
+  return <VenueSection site={site} content={content} photos={photos} />;
 }

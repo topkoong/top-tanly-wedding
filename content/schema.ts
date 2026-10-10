@@ -101,7 +101,6 @@ export type SiteContent = {
   footer: {
     thankYou: string;
     venueLabel: string;
-    footerLinks: NavigationItem[];
   };
 };
 
@@ -150,6 +149,11 @@ export type VenueContent = {
   title: string;
   mainVenue: string;
   address?: string;
+  /** Alt text for the hotel photographs. */
+  photoAlt: string;
+  photoAltSecondary?: string;
+  /** Optional credit under the photographs. */
+  photoCredit?: string;
   /** Section heading; shown only when `transport` has at least one item. */
   gettingHereTitle?: string;
   /** Label above ceremony / reception room cards. */

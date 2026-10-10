@@ -4,6 +4,8 @@ export const venueContentTh: VenueContent = {
   title: "สถานที่",
   mainVenue: "Conrad Bangkok",
   address: "All Seasons Place, 87 ถนนวิทยุ แขวงลุมพินี เขตปทุมวัน กรุงเทพฯ 10330",
+  photoAlt: "โรงแรม Conrad Bangkok ยามค่ำ มองจากมุมสูง",
+  photoAltSecondary: "โถงบันไดโรงแรม Conrad Bangkok",
   eventSpacesTitle: "ห้องจัดงาน",
   eventSpaces: [
     {
