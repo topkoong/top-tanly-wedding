@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm paper invitation canvas (#fdf1e2) + near-black ink */
-  --color-bg: #fdf1e2;
-  --color-bg-alt: #fffaf3;
+  /* Warm paper invitation canvas (#fff5e6) + near-black ink */
+  --color-bg: #fff5e6;
+  --color-bg-alt: #fff5e6;
   --color-text: #1f1d18;
   --color-text-muted: #6e6a61;
   --color-accent: #2b2922;
@@ -15,8 +15,8 @@
   /* Minimal invitation palette — warm cream + near-black ink, no florals.
      Legacy olive/sage/gold token NAMES are retained but collapsed onto the
      neutral ink/cream scale so existing class names render the minimal theme. */
-  --color-cream: #fdf1e2;
-  --color-ivory: #fffaf3;
+  --color-cream: #fff5e6;
+  --color-ivory: #fff5e6;
   --color-champagne: #f3e4d0;
   --color-rose: #a89e92;
   --color-rose-deep: #8a8074;
@@ -45,7 +45,7 @@
   --color-envelope-soft: #6b6348;
   --color-envelope-ink: #1f1c14;
   --color-night: #25221a;
-  --color-paper: #fdf1e2;
+  --color-paper: #fff5e6;
 
   --font-display: var(--font-bellefair);
   --font-body: var(--font-inter);
