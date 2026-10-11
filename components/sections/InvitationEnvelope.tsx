@@ -158,7 +158,7 @@ function Envelope({ open, letter }: { open: boolean; letter: ReactNode }) {
         ) : null}
         <span className='absolute inset-0 grid place-items-center rounded-full bg-paper shadow-[0_10px_20px_-10px_rgba(0,0,0,0.7),inset_0_-2px_3px_rgba(31,29,24,0.12),inset_0_1px_2px_rgba(255,255,255,0.9)]'>
           <span className='absolute inset-[9%] rounded-full border border-charcoal/15' />
-          <TNMonogram className='relative h-[58%] w-auto' title='' />
+          <TNMonogram className='relative size-[58%]' title='' />
         </span>
       </motion.span>
     </span>

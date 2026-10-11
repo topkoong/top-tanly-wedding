@@ -9,7 +9,8 @@ type TNMonogramProps = {
 /**
  * Tan & Top monogram from the invitation suite — intertwined NT mark
  * (`public/brand/logo.svg`). Sized by height on the wrapper; width follows
- * the artwork viewBox.
+ * the artwork via `aspect-ratio` so iOS Safari does not collapse an SVG
+ * that has no intrinsic width.
  */
 export default function TNMonogram({
   className,
@@ -20,9 +21,10 @@ export default function TNMonogram({
   return (
     <span
       className={cn(
-        'inline-grid h-14 place-items-center overflow-hidden',
+        'inline-block h-14 shrink-0 overflow-hidden',
         className,
       )}
+      style={{ aspectRatio: '285 / 264' }}
     >
       <img
         src={publicAssetPath('/brand/logo.svg')}
@@ -31,7 +33,7 @@ export default function TNMonogram({
         width={285}
         height={264}
         draggable={false}
-        className="block h-full w-auto max-w-full object-contain select-none"
+        className="block h-full w-full object-contain select-none"
       />
     </span>
   );
