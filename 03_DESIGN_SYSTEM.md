@@ -1,5 +1,7 @@
 # 03 — Design System
 
+> **Superseded for day-to-day work.** Use **`docs/MAINTAINING.md`** for current tokens (`#fff6ef` paper), fonts (Bellefair / Perandory), routes (`/` English, `/th/` Thai), and motion rules. Hex tables below are historical.
+
 > **Current direction (overrides older entries below): minimal invitation — warm cream + near-black ink, NO floral artwork.**
 > The site mirrors a clean letterpress invitation: generous whitespace, an elegant **Cormorant Garamond italic** couple-name as the focal point (formal first names **`Narueporn & Theerut`**, bride-first; nickname `Tan & Top` as a small uppercase line), the couple's custom **`NT`** monogram (serif N intertwined with a calligraphic T, shipped as the transparent PNG `public/brand/nt-monogram.png`), and **letter-spaced uppercase** Inter supporting type on a warm cream canvas. Flowers, watercolor sprites, and botanical SVG corners have been removed and must not return. The legacy `olive`/`sage`/`gold` token **names** still exist but are collapsed onto a neutral ink/cream scale (olive ≈ near-black, gold ≈ quiet taupe hairline), so older class names render the minimal theme. Prefer `charcoal`/`stone`/`cream`/`ivory` for new work.
 

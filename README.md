@@ -8,7 +8,7 @@ Static, read-only, bilingual wedding information website for **Tan & Top**.
 
 ## Current product decisions
 
-- **Languages:** Thai is the default. English routes live under `/en`.
+- **Languages:** English at the root (`/`). Thai routes live under `/th/`.
 - **Visible naming (bride-first):** Friendly **Tan & Top** · Formal **Narueporn & Theerut**.
 - **RSVP is external only:** the home page links to the couple's Google Form (`homeShell.rsvpFormUrl`); the site itself stores or counts nothing.
 - **No forms** (no public contact RSVPs or guest uploads).
@@ -20,7 +20,7 @@ Static, read-only, bilingual wedding information website for **Tan & Top**.
 
 ## Visual direction (summary)
 
-Cream/ivory invitation surfaces, **olive** as the primary interactive accent (buttons, mobile bottom nav, icon wells), **gold** for thin dividers only, subtle SVG botanical hints on the home hero. Mobile-first: fixed **bottom navigation** (Home · Schedule · Venue · Gallery · FAQ) below the `lg` breakpoint with safe-area padding.
+Warm paper invitation (`#fff6ef`) and near-black ink. No florals. Olive tokens are ink, not green; the brown envelope is intro-only. Mobile-first: fixed **bottom navigation** (Home · Schedule · Venue · Gallery · FAQ) below `lg` with safe-area padding. Full handbook: [docs/MAINTAINING.md](docs/MAINTAINING.md).
 
 ## Wedding details
 
@@ -35,7 +35,7 @@ Cream/ivory invitation surfaces, **olive** as the primary interactive accent (bu
 
 ## Active routes
 
-**Thai (default)**
+**English (root)**
 
 - `/`
 - `/schedule/`
@@ -43,13 +43,13 @@ Cream/ivory invitation surfaces, **olive** as the primary interactive accent (bu
 - `/gallery/`
 - `/faq/`
 
-**English**
+**Thai**
 
-- `/en/`
-- `/en/schedule/`
-- `/en/venue/`
-- `/en/gallery/`
-- `/en/faq/`
+- `/th/`
+- `/th/schedule/`
+- `/th/venue/`
+- `/th/gallery/`
+- `/th/faq/`
 
 > Production uses `trailingSlash: true`; paths above match deployed URLs.
 
@@ -77,7 +77,7 @@ From `package.json` (exact versions):
 | [lucide-react](https://lucide.dev/) | ^1.14.0 |
 | [Playwright](https://playwright.dev/) (dev) | ^1.59.1 |
 
-- **Fonts:** `next/font/google` — Cormorant Garamond, Inter, IBM Plex Sans Thai (`app/layout.tsx`).
+- **Fonts:** Bellefair (display), Perandory (couple name), Inter (UI), IBM Plex Sans Thai. See `lib/fonts.ts`.
 - **Output:** static export (`out/`), GitHub Pages under project path `/top-tanly-wedding` when `GITHUB_PAGES=true`.
 - **`next.config.ts`:** `output: "export"`, `trailingSlash: true`, `images.unoptimized: true`, conditional `basePath` / `assetPrefix`.
 
@@ -143,7 +143,8 @@ Implementation: [`scripts-capture-screenshots.mjs`](scripts-capture-screenshots.
 
 | Document | Purpose |
 |----------|---------|
-| [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md) | Purpose, decisions, routes, wedding facts |
+| [docs/MAINTAINING.md](docs/MAINTAINING.md) | **Current** design system, motion, content, photos, deploy |
+| [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md) | Purpose, decisions, wedding facts |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | App, content, components, static export |
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | GitHub Pages, env, workflow, post-deploy QA |
 | [docs/VISUAL_QA.md](docs/VISUAL_QA.md) | Viewports, Playwright, motion acceptance |

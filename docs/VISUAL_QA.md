@@ -27,7 +27,7 @@ Botanical overlays must stay inside clipped parents—if any width introduces ho
 
 Pages to open (production or local)—use **both** locales:
 
-**Thai**
+**English**
 
 - `/`
 - `/schedule/`
@@ -35,13 +35,13 @@ Pages to open (production or local)—use **both** locales:
 - `/gallery/`
 - `/faq/`
 
-**English**
+**Thai**
 
-- `/en/`
-- `/en/schedule/`
-- `/en/venue/`
-- `/en/gallery/`
-- `/en/faq/`
+- `/th/`
+- `/th/schedule/`
+- `/th/venue/`
+- `/th/gallery/`
+- `/th/faq/`
 
 ---
 

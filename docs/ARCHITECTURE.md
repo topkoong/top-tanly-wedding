@@ -8,18 +8,18 @@ Pinned versions live in **`package.json`** (currently Next **16.2.6**, React **1
 
 ## App structure (`app/`)
 
-- **`layout.tsx`** — Root shell: fonts (`next/font/google`: Cormorant Garamond, Inter, IBM Plex Sans Thai), metadata, Navbar, Footer, `MobileBottomNav` (fixed, `lg:hidden`), global styles; main has bottom padding on small screens for the nav + safe area.
-- **`page.tsx`** — Thai home (`/`).
-- **`schedule/page.tsx`**, **`venue/page.tsx`**, **`gallery/page.tsx`**, **`faq/page.tsx`** — Thai routes.
-- **`en/`** — Mirrors the above under `/en/...`.
+- **`layout.tsx`** — Root shell: fonts (Bellefair, Perandory, Inter, IBM Plex Sans Thai), metadata, Navbar, Footer, `MobileBottomNav` (fixed, `lg:hidden`), global styles; main has bottom padding on small screens for the nav + safe area.
+- **`page.tsx`** — English home (`/`).
+- **`schedule/page.tsx`**, **`venue/page.tsx`**, **`gallery/page.tsx`**, **`faq/page.tsx`** — English routes.
+- **`th/`** — Mirrors the above under `/th/...`.
 
 **Not present:** dynamic API routes, `middleware.ts` locale redirects, RSVP or form endpoints.
 
 ## Route structure & i18n
 
-- **Thai:** root paths (`/` … `/faq/`).
-- **English:** prefixed with `/en/`.
-- **No middleware.** Locale follows the URL segment only.
+- **English:** root paths (`/` … `/faq/`).
+- **Thai:** prefixed with `/th/`.
+- **No middleware.** Locale follows the URL segment only. See [MAINTAINING.md](./MAINTAINING.md).
 
 `next.config.ts` sets `trailingSlash: true` for static-export-friendly canonical URLs matching GitHub Pages.
 

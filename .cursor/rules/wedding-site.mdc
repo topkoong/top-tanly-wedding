@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Wedding Site — Cursor Rules
 
-You are helping build a **static, read-only** Next.js wedding site. Canonical product/engineering docs: **`README.md`**, **`docs/PROJECT_OVERVIEW.md`**, **`docs/ARCHITECTURE.md`**, **`docs/VISUAL_QA.md`**, and numbered specs **`00`**–**`12`** (some contain historical framing—defer to **`README.md`** when they conflict).
+You are helping build a **static, read-only** Next.js wedding site. Canonical docs: **`docs/MAINTAINING.md`**, **`README.md`**, **`docs/PROJECT_OVERVIEW.md`**, **`docs/ARCHITECTURE.md`**, **`docs/VISUAL_QA.md`**. Numbered specs **`00`**–**`12`** are historical—defer to **`docs/MAINTAINING.md`** when they conflict.
 
 ## Critical constraints
 
@@ -36,8 +36,8 @@ Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI 
 
 **Routing:**
 
-- Thai default: `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`
-- English: `/en`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`
+- English (root): `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`
+- Thai: `/th/`, `/th/schedule/`, `/th/venue/`, `/th/gallery/`, `/th/faq/`
 - **`trailingSlash: true`** in production config — prefer links that match exported URLs.
 
 **Do not restore** Accommodation or Dress-code routes/menus unless the product charter changes.
@@ -46,7 +46,7 @@ Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI 
 
 - Next.js App Router (currently **16.2.x**), TypeScript strict, Tailwind CSS v4
 - **pnpm only** (`packageManager` field)
-- `next/font/google` → **Bellefair** (English display + body) + Inter (UI chrome) + **IBM Plex Sans Thai**. **Le Jour Script** is self-hosted from **`public/fonts/LeJourScript-Regular.otf`** (Din Studio; see dafont reference in `public/fonts/README.md`). The couple's **formal names** render in **Bellefair** uppercase; script nickname text uses **`font-script`**. The **NT monogram** and the **`Tan Top` nickname** artwork are pre-keyed transparent PNGs in **`public/brand/`** (`nt-monogram.png`, `tan-top.png`). (Cormorant Garamond and Allura have been removed.)
+- Fonts: **Bellefair** (`font-display`) + **Perandory** (couple name via `CoupleScriptMark`) + Inter (UI) + **IBM Plex Sans Thai**. The **NT monogram** is `public/brand/logo.svg` through `TNMonogram` + `publicAssetPath`. (Cormorant Garamond and Allura stay removed.)
 - `lucide-react`, `motion` (subtle, reduced-motion-safe)
 - Static export (**`output: 'export'`**), **`images.unoptimized: true`**
 - Playwright (**dev**) + `pnpm screenshots` for deterministic visual QA (see **`docs/VISUAL_QA.md`**)

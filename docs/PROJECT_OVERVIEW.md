@@ -6,11 +6,11 @@ Provide a **static, read-only, bilingual** (Thai-first) wedding microsite guests
 
 See also: [DOCUMENTATION_AUDIT.md](./DOCUMENTATION_AUDIT.md) for what obsolete docs said vs. shipping code.
 
-> **Visual direction (current): minimal invitation** — warm cream canvas, near-black ink, an elegant Cormorant Garamond italic couple-name (formal first names `Narueporn & Theerut`, bride-first) with the `Tan & Top` nickname as a small uppercase line, an intertwined calligraphic `NT` monogram, letter-spaced uppercase supporting type, and **no floral/botanical artwork**. See `03_DESIGN_SYSTEM.md` and `.cursor/rules/wedding-site.mdc`.
+> **Visual direction (current): minimal invitation** — warm paper (`#fff6ef`), near-black ink, Bellefair + Perandory couple names, NT monogram, **no floral artwork**. See [MAINTAINING.md](./MAINTAINING.md).
 
 ## Key product decisions
 
-- **Default locale:** Thai at root URLs; **English** under `/en/*`.
+- **Locales:** English at root URLs; **Thai** under `/th/*`. See [MAINTAINING.md](./MAINTAINING.md).
 - **Visible naming (bride-first):** Tan & Top · Narueporn & Theerut (never groom-first ordering in UI copy).
 - **No on-site RSVP** (the home page only links to an external Google Form), attendance counting, forms, chatbot, API routes, server actions, database, auth, or analytics in MVP.
 - **No middleware** locale detection—explicit routes only.
@@ -32,13 +32,13 @@ Operational detail on venue/floors/transit must stay accurate or marked “to be
 
 ### Active (implemented)
 
-Thai:
+English:
 
 - `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`
 
-English:
+Thai:
 
-- `/en/`, `/en/schedule/`, `/en/venue/`, `/en/gallery/`, `/en/faq/`
+- `/th/`, `/th/schedule/`, `/th/venue/`, `/th/gallery/`, `/th/faq/`
 
 ### Not shipped (legacy spec only)
 

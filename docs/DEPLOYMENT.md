@@ -153,11 +153,11 @@ After every deployment, check:
 /top-tanly-wedding/venue/
 /top-tanly-wedding/gallery/
 /top-tanly-wedding/faq/
-/top-tanly-wedding/en/
-/top-tanly-wedding/en/schedule/
-/top-tanly-wedding/en/venue/
-/top-tanly-wedding/en/gallery/
-/top-tanly-wedding/en/faq/
+/top-tanly-wedding/th/
+/top-tanly-wedding/th/schedule/
+/top-tanly-wedding/th/venue/
+/top-tanly-wedding/th/gallery/
+/top-tanly-wedding/th/faq/
 ```
 
 Also check:
