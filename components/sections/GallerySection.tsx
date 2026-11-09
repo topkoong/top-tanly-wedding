@@ -86,8 +86,15 @@ export default function GallerySection({ site, content }: GallerySectionProps) {
             </p>
           </Reveal>
 
-          <div className="min-w-0 columns-1 gap-4 sm:columns-2 lg:hidden">
-            {content.items.map((item, index) => renderTile(item, index, "mb-4 break-inside-avoid"))}
+          <div className="min-w-0 space-y-4 sm:hidden">
+            {content.items.map((item, index) => renderTile(item, index))}
+          </div>
+          <div className="hidden min-w-0 items-start gap-4 sm:flex lg:hidden">
+            {balanceColumns(content.items, 2).map((column, columnIndex) => (
+              <div key={columnIndex} className="flex min-w-0 flex-1 flex-col gap-4">
+                {column.map(({ item, index }) => renderTile(item, index))}
+              </div>
+            ))}
           </div>
           <div className="hidden min-w-0 items-start gap-4 lg:flex">
             {balanceColumns(content.items, 3).map((column, columnIndex) => (

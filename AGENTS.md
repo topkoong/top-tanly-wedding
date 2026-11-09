@@ -27,7 +27,7 @@ For gallery order, home slots, the save-the-date reel, `pnpm photos`, crops, or 
 ## Do not
 
 - Overwrite Conrad `venue` / `venue-2` photos
-- Start the gallery with ชุดไทย
+- Start the gallery with ชุดไทย (open on blurry street stills instead)
 - Put three home-band stills from the same studio set
 - Mute-autoplay the reel (tap-to-play with sound)
 - Restore florals, `/en/` routes, Accommodation, or Dress-code

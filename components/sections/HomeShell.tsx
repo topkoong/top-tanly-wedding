@@ -58,7 +58,7 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
       <section
         id="home-hero"
         data-nav-theme="dark"
-        className="relative isolate -mt-[65px] flex min-h-[100svh] flex-col overflow-hidden bg-backdrop pt-24 pb-16 sm:-mt-[97px] sm:pt-32 sm:pb-20"
+        className="relative isolate -mt-[65px] flex min-h-[100svh] flex-col overflow-x-clip bg-backdrop pt-24 pb-16 sm:-mt-[97px] sm:pt-32 sm:pb-20"
       >
         <PhotoBackdrop src={photos["intro-blur"]} blur />
         <Container className="relative z-10 my-auto w-full">

@@ -59,7 +59,7 @@ Originals in `photos-src/` are gitignored except `.gitkeep`. Convert with `pnpm 
 
 - **Never overwrite** Conrad `venue` / `venue-2`
 - Home **band-1…3** must mix **different sets** (studio + first-outing rings), not three studio stills
-- Gallery must **not** open on ชุดไทย; Thai dress sits later
+- Gallery must **not** open on ชุดไทย; open on motion-blur street stills (`street-34`, `street-289`, `street-278`, `street-260`). Rebuild street tiles from the dump: delete existing `*-street-*` gallery files, then copy every `photos-src/all-photos/street` original. Thai dress sits later.
 - Reel: tap-to-play **with sound**; no muted autoplay; `prefers-reduced-motion` = poster only
 - Do not wrap below-the-fold photos in `aria-hidden` + `Reveal` `opacity: 0` + `loading="lazy"` — Chromium will never fetch them
 

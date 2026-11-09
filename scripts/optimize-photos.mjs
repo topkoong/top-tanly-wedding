@@ -58,13 +58,25 @@ const HOME_SLOTS = {
 const HOME_POSITION = {
   intro: "centre",
   oval: "centre",
+  "strip-2": "east",
   postcard: "centre",
   stamp: "centre",
   "band-1": "north",
   "band-2": "centre",
   "band-3": "north",
+  frame: "centre",
   venue: "north",
   "venue-2": "centre",
+};
+const HOME_SOURCE_OVERRIDES = {
+  intro: ["all-photos", "street", "Prewedding-120.jpg"],
+  "strip-1": ["all-photos", "street", "Prewedding-43.jpg"],
+  "strip-2": ["home", "Prewedding-306.jpg"],
+  "strip-3": ["all-photos", "street", "Prewedding-264.jpg"],
+  postcard: ["all-photos", "street", "Prewedding-118.jpg"],
+  stamp: ["all-photos", "street", "Prewedding-225.jpg"],
+  "band-1": ["all-photos", "shutterbooth", "12SEP2026-42.jpg"],
+  frame: ["all-photos", "street", "Prewedding-278.jpg"],
 };
 const REEL_SRC = path.join(SRC, "video", "save-the-date.mp4");
 const REEL_OUT = path.join(PUBLIC, "videos", "save-the-date.mp4");
@@ -122,9 +134,23 @@ async function convert(input, output, pipeline, label) {
 
 async function home() {
   const files = await listImages(path.join(SRC, "home"));
+  const sourceSlots = new Map();
+  for (const [slot, parts] of Object.entries(HOME_SOURCE_OVERRIDES)) {
+    const source = path.join(SRC, ...parts);
+    try {
+      await fs.access(source);
+      const existing = files.findIndex((file) => slug(path.basename(file)) === slot);
+      if (existing !== -1) files.splice(existing, 1);
+      files.push(source);
+      sourceSlots.set(source, slot);
+    } catch {
+      warnings.push(`home/${slot}: canonical source ${parts.join("/")} is missing`);
+    }
+  }
+  files.sort();
   const seen = new Set();
   for (const file of files) {
-    const slot = slug(path.basename(file));
+    const slot = sourceSlots.get(file) ?? slug(path.basename(file));
     const size = HOME_SLOTS[slot];
     if (!size) {
       warnings.push(`home/${path.basename(file)}: unknown slot — rename to one of ${Object.keys(HOME_SLOTS).join(", ")}`);
@@ -151,7 +177,7 @@ async function home() {
       `home/${slot}`,
     );
   }
-  const intro = files.find((f) => slug(path.basename(f)) === "intro");
+  const intro = files.find((file) => (sourceSlots.get(file) ?? slug(path.basename(file))) === "intro");
   if (intro) {
     /* Tiny pre-blurred copy: scaled up behind the hero it looks like a soft-focus photo at ~10 KB. */
     await convert(

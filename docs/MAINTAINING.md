@@ -14,23 +14,23 @@ This repo is meant to survive a cold start. You do not need the original author 
 
 A **static invitation**. Next.js exports HTML to `out/`; GitHub Pages hosts it at `/top-tanly-wedding`. Guests never submit data here. The wedding date in content is **29 November 2026**.
 
-| Still true later | Not in this repo |
-|------------------|------------------|
-| Copy, photos, colours, FAQ | Guest RSVP answers (Google Sheet) |
-| Schedule, Conrad map, gallery | Form edit rights (Google Form) |
-| Envelope intro + cream theme | Any server, database, or secrets |
+| Still true later              | Not in this repo                  |
+| ----------------------------- | --------------------------------- |
+| Copy, photos, colours, FAQ    | Guest RSVP answers (Google Sheet) |
+| Schedule, Conrad map, gallery | Form edit rights (Google Form)    |
+| Envelope intro + cream theme  | Any server, database, or secrets  |
 
 ### Access to transfer before you leave
 
 Fill names in when you hand over. None of these live in git.
 
-| Asset | Where | Who should own it |
-|-------|--------|-------------------|
-| GitHub repo `topkoong/top-tanly-wedding` | github.com | Admin who can push `main` and edit Actions / Pages |
-| GitHub Pages | Settings → Pages (source: GitHub Actions) | Same admin |
-| RSVP Google Form | URL in `content/en/site.ts` → `homeShell.rsvpFormUrl` | Couple or planner |
-| RSVP Google Sheet | Linked from that form | Couple or planner |
-| Fonts | `public/fonts/` (Perandory, Le Jour Script if reused) | Keep the license files; do not re-upload from random sites |
+| Asset                                    | Where                                                 | Who should own it                                          |
+| ---------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------- |
+| GitHub repo `topkoong/top-tanly-wedding` | github.com                                            | Admin who can push `main` and edit Actions / Pages         |
+| GitHub Pages                             | Settings → Pages (source: GitHub Actions)             | Same admin                                                 |
+| RSVP Google Form                         | URL in `content/en/site.ts` → `homeShell.rsvpFormUrl` | Couple or planner                                          |
+| RSVP Google Sheet                        | Linked from that form                                 | Couple or planner                                          |
+| Fonts                                    | `public/fonts/` (Perandory, Le Jour Script if reused) | Keep the license files; do not re-upload from random sites |
 
 There is **no `.env`**, no hosting bill beyond GitHub, and no LINE OA.
 
@@ -51,11 +51,11 @@ The site can stay up as a thank-you / gallery. Typical edits:
 
 ### Docs to trust vs ignore
 
-| Trust | Ignore unless debugging history |
-|-------|----------------------------------|
-| This file, `README.md`, `AGENTS.md` | `00_`–`12_` numbered specs |
-| `app/globals.css` for colour | `03_DESIGN_SYSTEM.md` hex tables |
-| `lib/locale.ts` for routes | Any doc that says English lives at `/en/` |
+| Trust                               | Ignore unless debugging history           |
+| ----------------------------------- | ----------------------------------------- |
+| This file, `README.md`, `AGENTS.md` | `00_`–`12_` numbered specs                |
+| `app/globals.css` for colour        | `03_DESIGN_SYSTEM.md` hex tables          |
+| `lib/locale.ts` for routes          | Any doc that says English lives at `/en/` |
 
 ---
 
@@ -113,7 +113,7 @@ Home slots and sizes are documented in `lib/photos.ts`. Crop anchors live in `HO
 
 **Do not overwrite** Conrad `venue` / `venue-2`. Prefer no-glasses portraits on home. `strip-2` is the large strip print. The three-still band after the timeline (`band-1…3`) must mix **different sets** (studio ชุดไทย + first-outing rings), not three studio frames.
 
-Gallery order is curated in `content/*/gallery.ts`. Do **not** open on ชุดไทย; start with `22-studio-white` and mix street; Thai dress sits later, before the older shutterbooth set.
+Gallery order is curated in `content/*/gallery.ts`. Rebuild street tiles from the dump (delete existing `*-street-*` copies first, then copy every `photos-src/all-photos/street` file). Open on motion-blur stills (`street-34`, `street-289`, `street-278`, `street-260`), shuffle the rest of that street set, then studio and older sets. Do **not** open on ชุดไทย; `21-studio-thai` sits later, before the older shutterbooth set.
 
 The save-the-date reel is **home-only** (`HomeShell` `#film`, after Conrad `#invitation`, before `#rsvp`). Tap-to-play with sound; no muted autoplay. Reduced motion shows the poster. Copy is `homeShell.reel` in `content/*/site.ts`.
 
@@ -139,38 +139,38 @@ After changing `@theme` colours, Tailwind v4 + Turbopack can keep the old token 
 
 Declared in `app/globals.css`. Prefer token class names (`bg-cream`, `text-charcoal`) over new hex.
 
-| Token | Hex | Use |
-|-------|-----|-----|
-| `cream` / `ivory` / `paper` / page `bg` | `#fff5e6` | Page canvas, cards, letter stock |
-| `champagne` | `#f3e4d0` | Rare warm tint |
-| `charcoal` | `#1f1d18` | Body ink, primary buttons |
-| `stone` | `#6e6a61` | Secondary / muted copy |
-| `olive` / `olive-deep` | `#2b2922` / `#16140f` | Legacy names → ink (not green) |
-| `gold` | `#c8c1b2` | Quiet hairlines only |
+| Token                                   | Hex                   | Use                              |
+| --------------------------------------- | --------------------- | -------------------------------- |
+| `cream` / `ivory` / `paper` / page `bg` | `#fff5e6`             | Page canvas, cards, letter stock |
+| `champagne`                             | `#f3e4d0`             | Rare warm tint                   |
+| `charcoal`                              | `#1f1d18`             | Body ink, primary buttons        |
+| `stone`                                 | `#6e6a61`             | Secondary / muted copy           |
+| `olive` / `olive-deep`                  | `#2b2922` / `#16140f` | Legacy names → ink (not green)   |
+| `gold`                                  | `#c8c1b2`             | Quiet hairlines only             |
 
 **Envelope only** (intro + collage envelope — do not use these on cream pages):
 
-| Token | Hex | Use |
-|-------|-----|-----|
-| `backdrop` | `#3d3824` | Full-screen intro / dark bands |
-| `envelope` | `#544c35` | Pocket flaps |
-| `envelope-deep` | `#463f2b` | Back panel, closed flap |
-| `envelope-soft` | `#6b6348` | Fold highlights |
-| `envelope-ink` | `#1f1c14` | Creases |
-| `night` | `#25221a` | Deepest shade under photos |
+| Token           | Hex       | Use                            |
+| --------------- | --------- | ------------------------------ |
+| `backdrop`      | `#3d3824` | Full-screen intro / dark bands |
+| `envelope`      | `#544c35` | Pocket flaps                   |
+| `envelope-deep` | `#463f2b` | Back panel, closed flap        |
+| `envelope-soft` | `#6b6348` | Fold highlights                |
+| `envelope-ink`  | `#1f1c14` | Creases                        |
+| `night`         | `#25221a` | Deepest shade under photos     |
 
 No colored CTAs. Primary = charcoal pill, cream tracked label. Secondary = hairline `charcoal/30` outline. Cards `rounded-2xl` / `rounded-3xl`, media `rounded-xl`, buttons `rounded-full`. Shadows stay soft and warm.
 
 ### Typography
 
-| Role | Face | Token / class |
-|------|------|----------------|
-| English display, invitation labels | Bellefair | `font-display` |
-| English couple name (stacked) | Perandory Semi-Condensed | `CoupleScriptMark` |
-| Thai couple name and Thai body | IBM Plex Sans Thai | `font-thai` |
-| UI chrome | Inter | `font-body` |
+| Role                               | Face                     | Token / class      |
+| ---------------------------------- | ------------------------ | ------------------ |
+| English display, invitation labels | Bellefair                | `font-display`     |
+| English couple name (stacked)      | Perandory Semi-Condensed | `CoupleScriptMark` |
+| Thai couple name and Thai body     | IBM Plex Sans Thai       | `font-thai`        |
+| UI chrome                          | Inter                    | `font-body`        |
 
-`LeJourScript-Regular.otf` is still in `public/fonts/` but is **not** wired as the couple mark. Do not mix nickname script *and* formal names in the same lockup. Formal names live in content; the hero shows one stacked pair via `CoupleScriptMark`.
+`LeJourScript-Regular.otf` is still in `public/fonts/` but is **not** wired as the couple mark. Do not mix nickname script _and_ formal names in the same lockup. Formal names live in content; the hero shows one stacked pair via `CoupleScriptMark`.
 
 English eyebrows: letter-spaced uppercase Bellefair or Inter. **Never widen tracking on Thai.**
 
@@ -192,13 +192,13 @@ Bellefair is a single weight — do not fake bold (`font-synthesis-weight: none`
 
 ### Pages (what to protect)
 
-| Page | Must stay true |
-|------|----------------|
-| Home | Envelope → collage → Conrad `#invitation` → save-the-date film `#film` → `#rsvp` Google Form → scallop frame → timeline → mixed photo band. One `<h1>`. |
-| Schedule | Facts first. No ornamental motion on times. |
-| Venue | Conrad photos, rooms, one-line directions, parking, map. |
-| Gallery | Curated stills from `content/*/gallery.ts`. No uploads, no reel. |
-| FAQ | Deterministic answers only. |
+| Page     | Must stay true                                                                                                                                          |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Home     | Envelope → collage → Conrad `#invitation` → save-the-date film `#film` → `#rsvp` Google Form → scallop frame → timeline → mixed photo band. One `<h1>`. |
+| Schedule | Facts first. No ornamental motion on times.                                                                                                             |
+| Venue    | Conrad photos, rooms, one-line directions, parking, map.                                                                                                |
+| Gallery  | Curated stills from `content/*/gallery.ts`. No uploads, no reel.                                                                                        |
+| FAQ      | Deterministic answers only.                                                                                                                             |
 
 ---
 
@@ -231,7 +231,7 @@ Library: **`motion`** (`motion/react`). Shared ease: `[0.22, 1, 0.36, 1]`.
 Wrap a block in `Reveal`. Stagger siblings with `delay` in ~0.08s steps. Variants: `up` (default), `left`, `right`, `scale`.
 
 ```tsx
-<Reveal delay={0.08} variant="scale">
+<Reveal delay={0.08} variant='scale'>
   …
 </Reveal>
 ```
@@ -250,10 +250,10 @@ Screenshot QA (`pnpm screenshots`) disables CSS animations on purpose. That is n
 
 ## Locales and routing
 
-| Locale | Home | Other pages |
-|--------|------|-------------|
-| English | `/` | `/schedule/`, `/venue/`, `/gallery/`, `/faq/` |
-| Thai | `/th/` | `/th/schedule/`, `/th/venue/`, `/th/gallery/`, `/th/faq/` |
+| Locale  | Home   | Other pages                                               |
+| ------- | ------ | --------------------------------------------------------- |
+| English | `/`    | `/schedule/`, `/venue/`, `/gallery/`, `/faq/`             |
+| Thai    | `/th/` | `/th/schedule/`, `/th/venue/`, `/th/gallery/`, `/th/faq/` |
 
 `lib/locale.ts` and `useLocale()` derive locale from the path. Do not add `middleware.ts` redirects. `LanguageToggle` writes the sibling locale path.
 
@@ -263,16 +263,16 @@ Older docs that say “Thai at `/` and English at `/en/`” are **wrong**.
 
 ## Files to touch (and not)
 
-| Task | Files |
-|------|--------|
-| Copy | `content/th/*`, `content/en/*`, `content/schema.ts` |
-| Colour / type tokens | `app/globals.css` |
-| Fonts | `lib/fonts.ts`, `app/layout.tsx` |
-| Photos | `photos-src/…` then `pnpm photos` → `public/images/…` (reel → `public/videos/`) |
-| Gallery order / captions | `content/en/gallery.ts` + `content/th/gallery.ts` |
-| Reel labels | `homeShell.reel` in `content/*/site.ts`; player `components/sections/GalleryReel.tsx` |
-| New UI | `components/{layout,sections,ui}/*` — PascalCase, default export, `cn()` |
-| Public URLs in JSX | `publicAssetPath()` |
+| Task                     | Files                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| Copy                     | `content/th/*`, `content/en/*`, `content/schema.ts`                                   |
+| Colour / type tokens     | `app/globals.css`                                                                     |
+| Fonts                    | `lib/fonts.ts`, `app/layout.tsx`                                                      |
+| Photos                   | `photos-src/…` then `pnpm photos` → `public/images/…` (reel → `public/videos/`)       |
+| Gallery order / captions | `content/en/gallery.ts` + `content/th/gallery.ts`                                     |
+| Reel labels              | `homeShell.reel` in `content/*/site.ts`; player `components/sections/GalleryReel.tsx` |
+| New UI                   | `components/{layout,sections,ui}/*` — PascalCase, default export, `cn()`              |
+| Public URLs in JSX       | `publicAssetPath()`                                                                   |
 
 Default to Server Components. Add `"use client"` only for menus, accordions, motion, locale, video, or scroll.
 

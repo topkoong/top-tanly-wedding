@@ -34,7 +34,7 @@ const PRINT_SHADOW = "shadow-[0_22px_30px_-18px_rgba(0,0,0,0.65)]";
 
 /**
  * Hero collage revealed after the envelope intro, laid over a soft-focus
- * photo: a black-and-white booth strip, a postcard with a stamp, a bordered
+ * photo: a color booth strip, a postcard with a stamp, a bordered
  * print and a lace save-the-date heart land one by one, then the countdown.
  */
 export default function HomeInvitationContent({ content, photos }: HomeInvitationContentProps) {
@@ -42,7 +42,7 @@ export default function HomeInvitationContent({ content, photos }: HomeInvitatio
   const hs = content.homeShell;
 
   return (
-    <div className="mx-auto w-full max-w-[26rem] sm:max-w-[34rem]">
+    <div className="mx-auto w-full max-w-[26rem] sm:max-w-[34rem] [@media(max-height:700px)]:max-w-[26rem]">
       <div className="flex items-start">
         <InvitationRevealItem
           delay={0}
@@ -51,7 +51,7 @@ export default function HomeInvitationContent({ content, photos }: HomeInvitatio
         >
           <PhotoStrip
             photos={[photos["strip-1"], photos["strip-2"], photos["strip-3"]]}
-            className={cn("-rotate-[4deg] grayscale", PRINT_SHADOW)}
+            className={cn("-rotate-[4deg]", PRINT_SHADOW)}
           />
         </InvitationRevealItem>
 

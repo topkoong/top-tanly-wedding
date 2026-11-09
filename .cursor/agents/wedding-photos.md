@@ -25,7 +25,7 @@ Slots and pixel sizes: `lib/photos.ts` + `HOME_SLOTS` / `HOME_POSITION` in `scri
 - Prefer **no-glasses** portraits on home (intro, oval, strips, frame) unless the user asks otherwise.
 - `strip-2` is the **large** strip print.
 - Home **band-1…3** must come from **different sets**. Current mix: studio ชุดไทย (`band-1`) + first-outing ring close-up (`band-2` ← `17-rings-hands`) + ring reveal (`band-3` ← `09-ring-portrait`). Do not put three studio stills in a row.
-- Gallery **must not start with ชุดไทย**. First item is `22-studio-white`, then mix street; `21-studio-thai` sits just before the older shutterbooth set.
+- Gallery **must not start with ชุดไทย**. The full `photos-src/all-photos/street` dump belongs on the gallery. To refresh it: delete existing `photos-src/gallery/*-street-*` and `public/images/gallery/*-street-*` (keep `04-crosswalk-street`), copy every dump file to `photos-src/gallery/street-<n>.jpg`, then `node scripts/optimize-photos.mjs`. Open on motion-blur stills (`street-34`, `street-289`, `street-278`, `street-260`), shuffle the rest of that street set, then studio; `21-studio-thai` sits just before the older shutterbooth set.
 - The 9:16 reel belongs on **home `#film`** (after Conrad `#invitation`, before `#rsvp`). Do **not** put it on the gallery page.
 - Reel playback: tap-to-play **with AAC audio**. No `muted`, no `autoPlay`, no `loop`. `onEnded` resets playing. `prefers-reduced-motion` shows the poster `Image` only.
 - Encode via the photos script: h264 + AAC, 720×1280, CRF 27, poster `public/images/photos/reel-poster.webp`.
