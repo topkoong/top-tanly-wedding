@@ -37,9 +37,9 @@ export default function PhotoFrame({
           alt={alt}
           width={width}
           height={height}
-          loading={priority ? "eager" : "lazy"}
+          loading="eager"
           decoding="async"
-          fetchPriority={priority ? "high" : undefined}
+          fetchPriority={priority ? "high" : "low"}
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : (

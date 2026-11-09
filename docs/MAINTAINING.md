@@ -6,6 +6,59 @@ Live site: [https://topkoong.github.io/top-tanly-wedding/](https://topkoong.gith
 
 ---
 
+## Handover (read this if months have passed)
+
+This repo is meant to survive a cold start. You do not need the original author on a call if the access list below is filled in.
+
+### What you are inheriting
+
+A **static invitation**. Next.js exports HTML to `out/`; GitHub Pages hosts it at `/top-tanly-wedding`. Guests never submit data here. The wedding date in content is **29 November 2026**.
+
+| Still true later | Not in this repo |
+|------------------|------------------|
+| Copy, photos, colours, FAQ | Guest RSVP answers (Google Sheet) |
+| Schedule, Conrad map, gallery | Form edit rights (Google Form) |
+| Envelope intro + cream theme | Any server, database, or secrets |
+
+### Access to transfer before you leave
+
+Fill names in when you hand over. None of these live in git.
+
+| Asset | Where | Who should own it |
+|-------|--------|-------------------|
+| GitHub repo `topkoong/top-tanly-wedding` | github.com | Admin who can push `main` and edit Actions / Pages |
+| GitHub Pages | Settings → Pages (source: GitHub Actions) | Same admin |
+| RSVP Google Form | URL in `content/en/site.ts` → `homeShell.rsvpFormUrl` | Couple or planner |
+| RSVP Google Sheet | Linked from that form | Couple or planner |
+| Fonts | `public/fonts/` (Perandory, Le Jour Script if reused) | Keep the license files; do not re-upload from random sites |
+
+There is **no `.env`**, no hosting bill beyond GitHub, and no LINE OA.
+
+### First hour
+
+1. `pnpm install && pnpm dev` — English `/`, Thai `/th/`.
+2. Open home, skip or tap the envelope, follow `#rsvp` and confirm the form still opens.
+3. Skim `content/th/schedule.ts`, `content/th/venue.ts`, `content/th/faq.ts` (and the `en` twins). That is the guest-facing truth.
+4. Push a no-op or docs commit to a branch if you need to prove Actions still deploys. **`main` auto-deploys.** Feature branches need `gh workflow run deploy.yml --ref <branch>`.
+
+### After the wedding
+
+The site can stay up as a thank-you / gallery. Typical edits:
+
+- Close or unlink the Google Form; change the RSVP band copy in `content/*/site.ts` if replies should stop.
+- Do not add a contact form or guestbook.
+- Do not “modernise” by restoring florals, a chatbot, or `/en/` routes. English is already `/`.
+
+### Docs to trust vs ignore
+
+| Trust | Ignore unless debugging history |
+|-------|----------------------------------|
+| This file, `README.md` | `00_`–`12_` numbered specs |
+| `app/globals.css` for colour | `03_DESIGN_SYSTEM.md` hex tables |
+| `lib/locale.ts` for routes | Any doc that says English lives at `/en/` |
+
+---
+
 ## What this site is
 
 A **static, read-only, bilingual** invitation. Guests read schedule, venue, gallery, and FAQ. They do not submit data here.

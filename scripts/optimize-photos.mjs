@@ -5,6 +5,7 @@
  *
  *   photos-src/home/<slot>.jpg        → public/images/photos/<slot>.webp  (exact slot size, cropped)
  *   photos-src/gallery/*              → public/images/gallery/<name>.webp (long edge 1600)
+ *   photos-src/video/save-the-date.mp4 → public/videos/save-the-date.mp4 + public/images/photos/reel-poster.webp
  *   photos-src/og/og.jpg              → public/og-image.jpg (1200×630 JPEG for LINE/Facebook previews)
  *
  * Accepts .jpg .jpeg .png .webp .tif .tiff .avif. Export HEIC from Photos as JPEG first.
@@ -12,9 +13,24 @@
  *   pnpm photos            convert new/changed files
  *   pnpm photos --force    reconvert everything
  */
+import { execFile, spawn } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { promisify } from "node:util";
 import sharp from "sharp";
+
+const execFileAsync = promisify(execFile);
+
+function run(cmd, args) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(cmd, args, { stdio: ["ignore", "ignore", "inherit"] });
+    child.on("error", reject);
+    child.on("close", (code) => {
+      if (code === 0) resolve();
+      else reject(new Error(`${cmd} exited ${code}`));
+    });
+  });
+}
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SRC = path.join(ROOT, "photos-src");
@@ -39,7 +55,22 @@ const HOME_SLOTS = {
   "venue-2": [1600, 1067],
 };
 /* Crop anchor per slot; others use sharp's attention (salient-region) crop. */
-const HOME_POSITION = { intro: "centre", oval: "north", venue: "north", "venue-2": "centre" };
+const HOME_POSITION = {
+  intro: "centre",
+  oval: "centre",
+  postcard: "centre",
+  stamp: "centre",
+  "band-1": "north",
+  "band-2": "centre",
+  "band-3": "north",
+  venue: "north",
+  "venue-2": "centre",
+};
+const REEL_SRC = path.join(SRC, "video", "save-the-date.mp4");
+const REEL_OUT = path.join(PUBLIC, "videos", "save-the-date.mp4");
+const REEL_POSTER = path.join(PUBLIC, "images", "photos", "reel-poster.webp");
+const REEL_WIDTH = 720;
+const REEL_HEIGHT = 1280;
 const GALLERY_LONG_EDGE = 1600;
 const WEBP = { quality: 75, effort: 5, smartSubsample: true };
 
@@ -149,6 +180,93 @@ async function gallery() {
   }
 }
 
+async function ffmpegAvailable() {
+  try {
+    await execFileAsync("ffmpeg", ["-version"], { timeout: 5000 });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function reel() {
+  try {
+    await fs.access(REEL_SRC);
+  } catch {
+    return;
+  }
+  if (!(await ffmpegAvailable())) {
+    warnings.push("video/save-the-date.mp4: ffmpeg not found — skip reel encode");
+    return;
+  }
+  const posterFresh = await isFresh(REEL_SRC, REEL_POSTER);
+  const videoFresh = await isFresh(REEL_SRC, REEL_OUT);
+  if (posterFresh && videoFresh) {
+    results.push({ label: "video/save-the-date", status: "unchanged", output: REEL_OUT });
+    return;
+  }
+  await fs.mkdir(path.dirname(REEL_OUT), { recursive: true });
+  await fs.mkdir(path.dirname(REEL_POSTER), { recursive: true });
+  const tmpPoster = path.join(path.dirname(REEL_POSTER), ".reel-poster.jpg");
+  await run("ffmpeg", [
+    "-y",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-i",
+    REEL_SRC,
+    "-vf",
+    `scale=${REEL_WIDTH}:${REEL_HEIGHT}:force_original_aspect_ratio=decrease,pad=${REEL_WIDTH}:${REEL_HEIGHT}:(ow-iw)/2:(oh-ih)/2`,
+    "-c:v",
+    "libx264",
+    "-pix_fmt",
+    "yuv420p",
+    "-profile:v",
+    "main",
+    "-movflags",
+    "+faststart",
+    "-crf",
+    "27",
+    "-preset",
+    "medium",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "128k",
+    "-ac",
+    "2",
+    REEL_OUT,
+  ]);
+  await run("ffmpeg", [
+    "-y",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-ss",
+    "1.2",
+    "-i",
+    REEL_SRC,
+    "-frames:v",
+    "1",
+    "-vf",
+    `scale=${REEL_WIDTH}:${REEL_HEIGHT}:force_original_aspect_ratio=decrease,pad=${REEL_WIDTH}:${REEL_HEIGHT}:(ow-iw)/2:(oh-ih)/2`,
+    tmpPoster,
+  ]);
+  const info = await load(tmpPoster)
+    .resize(REEL_WIDTH, REEL_HEIGHT, { fit: "cover" })
+    .webp(WEBP)
+    .toFile(REEL_POSTER);
+  await fs.unlink(tmpPoster).catch(() => {});
+  const videoStat = await fs.stat(REEL_OUT);
+  results.push({
+    label: "video/save-the-date",
+    status: "written",
+    output: REEL_OUT,
+    info: { width: REEL_WIDTH, height: REEL_HEIGHT, size: videoStat.size },
+  });
+  results.push({ label: "video/reel-poster", status: "written", output: REEL_POSTER, info });
+}
+
 async function og() {
   const [file] = await listImages(path.join(SRC, "og"));
   if (!file) return;
@@ -165,6 +283,7 @@ async function og() {
 
 await home();
 await gallery();
+await reel();
 await og();
 
 for (const r of results) {
@@ -175,7 +294,9 @@ for (const r of results) {
   }
   const { width, height, size } = r.info;
   console.log(`  ✓ ${r.label.padEnd(34)} ${rel}  ${width}×${height}  ${kb(size)}`);
-  if (size > 300 * 1024) warnings.push(`${rel} is ${kb(size)} — consider a less detailed crop`);
+  if (!rel.endsWith(".mp4") && size > 300 * 1024) {
+    warnings.push(`${rel} is ${kb(size)} — consider a less detailed crop`);
+  }
 }
 
 const galleryWritten = results.filter((r) => r.label.startsWith("gallery/") && r.info);

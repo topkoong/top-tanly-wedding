@@ -32,7 +32,7 @@ export const siteContentTh: SiteContent = {
   mobileMenuOpenLabel: "เปิดเมนู",
   mobileMenuCloseLabel: "ปิดเมนู",
   homeShell: {
-    invitationCardEyebrow: "บันทึกวันสำคัญ",
+    invitationCardEyebrow: "จองวันไว้เลยนะ",
     invitationLeadIn: "ด้วยความยินดีของทั้งสองครอบครัว",
     formalNames: "นางสาวนฤพร ภวังค์ทัศน์ และ นายธีรุตม์ ฟุ้งเกียรติเจริญ",
     invitationInviteLine: "ขอเรียนเชิญท่านร่วมงานมงคลสมรส",
@@ -58,7 +58,7 @@ export const siteContentTh: SiteContent = {
       seconds: "วินาที",
     },
     invitationMailLabel: "มีจดหมายถึงคุณ",
-    saveTheDateLabel: "Save the date",
+    saveTheDateLabel: "จองวันไว้เลยนะ",
     saveTheDateNumeric: "29.11.2569",
     timelineLead: "หวังว่าจะได้พบกัน",
     timelineTitle: "กำหนดการ",
@@ -100,6 +100,14 @@ export const siteContentTh: SiteContent = {
     rsvpCtaLabel: "ตอบรับการ์ดเชิญ",
     rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "ลิงก์ตอบรับจะเปิดเร็ว ๆ นี้",
+    reel: {
+      src: "/videos/save-the-date.mp4",
+      poster: "/images/photos/reel-poster.webp",
+      title: "จองวันไว้เลยนะ",
+      ariaLabel: "คลิปสั้นของตาลและต๊อป",
+      playLabel: "เล่นคลิป",
+      pauseLabel: "หยุดคลิป",
+    },
   },
   footer: {
     thankYou: "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งของวันสำคัญของเรา",

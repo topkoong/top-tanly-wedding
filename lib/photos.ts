@@ -19,6 +19,7 @@ import { publicAssetPath } from "@/lib/publicAssetPath";
  *   venue      1600×1067  3:2   ≤160 KB — Conrad night exterior on home + venue
  *   venue-2    1600×1067  3:2   ≤160 KB — Conrad lobby on the venue page
  *   intro-blur (derived from intro by `pnpm photos`) — soft backdrop behind the hero
+ *   reel-poster (from photos-src/video/save-the-date.mp4) — 9:16 still for the gallery reel
  */
 export const PHOTO_SLOTS = [
   "intro",

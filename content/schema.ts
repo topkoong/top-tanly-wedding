@@ -9,6 +9,15 @@ export type QuickActionIconKey = "calendar" | "mapPin" | "images" | "circleHelp"
 
 export type BottomNavIconKey = "home" | "calendar" | "mapPin" | "images" | "circleHelp";
 
+export type GalleryReel = {
+  src: string;
+  poster: string;
+  title: string;
+  ariaLabel: string;
+  playLabel: string;
+  pauseLabel: string;
+};
+
 export type SiteContent = {
   locale: Locale;
   htmlLang: "th" | "en";
@@ -97,6 +106,8 @@ export type SiteContent = {
     /** Google Form share link; leave empty until the form exists (shows the pending label). */
     rsvpFormUrl: string;
     rsvpPendingLabel: string;
+    /** 9:16 save-the-date film on the home page (after venue, before RSVP). */
+    reel: GalleryReel;
   };
   footer: {
     thankYou: string;

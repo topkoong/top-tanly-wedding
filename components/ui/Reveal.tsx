@@ -53,7 +53,7 @@ export default function Reveal({
       className={cn("min-w-0", className)}
       initial={hiddenStates[variant]}
       whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ once: true, amount: 0.08, margin: "160px 0px 160px 0px" }}
       transition={
         shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay, ease: REVEAL_EASE }
       }

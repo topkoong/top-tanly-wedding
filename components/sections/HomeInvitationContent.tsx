@@ -118,7 +118,13 @@ export default function HomeInvitationContent({ content, photos }: HomeInvitatio
           className="absolute left-[1%] top-[26%] z-20 w-[40%]"
         >
           <LaceHeart className="-rotate-[8deg]">
-            <p className="font-display text-[clamp(0.875rem,3.8vw,1.25rem)] uppercase leading-[1.1] tracking-[0.06em] [&:lang(th)]:tracking-normal">
+            <p
+              className={
+                isThai
+                  ? "font-thai text-[clamp(0.8125rem,3.4vw,1.125rem)] leading-snug"
+                  : "font-display text-[clamp(0.875rem,3.8vw,1.25rem)] uppercase leading-[1.1] tracking-[0.06em]"
+              }
+            >
               {hs.saveTheDateLabel}
             </p>
             <p className="mt-[0.35em] font-display text-[clamp(0.625rem,2.6vw,0.875rem)] tracking-[0.08em] text-paper/85">

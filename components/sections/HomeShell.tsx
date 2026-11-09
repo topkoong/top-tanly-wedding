@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import TNMonogram from "@/components/icons/TNMonogram";
 import InvitationBotanicalRule from "@/components/ui/InvitationBotanicalRule";
+import GalleryReel from "@/components/sections/GalleryReel";
 import HomeInvitationContent from "@/components/sections/HomeInvitationContent";
 import HomeTimeline from "@/components/sections/HomeTimeline";
 import InvitationEnvelope from "@/components/sections/InvitationEnvelope";
@@ -151,6 +152,14 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
         </Container>
       </section>
 
+      <section id="film" className="scroll-mt-16 bg-cream py-16 sm:py-24">
+        <Container>
+          <Reveal>
+            <GalleryReel reel={hs.reel} isThai={isThai} />
+          </Reveal>
+        </Container>
+      </section>
+
       <section
         id="rsvp"
         data-nav-theme="dark"
@@ -210,7 +219,7 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
         </Container>
       </section>
 
-      <section aria-hidden data-nav-theme="dark" className="relative isolate overflow-hidden bg-backdrop py-16 sm:py-24">
+      <section data-nav-theme="dark" className="relative isolate overflow-x-clip bg-backdrop py-16 sm:py-24">
         <PhotoBackdrop src={photos.frame} blur />
         <Reveal variant="scale" className="relative mx-auto w-[82%] max-w-md">
           <ScallopFrame scallop={14} margin={16} className="drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]">
@@ -228,7 +237,7 @@ export default function HomeShell({ content, schedule, photos }: HomeShellProps)
         isThai={isThai}
       />
 
-      <section aria-hidden className="overflow-hidden bg-cream pt-14 md:pt-20">
+      <section className="overflow-x-clip bg-cream pt-14 md:pt-20">
         <Container>
           <div className="mx-auto grid max-w-sm grid-cols-1 items-start gap-4 sm:max-w-3xl sm:grid-cols-3">
             {(["band-1", "band-2", "band-3"] as const).map((slot, index) => (

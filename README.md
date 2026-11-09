@@ -2,6 +2,22 @@
 
 Static, read-only, bilingual wedding information website for **Tan & Top**.
 
+## If you are new, or opening this in six months
+
+Read this first, then [docs/MAINTAINING.md](docs/MAINTAINING.md). Ignore numbered specs `00`–`12` unless something here points you there.
+
+**Wedding day:** Sunday 29 November 2026 · Conrad Bangkok.
+
+1. Install [pnpm](https://pnpm.io/) (this repo is pnpm-only).
+2. `pnpm install && pnpm dev` → [http://localhost:3000](http://localhost:3000) (English). Thai is `/th/`.
+3. Change guest copy in `content/th/` **and** `content/en/`. Never hardcode strings in JSX.
+4. Ship by merging to **`main`**. GitHub Actions publishes [the live site](https://topkoong.github.io/top-tanly-wedding/). Hard-refresh if images look stale.
+5. RSVP is **not** on this site. The home `#rsvp` button opens a Google Form (`homeShell.rsvpFormUrl` in `content/en/site.ts` and `content/th/site.ts`). Responses land in the couple’s Google Sheet.
+
+There is no database, `.env`, login, or API. The only access to hand over is **GitHub repo + Pages**, the **Google Form / Sheet**, and whoever pays for the GitHub account.
+
+If the wedding has already happened: you can leave the site as a keepsake, close or unlink the form, and you still must not add an on-site RSVP.
+
 ## Live site
 
 [https://topkoong.github.io/top-tanly-wedding/](https://topkoong.github.io/top-tanly-wedding/)
@@ -15,7 +31,7 @@ Static, read-only, bilingual wedding information website for **Tan & Top**.
 - **No chatbot** / AI assistant on the website.
 - **No backend surfaces:** no API routes, server actions, database, or authentication.
 - **No analytics** in MVP.
-- **No middleware** for locale routing (explicit Thai + `/en` routes only).
+- **No middleware** for locale routing (explicit `/` English + `/th/` Thai only).
 - **No LINE Official Account** — guest support is the FAQ page only.
 
 ## Visual direction (summary)

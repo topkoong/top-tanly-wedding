@@ -100,6 +100,14 @@ export const siteContentEn: SiteContent = {
     rsvpCtaLabel: "Reply to the invitation",
     rsvpFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf7RrED_d3_tPbuLpYT7Ix2bok5HZX5Sg8ygNMXtiYtbkyjVg/viewform",
     rsvpPendingLabel: "RSVP link coming soon",
+    reel: {
+      src: "/videos/save-the-date.mp4",
+      poster: "/images/photos/reel-poster.webp",
+      title: "Save the date",
+      ariaLabel: "A short film of Tan and Top",
+      playLabel: "Play the film",
+      pauseLabel: "Pause the film",
+    },
   },
   footer: {
     thankYou: "Thank you for being part of our special day.",
