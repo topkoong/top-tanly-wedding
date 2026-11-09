@@ -1,7 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import { useRef } from "react";
 
 import ScheduleTimelineIcon from "@/components/icons/ScheduleTimelineIcon";
@@ -45,13 +54,24 @@ export default function HomeTimeline({ lead, title, groups, ctaLabel, ctaHref, i
     // Finish when the list bottom reaches the viewport bottom so luncheon is connected as it arrives.
     offset: ["start 90%", "end end"],
   });
-  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  // Draw down with scroll, then hold — same once-only posture as Reveal. Do not scrub back up.
+  const farthest = useMotionValue(0);
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    if (value > farthest.get()) farthest.set(value);
+  });
+  const progress = useSpring(farthest, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   const entries = groups.flatMap((group) =>
     group.timeline.map((entry, index) => ({ ...entry, room: index === 0 ? group.roomName : null })),
   );
   const pathHeight = entries.length * ROW;
-  const clipHeight = useTransform(progress, (value) => (shouldReduceMotion ? 1 : value) * pathHeight);
+  // Clip in % of the rendered list, not SVG user units — Motion writes `px` onto SVG height, which
+  // stopped the stroke around paying respects (~56% of the stretched viewBox).
+  const hiddenBottom = useTransform(progress, (value) => {
+    const p = shouldReduceMotion ? 1 : Math.min(1, value * 1.05);
+    return `${(1 - p) * 100}%`;
+  });
+  const spineClip = useMotionTemplate`inset(0 0 ${hiddenBottom} 0)`;
 
   return (
     <section id="timeline" data-nav-theme="dark" className="scroll-mt-16 overflow-hidden bg-backdrop py-16 text-paper sm:py-24">
@@ -80,28 +100,27 @@ export default function HomeTimeline({ lead, title, groups, ctaLabel, ctaHref, i
         </Reveal>
 
         <ol ref={listRef} className="relative mt-12">
-          <svg
+          <motion.div
             aria-hidden
-            viewBox={`0 0 40 ${pathHeight}`}
-            preserveAspectRatio="none"
-            className="pointer-events-none absolute inset-y-0 left-1/2 h-full w-16 -translate-x-1/2"
+            className="pointer-events-none absolute inset-y-0 left-1/2 w-16 -translate-x-1/2"
+            style={{ clipPath: spineClip, WebkitClipPath: spineClip }}
           >
-            <defs>
-              <clipPath id="home-timeline-spine">
-                <motion.rect width={40} height={clipHeight} />
-              </clipPath>
-            </defs>
-            <path
-              d={wavePath(entries.length)}
-              fill="none"
-              stroke="currentColor"
-              strokeOpacity="0.7"
-              strokeWidth="1.25"
-              strokeLinecap="round"
-              vectorEffect="non-scaling-stroke"
-              clipPath="url(#home-timeline-spine)"
-            />
-          </svg>
+            <svg
+              viewBox={`0 0 40 ${pathHeight}`}
+              preserveAspectRatio="none"
+              className="h-full w-full"
+            >
+              <path
+                d={wavePath(entries.length)}
+                fill="none"
+                stroke="currentColor"
+                strokeOpacity="0.7"
+                strokeWidth="1.25"
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+          </motion.div>
 
           {entries.map((entry, index) => {
             const left = index % 2 === 0;
