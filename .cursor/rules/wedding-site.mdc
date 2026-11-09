@@ -5,133 +5,76 @@ alwaysApply: true
 
 # Wedding Site — Cursor Rules
 
-You are helping build a **static, read-only** Next.js wedding site. Canonical docs: **`docs/MAINTAINING.md`**, **`README.md`**, **`docs/PROJECT_OVERVIEW.md`**, **`docs/ARCHITECTURE.md`**, **`docs/VISUAL_QA.md`**. Numbered specs **`00`**–**`12`** are historical—defer to **`docs/MAINTAINING.md`** when they conflict.
+You are helping build a **static, read-only** Next.js wedding site. Canonical docs: **`AGENTS.md`**, **`docs/MAINTAINING.md`**, **`README.md`**. Numbered specs **`00`–`12`** are historical. For photos, gallery, or the save-the-date reel, delegate to the **`wedding-photos`** subagent (`.cursor/agents/wedding-photos.md`).
 
 ## Critical constraints
 
-Never create:
+Never create: on-site RSVP / attendance / guest tracking; chatbot or AI widget; public contact `<form>`; gallery upload; login; database; API routes; server actions; middleware locale redirects; analytics in MVP.
 
-- ❌ RSVP page or on-site RSVP workflow — the **only** RSVP is the home-page `#rsvp` band linking out to the couple's external Google Form (`homeShell.rsvpFormUrl`); responses land in their Google Sheet, never on this site
-- ❌ Attendance counting / guest tracking / confirmation flows
-- ❌ Chatbot, AI chat widget, or chatbot SDK
-- ❌ Public contact form or any `<form>` UX that collects guest data
-- ❌ Public gallery upload
-- ❌ Login / auth system
-- ❌ Database
-- ❌ API routes
-- ❌ Server actions
-- ❌ Middleware-based language routing / locale redirects
-- ❌ Analytics in MVP
+The **only** RSVP is the home `#rsvp` band linking to the couple's Google Form (`homeShell.rsvpFormUrl`). Guest support is the FAQ page. There is **no LINE Official Account**.
 
-Guest support stays informational: deterministic FAQ only. There is **no LINE Official Account**, chatbot, or realtime concierge.
+## Product truth
 
-## Product truth — naming & locales
+**Visible naming (bride-first):** `Tan & Top` · `Narueporn & Theerut`. Never groom-first in UI.
 
-**Visible naming (bride-first):**
-
-- `Tan & Top`
-- `Narueporn & Theerut`
-
-Never show groom-first order (`Top & Tan`, `Theerut & Narueporn`) in visible UI strings.
-
-**Routing:**
+**Routing** (`trailingSlash: true` in production):
 
 - English (root): `/`, `/schedule/`, `/venue/`, `/gallery/`, `/faq/`
 - Thai: `/th/`, `/th/schedule/`, `/th/venue/`, `/th/gallery/`, `/th/faq/`
-- **`trailingSlash: true`** in production config — prefer links that match exported URLs.
 
-**Do not restore** Accommodation or Dress-code routes/menus unless the product charter changes.
+Logo goes **home**: `/` (English) or `/th/` (Thai). Do **not** restore `/en/`, Accommodation, or Dress-code.
 
-## Stack (see `package.json` for pinned versions)
+**Home order:** envelope → collage → Conrad (`#invitation`) → save-the-date film (`#film`) → `#rsvp` → scallop frame → timeline → photo band → quick actions. The reel is **home-only**, not on the gallery.
 
-- Next.js App Router (currently **16.2.x**), TypeScript strict, Tailwind CSS v4
-- **pnpm only** (`packageManager` field)
-- Fonts: **Bellefair** (`font-display`) + **Perandory** (couple name via `CoupleScriptMark`) + Inter (UI) + **IBM Plex Sans Thai**. The **NT monogram** is `public/brand/logo.svg` through `TNMonogram` + `publicAssetPath`. (Cormorant Garamond and Allura stay removed.)
-- `lucide-react`, `motion` (subtle, reduced-motion-safe)
-- Static export (**`output: 'export'`**), **`images.unoptimized: true`**
-- Playwright (**dev**) + `pnpm screenshots` for deterministic visual QA (see **`docs/VISUAL_QA.md`**)
+**Thai “Save the date”** idiom is **จองวันไว้เลยนะ** (not เซฟเดอะเดท / บันทึกวันสำคัญ). English stays “Save the date”.
 
-Conditional GitHub Pages hosting:
+**Paper:** cream / ivory / paper / page `bg` = **`#fff5e6`**. Do **not** retint envelope olive tokens (`envelope`, `envelope-deep`, `envelope-soft`, `backdrop`) when changing cream.
 
-```txt
-GITHUB_PAGES=true → basePath "/top-tanly-wedding" + trailing assetPrefix (see next.config.ts)
-```
+## Stack
 
-## Files & conventions
+- Next.js App Router **16.2.x**, TypeScript strict, Tailwind v4, **pnpm only**
+- Fonts: Bellefair (`font-display`) · Perandory (`CoupleScriptMark`) · Inter · IBM Plex Sans Thai
+- **NT monogram:** `TNMonogram` → `public/brand/logo.svg` via `publicAssetPath`. Navbar is logo-only. Give the wrapper a real width (`aspect-ratio`); iOS Safari collapses SVG `img` with only a `viewBox`. Do not restore `nt-monogram.png`, Allura, or a geometric T-over-N.
+- Static export (`output: 'export'`), `images.unoptimized: true`
+- `GITHUB_PAGES=true` → `basePath` `/top-tanly-wedding`
 
-- **Components:** PascalCase files, default export (`components/layout/*`, `components/sections/*`, `components/ui/*`).
-- **Content:** camelCase TS modules exporting typed objects (`content/th/*.ts`, `content/en/*.ts`, **`content/schema.ts`**).
-- **Utils / hooks:** `lib/*.ts`, `lib/hooks/use*.ts`.
+## Files
 
-## Rendering patterns
+- Components: PascalCase, default export, `cn()` for `className`
+- Content: `content/th/*.ts` + `content/en/*.ts` + `content/schema.ts` — **never hardcode guest copy in JSX**
+- Public URLs in JSX: `publicAssetPath()`
+- Default Server Components. `"use client"` only for menus, accordions, motion, locale, video
 
-- Default **Server Components**. Add `"use client"` only for interactivity (`MobileMenu`, `MobileBottomNav`, `Navbar` client needs, accordions/fade wrappers, motion).
-- Components accept **`className`** merged with **`cn()`**.
-- Buttons/links/interactive widgets need visible focus styling (`focus-visible:ring-*`).
-- Prefer `next/image` with explicit dimensions or `fill` + `sizes` for real assets; placeholders use **`PlaceholderImage`**.
+## Styling
 
-## Styling (`03_DESIGN_SYSTEM.md`)
+Minimal invitation: cream paper, near-black ink, **no florals**. Prefer `charcoal` / `stone` / `cream` / `ivory`. Legacy `olive` / `gold` names are ink/taupe, not green. No colored CTAs. Cards `rounded-2xl`/`rounded-3xl`, media `rounded-xl`, buttons `rounded-full`.
 
-**Visual direction: minimal invitation — warm cream + near-black ink, NO floral artwork.** The site mirrors a clean letterpress invitation: lots of whitespace, a flowing script couple-name, and letter-spaced uppercase supporting type. Do **not** reintroduce flower/leaf backgrounds, watercolor sprites, or botanical SVG corners.
+**Never widen tracking on Thai.** English eyebrows: letter-spaced uppercase. Bellefair is one weight — do not fake bold.
 
-- Tailwind utilities + tokens from **`app/globals.css`** `@theme`.
-- Palette tokens: **`cream`**, **`ivory`**, **`champagne`**, **`charcoal`**, **`stone`**, plus legacy names **`olive`/`olive-deep`/`olive-soft`**, **`sage`/`sage-soft`**, **`gold`**, **`rose`/`rose-deep`** that are now **collapsed onto the neutral ink/cream scale** (olive ≈ near-black, gold ≈ quiet taupe hairline). Existing class names therefore render the minimal theme; prefer **`charcoal`/`stone`/`cream`/`ivory`** for new work. No arbitrary hex unless deliberately extending `@theme`.
-- **Primary buttons / key nav states:** **`charcoal`** fill with cream uppercase tracked label; secondary = hairline `charcoal/30` outline on transparent. No colored CTAs.
-- Border radii: invitation-style cards `rounded-2xl` / `rounded-3xl`, media `rounded-xl`, CTAs `rounded-full`.
-- Shadows: soft warm elevation only; never generic heavy “dashboard” chrome.
-- **Typography pairing:** **Bellefair (`font-display`)** for English headings, invitation labels, and body copy; **Le Jour Script (`font-script`)** for the visible couple name **Tan & Top** (self-hosted). One name only in UI — not both nicknames and formal names. Formal first names **`Narueporn & Theerut`** stay in content for reference but are not shown alongside **Tan & Top**; the hero uses the **`tan-top.png`** script artwork. **Letter-spaced uppercase** Bellefair or Inter for eyebrows/formal labels on EN; IBM Plex Sans Thai for Thai body. **Never widen tracking on Thai source strings.**
-- **Logo / monogram:** `TNMonogram` renders the couple's **custom `NT` mark** — a serif **N** intertwined with a calligraphic **T** — from the transparent PNG **`public/brand/nt-monogram.png`** (charcoal ink, scales by height with `w-auto`, sits cleanly on cream/ivory). It is the single brand mark used in the navbar, footer, envelope seal, and the envelope's sliding card. The navbar is **logo-only** (no wordmark text). The hero nickname uses the handwritten **`public/brand/tan-top.png`** ("Tan Top") script. Do not restore the old geometric T-over-N mark or the Allura SVG-text monogram.
-- **No decorative background layers.** `Section` is a plain layout band with no artwork; page blocks fade up once on scroll via `components/ui/Reveal.tsx` (hydration-safe, reduced motion = instant). Hairline dividers (`InvitationBotanicalRule`, `DecorativeDivider`) are plain lines, never botanicals. `BotanicalBackdrop`/`FooterBotanical`/`SoftPageBotanical` were removed; do not recreate them.
+After `@theme` colour changes, delete `.next` if HMR keeps the old cream.
 
-- Decorative elements must stay `pointer-events-none` inside `overflow-hidden` parents so layouts ≥360 px never gain horizontal bleed.
+## Photos (summary)
 
-### Animation posture
+Originals in `photos-src/` are gitignored except `.gitkeep`. Convert with `pnpm photos` (or `node scripts/optimize-photos.mjs`). Commit **only** `public/images/**` and `public/videos/save-the-date.mp4`.
 
-✅ Fade / soft upward reveal, gentle section opacity settle on scroll, restrained button fades, accordion easing with readable content states.
+- **Never overwrite** Conrad `venue` / `venue-2`
+- Home **band-1…3** must mix **different sets** (studio + first-outing rings), not three studio stills
+- Gallery must **not** open on ชุดไทย; Thai dress sits later
+- Reel: tap-to-play **with sound**; no muted autoplay; `prefers-reduced-motion` = poster only
+- Do not wrap below-the-fold photos in `aria-hidden` + `Reveal` `opacity: 0` + `loading="lazy"` — Chromium will never fetch them
 
-⚠️ Keep motion subtle and ornamental—never on schedule facts or urgent venue instructions.
+## Navigation
 
-❌ Parallax loops, flashy 3D flips, marquees, autoplay gag animations, bouncing overshoot gimmicks—anything disrespecting **`prefers-reduced-motion`**.
+Mobile (`lg`↓): `MobileBottomNav` — Home · Schedule · Venue · Gallery · FAQ. No RSVP / Gift / LINE / Accommodation / Dress-code.
 
-Screenshots tooling may disable CSS animations for deterministic PNG QA—don't interpret that as license to spam motion in production UI.
+Desktop: Schedule · Venue · Gallery · FAQ · language toggle.
 
-## Content rules (`04_CONTENT_MODEL.md`)
+## Motion
 
-- **Never hardcode copy in JSX.** Import from **`content/th/*`** / **`content/en/*`** only.
-- Use placeholders responsibly—never fabricated confirmed operational claims.
-- Friendly tone: warm, elegant, concise.
-- Spelling **`Venue`**, never `Vanue`.
+`Reveal` (`motion/react`), reduced-motion = duration 0, **keep the motion node mounted**. No parallax, marquees, or motion on schedule/map facts.
 
-## Navigation UX
+## What NOT to do
 
-Never list **Home** as a bullet. Logo lockup anchors to **`/`** (Thai) or **`/en`** (English).
-
-**Mobile (`lg` and below):** a **fixed bottom navigation** (`MobileBottomNav`) surfaces **Home · Schedule · Venue · Gallery · FAQ** with icons + labels, **`env(safe-area-inset-bottom)`** padding, and **ink/charcoal** active styling. Do **not** add RSVP, Gift, LINE, Accommodation, or Dress-code entries.
-
-Main **desktop** top nav mirrors product:
-
-- Thai: `กำหนดการ · สถานที่ · แกลเลอรี · คำถามที่พบบ่อย · EN`
-- English: `Schedule · Venue · Gallery · FAQ · TH`
-
-Do **not** add LINE Official Account pages, CTAs, or rich-menu marketing.
-
-## Accessibility & responsiveness
-
-Follow **`06_RESPONSIVE_UX_SPEC.md`** + **`10_ACCEPTANCE_CRITERIA_QA.md`:**
-
-- Tap targets ≥ 44×44 px equivalents.
-- One `<h1>` per route, logical heading ladders.
-- Contrast thresholds (WCAG-ish: ~4.5:1 body, ~3:1 large type).
-- Test 375 / 390 / 430 / 768 widths before desktop polishing.
-
-## What NOT to do (recap)
-
-- ❌ Floral/botanical backgrounds, watercolor sprites, leaf SVG corners (minimal theme = no flowers)
-- ❌ Colored CTAs / reintroducing a green olive or gold accent as a dominant brand color
-- ❌ Accommodation / Dress-code resurrected casually
-- ❌ Hardcoded multilingual strings sprinkled in JSX
-- ❌ Runtime data fetching powering guest-critical info
-- ❌ Decorative motion that hides schedule/map clarity
-- ❌ Middleware locale experiments breaking static exports
-
-When instructions conflict across legacy markdown packs, escalate with the repo owner—or default to **`README.md` + `.cursor/rules/wedding-site.mdc`**.
+- Florals, colored CTAs, `/en/` routes, hardcoded copy, runtime fetches for guest facts
+- Invented operational claims in alt text or FAQ
+- Spelling `Vanue`

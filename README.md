@@ -4,15 +4,16 @@ Static, read-only, bilingual wedding information website for **Tan & Top**.
 
 ## If you are new, or opening this in six months
 
-Read this first, then [docs/MAINTAINING.md](docs/MAINTAINING.md). Ignore numbered specs `00`–`12` unless something here points you there.
+Read this first, then [AGENTS.md](AGENTS.md) and [docs/MAINTAINING.md](docs/MAINTAINING.md). Ignore numbered specs `00`–`12` unless something here points you there.
 
 **Wedding day:** Sunday 29 November 2026 · Conrad Bangkok.
 
 1. Install [pnpm](https://pnpm.io/) (this repo is pnpm-only).
 2. `pnpm install && pnpm dev` → [http://localhost:3000](http://localhost:3000) (English). Thai is `/th/`.
 3. Change guest copy in `content/th/` **and** `content/en/`. Never hardcode strings in JSX.
-4. Ship by merging to **`main`**. GitHub Actions publishes [the live site](https://topkoong.github.io/top-tanly-wedding/). Hard-refresh if images look stale.
-5. RSVP is **not** on this site. The home `#rsvp` button opens a Google Form (`homeShell.rsvpFormUrl` in `content/en/site.ts` and `content/th/site.ts`). Responses land in the couple’s Google Sheet.
+4. Drop photo originals in `photos-src/` (gitignored) and run `pnpm photos`. Commit the `public/` WebP / mp4 output only.
+5. Ship by merging to **`main`**. GitHub Actions publishes [the live site](https://topkoong.github.io/top-tanly-wedding/). Hard-refresh if images look stale.
+6. RSVP is **not** on this site. The home `#rsvp` button opens a Google Form (`homeShell.rsvpFormUrl` in `content/en/site.ts` and `content/th/site.ts`). Responses land in the couple’s Google Sheet.
 
 There is no database, `.env`, login, or API. The only access to hand over is **GitHub repo + Pages**, the **Google Form / Sheet**, and whoever pays for the GitHub account.
 
@@ -27,6 +28,7 @@ If the wedding has already happened: you can leave the site as a keepsake, close
 - **Languages:** English at the root (`/`). Thai routes live under `/th/`.
 - **Visible naming (bride-first):** Friendly **Tan & Top** · Formal **Narueporn & Theerut**.
 - **RSVP is external only:** the home page links to the couple's Google Form (`homeShell.rsvpFormUrl`); the site itself stores or counts nothing.
+- **Save the date:** English “Save the date”; Thai **จองวันไว้เลยนะ**. The 30s film sits on home (`#film`), after Conrad and before RSVP — not on the gallery.
 - **No forms** (no public contact RSVPs or guest uploads).
 - **No chatbot** / AI assistant on the website.
 - **No backend surfaces:** no API routes, server actions, database, or authentication.
@@ -36,7 +38,7 @@ If the wedding has already happened: you can leave the site as a keepsake, close
 
 ## Visual direction (summary)
 
-Warm paper invitation (`#fff6ef`) and near-black ink. No florals. Olive tokens are ink, not green; the brown envelope is intro-only. Mobile-first: fixed **bottom navigation** (Home · Schedule · Venue · Gallery · FAQ) below `lg` with safe-area padding. Full handbook: [docs/MAINTAINING.md](docs/MAINTAINING.md).
+Warm paper invitation (`#fff5e6`) and near-black ink. No florals. Olive tokens are ink, not green; the brown envelope is intro-only — do not retint it when changing cream. Mobile-first: fixed **bottom navigation** (Home · Schedule · Venue · Gallery · FAQ) below `lg` with safe-area padding. Full handbook: [docs/MAINTAINING.md](docs/MAINTAINING.md).
 
 ## Wedding details
 
@@ -106,7 +108,9 @@ pnpm build
 pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) (no base path locally).
+Open [http://localhost:3000](http://localhost:3000) (no base path locally). Thai is `/th/`.
+
+Photo originals: `photos-src/home/`, `photos-src/gallery/`, `photos-src/video/save-the-date.mp4`. Convert with `pnpm photos` (or `node scripts/optimize-photos.mjs` if Corepack fails). Do not commit originals.
 
 Static export output: `out/`.
 
@@ -159,6 +163,7 @@ Implementation: [`scripts-capture-screenshots.mjs`](scripts-capture-screenshots.
 
 | Document | Purpose |
 |----------|---------|
+| [AGENTS.md](AGENTS.md) | Short agent brief; points at the photos subagent |
 | [docs/MAINTAINING.md](docs/MAINTAINING.md) | **Current** design system, motion, content, photos, deploy |
 | [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md) | Purpose, decisions, wedding facts |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | App, content, components, static export |
@@ -170,9 +175,11 @@ Legacy numbered specs (`00_PRODUCT_BRIEF.md` … `12_TECH_STACK.md`) are audited
 
 ## AI / Cursor guardrails
 
-Cursor loads [`.cursor/rules/wedding-site.mdc`](.cursor/rules/wedding-site.mdc).
+Cursor loads [`.cursor/rules/wedding-site.mdc`](.cursor/rules/wedding-site.mdc) on every chat and [`AGENTS.md`](AGENTS.md) as the repo brief.
 
-Human-readable duplicate: [`CURSOR_RULES_COPY.md`](CURSOR_RULES_COPY.md).
+For gallery, home slots, or the reel, Agent should use the **`wedding-photos`** subagent ([`.cursor/agents/wedding-photos.md`](.cursor/agents/wedding-photos.md)), or you can invoke `/wedding-photos`.
+
+Human-readable rule summary: [`CURSOR_RULES_COPY.md`](CURSOR_RULES_COPY.md).
 
 ## Repository
 

@@ -1,6 +1,6 @@
 # Maintaining the wedding site
 
-This is the **current** handbook for developers and designers working on Tan & Top. When older numbered specs (`00`–`12`) or comments disagree with this file plus `app/globals.css`, **this file and the code win**.
+This is the **current** handbook for developers and designers working on Tan & Top. When older numbered specs (`00`–`12`) or comments disagree with this file plus `app/globals.css`, **this file and the code win**. Cursor agents start from [`AGENTS.md`](../AGENTS.md) and [`.cursor/rules/wedding-site.mdc`](../.cursor/rules/wedding-site.mdc); photo work should go through the **`wedding-photos`** subagent ([`.cursor/agents/wedding-photos.md`](../.cursor/agents/wedding-photos.md)).
 
 Live site: [https://topkoong.github.io/top-tanly-wedding/](https://topkoong.github.io/top-tanly-wedding/)
 
@@ -37,7 +37,7 @@ There is **no `.env`**, no hosting bill beyond GitHub, and no LINE OA.
 ### First hour
 
 1. `pnpm install && pnpm dev` — English `/`, Thai `/th/`.
-2. Open home, skip or tap the envelope, follow `#rsvp` and confirm the form still opens.
+2. Open home, skip or tap the envelope, play the `#film` reel, follow `#rsvp` and confirm the form still opens.
 3. Skim `content/th/schedule.ts`, `content/th/venue.ts`, `content/th/faq.ts` (and the `en` twins). That is the guest-facing truth.
 4. Push a no-op or docs commit to a branch if you need to prove Actions still deploys. **`main` auto-deploys.** Feature branches need `gh workflow run deploy.yml --ref <branch>`.
 
@@ -53,7 +53,7 @@ The site can stay up as a thank-you / gallery. Typical edits:
 
 | Trust | Ignore unless debugging history |
 |-------|----------------------------------|
-| This file, `README.md` | `00_`–`12_` numbered specs |
+| This file, `README.md`, `AGENTS.md` | `00_`–`12_` numbered specs |
 | `app/globals.css` for colour | `03_DESIGN_SYSTEM.md` hex tables |
 | `lib/locale.ts` for routes | Any doc that says English lives at `/en/` |
 
@@ -101,15 +101,25 @@ Visible naming is **bride-first** only: `Tan & Top`, `Narueporn & Theerut`. Neve
 
 Thai times should stay unambiguous (`7:09 น.`, not `07.09`). Do not add letter-spacing / uppercase transforms to Thai source strings.
 
+Thai “Save the date” is the idiom **จองวันไว้เลยนะ** (`invitationCardEyebrow`, `saveTheDateLabel`, `homeShell.reel.title`). Do not use เซฟเดอะเดท or บันทึกวันสำคัญ. English stays “Save the date”.
+
 ### Change photos
 
-1. Drop originals in `photos-src/home/<slot>.jpg` or `photos-src/gallery/…` (gitignored except `.gitkeep`).
-2. Run `pnpm photos`.
-3. Commit the generated files under `public/images/photos/` or `public/images/gallery/`.
+1. Drop originals in `photos-src/home/<slot>.jpg`, `photos-src/gallery/…`, or `photos-src/video/save-the-date.mp4` (gitignored except `.gitkeep`). A dump folder `photos-src/all-photos/` is fine; copy chosen files into `home/` or `gallery/` before converting.
+2. Run `pnpm photos`. If Corepack fails, `node scripts/optimize-photos.mjs`.
+3. Commit the generated files under `public/images/` and `public/videos/save-the-date.mp4`. Never commit originals.
 
-Home slots and sizes are documented in `lib/photos.ts`. Missing files render a placeholder — do not invent “confirmed” venue claims in alt text.
+Home slots and sizes are documented in `lib/photos.ts`. Crop anchors live in `HOME_POSITION` inside `scripts/optimize-photos.mjs`. Missing files render a placeholder — do not invent “confirmed” venue claims in alt text.
+
+**Do not overwrite** Conrad `venue` / `venue-2`. Prefer no-glasses portraits on home. `strip-2` is the large strip print. The three-still band after the timeline (`band-1…3`) must mix **different sets** (studio ชุดไทย + first-outing rings), not three studio frames.
+
+Gallery order is curated in `content/*/gallery.ts`. Do **not** open on ชุดไทย; start with `22-studio-white` and mix street; Thai dress sits later, before the older shutterbooth set.
+
+The save-the-date reel is **home-only** (`HomeShell` `#film`, after Conrad `#invitation`, before `#rsvp`). Tap-to-play with sound; no muted autoplay. Reduced motion shows the poster. Copy is `homeShell.reel` in `content/*/site.ts`.
 
 Public assets on GitHub Pages must go through `publicAssetPath()` (`lib/publicAssetPath.ts`). A root-relative `/brand/logo.svg` 404s on Pages as `github.io/brand/…` instead of `github.io/top-tanly-wedding/brand/…`.
+
+Below-the-fold photos will not load if they sit in `aria-hidden` + `Reveal` (`opacity: 0`) + `loading="lazy"`. Keep `PhotoFrame` eager on home; do not hide the scallop or band sections from the accessibility tree just to skip them in a screenshot.
 
 ### Change colour
 
@@ -131,8 +141,7 @@ Declared in `app/globals.css`. Prefer token class names (`bg-cream`, `text-charc
 
 | Token | Hex | Use |
 |-------|-----|-----|
-| `cream` / `paper` / page `bg` | `#fff6ef` | Page canvas, wax seal, letter stock |
-| `ivory` | `#fff6ef` | Cards (same paper as the page for now) |
+| `cream` / `ivory` / `paper` / page `bg` | `#fff5e6` | Page canvas, cards, letter stock |
 | `champagne` | `#f3e4d0` | Rare warm tint |
 | `charcoal` | `#1f1d18` | Body ink, primary buttons |
 | `stone` | `#6e6a61` | Secondary / muted copy |
@@ -185,10 +194,10 @@ Bellefair is a single weight — do not fake bold (`font-synthesis-weight: none`
 
 | Page | Must stay true |
 |------|----------------|
-| Home | Envelope intro → collage → venue photo → `#rsvp` Google Form → timeline. One `<h1>`. |
+| Home | Envelope → collage → Conrad `#invitation` → save-the-date film `#film` → `#rsvp` Google Form → scallop frame → timeline → mixed photo band. One `<h1>`. |
 | Schedule | Facts first. No ornamental motion on times. |
 | Venue | Conrad photos, rooms, one-line directions, parking, map. |
-| Gallery | Curated set from `content/*/gallery.ts`. No uploads. |
+| Gallery | Curated stills from `content/*/gallery.ts`. No uploads, no reel. |
 | FAQ | Deterministic answers only. |
 
 ---
@@ -204,6 +213,7 @@ Library: **`motion`** (`motion/react`). Shared ease: `[0.22, 1, 0.36, 1]`.
 - Fade + soft upward / side / scale settle on first scroll (`Reveal`)
 - Hero collage pieces settling after the envelope opens (`InvitationRevealItem`)
 - Envelope open: seal pop → flap `rotateX` → letter rises → fade to page
+- Save-the-date reel: tap-to-play with sound (poster only when reduced motion)
 - Timeline spine drawing downward (`DrawLine`)
 - Language underline sliding (`layoutId`, spring)
 - FAQ accordion that stays readable mid-motion
@@ -212,7 +222,7 @@ Library: **`motion`** (`motion/react`). Shared ease: `[0.22, 1, 0.36, 1]`.
 ### Forbidden
 
 - Parallax loops, marquees, flashy 3D (except the envelope flap), bouncing overshoot
-- Autoplay gag animation
+- Autoplay gag animation (the save-the-date reel is tap-to-play with sound, never muted autoplay)
 - Motion on urgent venue / schedule facts
 - Ignoring `prefers-reduced-motion`
 
@@ -258,11 +268,13 @@ Older docs that say “Thai at `/` and English at `/en/`” are **wrong**.
 | Copy | `content/th/*`, `content/en/*`, `content/schema.ts` |
 | Colour / type tokens | `app/globals.css` |
 | Fonts | `lib/fonts.ts`, `app/layout.tsx` |
-| Photos | `photos-src/…` then `pnpm photos` → `public/images/…` |
+| Photos | `photos-src/…` then `pnpm photos` → `public/images/…` (reel → `public/videos/`) |
+| Gallery order / captions | `content/en/gallery.ts` + `content/th/gallery.ts` |
+| Reel labels | `homeShell.reel` in `content/*/site.ts`; player `components/sections/GalleryReel.tsx` |
 | New UI | `components/{layout,sections,ui}/*` — PascalCase, default export, `cn()` |
 | Public URLs in JSX | `publicAssetPath()` |
 
-Default to Server Components. Add `"use client"` only for menus, accordions, motion, locale, or scroll.
+Default to Server Components. Add `"use client"` only for menus, accordions, motion, locale, video, or scroll.
 
 ---
 
@@ -283,8 +295,8 @@ Build env: `GITHUB_PAGES=true` → `basePath` + `assetPrefix` `/top-tanly-weddin
 
 ### After every deploy
 
-- Home (open + skip envelope) in Thai and English
-- Schedule times, venue photos + map, gallery, FAQ
+- Home (open + skip envelope) in Thai and English: film, RSVP, scallop frame, three-band stills
+- Schedule times, venue photos + map, gallery (first tile is not ชุดไทย), FAQ
 - Mobile 375 / 390 / 430 and a desktop width
 - iPhone: monogram visible on the wax seal
 - No forms, chatbot, or groom-first names
