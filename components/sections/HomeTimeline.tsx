@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 
 import ScheduleTimelineIcon from "@/components/icons/ScheduleTimelineIcon";
@@ -40,12 +40,18 @@ function wavePath(rows: number) {
 export default function HomeTimeline({ lead, title, groups, ctaLabel, ctaHref, isThai }: HomeTimelineProps) {
   const shouldReduceMotion = useReducedMotion();
   const listRef = useRef<HTMLOListElement>(null);
-  const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 85%", "end 55%"] });
+  const { scrollYProgress } = useScroll({
+    target: listRef,
+    // Finish when the list bottom reaches the viewport bottom so luncheon is connected as it arrives.
+    offset: ["start 90%", "end end"],
+  });
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   const entries = groups.flatMap((group) =>
     group.timeline.map((entry, index) => ({ ...entry, room: index === 0 ? group.roomName : null })),
   );
+  const pathHeight = entries.length * ROW;
+  const clipHeight = useTransform(progress, (value) => (shouldReduceMotion ? 1 : value) * pathHeight);
 
   return (
     <section id="timeline" data-nav-theme="dark" className="scroll-mt-16 overflow-hidden bg-backdrop py-16 text-paper sm:py-24">
@@ -76,11 +82,16 @@ export default function HomeTimeline({ lead, title, groups, ctaLabel, ctaHref, i
         <ol ref={listRef} className="relative mt-12">
           <svg
             aria-hidden
-            viewBox={`0 0 40 ${entries.length * ROW}`}
+            viewBox={`0 0 40 ${pathHeight}`}
             preserveAspectRatio="none"
             className="pointer-events-none absolute inset-y-0 left-1/2 h-full w-16 -translate-x-1/2"
           >
-            <motion.path
+            <defs>
+              <clipPath id="home-timeline-spine">
+                <motion.rect width={40} height={clipHeight} />
+              </clipPath>
+            </defs>
+            <path
               d={wavePath(entries.length)}
               fill="none"
               stroke="currentColor"
@@ -88,7 +99,7 @@ export default function HomeTimeline({ lead, title, groups, ctaLabel, ctaHref, i
               strokeWidth="1.25"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
-              style={{ pathLength: shouldReduceMotion ? 1 : progress }}
+              clipPath="url(#home-timeline-spine)"
             />
           </svg>
 
